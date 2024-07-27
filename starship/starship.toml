@@ -1,13 +1,56 @@
-add_newline = false
-# A minimal left prompt
-format = """$directory$character"""
-#palette = "catppuccin_mocha"
-# move the rest of the prompt to the right
+format = """
+$username \
+$directory \
+$git_branch \
+$git_status\
+$line_break\
+$character
+"""
 right_format = """$all"""
+palette = "cyberpunk"
+add_newline = true
 command_timeout = 1000
 
+
+[character]
+success_symbol = "[](bold green)"
+error_symbol = "[✖](bold red)"
+vimcmd_symbol = "[](bold green)"
+vimcmd_visual_symbol ="[](bold bright-magenta)"
+
+[directory]
+format = "[in](italic) [$path](bold cyan)"
+# truncation_length = 3
+# truncation_symbol = "…/"
+home_symbol = "~"
+read_only = " "
+
+[username]
+style_user = "bright-magenta bold"
+style_root = "bright-red bold"
+format = "[$user]($style)"
+disabled = false
+show_always = true
+
+[git_status]
+untracked = "[ $count](text)"
+modified = "[ $count](bright-blue)"
+staged = "[ $count](green)"
+deleted = "[ $count](red)"
+ahead = "[ $count](green)"
+behind = "[ $count](green)"
+diverged = "[󰦻  $count](cyan)"
+conflicted = "[! $count](yellow bold)"
+stashed = "[ $count](cyan)"
+typechanged = ""
+renamed = ""
+up_to_date = ""
+format = '$all_status$ahead_behind'
+
 [git_branch]
-format =  '[$symbol$branch(:$remote_branch)]($style)'
+symbol = "[](black)"
+style = "fg:tky-fg bg:black"
+format = '[$symbol $branch]($style)[](black)'
 
 [docker_context]
 format = 'via [🐋 $context](blue bold)'
@@ -17,3 +60,24 @@ format = '[$symbol(profile: "$profile" )(\(region: $region\) )]($style)'
 disabled = false
 style = 'bold orange'
 symbol = " "
+
+[palettes.cyberpunk]
+black = '#444a73'
+red = '#ED7892'
+green ='#72F6B2'
+yellow='#FDF980'
+blue='#55BBF9'
+magenta='#D498F8'
+cyan='#95C9F8'
+white='#FEFFFF'
+bright-red='#EF8FA4'
+bright-green='#74F2BF'
+bright-yellow='#FDF796'
+bright-blue='#5FC8F7'
+bright-magenta='#DDAFF8'
+bright-cyan='#A6D4F8'
+bg-col= '#312954'
+bg-col-dark= '#241d47'
+text='#636da6'
+tky-fg ='#c8d3f5'
+
