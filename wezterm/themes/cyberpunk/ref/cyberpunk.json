@@ -1,0 +1,30 @@
+{
+  "ansi": [
+    "#000000",
+    "#ED7892",
+    "#72F6B2",
+    "#FDF980",
+    "#55BBF9",
+    "#D498F8",
+    "#95C9F8",
+    "#FEFFFF"
+  ],
+  "brights": [
+    "#000000",
+    "#EF8FA4",
+    "#74F2BF",
+    "#FDF796",
+    "#5FC8F7",
+    "#DDAFF8",
+    "#A6D4F8",
+    "#FEFEFE"
+  ],
+  "cursor_border": "#74F27E",
+  "selection_fg": "#FEFFFE",
+  "visual_bell": "#EA4024",
+  "background": "#312954",
+  "selection_bg": "#61C543",
+  "foreground": "#E5E5E5",
+  "cursor_fg": "black",
+  "cursor_bg": "#74F27E"
+}
