@@ -12,3 +12,16 @@ themes:
       white: '#FEFFFF'
       orange: '#ff966c'
 
+  cyberpunk: 
+      fg: '#E5E5E5'
+      bg: '#312954'
+      black: '#444a73'
+      red: '#ED7892'
+      green: '#00FF9C'
+      yellow: '#FDF980'
+      blue: '#55BBF9'
+      magenta: '#D498F8'
+      cyan: '#95C9F8'
+      white: '#FEFFFF'
+      orange: '#ff966c'
+
