@@ -1,0 +1,15 @@
+themes {
+    cyberpunk {
+      fg 229 229 229 
+      bg 49 41 84 
+      black 68 74 115 
+      red 237 120 146
+      green 114 246 178
+      yellow 253 249 128
+      blue 85 187 249 
+      magenta 212 152 248 
+      cyan 149 201 248 
+      white 254 255 255 
+      orange 255 150 108
+    }
+}
