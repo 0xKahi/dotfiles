@@ -39,6 +39,8 @@ return {
         end
       end
 
+      -- lighter black
+      set_highlight({ 'LineNr', 'LineNrAbove', 'LineNrBelow' }, { fg = '#545e8a' })
       -- interface purple
       -- set_highlight({ '@lsp.type.interface.typescriptreact' }, { fg = '#6095FF' })
 
