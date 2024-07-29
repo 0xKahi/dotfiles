@@ -14,6 +14,11 @@ return {
   {
     'williamboman/mason.nvim',
     lazy = false,
+    opts = {
+      ui = {
+        border = 'rounded',
+      },
+    },
     config = true,
   },
 
@@ -178,5 +183,10 @@ return {
         },
       })
     end,
+  },
+
+  {
+    'imsnif/kdl.vim',
+    ft = 'kdl',
   },
 }
