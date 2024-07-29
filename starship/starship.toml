@@ -8,7 +8,7 @@ $character
 """
 right_format = """$all"""
 palette = "cyberpunk"
-add_newline = true
+add_newline = false
 command_timeout = 1000
 
 
@@ -45,7 +45,7 @@ stashed = "[󰦤 $count ](cyan)"
 typechanged = ""
 renamed = ""
 up_to_date = ""
-format = '$all_status$ahead_behind'
+format = '$ahead_behind$conflicted$staged$modified$deleted$untracked$renamed$typechanged$stashed'
 
 [git_branch]
 symbol = "[](black)"
