@@ -1,8 +1,12 @@
 -- personal keymap
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true }) -- set space as leader key
 vim.api.nvim_set_keymap('i', 'kj', '<ESC>', { noremap = true })
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 vim.keymap.set('n', 'U', '<C-r>', { noremap = true, desc = 'Redo' })
-vim.keymap.set('n', '<leader>gb', ':bp <CR>', { noremap = true, desc = '[G]o [B]ack' })
+
+vim.api.nvim_set_keymap('n', '<leader>bp', ':bprev<enter>', { desc = '[B]uffer [P]revious', noremap = false })
+vim.api.nvim_set_keymap('n', '<leader>bn', ':bnext<enter>', { desc = '[B]uffer [N]ext', noremap = false })
+vim.api.nvim_set_keymap('n', 'bd', ':bdelete<enter>', { desc = '[B]uffer [Delete]', noremap = false })
 
 --- Plugin Remaps --
 
@@ -39,14 +43,27 @@ vim.keymap.set(
   { desc = '[N]eo [C]lip', silent = false, noremap = true }
 )
 
+-- lualine
+-- Map <leader>ll{number} to jump to that buffer
+for i = 1, 9 do
+  vim.keymap.set(
+    'n',
+    '<leader>ll' .. i,
+    string.format('<cmd>LualineBuffersJump! %d<CR>', i),
+    { desc = string.format('[L]ua [L]ine jump to buffer %d', i), silent = false, noremap = true }
+  )
+end
+
+vim.keymap.set('n', '<leader>llr', function()
+  require('lualine').refresh()
+  print('Lualine refreshed')
+end, { desc = '[L]ua [L]ine [R]efresh', silent = false, noremap = true })
+
 -- undotree
 vim.keymap.set('n', '<leader>ut', vim.cmd.UndotreeToggle, { desc = '[U]ndo [T]ree', silent = true, noremap = true })
 
 -- Conform (Formatter)
 local conform = require('conform')
--- Keybinding for manual formatting
--- in normal mode format whole file
--- in visual mode format selected buffer only
 vim.keymap.set({ 'n', 'v' }, '<leader>fm', function()
   conform.format({
     lsp_fallback = true,
@@ -76,7 +93,7 @@ harpoon:extend({
       harpoon.ui:select_menu_item({ vsplit = true })
     end, { buffer = cx.bufnr })
 
-    vim.keymap.set('n', '<C-h>', function()
+    vim.keymap.set('n', '<C-s>', function()
       harpoon.ui:select_menu_item({ split = true })
     end, { buffer = cx.bufnr })
   end,
