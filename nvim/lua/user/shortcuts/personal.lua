@@ -1,3 +1,4 @@
+-- TODO: gotta redo this part its a mess
 local fmt = require('utils.fmt')
 vim.api.nvim_create_user_command('LuaFormat', fmt.luaFormat, {})
 
