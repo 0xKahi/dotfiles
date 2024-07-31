@@ -31,6 +31,8 @@ return {
               ['q'] = actions.close,
               ['<leader>aq'] = actions.add_selected_to_qflist, -- [A]dd selected to [Q]uickfix list
               ['<leader>rq'] = actions.send_selected_to_qflist, -- [R]eplace [Q]uickfix list with selected
+              ['<leader>dd'] = actions.delete_buffer,
+              ['<Tab>'] = actions.toggle_selection,
             },
           },
         },

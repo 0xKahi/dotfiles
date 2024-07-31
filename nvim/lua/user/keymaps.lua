@@ -13,23 +13,33 @@ vim.api.nvim_set_keymap('n', 'bd', ':bdelete<enter>', { desc = '[B]uffer [Delete
 -- Telescope
 local telescope = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', telescope.git_files, { desc = 'find files in git', noremap = true })
-vim.keymap.set(
-  'n',
-  '<C-f>',
-  telescope.current_buffer_fuzzy_find,
-  { desc = 'fuzzy find in current buffer', noremap = true }
-)
+
+vim.keymap.set('n', '<leader>/', function()
+  -- You can pass additional configuration to telescope to change theme, layout, etc.
+  telescope.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
+    previewer = true,
+  }))
+end, { desc = '[/] Fuzzy Find in current buffer]' })
+
 vim.keymap.set('n', '<leader>ff', function()
-  telescope.find_files({ no_ignore = false, hidden = true })
+  telescope.find_files({ no_ignore = true, hidden = true })
 end, { desc = '[F]ind all [F]iles', noremap = true })
+
 vim.keymap.set('n', '<leader>fg', telescope.live_grep, { desc = '[F]ind [G]rep in directory', noremap = true })
+
 vim.keymap.set(
   'n',
   '<leader>fw',
   telescope.grep_string,
   { desc = '[F]ind current [W]ord in directory', noremap = true }
 )
+
 vim.keymap.set('n', '<leader>fp', telescope.oldfiles, { desc = '[F]ind [P]ast files', silent = false, noremap = true })
+
+vim.keymap.set('n', '<leader>fb', function()
+  telescope.buffers(require('telescope.themes').get_ivy())
+end, { desc = '[F]ind [B]uffers', silent = false, noremap = true })
+
 vim.keymap.set(
   'n',
   '<leader>pp',
