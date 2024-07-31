@@ -23,4 +23,30 @@ local function clear_buffers()
   print('Cleared ' .. cleared_count .. ' buffer(s). Skipped ' .. skipped_count .. ' unsaved buffer(s).')
 end
 
-vim.api.nvim_create_user_command('ClearBuffers', clear_buffers, {})
+local clear_commands = {
+  buffers = { func = clear_buffers, desc = 'clear all buffers' },
+  qf_list = {
+    func = function()
+      vim.api.nvim_command('call setqflist([])')
+    end,
+    desc = 'clear quickfix list',
+  },
+}
+
+-- Create custom command for clearing stuff
+vim.api.nvim_create_user_command('Clear', function(opts)
+  local cmd = clear_commands[opts.args]
+  if cmd then
+    cmd.func()
+  else
+    print('Unknown clear command. Available commands: ' .. table.concat(vim.tbl_keys(clear_commands), ', '))
+  end
+end, {
+  nargs = 1,
+  complete = function(ArgLead, CmdLine, CursorPos)
+    return vim.tbl_filter(function(cmd)
+      return cmd:match('^' .. ArgLead)
+    end, vim.tbl_keys(clear_commands))
+  end,
+  desc = 'Custom clear commands. Available: ' .. table.concat(vim.tbl_keys(clear_commands), ', '),
+})
