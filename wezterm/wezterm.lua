@@ -21,8 +21,9 @@ config.color_scheme = 'Cyberpunk'
 config.font = wezterm.font('JetBrains Mono', { weight = 'Bold', bold = true })
 --config.font = wezterm.font('CaskaydiaCove Nerd', { weight = 'Bold', bold = true })
 config.font_size = 14.0
+config.line_height = 1.05
 config.bold_brightens_ansi_colors = true
-config.freetype_load_target = 'HorizontalLcd'
+config.freetype_load_target = 'Normal'
 
 -- Common font rendering settings
 --config.harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' }
