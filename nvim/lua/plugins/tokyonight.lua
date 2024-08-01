@@ -71,7 +71,14 @@ return {
       -- tky purple
       set_highlight({ 'NeoTreeGitModified' }, { fg = colors.magenta })
       -- light class purple
-      set_highlight({ '@lsp.typemod.class.defaultLibrary.typescriptreact', '@lsp.type.class' }, { fg = '#b4baff' })
+      set_highlight(
+        {
+          '@lsp.typemod.class.defaultLibrary.typescript',
+          '@lsp.typemod.class.defaultLibrary.typescriptreact',
+          '@lsp.type.class',
+        },
+        { fg = '#b4baff' }
+      )
       -- tky green1
       set_highlight({ '@lsp.type.enumMember' }, '@Property')
       -- tky green

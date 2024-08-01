@@ -163,9 +163,9 @@ return {
         -- Setup Telescope for LSP @keymaps
         vim.keymap.set('n', 'gd', telescope.lsp_definitions, { buffer = bufnr, desc = '[G]o to [D]efinition' })
 
-        vim.keymap.set('n', 'gpd', function()
-          telescope.lsp_definitions({ jump_type = 'never' })
-        end, { buffer = bufnr, desc = '[G]o to [P]review [D]efinition' })
+        vim.keymap.set('n', 'gp', function()
+          telescope.lsp_definitions(require('telescope.themes').get_ivy({ jump_type = 'never' }))
+        end, { buffer = bufnr, desc = '[G]o to [P]review definition' })
 
         vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = bufnr, desc = '[G]o to [D]eclaration' })
 

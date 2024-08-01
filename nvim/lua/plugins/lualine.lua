@@ -6,7 +6,7 @@ return {
       icons_enabled = true,
       theme = 'tokyonight',
       section_separators = { left = '', right = '' },
-      component_separators = { left = '', right = '' },
+      component_separators = '|',
       globalstatus = true,
     },
     sections = {
@@ -20,7 +20,6 @@ return {
           -- 2: Shows buffer name + buffer index
           -- 3: Shows buffer number
           -- 4: Shows buffer name + buffer number
-          seperator = { left = '', right = '' },
         },
       },
       lualine_x = {
