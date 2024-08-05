@@ -6,7 +6,7 @@ vim.keymap.set('n', 'U', '<C-r>', { noremap = true, desc = 'Redo' })
 
 vim.api.nvim_set_keymap('n', '<leader>bp', ':bprev<enter>', { desc = '[B]uffer [P]revious', noremap = false })
 vim.api.nvim_set_keymap('n', '<leader>bn', ':bnext<enter>', { desc = '[B]uffer [N]ext', noremap = false })
-vim.api.nvim_set_keymap('n', 'bd', ':bdelete<enter>', { desc = '[B]uffer [Delete]', noremap = false })
+vim.api.nvim_set_keymap('n', '<leader>bd', ':bdelete<enter>', { desc = '[B]uffer [Delete]', noremap = false })
 
 --- Plugin Remaps --
 
@@ -121,6 +121,10 @@ vim.keymap.set('n', '<leader>lg', '<cmd>LazyGit<CR>', { desc = '[L]azy [G]it', n
 
 -- Oil
 vim.keymap.set('n', '<leader>oo', '<CMD>Oil --float<CR>', { desc = '[O]pen [O]il window', noremap = true })
+
+-- Disable omni completion for sql @WARN: not sure if its the best idea
+vim.g.ftplugin_sql_omni_key_right = ''
+vim.g.ftplugin_sql_omni_key_left = ''
 
 vim.keymap.set('i', '<right>', function()
   if vim.fn['copilot#GetDisplayedSuggestion']().text ~= '' then
