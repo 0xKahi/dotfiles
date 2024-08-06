@@ -137,7 +137,8 @@ return {
           nowait = true,
         },
         mappings = {
-          -- Add your custom mappings here
+          ['<C-s>'] = 'open_split',
+          ['<C-v>'] = 'open_vsplit',
         },
       },
       nesting_rules = {},

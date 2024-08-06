@@ -33,6 +33,7 @@ return {
               ['<leader>rq'] = actions.send_selected_to_qflist, -- [R]eplace [Q]uickfix list with selected
               ['<leader>dd'] = actions.delete_buffer,
               ['<Tab>'] = actions.toggle_selection,
+              ['<C-s>'] = actions.select_horizontal,
             },
           },
         },

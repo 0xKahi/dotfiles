@@ -35,6 +35,8 @@ return {
         ['<S-p>'] = 'actions.preview',
         ['<Space>'] = 'actions.select',
         ['?'] = 'actions.show_help',
+        ['<C-v>'] = { 'actions.select', opts = { vertical = true }, desc = 'Open the entry in a vertical split' },
+        ['<C-s>'] = { 'actions.select', opts = { horizontal = true }, desc = 'Open the entry in a horizontal split' },
       },
       -- Configuration for the floating keymaps help window
       keymaps_help = {
