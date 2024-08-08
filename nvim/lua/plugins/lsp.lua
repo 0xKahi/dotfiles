@@ -134,6 +134,9 @@ return {
         mapping = cmp.mapping.preset.insert({
           ['<C-d>'] = cmp.mapping.scroll_docs(-4),
           ['<C-u>'] = cmp.mapping.scroll_docs(4),
+          ['<C-n>'] = cmp.mapping.select_next_item(cmp_Select),
+          ['<C-p>'] = cmp.mapping.select_prev_item(cmp_Select),
+          ['<C-y>'] = cmp.mapping.confirm({ select = true }),
           ['<Tab>'] = lsp.cmp_action().luasnip_supertab(),
           ['<S-Tab>'] = lsp.cmp_action().luasnip_shift_supertab(),
         }),

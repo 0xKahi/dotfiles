@@ -115,6 +115,12 @@ harpoon:extend({
 
 -- NeoTree
 vim.keymap.set('n', '<leader>oe', ':Neot reveal<CR>', { desc = '[O]pen [E]xplorer', noremap = true, silent = true })
+vim.keymap.set(
+  'n',
+  '<leader>ds',
+  ':Neot document_symbols<CR>',
+  { desc = '[D]ocument [S]ymbols', noremap = true, silent = true }
+)
 
 -- LazyGit
 vim.keymap.set('n', '<leader>lg', '<cmd>LazyGit<CR>', { desc = '[L]azy [G]it', noremap = true, silent = true })

@@ -18,6 +18,12 @@ return {
       open_files_do_not_replace_types = { 'terminal', 'trouble', 'qf' },
       sort_case_insensitive = false,
       sort_function = nil,
+      sources = {
+        'filesystem',
+        'buffers',
+        'git_status',
+        'document_symbols',
+      },
 
       default_component_configs = {
         container = {
@@ -84,7 +90,6 @@ return {
           enabled = false,
         },
       },
-
       source_selector = {
         winbar = true, -- toggle to show selector on winbar
         statusline = false, -- toggle to show selector on statusline
