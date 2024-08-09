@@ -8,6 +8,8 @@ vim.api.nvim_set_keymap('n', '<leader>bp', ':bprev<enter>', { desc = '[B]uffer [
 vim.api.nvim_set_keymap('n', '<leader>bn', ':bnext<enter>', { desc = '[B]uffer [N]ext', noremap = false })
 vim.api.nvim_set_keymap('n', '<leader>bd', ':bdelete<enter>', { desc = '[B]uffer [Delete]', noremap = false })
 
+vim.keymap.set('x', '<leader>p', '"_dP', { desc = '[P]aste with no register overwrite', noremap = true, silent = true })
+
 --- Plugin Remaps --
 
 -- Telescope
