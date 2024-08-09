@@ -24,9 +24,15 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
+export LANG=en_US.UTF-8
+
 export EDITOR=/opt/homebrew/bin/nvim
 
 source <(fzf --zsh)
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
 
 # tree stuff
 alias l="eza -l --icons --git -a"
