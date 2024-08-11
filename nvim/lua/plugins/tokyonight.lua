@@ -30,8 +30,9 @@ return {
       highlights['DiagnosticVirtualTextWarn'] = { bg = '', fg = colors.warning, bold = true } -- Used for "Warning" diagnostic virtual text
       highlights['DiagnosticVirtualTextInfo'] = { bg = '', fg = colors.info, bold = true } -- Used for "Information" diagnostic virtual text
       highlights['DiagnosticVirtualTextHint'] = { bg = '', fg = colors.hint, bold = true } -- Used for "Hint" diagnostic virtual text
-
       highlights['@lsp.type.parameter'] = { fg = colors.fg, underline = true }
+      highlights['CursorLine'] = { bg = '' }
+      -- highlights['CursorLine'] = { bg = '#006eff' }
 
       local function set_highlight(groups, style)
         for _, group in ipairs(groups) do
@@ -71,14 +72,11 @@ return {
       -- tky purple
       set_highlight({ 'NeoTreeGitModified' }, { fg = colors.magenta })
       -- light class purple
-      set_highlight(
-        {
-          '@lsp.typemod.class.defaultLibrary.typescript',
-          '@lsp.typemod.class.defaultLibrary.typescriptreact',
-          '@lsp.type.class',
-        },
-        { fg = '#b4baff' }
-      )
+      set_highlight({
+        '@lsp.typemod.class.defaultLibrary.typescript',
+        '@lsp.typemod.class.defaultLibrary.typescriptreact',
+        '@lsp.type.class',
+      }, { fg = '#b4baff' })
       -- tky green1
       set_highlight({ '@lsp.type.enumMember' }, '@Property')
       -- tky green

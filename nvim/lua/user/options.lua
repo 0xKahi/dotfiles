@@ -45,6 +45,7 @@ vim.opt.splitright = true
 
 vim.opt.termguicolors = true
 vim.opt.colorcolumn = ''
+vim.opt.cursorline = true
 
 vim.opt.clipboard:append('unnamedplus')
 
