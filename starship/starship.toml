@@ -19,9 +19,7 @@ vimcmd_symbol = "[](bold green)"
 vimcmd_visual_symbol ="[](bold bright-magenta)"
 
 [directory]
-format = "[in](italic) [$path](bold cyan)"
-# truncation_length = 3
-# truncation_symbol = "…/"
+format = "[in](tky-fg) [$path](bold cyan)"
 home_symbol = "~"
 read_only = " "
 
