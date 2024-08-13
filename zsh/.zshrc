@@ -24,7 +24,10 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
-export LANG=en_US.UTF-8
+export LANG="en_US.UTF-8" # Sets default locale for all categories
+export LC_ALL="en_US.UTF-8" # Overrides all other locale settings
+export LC_CTYPE="en_US.UTF-8" # Controls character classification and case conversion
+setopt COMBINING_CHARS
 
 export EDITOR=/opt/homebrew/bin/nvim
 
@@ -33,6 +36,9 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_verify
 
 # tree stuff
 alias l="eza -l --icons --git -a"
@@ -63,8 +69,35 @@ alias MYZSHPROFILE="nvim ~/.zprofile"
 alias brew86="arch -x86_64 /usr/local/bin/brew"
 
 # vim in terminal
-source ~/.config/zsh/scripts/vi-mode.zsh
-bindkey kj vi-cmd-mode
+# source ~/.config/zsh/scripts/vi-mode.zsh
+bindkey -v
+export KEYTIMEOUT=10 # Makes switching modes quicker (should set to 1 but idk why my mac is slow)
+export VI_MODE_SET_CURSOR=true 
+
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]]; then
+    echo -ne '\e[1 q' # block
+  else
+    echo -ne '\e[5 q' # beam
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+  zle -K viins # initiate 'vi insert' as keymap (can be removed if 'binkey -V has been set elsewhere')
+  echo -ne '\e[5 q'
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup
+
+
+# Yank to the system clipboard
+function vi-yank-xclip {
+  zle vi-yank
+  echo "$CUTBUFFER" | pbcopy -i
+}
+
+zle -N vi-yank-xclip
+bindkey -M vicmd 'y' vi-yank-xclip
 
 # conda setup
 __conda_setup="$('/Users/kahi/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
