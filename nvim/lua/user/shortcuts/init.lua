@@ -4,3 +4,4 @@ require('user.shortcuts.clear')
 
 -- plugins settings
 require('user.shortcuts.tscope')
+require('user.shortcuts.conform')
