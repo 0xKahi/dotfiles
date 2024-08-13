@@ -188,6 +188,16 @@ return {
           },
         },
       },
+      event_handlers = {
+        {
+          event = 'neo_tree_buffer_enter',
+          handler = function(arg)
+            vim.cmd([[
+              setlocal relativenumber
+            ]])
+          end,
+        },
+      },
     })
     vim.fn.sign_define('DiagnosticSignError', { text = '󰨰', texthl = 'DiagnosticSignError' })
     vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })

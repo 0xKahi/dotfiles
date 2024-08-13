@@ -25,12 +25,14 @@ vim.opt.undofile = true
 
 -- vim.opt.cindent = true
 vim.opt.shell = 'zsh'
+vim.opt.fileencoding = 'utf-8' -- the encoding written to a file
 
 vim.opt.smarttab = true
+vim.opt.expandtab = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
+vim.o.autoindent = true -- copy indent from current line when starting new one
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
@@ -49,7 +51,7 @@ vim.opt.cursorline = true
 
 vim.opt.clipboard:append('unnamedplus')
 
-vim.opt.conceallevel = 2
+vim.opt.conceallevel = 0
 vim.opt.linespace = 5
 
 -- Highlight settings
