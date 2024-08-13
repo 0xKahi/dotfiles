@@ -29,7 +29,7 @@ config.adjust_window_size_when_changing_font_size = false
 config.window_padding = {
   left = 3,
   right = 3,
-  top = 0,
+  top = 5,
   bottom = 0,
 }
 

@@ -71,6 +71,7 @@ alias brew86="arch -x86_64 /usr/local/bin/brew"
 # vim in terminal
 # source ~/.config/zsh/scripts/vi-mode.zsh
 bindkey -v
+bindkey -M viins 'kj' vi-cmd-mode
 export KEYTIMEOUT=10 # Makes switching modes quicker (should set to 1 but idk why my mac is slow)
 export VI_MODE_SET_CURSOR=true 
 
