@@ -14,28 +14,28 @@ config.colors = cyberpunk.colors
 -- apply window Frame
 config.window_frame = cyberpunk.window_frame
 
--- Set the color scheme name (optional, but can be useful for debugging)
-config.color_scheme = 'Cyberpunk'
+config.default_cursor_style = 'BlinkingBar'
 
--- Other configuration options can be set here
-config.font = wezterm.font('JetBrains Mono', { weight = 'Bold', bold = true })
---config.font = wezterm.font('CaskaydiaCove Nerd', { weight = 'Bold', bold = true })
+config.font = wezterm.font('JetBrains Mono', { weight = 'Bold' })
 config.font_size = 14.0
 config.line_height = 1.05
-config.bold_brightens_ansi_colors = true
+-- config.bold_brightens_ansi_colors = true
 config.freetype_load_target = 'Normal'
-
--- Common font rendering settings
---config.harfbuzz_features = { 'calt=1', 'clig=1', 'liga=1' }
-
-config.window_decorations = 'RESIZE'
 
 config.window_background_opacity = 0.85
 config.macos_window_background_blur = 30
+config.window_decorations = 'RESIZE'
+config.adjust_window_size_when_changing_font_size = false
+config.window_padding = {
+  left = 3,
+  right = 3,
+  top = 0,
+  bottom = 0,
+}
 
--- config.default_cursor_style = 'BlinkingBlock'
--- Set the default working directory to the home directory
---
+config.check_for_updates = false
+config.automatically_reload_config = true
+
 config.default_cwd = wezterm.home_dir
 
 -- Override the CMD+T keybinding to always open in the home directory
