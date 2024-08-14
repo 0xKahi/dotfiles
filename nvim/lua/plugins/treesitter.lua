@@ -26,6 +26,10 @@ return {
           'python',
           'sql',
           'graphql',
+          'json',
+          'toml',
+          'yaml',
+          'gitignore',
         },
 
         -- Install parsers synchronously (only applied to `ensure_installed`)

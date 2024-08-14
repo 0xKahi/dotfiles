@@ -31,7 +31,7 @@ disabled = false
 show_always = true
 
 [git_status]
-untracked = "[ $count ](text)"
+untracked = "[ $count ](faded-fg)"
 modified = "[ $count ](blue)"
 staged = "[ $count ](bright-green)"
 deleted = "[󰍷 $count ](red)"
@@ -76,6 +76,6 @@ bright-magenta='#DDAFF8'
 bright-cyan='#A6D4F8'
 bg-col= '#312954'
 bg-col-dark= '#241d47'
-text='#636da6'
+faded-fg='#636da6'
 tky-fg ='#c8d3f5'
 
