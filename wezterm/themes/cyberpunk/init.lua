@@ -5,6 +5,7 @@ local M = {}
 --   return string.format('#%02X%02X%02X', math.floor(r * 255), math.floor(g * 255), math.floor(b * 255))
 -- end
 
+-- TODO: no longer in use delete when no longer needed
 M.colors = {
   foreground = '#E5E5E5',
   background = '#312954',

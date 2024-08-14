@@ -1,0 +1,45 @@
+[colors]
+foreground = "#c8d3f5"
+background = "#312954"
+cursor_bg = "#00FF9C"
+cursor_border = "#00FF9C"
+cursor_fg = "#222436"
+selection_bg = "#311b92"
+selection_fg = "#c8d3f5"
+split = "#82aaff"
+compose_cursor = "#ff966c"
+scrollbar_thumb = "#2f334d"
+
+ansi = [ "#1b1d2b", "#ED7892", "#72F6B2", "#FDF980", "#55BBF9", "#D498F8", "#95C9F8", "#828bb8"]
+brights = ['#444a73', '#EF8FA4', '#74F2BF', '#FDF796', '#5FC8F7', '#DDAFF8', '#A6D4F8', '#c8d3f5']
+
+[colors.tab_bar]
+inactive_tab_edge = "#504a6b"
+background = "#241d47"
+
+[colors.tab_bar.active_tab]
+fg_color = "#1e2030"
+bg_color = "#82aaff"
+
+[colors.tab_bar.inactive_tab]
+fg_color = "#545c7e"
+bg_color = "#2f334d"
+
+[colors.tab_bar.inactive_tab_hover]
+fg_color = "#82aaff"
+bg_color = "#2f334d"
+# intensity = "Bold"
+
+[colors.tab_bar.new_tab_hover]
+fg_color = "#82aaff"
+bg_color = "#222436"
+intensity = "Bold"
+
+[colors.tab_bar.new_tab]
+fg_color = "#82aaff"
+bg_color = "#222436"
+
+[metadata]
+aliases = []
+author = "kahi"
+name = "tokyonight_cyberpunk"
