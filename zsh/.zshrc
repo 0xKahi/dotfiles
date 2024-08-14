@@ -4,6 +4,13 @@
 ### for HOMEBREW arm64 && x86_64
 # export PATH="/opt/homebrew/bin:$HOME/bin:/usr/local/bin:$PATH"
 
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
+setopt hist_verify
 # auto completion
 setopt prompt_subst # prompt subsitution
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case-insensitive completion
@@ -12,14 +19,6 @@ autoload bashcompinit && bashcompinit
 autoload -Uz compinit
 compinit
 
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-bindkey '^k' up-line-or-search
-bindkey '^j' down-line-or-search
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# bindkey '^y' autosuggest-accept
-# bindkey '^u' autosuggest-toggle
-
-
 #source $ZSH/oh-my-zsh.sh
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
@@ -27,18 +26,24 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export LANG="en_US.UTF-8" # Sets default locale for all categories
 export LC_ALL="en_US.UTF-8" # Overrides all other locale settings
 export LC_CTYPE="en_US.UTF-8" # Controls character classification and case conversion
-setopt COMBINING_CHARS
+#setopt COMBINING_CHARS
 
 export EDITOR=/opt/homebrew/bin/nvim
 
-source <(fzf --zsh)
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt appendhistory
-setopt hist_expire_dups_first
-setopt hist_ignore_dups
-setopt hist_verify
+# FZF stuff
+eval "$(fzf --zsh)"
+
+# --- setup fzf theme ---
+tky_fg="#c8d3f5"
+c_green="#00FF9C"
+bg_highlight="#311b92"
+cyan="#A6D4F8"
+blue='#55BBF9'
+
+export FZF_DEFAULT_OPTS="--color=fg:${tky_fg},bg+:${bg_highlight},prompt:${c_green},header:${cyan},info:${blue}"
+export FZF_CTRL_T_OPTS="
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 
 # tree stuff
 alias l="eza -l --icons --git -a"
@@ -68,8 +73,38 @@ alias MYZSHPROFILE="nvim ~/.zprofile"
 # for brew x86_64
 alias brew86="arch -x86_64 /usr/local/bin/brew"
 
-# vim in terminal
-# source ~/.config/zsh/scripts/vi-mode.zsh
+
+# conda setup
+__conda_setup="$('/Users/kahi/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/kahi/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/Users/kahi/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/kahi/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/Users/kahi/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/Users/kahi/miniforge3/etc/profile.d/mamba.sh"
+fi
+
+# initialize zoxide
+eval "$(zoxide init zsh)"
+
+# set up zsh syntax highlighting
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# bindkey '^y' autosuggest-accept
+# bindkey '^u' autosuggest-toggle
+# bindkey '^k' up-line-or-search
+# bindkey '^j' down-line-or-search
+
+# setup vim in terminal 
+## source ~/.config/zsh/scripts/vi-mode.zsh
 bindkey -v
 bindkey -M viins 'kj' vi-cmd-mode
 export KEYTIMEOUT=10 # Makes switching modes quicker (should set to 1 but idk why my mac is slow)
@@ -99,22 +134,3 @@ function vi-yank-xclip {
 
 zle -N vi-yank-xclip
 bindkey -M vicmd 'y' vi-yank-xclip
-
-# conda setup
-__conda_setup="$('/Users/kahi/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/kahi/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/kahi/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/kahi/miniforge3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-if [ -f "/Users/kahi/miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/Users/kahi/miniforge3/etc/profile.d/mamba.sh"
-fi
-
-eval "$(zoxide init zsh)"
