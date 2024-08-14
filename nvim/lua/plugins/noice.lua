@@ -46,4 +46,11 @@ return {
       opts = {}, -- merged with defaults from documentation
     },
   },
+
+  vim.keymap.set(
+    'n',
+    '<leader>nn',
+    ':Noice dismiss<CR>',
+    { desc = '[N]o [N]otification', silent = false, noremap = true }
+  ),
 }

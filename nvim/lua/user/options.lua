@@ -27,6 +27,7 @@ vim.opt.undofile = true
 vim.opt.shell = 'zsh'
 vim.opt.fileencoding = 'utf-8' -- the encoding written to a file
 
+-- vim.opt.showtabline = 2
 vim.opt.smarttab = true
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
@@ -40,7 +41,7 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = 'yes'
 
-vim.opt.updatetime = 100
+vim.opt.updatetime = 250
 
 vim.opt.splitbelow = true
 vim.opt.splitright = true
@@ -52,7 +53,6 @@ vim.opt.cursorline = true
 vim.opt.clipboard:append('unnamedplus')
 
 vim.opt.conceallevel = 0
---vim.opt.linespace = 5
 
 -- Highlight settings
 vim.cmd('highlight Visual cterm=NONE gui=NONE guibg=#311b92')

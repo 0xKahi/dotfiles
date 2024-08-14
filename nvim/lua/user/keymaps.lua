@@ -71,9 +71,6 @@ vim.keymap.set('n', '<leader>llr', function()
   print('Lualine refreshed')
 end, { desc = '[L]ua [L]ine [R]efresh', silent = false, noremap = true })
 
--- undotree
-vim.keymap.set('n', '<leader>ut', vim.cmd.UndotreeToggle, { desc = '[U]ndo [T]ree', silent = true, noremap = true })
-
 -- Conform (Formatter)
 local conform = require('conform')
 vim.keymap.set({ 'n', 'v' }, '<leader>fm', function()
@@ -124,12 +121,6 @@ vim.keymap.set(
   { desc = '[D]ocument [S]ymbols', noremap = true, silent = true }
 )
 
--- LazyGit
-vim.keymap.set('n', '<leader>lg', '<cmd>LazyGit<CR>', { desc = '[L]azy [G]it', noremap = true, silent = true })
-
--- Oil
-vim.keymap.set('n', '<leader>oo', '<CMD>Oil --float<CR>', { desc = '[O]pen [O]il window', noremap = true })
-
 -- Disable omni completion for sql @WARN: not sure if its the best idea
 vim.g.ftplugin_sql_omni_key_right = ''
 vim.g.ftplugin_sql_omni_key_left = ''
@@ -148,14 +139,3 @@ end, {
 })
 
 vim.g.copilot_no_tab_map = true
-
--- gitsigns
-vim.keymap.set('n', '<leader>ob', ':Gitsigns blame<cr>', { desc = '[O]pen git [B]lame', silent = true, noremap = true })
-
--- noice
-vim.keymap.set(
-  'n',
-  '<leader>nn',
-  ':Noice dismiss<CR>',
-  { desc = '[N]o [N]otification', silent = false, noremap = true }
-)

@@ -41,9 +41,6 @@ return {
 
       -- lighter black
       set_highlight({ 'LineNr', 'LineNrAbove', 'LineNrBelow' }, { fg = '#545e8a' })
-      -- interface purple
-      -- set_highlight({ '@lsp.type.interface.typescriptreact' }, { fg = '#6095FF' })
-
       -- new interface purple
       set_highlight({ '@lsp.type.interface.typescriptreact' }, { fg = '#6F94FF' })
       -- tky red/pink
@@ -81,6 +78,9 @@ return {
       -- tky green
       set_highlight({ 'NeoTreeGitUntracked' }, { fg = colors.green })
     end,
+
+    cache = true,
+
     plugins = {
       auto = true,
     },

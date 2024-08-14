@@ -1,6 +1,9 @@
 return {
   'stevearc/oil.nvim',
   opts = {},
+  keys = {
+    { '<leader>oo', '<CMD>Oil --float<CR>', desc = '[O]pen [O]il', noremap = true },
+  },
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     require('oil').setup({
