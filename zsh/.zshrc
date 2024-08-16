@@ -26,7 +26,6 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export LANG="en_US.UTF-8" # Sets default locale for all categories
 export LC_ALL="en_US.UTF-8" # Overrides all other locale settings
 export LC_CTYPE="en_US.UTF-8" # Controls character classification and case conversion
-#setopt COMBINING_CHARS
 
 export EDITOR=/opt/homebrew/bin/nvim
 
@@ -34,13 +33,8 @@ export EDITOR=/opt/homebrew/bin/nvim
 eval "$(fzf --zsh)"
 
 # --- setup fzf theme ---
-tky_fg="#c8d3f5"
-c_green="#00FF9C"
-bg_highlight="#311b92"
-cyan="#A6D4F8"
-blue='#55BBF9'
-
-export FZF_DEFAULT_OPTS="--color=fg:${tky_fg},bg+:${bg_highlight},prompt:${c_green},header:${cyan},info:${blue}"
+# import theme from script
+[ -f "$HOME/.config/zsh/scripts/tky-cyberpunk-fzf-theme.zsh" ] && source "$HOME/.config/zsh/scripts/tky-cyberpunk-fzf-theme.zsh"
 export FZF_CTRL_T_OPTS="
   --preview 'bat -n --color=always {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
@@ -50,7 +44,7 @@ alias l="eza -l --icons --git -a"
 alias lt="eza --tree --level=2 --long --icons --git"
 
 # lazy
-alias lg="lazygit"
+alias lg="lazygit --use-config-file="$HOME/.config/lazygit/lazygit-config.yml""
 alias ldg="lazydocker"
 
 # vim
