@@ -1,6 +1,3 @@
-# Path to your oh-my-zsh installation.
-#export ZSH="$HOME/.oh-my-zsh"
-
 ### for HOMEBREW arm64 && x86_64
 # export PATH="/opt/homebrew/bin:$HOME/bin:/usr/local/bin:$PATH"
 
