@@ -1,3 +1,5 @@
+local cyberpunk = require('utils.cyberpunk_theme')
+
 return {
   'folke/tokyonight.nvim',
   lazy = false,
@@ -19,19 +21,27 @@ return {
 
     -- Change the "hint" color to the "orange" color, and make the "error" color bright red
     on_colors = function(colors)
-      --colors.border_highlight = '#8cf67a'
-      colors.border_highlight = '#00FF9C'
+      colors.border_highlight = cyberpunk.core.border
       colors.hint = '#41a6b5'
     end,
 
     on_highlights = function(highlights, colors)
+      highlights['CursorLine'] = { bg = '' }
+      highlights['CursorLineNr'] = { bold = true, fg = cyberpunk.core.green }
+
+      highlights['MiniStatuslineInactive'] = { fg = cyberpunk.core.blue, bg = '#1b1d2b' }
+      highlights['MiniStatuslineModeNormal'] = { bold = true, fg = cyberpunk.core.blue, bg = '#1b1d2b' }
+      highlights['MiniStatuslineModeInsert'] = { bold = true, fg = cyberpunk.core.green, bg = '#1b1d2b' }
+      highlights['MiniStatuslineModeCommand'] = { bold = true, fg = cyberpunk.core.red, bg = '#1b1d2b' }
+      highlights['MiniStatuslineModeReplace'] = { bold = true, fg = cyberpunk.core.yellow, bg = '#1b1d2b' }
+      highlights['MiniStatuslineModeVisual'] = { bold = true, fg = cyberpunk.core.magenta, bg = '#1b1d2b' }
+
       highlights['DiagnosticVirtualTextError'] = { bg = '', fg = colors.error, bold = true } -- Used for "Error" diagnostic virtual text
       highlights['DiagnosticVirtualTextWarn'] = { bg = '', fg = colors.warning, bold = true } -- Used for "Warning" diagnostic virtual text
       highlights['DiagnosticVirtualTextInfo'] = { bg = '', fg = colors.info, bold = true } -- Used for "Information" diagnostic virtual text
       highlights['DiagnosticVirtualTextHint'] = { bg = '', fg = colors.hint, bold = true } -- Used for "Hint" diagnostic virtual text
+
       highlights['@lsp.type.parameter'] = { fg = colors.fg, underline = true }
-      highlights['CursorLine'] = { bg = '' }
-      -- highlights['CursorLine'] = { bg = '#006eff' }
 
       local function set_highlight(groups, style)
         for _, group in ipairs(groups) do
@@ -39,40 +49,27 @@ return {
         end
       end
 
-      -- lighter black
+      set_highlight({ 'TelescopePromptBorder', 'TelescopePromptTitle' }, { fg = cyberpunk.core.yellow })
       set_highlight({ 'LineNr', 'LineNrAbove', 'LineNrBelow' }, { fg = '#545e8a' })
-      -- new interface purple
-      set_highlight({ '@lsp.type.interface.typescriptreact' }, { fg = '#6F94FF' })
-      -- tky red/pink
+      set_highlight({ '@lsp.type.interface.typescriptreact' }, { fg = cyberpunk.lsp.interface })
       set_highlight({ '@keyword.operator', '@operator' }, { fg = '#fca7ea' })
-      -- red
-      set_highlight({ '@keyword.import', '@keyword.return' }, { fg = '#f97e9d' })
-      -- html tag red
-      set_highlight({ '@tag.builtin.tsx' }, { fg = '#ff757f' })
-      -- yellow
-      set_highlight({ '@lsp.type.type', '@type.builtin' }, { fg = '#E5D97D' })
-      -- neon yellow
-      set_highlight({ '@boolean', '@number', '@constant.builtin' }, { fg = '#ffe96c' })
-      -- tky moon orange
+      set_highlight({ '@keyword.import', '@keyword.return' }, { fg = cyberpunk.lsp.keyword_red })
+      set_highlight({ '@tag.builtin.tsx' }, { fg = cyberpunk.lsp.html_tag })
+      set_highlight({ '@lsp.type.type', '@type.builtin' }, { fg = cyberpunk.lsp.builtin })
+      set_highlight({ '@boolean', '@number', '@constant.builtin' }, { fg = cyberpunk.lsp.builtin_bright })
       set_highlight({ '@tag.attribute.tsx' }, { fg = colors.orange })
-      -- enum orange
-      set_highlight({ '@lsp.type.enum' }, { fg = '#ffbfa6' })
-      -- weird brown
-      set_highlight({ '@lsp.type.namespace.typescriptreact' }, { fg = '#D1C5C0' })
+      set_highlight({ '@lsp.type.enum' }, { fg = cyberpunk.lsp.enum })
+      set_highlight({ '@lsp.type.namespace.typescriptreact' }, { fg = cyberpunk.lsp.weirdbrown })
       -- Neon blue
       set_highlight({ '@tag.tsx' }, 'PreProc')
-      -- white
       set_highlight({ '@constant' }, { fg = colors.fg })
-      -- light blue
-      set_highlight({ '@string' }, { fg = '#a4d6ff' })
-      -- tky purple
+      set_highlight({ '@string' }, { fg = cyberpunk.lsp.string })
       set_highlight({ 'NeoTreeGitModified' }, { fg = colors.magenta })
-      -- light class purple
       set_highlight({
         '@lsp.typemod.class.defaultLibrary.typescript',
         '@lsp.typemod.class.defaultLibrary.typescriptreact',
         '@lsp.type.class',
-      }, { fg = '#b4baff' })
+      }, { fg = cyberpunk.lsp.class })
       -- tky green1
       set_highlight({ '@lsp.type.enumMember' }, '@Property')
       -- tky green

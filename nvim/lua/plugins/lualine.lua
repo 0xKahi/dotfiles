@@ -4,7 +4,7 @@ return {
   opts = {
     options = {
       icons_enabled = true,
-      theme = 'tokyonight',
+      theme = require('config.lualine_theme'),
       section_separators = { left = '', right = '' },
       component_separators = '|',
       globalstatus = true,
