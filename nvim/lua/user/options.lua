@@ -50,3 +50,6 @@ vim.opt.clipboard:append('unnamedplus')
 
 vim.opt.conceallevel = 0
 vim.opt.formatoptions:remove({ 'c', 'r', 'o' }) -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
+
+-- Highlight settings
+vim.cmd('highlight Visual cterm=NONE gui=NONE guibg=#311b92')

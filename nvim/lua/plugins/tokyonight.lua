@@ -44,10 +44,7 @@ return {
 
       set_highlight({ 'TelescopePromptBorder', 'TelescopePromptTitle' }, { fg = cyberpunk.core.yellow })
 
-      set_highlight(
-        { 'NoiceCmdline', 'NoiceCmdlinePopupBorder', 'NoiceCmdlinePopupBorderCmdline' },
-        { fg = cyberpunk.core.blue }
-      )
+      highlights['NoiceCmdlinePopupBorderCmdline'] = { fg = cyberpunk.core.blue }
       highlights['NoiceCmdlineIcon'] = { fg = cyberpunk.core.magenta }
       highlights['NoiceCmdlinePopupBorderSearch'] = { fg = cyberpunk.core.yellow }
       highlights['NoiceCmdlineIconSearch'] = { fg = cyberpunk.core.red }
