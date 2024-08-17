@@ -10,17 +10,17 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --color=border:#00FF9C \
   --color=fg:#c8d3f5 \
   --color=gutter:#1e2030 \
-  --color=header:#ff966c \
-  --color=hl+:#65bcff \
-  --color=hl:#65bcff \
+  --color=header:#FDF980 \
+  --color=hl+:#55BBF9 \
+  --color=hl:#55BBF9 \
   --color=info:#545c7e \
-  --color=marker:#EF8FA4 \
-  --color=pointer:#EF8FA4 \
-  --color=prompt:#DDAFF8 \
+  --color=marker:#ED7892 \
+  --color=pointer:#ED7892 \
+  --color=prompt:#D498F8 \
   --color=query:#c8d3f5:regular \
-  --color=scrollbar:#589ed7 \
+  --color=scrollbar:#55BBF9 \
   --color=separator:#00FF9C \
-  --color=spinner:#EF8FA4 \
+  --color=spinner:#ED7892 \
 "
 
 export FZF_CTRL_T_OPTS="

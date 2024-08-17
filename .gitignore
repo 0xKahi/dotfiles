@@ -1,3 +1,4 @@
 .DS_Store
 tmux/plugins/
 nvim/lua/__secrets.lua
+ref/

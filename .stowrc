@@ -3,3 +3,4 @@
 --ignore=DS_Store
 --ignore=scripts
 --ignore=symlinks_config.conf
+--ignore=ref
