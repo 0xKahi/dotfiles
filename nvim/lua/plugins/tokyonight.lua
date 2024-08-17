@@ -26,15 +26,14 @@ return {
     end,
 
     on_highlights = function(highlights, colors)
+      local function set_highlight(groups, style)
+        for _, group in ipairs(groups) do
+          highlights[group] = style
+        end
+      end
+
       highlights['CursorLine'] = { bg = '' }
       highlights['CursorLineNr'] = { bold = true, fg = cyberpunk.core.green }
-
-      highlights['MiniStatuslineInactive'] = { fg = cyberpunk.core.blue, bg = '#1b1d2b' }
-      highlights['MiniStatuslineModeNormal'] = { bold = true, fg = cyberpunk.core.blue, bg = '#1b1d2b' }
-      highlights['MiniStatuslineModeInsert'] = { bold = true, fg = cyberpunk.core.green, bg = '#1b1d2b' }
-      highlights['MiniStatuslineModeCommand'] = { bold = true, fg = cyberpunk.core.red, bg = '#1b1d2b' }
-      highlights['MiniStatuslineModeReplace'] = { bold = true, fg = cyberpunk.core.yellow, bg = '#1b1d2b' }
-      highlights['MiniStatuslineModeVisual'] = { bold = true, fg = cyberpunk.core.magenta, bg = '#1b1d2b' }
 
       highlights['DiagnosticVirtualTextError'] = { bg = '', fg = colors.error, bold = true } -- Used for "Error" diagnostic virtual text
       highlights['DiagnosticVirtualTextWarn'] = { bg = '', fg = colors.warning, bold = true } -- Used for "Warning" diagnostic virtual text
@@ -43,14 +42,18 @@ return {
 
       highlights['@lsp.type.parameter'] = { fg = colors.fg, underline = true }
 
-      local function set_highlight(groups, style)
-        for _, group in ipairs(groups) do
-          highlights[group] = style
-        end
-      end
-
       set_highlight({ 'TelescopePromptBorder', 'TelescopePromptTitle' }, { fg = cyberpunk.core.yellow })
-      set_highlight({ 'LineNr', 'LineNrAbove', 'LineNrBelow' }, { fg = '#545e8a' })
+
+      set_highlight(
+        { 'NoiceCmdline', 'NoiceCmdlinePopupBorder', 'NoiceCmdlinePopupBorderCmdline' },
+        { fg = cyberpunk.core.blue }
+      )
+      highlights['NoiceCmdlineIcon'] = { fg = cyberpunk.core.magenta }
+      highlights['NoiceCmdlinePopupBorderSearch'] = { fg = cyberpunk.core.yellow }
+      highlights['NoiceCmdlineIconSearch'] = { fg = cyberpunk.core.red }
+
+      set_highlight({ 'LineNr', 'LineNrAbove', 'LineNrBelow' }, { fg = cyberpunk.core.light_black })
+
       set_highlight({ '@lsp.type.interface.typescriptreact' }, { fg = cyberpunk.lsp.interface })
       set_highlight({ '@keyword.operator', '@operator' }, { fg = '#fca7ea' })
       set_highlight({ '@keyword.import', '@keyword.return' }, { fg = cyberpunk.lsp.keyword_red })

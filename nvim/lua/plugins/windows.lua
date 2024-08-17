@@ -2,10 +2,10 @@ return {
   {
     'mrjones2014/smart-splits.nvim',
     config = function()
-      vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
-      vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
-      vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up)
-      vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
+      vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left, { desc = 'navigate left pane' })
+      vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down, { desc = 'navigate down pane' })
+      vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up, { desc = 'navigate up pane' })
+      vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right, { desc = 'navigate right pane' })
       -- vim.keymap.set("n", "<C-c>", "<C-w>c")
 
       vim.keymap.set('n', '<A-h>', require('smart-splits').resize_left)
@@ -45,10 +45,10 @@ return {
         },
       })
 
-      vim.keymap.set('n', '<C-w>z', ':WindowsMaximize<CR>')
-      vim.keymap.set('n', '<C-w>_', ':WindowsMaximizeVertically<CR>')
-      vim.keymap.set('n', '<C-w>|', ':WindowsMaximizeHorizontally <CR>')
-      vim.keymap.set('n', '<C-w>=', ':WindowsEqualize<CR>')
+      vim.keymap.set('n', '<C-w>z', ':WindowsMaximize<CR>', { desc = '(W)indows [Z]oom' })
+      vim.keymap.set('n', '<C-w>_', ':WindowsMaximizeVertically<CR>', { desc = '(W)indows maximize vertical' })
+      vim.keymap.set('n', '<C-w>|', ':WindowsMaximizeHorizontally <CR>', { desc = '(W)indows maximize horizontal' })
+      vim.keymap.set('n', '<C-w>=', ':WindowsEqualize<CR>', { desc = '(W)indows maximize equalize' })
     end,
   },
   -- {

@@ -21,11 +21,9 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
 vim.opt.undofile = true
 
--- vim.opt.cindent = true
 vim.opt.shell = 'zsh'
 vim.opt.fileencoding = 'utf-8' -- the encoding written to a file
 
--- vim.opt.showtabline = 2
 vim.opt.smarttab = true
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
@@ -52,6 +50,3 @@ vim.opt.clipboard:append('unnamedplus')
 
 vim.opt.conceallevel = 0
 vim.opt.formatoptions:remove({ 'c', 'r', 'o' }) -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
-
--- Highlight settings
-vim.cmd('highlight Visual cterm=NONE gui=NONE guibg=#311b92')
