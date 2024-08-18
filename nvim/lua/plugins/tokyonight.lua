@@ -44,8 +44,8 @@ return {
 
       set_highlight({ 'TelescopePromptBorder', 'TelescopePromptTitle' }, { fg = cyberpunk.core.yellow })
 
-      highlights['NoiceCmdlinePopupBorderCmdline'] = { fg = cyberpunk.core.blue }
-      highlights['NoiceCmdlineIcon'] = { fg = cyberpunk.core.magenta }
+      highlights['NoiceCmdlinePopupBorderCmdline'] = { fg = cyberpunk.core.magenta }
+      highlights['NoiceCmdlineIcon'] = { fg = cyberpunk.core.green }
       highlights['NoiceCmdlinePopupBorderSearch'] = { fg = cyberpunk.core.yellow }
       highlights['NoiceCmdlineIconSearch'] = { fg = cyberpunk.core.red }
 
@@ -55,6 +55,7 @@ return {
       set_highlight({ '@keyword.operator', '@operator' }, { fg = '#fca7ea' })
       set_highlight({ '@keyword.import', '@keyword.return' }, { fg = cyberpunk.lsp.keyword_red })
       set_highlight({ '@tag.builtin.tsx' }, { fg = cyberpunk.lsp.html_tag })
+
       set_highlight({ '@lsp.type.type', '@type.builtin' }, { fg = cyberpunk.lsp.builtin })
       set_highlight({ '@boolean', '@number', '@constant.builtin' }, { fg = cyberpunk.lsp.builtin_bright })
       set_highlight({ '@tag.attribute.tsx' }, { fg = colors.orange })

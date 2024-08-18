@@ -41,13 +41,6 @@ return {
           expander_expanded = '',
           expander_highlight = 'NeoTreeExpander',
         },
-        icon = {
-          folder_closed = '󰉋',
-          folder_open = '',
-          folder_empty = '󱞞',
-          default = '*',
-          highlight = 'NeoTreeFileIcon',
-        },
         modified = {
           symbol = '[+]',
           highlight = 'NeoTreeModified',
@@ -199,9 +192,5 @@ return {
         },
       },
     })
-    vim.fn.sign_define('DiagnosticSignError', { text = '󰨰', texthl = 'DiagnosticSignError' })
-    vim.fn.sign_define('DiagnosticSignWarn', { text = '', texthl = 'DiagnosticSignWarn' })
-    vim.fn.sign_define('DiagnosticSignInfo', { text = ' ', texthl = 'DiagnosticSignInfo' })
-    vim.fn.sign_define('DiagnosticSignHint', { text = '󰌵', texthl = 'DiagnosticSignHint' })
   end,
 }
