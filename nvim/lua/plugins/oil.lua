@@ -7,8 +7,8 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     require('oil').setup({
-      default_file_explorer = false,
-      delete_to_trash = false,
+      default_file_explorer = true,
+      delete_to_trash = true,
       skip_confirm_for_simple_edits = true,
       view_options = {
         show_hidden = true,
@@ -23,13 +23,13 @@ return {
         win_options = {
           wrap = true,
           winblend = 0,
-          signcolumn = 'yes',
+          signcolumn = 'number',
         },
       },
       win_options = {
         wrap = true,
         winblend = 0,
-        signcolumn = 'yes',
+        signcolumn = 'number',
       },
       keymaps = {
         ['<C-c>'] = false,
@@ -39,7 +39,10 @@ return {
         ['<Space>'] = 'actions.select',
         ['?'] = 'actions.show_help',
         ['<C-v>'] = { 'actions.select', opts = { vertical = true }, desc = 'Open the entry in a vertical split' },
+        ['<C-h>'] = false,
         ['<C-s>'] = { 'actions.select', opts = { horizontal = true }, desc = 'Open the entry in a horizontal split' },
+        ['g.'] = false,
+        ['<S-h>'] = 'actions.toggle_hidden',
       },
       -- Configuration for the floating keymaps help window
       keymaps_help = {

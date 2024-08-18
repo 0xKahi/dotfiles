@@ -8,16 +8,23 @@ vim.api.nvim_set_keymap('n', '<leader>bp', ':bprev<enter>', { desc = '[B]uffer [
 vim.api.nvim_set_keymap('n', '<leader>bn', ':bnext<enter>', { desc = '[B]uffer [N]ext', noremap = false })
 vim.api.nvim_set_keymap('n', '<leader>bd', ':bdelete<enter>', { desc = '[B]uffer [Delete]', noremap = false })
 
-vim.keymap.set('x', '<leader>p', '"_dP', { desc = '[P]aste with no register overwrite', noremap = true, silent = true })
-
+vim.keymap.set('x', '<leader>p', '"_dP', { desc = '[P]aste to blackhole register', noremap = true, silent = true })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { noremap = true, silent = true })
+vim.keymap.set(
+  { 'n', 'v' },
+  '<leader>d',
+  '"_d',
+  { desc = '[D]elete to blackhole register', noremap = true, silent = true }
+)
 --- Plugin Remaps --
 
 -- Telescope
 local telescope = require('telescope.builtin')
-vim.keymap.set('n', '<C-p>', telescope.git_files, { desc = 'find files in git', noremap = true })
+vim.keymap.set('n', '<C-p>', function()
+  telescope.git_files({ show_untracked = true })
+end, { desc = 'find files in git', noremap = true })
 
 vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
   telescope.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
     previewer = true,
   }))
@@ -36,7 +43,9 @@ vim.keymap.set(
   { desc = '[F]ind current [W]ord in directory', noremap = true }
 )
 
-vim.keymap.set('n', '<leader>fp', telescope.oldfiles, { desc = '[F]ind [P]ast files', silent = false, noremap = true })
+vim.keymap.set('n', '<leader>fp', function()
+  telescope.oldfiles({ only_cwd = true })
+end, { desc = '[F]ind [P]ast files', silent = false, noremap = true })
 
 vim.keymap.set('n', '<leader>fb', function()
   telescope.buffers(require('telescope.themes').get_ivy())
@@ -48,6 +57,7 @@ vim.keymap.set(
   telescope.resume,
   { desc = '[P]ast telescope [P]ickers', silent = false, noremap = true }
 )
+
 vim.keymap.set(
   'n',
   '<leader>nc',

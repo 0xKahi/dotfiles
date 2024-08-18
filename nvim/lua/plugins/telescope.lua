@@ -37,17 +37,11 @@ return {
             },
           },
         },
-        -- pickers = {
-        --   lsp_references = {
-        --     theme = 'dropdown',
-        --   },
-        --   lsp_definitions = {
-        --     theme = 'dropdown',
-        --   },
-        --   lsp_implementations = {
-        --     theme = 'dropdown',
-        --   },
-        -- },
+        path_display = {
+          filename_first = {
+            reverse_directories = true,
+          },
+        },
         extensions = {
           fzf = {
             fuzzy = true,

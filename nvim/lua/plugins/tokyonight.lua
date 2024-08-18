@@ -42,12 +42,12 @@ return {
 
       highlights['@lsp.type.parameter'] = { fg = colors.fg, underline = true }
 
-      set_highlight({ 'TelescopePromptBorder', 'TelescopePromptTitle' }, { fg = cyberpunk.core.yellow })
+      set_highlight({ 'NoiceCmdlinePopupBorderCmdline', 'NoiceCmdlineIconSearch' }, { fg = cyberpunk.core.red })
+      set_highlight({ 'NoiceCmdlinePopupBorderSearch', 'NoiceCmdlineIcon' }, { fg = cyberpunk.core.yellow })
 
-      highlights['NoiceCmdlinePopupBorderCmdline'] = { fg = cyberpunk.core.magenta }
-      highlights['NoiceCmdlineIcon'] = { fg = cyberpunk.core.green }
-      highlights['NoiceCmdlinePopupBorderSearch'] = { fg = cyberpunk.core.yellow }
-      highlights['NoiceCmdlineIconSearch'] = { fg = cyberpunk.core.red }
+      highlights['MiniIndentscopeSymbol'] = { fg = cyberpunk.core.green, nocombine = true }
+
+      set_highlight({ 'TelescopePromptBorder', 'TelescopePromptTitle' }, { fg = cyberpunk.core.yellow })
 
       set_highlight({ 'LineNr', 'LineNrAbove', 'LineNrBelow' }, { fg = cyberpunk.core.light_black })
 

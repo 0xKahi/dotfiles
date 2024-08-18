@@ -30,8 +30,8 @@ return {
           enable_character_fade = true,
         },
         indent = {
-          indent_size = 2,
-          padding = 1,
+          indent_size = 1.5,
+          padding = 0,
           with_markers = true,
           indent_marker = '│',
           last_indent_marker = '└',
@@ -42,7 +42,7 @@ return {
           expander_highlight = 'NeoTreeExpander',
         },
         modified = {
-          symbol = '[+]',
+          -- symbol = '[+]',
           highlight = 'NeoTreeModified',
         },
         name = {
@@ -52,15 +52,15 @@ return {
         },
         git_status = {
           symbols = {
-            added = '[A]',
-            modified = '[M]',
-            deleted = '[D]',
-            renamed = '[R]',
-            untracked = '[U]',
+            added = '',
+            modified = '',
+            deleted = '',
+            renamed = '',
+            untracked = '󱔢 ',
             ignored = '',
-            unstaged = '[-S]',
-            staged = '[S]',
-            conflict = '[!]',
+            -- unstaged = '[-S]',
+            staged = ' ',
+            conflict = '󰗖 ',
           },
         },
         file_size = {
