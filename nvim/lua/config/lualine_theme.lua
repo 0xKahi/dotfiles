@@ -1,6 +1,13 @@
 local M = {}
-local colors = require('tokyonight.colors').setup({ style = 'moon' })
-local cyberpunk = require('utils.cyberpunk_theme')
+local cyberpunk = require('config.cyberpunk.colors')
+-- TODO: intergate with theme
+local colors = {
+  black = '#1b1d2b',
+  fg_gutter = '#3b4261',
+  fg_sidebar = '#828bb8',
+  bg_statusline = '#1e2030',
+  green1 = '#4fd6be',
+}
 
 M.normal = {
   a = { bg = cyberpunk.core.blue, fg = colors.black },
