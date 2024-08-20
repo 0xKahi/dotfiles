@@ -123,10 +123,10 @@ harpoon:extend({
 -- end, { desc = 'Open harpoon window' })
 
 -- NeoTree
-vim.keymap.set('n', '<leader>oe', ':Neot reveal<CR>', { desc = '[O]pen [E]xplorer', noremap = true, silent = true })
-vim.keymap.set(
-  'n',
-  '<leader>ds',
-  ':Neot document_symbols<CR>',
-  { desc = '[D]ocument [S]ymbols', noremap = true, silent = true }
-)
+-- vim.keymap.set('n', '<leader>oe', ':Neot reveal<CR>', { desc = '[O]pen [E]xplorer', noremap = true, silent = true })
+-- vim.keymap.set(
+--   'n',
+--   '<leader>ds',
+--   ':Neot document_symbols<CR>',
+--   { desc = '[D]ocument [S]ymbols', noremap = true, silent = true }
+-- )
