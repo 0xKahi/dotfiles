@@ -1,4 +1,4 @@
-local cyberpunk = require('utils.cyberpunk_theme')
+local theme = require('config.cyberpunk.config')
 
 return {
   'folke/tokyonight.nvim',
@@ -19,62 +19,13 @@ return {
       floats = 'transparent', -- style for floating windows
     },
 
-    -- Change the "hint" color to the "orange" color, and make the "error" color bright red
     on_colors = function(colors)
-      colors.border_highlight = cyberpunk.core.border
-      colors.hint = '#41a6b5'
+      theme.apply_colors(colors)
     end,
 
     on_highlights = function(highlights, colors)
-      local function set_highlight(groups, style)
-        for _, group in ipairs(groups) do
-          highlights[group] = style
-        end
-      end
-
-      highlights['CursorLine'] = { bg = '' }
-      highlights['CursorLineNr'] = { bold = true, fg = cyberpunk.core.green }
-
-      highlights['DiagnosticVirtualTextError'] = { bg = '', fg = colors.error, bold = true } -- Used for "Error" diagnostic virtual text
-      highlights['DiagnosticVirtualTextWarn'] = { bg = '', fg = colors.warning, bold = true } -- Used for "Warning" diagnostic virtual text
-      highlights['DiagnosticVirtualTextInfo'] = { bg = '', fg = colors.info, bold = true } -- Used for "Information" diagnostic virtual text
-      highlights['DiagnosticVirtualTextHint'] = { bg = '', fg = colors.hint, bold = true } -- Used for "Hint" diagnostic virtual text
-
-      highlights['@lsp.type.parameter'] = { fg = colors.fg, underline = true }
-
-      set_highlight({ 'NoiceCmdlinePopupBorderCmdline', 'NoiceCmdlineIconSearch' }, { fg = cyberpunk.core.red })
-      set_highlight({ 'NoiceCmdlinePopupBorderSearch', 'NoiceCmdlineIcon' }, { fg = cyberpunk.core.yellow })
-
-      highlights['MiniIndentscopeSymbol'] = { fg = cyberpunk.core.green, nocombine = true }
-
-      set_highlight({ 'TelescopePromptBorder', 'TelescopePromptTitle' }, { fg = cyberpunk.core.yellow })
-
-      set_highlight({ 'LineNr', 'LineNrAbove', 'LineNrBelow' }, { fg = cyberpunk.core.light_black })
-
-      set_highlight({ '@lsp.type.interface.typescriptreact' }, { fg = cyberpunk.lsp.interface })
-      set_highlight({ '@keyword.operator', '@operator' }, { fg = '#fca7ea' })
-      set_highlight({ '@keyword.import', '@keyword.return' }, { fg = cyberpunk.lsp.keyword_red })
-      set_highlight({ '@tag.builtin.tsx' }, { fg = cyberpunk.lsp.html_tag })
-
-      set_highlight({ '@lsp.type.type', '@type.builtin' }, { fg = cyberpunk.lsp.builtin })
-      set_highlight({ '@boolean', '@number', '@constant.builtin' }, { fg = cyberpunk.lsp.builtin_bright })
-      set_highlight({ '@tag.attribute.tsx' }, { fg = colors.orange })
-      set_highlight({ '@lsp.type.enum' }, { fg = cyberpunk.lsp.enum })
-      set_highlight({ '@lsp.type.namespace.typescriptreact' }, { fg = cyberpunk.lsp.weirdbrown })
-      -- Neon blue
-      set_highlight({ '@tag.tsx' }, 'PreProc')
-      set_highlight({ '@constant' }, { fg = colors.fg })
-      set_highlight({ '@string' }, { fg = cyberpunk.lsp.string })
-      set_highlight({ 'NeoTreeGitModified' }, { fg = colors.magenta })
-      set_highlight({
-        '@lsp.typemod.class.defaultLibrary.typescript',
-        '@lsp.typemod.class.defaultLibrary.typescriptreact',
-        '@lsp.type.class',
-      }, { fg = cyberpunk.lsp.class })
-      -- tky green1
-      set_highlight({ '@lsp.type.enumMember' }, '@Property')
-      -- tky green
-      set_highlight({ 'NeoTreeGitUntracked' }, { fg = colors.green })
+      theme.apply_highlight(highlights, colors)
+      theme.apply_lsp_highlights(highlights)
     end,
 
     cache = true,
