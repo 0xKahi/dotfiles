@@ -8,6 +8,10 @@ return {
     'MunifTanjim/nui.nvim',
     -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
+  keys = {
+    { '<leader>oe', ':Neot reveal<CR>', desc = '[O]pen [E]xplorer', noremap = true, silent = true },
+    { '<leader>ds', ':Neot document_symbols<CR>', desc = '[D]ocument [S]ymbols', noremap = true, silent = true },
+  },
   opts = {},
   config = function()
     require('neo-tree').setup({
