@@ -50,7 +50,9 @@ return {
         vim.keymap.set('n', 'gi', telescope.lsp_implementations, { buffer = bufnr, desc = '[G]o to [I]mplementation' })
 
         --vim.keymap.set('n', 'go', telescope.lsp_type_definitions, { buffer = bufnr, desc = 'Go to type definition' })
-        vim.keymap.set('n', 'gr', telescope.lsp_references, { buffer = bufnr, desc = '[G]o to [R]eferences' })
+        vim.keymap.set('n', 'gr', function()
+          telescope.lsp_references({ fname_width = 60 })
+        end, { buffer = bufnr, desc = '[G]o to [R]eferences' })
 
         -- see :help lsp-zero-keybindings
         -- to learn the available actions

@@ -15,10 +15,10 @@ return {
       local actions = require('telescope.actions')
       require('telescope').setup({
         defaults = {
-          path_display = { 'smart', 'truncate' },
           layout_config = {
             horizontal = {
-              preview_width = 0.65,
+              preview_width = 0.5,
+              -- preview_width = 0.65,
               size = {
                 width = '95%',
                 height = '95%',
@@ -36,11 +36,10 @@ return {
               ['<C-s>'] = actions.select_horizontal,
             },
           },
-        },
-        path_display = {
-          filename_first = {
-            reverse_directories = true,
-          },
+          path_display = function(opts, path)
+            local tail = require('telescope.utils').path_tail(path)
+            return string.format('%s (%s)', tail, path)
+          end,
         },
         extensions = {
           fzf = {

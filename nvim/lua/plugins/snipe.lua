@@ -1,12 +1,13 @@
 return {
   'leath-dub/snipe.nvim',
+  enabled = false,
   keys = {
     {
-      '<leader>sb',
+      '<leader>sn',
       function()
         require('snipe').open_buffer_menu()
       end,
-      desc = '[S]nipe [B]uffer',
+      desc = '[S][N]ipe buffer',
     },
   },
   opts = {
@@ -18,14 +19,14 @@ return {
     },
     hints = {
       -- Charaters to use for hints (NOTE: make sure they don't collide with the navigation keymaps)
-      dictionary = '123456789',
+      dictionary = '0123456789',
     },
     navigate = {
       -- When the list is too long it is split into pages
       -- `[next|prev]_page` options allow you to navigate
       -- this list
-      next_page = 'l',
-      prev_page = 'h',
+      next_page = 'J',
+      prev_page = 'K',
 
       -- You can also just use normal navigation to go to the item you want
       -- this option just sets the keybind for selecting the item under the
@@ -38,6 +39,7 @@ return {
     },
     -- Define the way buffers are sorted by default
     -- Can be any of "default" (sort buffers by their number) or "last" (sort buffers by last accessed)
-    sort = 'last',
+    sort = 'default',
+    max_path_width = 3,
   },
 }

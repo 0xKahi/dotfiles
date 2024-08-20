@@ -25,6 +25,7 @@ function M.apply_highlight(highlights, colors)
 
   highlights['TelescopePromptBorder'] = { fg = cyberpunk.core.yellow }
   highlights['TelescopePromptTitle'] = { fg = cyberpunk.core.yellow }
+  highlights['TelescopeMatching'] = { fg = cyberpunk.core.green }
 
   highlights['MiniIndentscopeSymbol'] = { fg = cyberpunk.core.green, nocombine = true }
 

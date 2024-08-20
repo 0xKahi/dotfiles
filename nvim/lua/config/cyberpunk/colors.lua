@@ -11,7 +11,6 @@ M.core = {
   blue = '#55BBF9',
   yellow = '#FDF980',
   cyan = '#95C9F8',
-
   bright_magenta = '#DDAFF8',
   bright_red = '#EF8FA4',
   bright_green = '#74F2BF',
