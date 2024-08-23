@@ -27,7 +27,8 @@ return {
       height = 'auto',
       row = 'auto',
       col = 'auto',
-      border = 'double',
+      border = 'rounded',
     },
+    separate_save_and_remove = true, -- if true, will remove the toggle and create the save/remove keymaps.
   },
 }

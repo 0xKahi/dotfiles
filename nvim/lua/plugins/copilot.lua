@@ -1,7 +1,7 @@
 return {
   {
     'github/copilot.vim',
-    enabled = false,
+    enabled = true,
     config = function()
       -- Disable omni completion for sql @WARN: not sure if its the best idea
       vim.g.ftplugin_sql_omni_key_right = ''
@@ -18,7 +18,7 @@ return {
         expr = true,
         replace_keycodes = true,
         silent = true,
-        desc = 'acept copilot',
+        desc = '[->] accept copilot',
       })
 
       vim.g.copilot_no_tab_map = true
@@ -26,6 +26,7 @@ return {
   },
   {
     'supermaven-inc/supermaven-nvim',
+    enabled = false,
     config = function()
       require('supermaven-nvim').setup({
         ignore_filetypes = { cpp = true },

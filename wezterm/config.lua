@@ -33,7 +33,7 @@ config.enable_tab_bar = false
 
 -- font rules --
 config.font = wezterm.font('JetBrains Mono', { weight = 'Bold' })
-config.font_size = 14.0
+config.font_size = 13.0
 
 -- Override the CMD+T keybinding to always open in the home directory
 config.default_cwd = wezterm.home_dir

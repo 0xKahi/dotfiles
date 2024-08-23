@@ -20,6 +20,7 @@ M.core = {
   light_black = '#545e8a',
   border = '#00FF9C',
   highlight = '#311b92',
+  highlight2 = '#2d3f76', -- combination of cyberpunk highlight and tky highlight kinda like it so gona leave it here
   orange = '#ff966c',
   hint = '#41a6b5',
 }

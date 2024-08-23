@@ -19,23 +19,28 @@ function M.apply_highlight(highlights, colors)
 
   highlights['NoiceCmdlinePopupBorderCmdline'] = { fg = cyberpunk.core.red }
   highlights['NoiceCmdlineIconSearch'] = { fg = cyberpunk.core.red }
-
   highlights['NoiceCmdlinePopupBorderSearch'] = { fg = cyberpunk.core.yellow }
   highlights['NoiceCmdlineIcon'] = { fg = cyberpunk.core.yellow }
 
   highlights['TelescopePromptBorder'] = { fg = cyberpunk.core.yellow }
-  highlights['TelescopePromptTitle'] = { fg = cyberpunk.core.yellow }
-  highlights['TelescopeMatching'] = { fg = cyberpunk.core.green }
+  highlights['TelescopePromptTitle'] = { fg = cyberpunk.core.blue }
+  highlights['TelescopeMatching'] = { fg = cyberpunk.core.bright_yellow }
 
   highlights['MiniIndentscopeSymbol'] = { fg = cyberpunk.core.green, nocombine = true }
 
   highlights['NeoTreeGitModified'] = { fg = cyberpunk.core.bright_magenta }
   highlights['NeoTreeGitUntracked'] = { fg = cyberpunk.core.bright_green }
+  highlights['NeoTreeCursorLine'] = { bold = true, bg = cyberpunk.core.highlight }
 
   highlights['MiniDiffSignChange'] = { fg = cyberpunk.core.bright_magenta }
   highlights['MiniDiffSignAdd'] = { fg = cyberpunk.core.bright_green }
   highlights['MiniDiffSignDelete'] = { fg = cyberpunk.core.bright_red }
   highlights['MiniDiffSignIgnored'] = { fg = cyberpunk.lsp.comments }
+
+  highlights['ArrowFileIndex'] = { fg = cyberpunk.core.green }
+  highlights['ArrowCurrentFile'] = { fg = cyberpunk.core.blue }
+  highlights['ArrowAction'] = { fg = cyberpunk.core.cyan }
+  highlights['ArrowDeleteMode'] = { fg = cyberpunk.core.red }
 end
 
 function M.apply_lsp_highlights(highlights)
