@@ -45,7 +45,8 @@ return {
           return '' -- Return an empty string to prevent the default right arrow behavior
         else
           -- If no suggestion, return the literal right arrow key press
-          return vim.api.nvim_replace_termcodes('<Right>', true, false, true)
+          -- return vim.api.nvim_replace_termcodes('<Right>', true, false, true)
+          return '<right>'
         end
       end, {
         expr = true,

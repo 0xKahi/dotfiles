@@ -16,10 +16,6 @@ return {
         {
           'buffers',
           mode = 2, -- 0: Shows buffer name
-          -- 1: Shows buffer index
-          -- 2: Shows buffer name + buffer index
-          -- 3: Shows buffer number
-          -- 4: Shows buffer name + buffer number
         },
       },
       lualine_x = {
