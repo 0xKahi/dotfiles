@@ -28,6 +28,22 @@ return {
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'williamboman/mason-lspconfig.nvim' },
       { 'nvim-telescope/telescope.nvim' },
+      {
+        'j-hui/fidget.nvim',
+        tag = 'v1.4.5',
+        opts = {
+          progress = {
+            display = {
+              done_icon = ' ',
+            },
+          },
+          notification = {
+            window = {
+              winblend = 0, -- Background color opacity in the notification window
+            },
+          },
+        },
+      },
     },
     config = function(_, opts)
       -- This is where all the LSP shenanigans will live
