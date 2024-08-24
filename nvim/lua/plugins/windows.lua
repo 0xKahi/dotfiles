@@ -34,8 +34,8 @@ return {
           },
         },
         ignore = {
-          buftype = { 'quickfix', 'oil', 'telescope' },
-          filetype = { 'NvimTree', 'neo-tree', 'undotree', 'gundo', 'oil', 'trouble', 'telescope' },
+          buftype = { 'quickfix', 'oil', 'telescope', 'DiffviewFilePanel' },
+          filetype = { 'NvimTree', 'neo-tree', 'undotree', 'gundo', 'oil', 'trouble', 'telescope', 'DiffviewFiles' },
         },
         animation = {
           -- enable = true,
@@ -51,11 +51,4 @@ return {
       vim.keymap.set('n', '<C-w>=', ':WindowsEqualize<CR>', { desc = '(W)indows maximize equalize' })
     end,
   },
-  -- {
-  --   'christoomey/vim-tmux-navigator',
-  --   vim.keymap.set('n', '<C-h>', ':TmuxNavigateLeft<CR>', { silent = true, noremap = true }),
-  --   vim.keymap.set('n', '<C-l>', ':TmuxNavigateRight<CR>', { silent = true, noremap = true }),
-  --   vim.keymap.set('n', '<C-k>', ':TmuxNavigateUp<CR>', { silent = true, noremap = true }),
-  --   vim.keymap.set('n', '<C-j>', ':TmuxNavigateDown<CR>', { silent = true, noremap = true }),
-  -- },
 }
