@@ -23,7 +23,9 @@ function M.apply_highlight(highlights, colors)
   highlights['NoiceCmdlineIcon'] = { fg = cyberpunk.core.yellow }
 
   highlights['TelescopePromptBorder'] = { fg = cyberpunk.core.yellow }
-  highlights['TelescopePromptTitle'] = { fg = cyberpunk.core.blue }
+  highlights['TelescopePromptTitle'] = { fg = cyberpunk.core.red }
+  highlights['TelescopePreviewTitle'] = { fg = cyberpunk.core.magenta }
+  highlights['TelescopePreviewBorder'] = { fg = cyberpunk.core.blue }
   highlights['TelescopeMatching'] = { fg = cyberpunk.core.bright_yellow }
 
   highlights['MiniIndentscopeSymbol'] = { fg = cyberpunk.core.green, nocombine = true }

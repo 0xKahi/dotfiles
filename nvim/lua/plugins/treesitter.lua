@@ -58,9 +58,8 @@ return {
   },
   {
     'windwp/nvim-ts-autotag',
-    --dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    -- event = 'VeryLazy',
-    ft = { 'tsx', 'jsx', 'html' },
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    event = { 'BufEnter' },
     config = function()
       require('nvim-ts-autotag').setup({})
     end,

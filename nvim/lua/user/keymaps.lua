@@ -16,6 +16,23 @@ vim.keymap.set(
   '"_d',
   { desc = '[D]elete to blackhole register', noremap = true, silent = true }
 )
+
+vim.keymap.set({ 'n', 'v' }, '<leader>sr', function()
+  local selected_text
+  if vim.fn.mode() == 'v' or vim.fn.mode() == 'V' then
+    -- Visual mode: yank selection to 'v' register
+    vim.cmd('normal! "vy')
+    selected_text = vim.fn.getreg('v')
+  else
+    -- Normal mode: get word under cursor
+    selected_text = vim.fn.expand('<cword>')
+  end
+  -- Escape special characters
+  local escaped_text = vim.fn.escape(selected_text, '/\\')
+  -- Set command line with search pattern, ready for user input
+  vim.fn.feedkeys(':%s/' .. escaped_text, 'n')
+end, { noremap = true, silent = true, desc = '[S]earch and [R]eplace' })
+
 --- Plugin Remaps --
 
 -- Telescope
