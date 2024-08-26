@@ -14,6 +14,20 @@ return {
             { desc = '[O]pen git [B]lame', silent = true, noremap = true }
           )
 
+          vim.keymap.set(
+            'n',
+            '<leader>sh',
+            ':Gitsigns preview_hunk<cr>',
+            { desc = '[S]how [H]unk', silent = true, noremap = true }
+          )
+
+          vim.keymap.set(
+            'n',
+            '<leader>sb',
+            ':Gitsigns blame_line<cr>',
+            { desc = '[S]how [B]lame', silent = true, noremap = true }
+          )
+
           vim.keymap.set('n', ']c', function()
             if vim.wo.diff then
               return ']c'
