@@ -25,6 +25,7 @@ function M.apply_highlight(highlights, colors)
   highlights['TelescopePromptBorder'] = { fg = cyberpunk.core.yellow }
   highlights['TelescopePromptTitle'] = { fg = cyberpunk.core.red }
   highlights['TelescopePreviewTitle'] = { fg = cyberpunk.core.magenta }
+  highlights['TelescopeResultsNumber'] = { fg = cyberpunk.core.cyan }
   highlights['TelescopePreviewBorder'] = { fg = cyberpunk.core.blue }
   highlights['TelescopeMatching'] = { fg = cyberpunk.core.bright_yellow }
 

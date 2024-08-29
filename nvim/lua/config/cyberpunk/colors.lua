@@ -27,7 +27,8 @@ M.core = {
 
 M.lsp = {
   comments = '#636da6', --tky comments
-  interface = '#6F94FF',
+  -- interface = '#6F94FF',
+  interface = '#83c3fc',
   property = '#4fd6be',
   class = '#B4BAF8',
   enum = '#ffbfa6',
