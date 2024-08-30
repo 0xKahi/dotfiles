@@ -4,6 +4,7 @@ return {
     'nvim-tree/nvim-web-devicons',
   },
   config = function()
+    local cyberpunk = require('config.cyberpunk.colors')
     require('bufferline').setup({
       options = {
         mode = 'buffers', -- set to "tabs" to only show tabpages instead
@@ -45,15 +46,19 @@ return {
       },
       highlights = {
         separator = {
-          fg = '#D498F8',
+          fg = cyberpunk.core.bright_magenta,
         },
         buffer_selected = {
-          bold = true,
+          bold = false,
           italic = false,
-          fg = '#D498F8',
+          fg = cyberpunk.core.bright_green,
+        },
+        buffer_visible = {
+          fg = cyberpunk.core.fg,
+          bg = '',
         },
         background = {
-          fg = '',
+          fg = cyberpunk.lsp.comments,
           bg = '',
         },
         fill = {
@@ -61,15 +66,15 @@ return {
           fg = '',
         },
         modified = {
-          fg = '#c8d3f5',
+          fg = cyberpunk.core.fg,
           bg = '',
         },
         modified_visible = {
-          fg = '#95C9F8',
+          fg = cyberpunk.core.bright_cyan,
           bg = '',
         },
         modified_selected = {
-          fg = '#95C9F8',
+          fg = cyberpunk.core.bright_yellow,
           bg = '',
         },
       },
