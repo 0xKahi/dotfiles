@@ -17,7 +17,7 @@ function readjust_font_size(window, pane)
   local pane_dims = pane:get_dimensions()
 
   local config_overrides = {}
-  local initial_font_size = 12 -- Set to your desired font size
+  local initial_font_size = 12.5 -- Set to your desired font size
   config_overrides.font_size = initial_font_size
 
   local max_iterations = 5
