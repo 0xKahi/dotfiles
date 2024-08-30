@@ -13,10 +13,10 @@ return {
       lualine_a = { 'mode' },
       lualine_b = { 'branch', 'diff', 'diagnostics' },
       lualine_c = {
-        {
-          'buffers',
-          mode = 2, -- 0: Shows buffer name
-        },
+        -- {
+        --   'buffers',
+        --   mode = 2, -- 0: Shows buffer name
+        -- },
       },
       lualine_x = {
         {
