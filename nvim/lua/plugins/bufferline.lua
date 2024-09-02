@@ -16,13 +16,14 @@ return {
         middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
         buffer_close_icon = '✗',
         close_icon = '',
-        path_components = 1, -- Show only the file name without the directory
+        -- path_components = 1, -- Show only the file name without the directory
         modified_icon = '●',
         left_trunc_marker = '',
         right_trunc_marker = '',
         max_name_length = 30,
         max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
-        tab_size = 21,
+        tab_size = 20,
+        truncate_names = false, -- whether or not tab names should be truncated
         diagnostics = false,
         diagnostics_update_in_insert = false,
         color_icons = true,
@@ -31,7 +32,7 @@ return {
         show_close_icon = true,
         persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
         separator_style = { '│', '│' }, -- | "thick" | "thin" | { 'any', 'any' },
-        enforce_regular_tabs = true,
+        enforce_regular_tabs = false,
         always_show_bufferline = true,
         show_tab_indicators = false,
         indicator = {
