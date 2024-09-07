@@ -89,9 +89,9 @@ return {
     )
     vim.api.nvim_set_keymap(
       'n',
-      '<leader>bx',
-      ':BufferLinePick<enter>',
-      { desc = '[B]uffer line pick [X]delete', noremap = false }
+      '<leader>bc',
+      ':BufferLinePickClose<enter>',
+      { desc = '[B]uffer line pick [C]lose', noremap = false }
     )
   end,
 }
