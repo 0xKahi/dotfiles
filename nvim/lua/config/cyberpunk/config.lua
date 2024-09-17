@@ -74,6 +74,11 @@ function M.apply_lsp_highlights(highlights)
   highlights['@constant'] = { fg = cyberpunk.core.fg }
   highlights['@string'] = { fg = cyberpunk.lsp.string }
   highlights['@lsp.type.enumMember'] = { fg = cyberpunk.lsp.property }
+
+  highlights['@string.special.url.http'] = { fg = cyberpunk.lsp.string, underline = true, italic = true }
+  highlights['@function.method.http'] = { fg = cyberpunk.lsp.keyword_purple }
+  highlights['@constant.http'] = { fg = cyberpunk.lsp.enum }
+  highlights['@string.http'] = { fg = cyberpunk.core.bright_green }
 end
 
 function M.apply_colors(colors)

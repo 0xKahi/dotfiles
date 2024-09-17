@@ -15,6 +15,7 @@ return {
           'typescript',
           'tsx',
           'html',
+          'http',
           'c',
           'lua',
           'vim',

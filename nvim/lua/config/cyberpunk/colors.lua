@@ -40,6 +40,8 @@ M.lsp = {
   weirdbrown = '#D1C5C0',
   string = '#a4d6ff',
   operator = '#fca7ea',
+  keyword_purple = '#c099ff',
+  func = '#82aaff',
 }
 
 return M
