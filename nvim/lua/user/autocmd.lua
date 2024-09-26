@@ -1,6 +1,9 @@
 -- close quickfix list with q
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'qf',
+  pattern = {
+    'qf',
+    'notify',
+  },
   callback = function()
     vim.keymap.set(
       'n',
@@ -12,15 +15,26 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'notify',
+  pattern = 'markdown',
   callback = function()
-    vim.keymap.set('n', 'q', ':q<CR>', { buffer = true, noremap = true, silent = true, desc = '[Q]uit notify' })
+    vim.opt_local.conceallevel = 1
+  end,
+})
+
+-- for resty nvim
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {
+    'rest_nvim_result',
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = event.buf, silent = true })
   end,
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'markdown',
+  pattern = { 'json' },
   callback = function()
-    vim.opt_local.conceallevel = 1
+    vim.api.nvim_set_option_value('formatprg', 'jq', { scope = 'local' })
   end,
 })

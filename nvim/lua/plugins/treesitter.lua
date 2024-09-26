@@ -16,6 +16,7 @@ return {
           'tsx',
           'html',
           'http',
+          'jq',
           'c',
           'lua',
           'vim',
