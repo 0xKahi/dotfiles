@@ -75,13 +75,19 @@ return {
         lsp.default_keymaps({ buffer = bufnr })
       end)
 
+      local nvim_lsp = require('lspconfig')
       require('mason-lspconfig').setup({
         ensure_installed = { 'ts_ls', 'eslint', 'lua_ls', 'rust_analyzer', 'marksman', 'autotools_ls', 'pyright' },
         handlers = {
           lsp.default_setup,
           lua_ls = function()
             local lua_opts = lsp.nvim_lua_ls()
-            require('lspconfig').lua_ls.setup(lua_opts)
+            nvim_lsp.lua_ls.setup(lua_opts)
+          end,
+          denols = function()
+            nvim_lsp.denols.setup({
+              root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc'),
+            })
           end,
         },
       })
@@ -217,5 +223,13 @@ return {
   {
     'imsnif/kdl.vim',
     ft = 'kdl',
+  },
+  -- some file type stuff
+  {
+    vim.filetype.add({
+      extension = {
+        ['http'] = 'http',
+      },
+    }),
   },
 }
