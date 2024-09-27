@@ -130,15 +130,15 @@ return {
       -- And you can configure cmp even more, if you want to.
       local cmp = require('cmp')
       local cmp_Select = { behavior = cmp.SelectBehavior.Select }
-      local cmp_mappings = lsp.defaults.cmp_mappings({
-        ['<C-n>'] = cmp.mapping.select_next_item(cmp_Select),
-        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_Select),
-        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-        ['<CR>'] = cmp.mapping.confirm({
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = true,
-        }),
-      })
+      -- local cmp_mappings = lsp.defaults.cmp_mappings({
+      --   ['<C-n>'] = cmp.mapping.select_next_item(cmp_Select),
+      --   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_Select),
+      --   ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+      --   ['<CR>'] = cmp.mapping.confirm({
+      --     behavior = cmp.ConfirmBehavior.Replace,
+      --     select = true,
+      --   }),
+      -- })
 
       local lspkind = require('lspkind')
       local luasnip = require('luasnip')
@@ -171,8 +171,9 @@ return {
         sources = cmp.config.sources({
           { name = 'nvim_lsp' }, -- lsp
           { name = 'buffer', max_item_count = 5 }, -- text within current buffer
-          { name = 'path', max_item_count = 3 }, -- file system paths
+          { name = 'path', max_item_count = 5 }, -- file system paths
           { name = 'luasnip', max_item_count = 3 }, -- snippets
+          { name = 'lazydev', max_item_count = 3 },
         }),
 
         experimental = {
@@ -219,17 +220,5 @@ return {
         matching = { disallow_symbol_nonprefix_matching = false },
       })
     end,
-  },
-  {
-    'imsnif/kdl.vim',
-    ft = 'kdl',
-  },
-  -- some file type stuff
-  {
-    vim.filetype.add({
-      extension = {
-        ['http'] = 'http',
-      },
-    }),
   },
 }
