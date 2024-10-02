@@ -33,7 +33,13 @@ return {
           'toml',
           'yaml',
           'gitignore',
+          'dockerfile',
+          'terraform',
         },
+
+        ignore_install = {},
+
+        auto_install = false,
 
         -- Install parsers synchronously (only applied to `ensure_installed`)
         sync_install = false,
