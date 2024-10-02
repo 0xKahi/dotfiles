@@ -2,7 +2,6 @@
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {
     'qf',
-    'notify',
   },
   callback = function()
     vim.keymap.set(
@@ -11,6 +10,15 @@ vim.api.nvim_create_autocmd('FileType', {
       ':cclose<CR>',
       { buffer = true, noremap = true, silent = true, desc = '[Q]uickfix [Q]uit' }
     )
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {
+    'notify',
+  },
+  callback = function()
+    vim.keymap.set('n', 'q', ':q<CR>', { buffer = true, noremap = true, silent = true, desc = 'notify [Q]uit' })
   end,
 })
 

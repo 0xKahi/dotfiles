@@ -77,9 +77,9 @@ vim.keymap.set(
 
 vim.keymap.set(
   'n',
-  '<leader>nc',
-  '<cmd>Telescope neoclip<CR>',
-  { desc = '[N]eo [C]lip', silent = false, noremap = true }
+  '<leader>fn',
+  '<cmd>Telescope notify<CR>',
+  { desc = '[F]ind [N]otify', silent = false, noremap = true }
 )
 
 -- lualine
