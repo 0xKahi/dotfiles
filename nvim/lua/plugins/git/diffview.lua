@@ -7,6 +7,10 @@ return {
     cmd = {
       'DiffviewOpen',
     },
+    keys = {
+      { '<leader>dv', '<cmd>DiffviewOpen<cr>', desc = '[D]iff [V]iew' },
+      { '<leader>dq', '<cmd>DiffviewClose<cr>', desc = '[D]iff view [Q]uit' },
+    },
     opts = {
       use_icons = true,
       enhanced_diff_hl = true, -- See |diffview-config-enhanced_diff_hl|
