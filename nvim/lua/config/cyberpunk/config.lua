@@ -79,6 +79,10 @@ function M.apply_lsp_highlights(highlights)
   highlights['@function.method.http'] = { fg = cyberpunk.lsp.keyword_purple }
   highlights['@constant.http'] = { fg = cyberpunk.lsp.enum }
   highlights['@string.http'] = { fg = cyberpunk.core.bright_green }
+
+  highlights['@markup.raw.block.markdown'] = { fg = cyberpunk.core.green }
+  highlights['@markup.heading.2.markdown'] = { fg = cyberpunk.core.magenta }
+  highlights['@markup.heading.3.markdown'] = { fg = cyberpunk.core.orange }
 end
 
 function M.apply_colors(colors)

@@ -4,12 +4,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'qf',
   },
   callback = function()
-    vim.keymap.set(
-      'n',
-      'q',
-      ':cclose<CR>',
-      { buffer = true, noremap = true, silent = true, desc = '[Q]uickfix [Q]uit' }
-    )
+    vim.keymap.set('n', 'q', ':cclose<CR>', { buffer = true, noremap = true, silent = true, desc = 'quickfix [Q]uit' })
   end,
 })
 
