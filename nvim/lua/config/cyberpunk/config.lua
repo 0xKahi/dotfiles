@@ -83,10 +83,22 @@ function M.apply_lsp_highlights(highlights)
   highlights['@markup.raw.block.markdown'] = { fg = cyberpunk.core.green }
   highlights['@markup.heading.2.markdown'] = { fg = cyberpunk.core.magenta }
   highlights['@markup.heading.3.markdown'] = { fg = cyberpunk.core.orange }
+  highlights['@markup.raw.markdown_inline'] = {
+    bg = cyberpunk.core.dark_bg,
+    fg = cyberpunk.core.neon_blue,
+  }
+end
+
+function M.apply_markview_highlights(highlights)
+  highlights['MarkviewBlockQuoteGem'] = { fg = cyberpunk.markview.gem }
+  highlights['MarkviewBlockQuoteCandy'] = { fg = cyberpunk.markview.candy }
+  highlights['MarkviewBlockQuoteTip'] = { fg = cyberpunk.markview.tip }
+  highlights['MarkviewBlockQuoteNote'] = { fg = cyberpunk.markview.note }
+  highlights['MarkviewBlockQuoteDev'] = { fg = cyberpunk.markview.dev }
 end
 
 function M.apply_colors(colors)
-  colors['border_highlight'] = cyberpunk.core.border
+  colors['border_highlight'] = cyberpunk.core.neon_green
   colors['hint'] = cyberpunk.core.hint
 end
 

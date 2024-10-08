@@ -3,6 +3,7 @@ local M = {}
 M.core = {
   fg = '#c8d3f5', --tky fg
   bg = '#312954',
+  dark_bg = '#261d45',
   black = '#1b1d2b',
   white = '#c8d3f5',
   magenta = '#D498F8',
@@ -18,7 +19,8 @@ M.core = {
   bright_yellow = '#FDF796',
   bright_cyan = '#95C9F8',
   light_black = '#545e8a',
-  border = '#00FF9C',
+  neon_green = '#00FF9C',
+  neon_blue = '#3d5afe',
   highlight = '#311b92',
   highlight2 = '#2d3f76', -- combination of cyberpunk highlight and tky highlight kinda like it so gona leave it here
   orange = '#ff966c',
@@ -27,7 +29,6 @@ M.core = {
 
 M.lsp = {
   comments = '#636da6', --tky comments
-  -- interface = '#6F94FF',
   interface = '#83c3fc',
   property = '#4fd6be',
   class = '#B4BAF8',
@@ -42,6 +43,14 @@ M.lsp = {
   operator = '#fca7ea',
   keyword_purple = '#c099ff',
   func = '#82aaff',
+}
+
+M.markview = {
+  gem = '#6F94FF',
+  tip = '#a7e683',
+  candy = '#ff94f1',
+  note = '#e9973f',
+  dev = '#e0e0e0',
 }
 
 return M
