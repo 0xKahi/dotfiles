@@ -55,6 +55,7 @@ M.markview = {
   success = '#56f586',
   fail = '#fb464c',
   important = '#ff3838',
+  info = '#6F94FF',
 }
 
 return M

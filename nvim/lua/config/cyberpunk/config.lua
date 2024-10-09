@@ -90,16 +90,17 @@ function M.apply_lsp_highlights(highlights)
 end
 
 function M.apply_markview_highlights(highlights)
+  highlights['MarkviewCode'] = { bg = cyberpunk.core.dark_bg }
   highlights['MarkviewBlockQuoteGem'] = { fg = cyberpunk.markview.gem }
   highlights['MarkviewBlockQuoteCandy'] = { fg = cyberpunk.markview.candy }
   highlights['MarkviewBlockQuoteTip'] = { fg = cyberpunk.markview.tip }
   highlights['MarkviewBlockQuoteNote'] = { fg = cyberpunk.markview.note }
   highlights['MarkviewBlockQuoteDev'] = { fg = cyberpunk.markview.dev }
-
   highlights['MarkviewBlockQuoteWarn'] = { fg = cyberpunk.markview.warn }
   highlights['MarkviewBlockQuoteSuccess'] = { fg = cyberpunk.markview.success }
   highlights['MarkviewBlockQuoteFail'] = { fg = cyberpunk.markview.fail }
   highlights['MarkviewBlockQuoteImportant'] = { fg = cyberpunk.markview.important }
+  highlights['MarkviewBlockQuoteInfo'] = { fg = cyberpunk.markview.info }
 end
 
 function M.apply_colors(colors)
