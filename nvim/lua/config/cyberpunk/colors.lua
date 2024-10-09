@@ -46,11 +46,15 @@ M.lsp = {
 }
 
 M.markview = {
-  gem = '#6F94FF',
+  gem = '#00e1ff',
   tip = '#a7e683',
   candy = '#ff94f1',
   note = '#e9973f',
   dev = '#e0e0e0',
+  warn = '#e9973f',
+  success = '#56f586',
+  fail = '#fb464c',
+  important = '#ff3838',
 }
 
 return M

@@ -8,15 +8,14 @@ return {
       'nvim-tree/nvim-web-devicons',
     },
     config = function()
-      local presets = require('markview.presets')
       require('markview').setup({
+        __inside_code_block = true,
         -- -- Buffer types to ignore
-        -- buf_ignore = { 'nofile' },
+        buf_ignore = { 'nofile' },
         -- -- Delay, in miliseconds
         -- -- to wait before a redraw occurs(after an event is triggered)
-        -- debounce = 50,
-        -- -- Filetypes where the plugin is enabled
-        filetypes = { 'markdown', 'quarto', 'rmd' },
+        debounce = 50,
+        -- -- Filetypes where the plugin is enabled filetypes = { 'markdown', 'quarto', 'rmd' },
         -- -- Highlight groups to use
         -- -- "dynamic" | "light" | "dark"
         -- highlight_groups = 'dynamic',
@@ -44,6 +43,11 @@ return {
         inline_codes = { enable = false },
         links = { enable = false },
         list_items = { enable = false },
+        code_blocks = {
+          enable = true,
+          icons = 'devicons',
+          sign = false,
+        },
         block_quotes = {
           enable = true,
           default = {
@@ -115,11 +119,49 @@ return {
               border = '▋',
               border_hl = nil,
             },
+            {
+              match_string = 'warn',
+              hl = 'MarkviewBlockQuoteWarn',
+              preview_hl = nil,
+              title = true,
+              preview = ' Warn',
+              icon = ' ',
+              border = '▋',
+              border_hl = nil,
+            },
+            {
+              match_string = 'important',
+              hl = 'MarkviewBlockQuoteImportant',
+              preview_hl = nil,
+              title = true,
+              preview = ' Important',
+              icon = ' ',
+              border = '▋',
+              border_hl = nil,
+            },
+            {
+              match_string = 'success',
+              hl = 'MarkviewBlockQuoteSuccess',
+              preview_hl = nil,
+              title = true,
+              preview = ' Success',
+              icon = ' ',
+              border = '▋',
+              border_hl = nil,
+            },
+            {
+              match_string = 'fail',
+              hl = 'MarkviewBlockQuoteFail',
+              preview_hl = nil,
+              title = true,
+              preview = ' Fail',
+              icon = ' ',
+              border = '▋',
+              border_hl = nil,
+            },
           },
         },
-        callbacks = {},
-        code_blocks = {},
-        escaped = {},
+        -- escaped = {},
         footnotes = {},
         horizontal_rules = {},
         html = {},
