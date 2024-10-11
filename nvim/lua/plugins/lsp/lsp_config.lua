@@ -86,7 +86,13 @@ return {
           end,
           denols = function()
             nvim_lsp.denols.setup({
-              root_dir = require('lspconfig').util.root_pattern('deno.json', 'deno.jsonc'),
+              root_dir = nvim_lsp.util.root_pattern('deno.json', 'deno.jsonc'),
+            })
+          end,
+          ts_ls = function()
+            nvim_lsp.ts_ls.setup({
+              root_dir = nvim_lsp.util.root_pattern('package.json'),
+              single_file_support = false,
             })
           end,
         },
@@ -130,15 +136,6 @@ return {
       -- And you can configure cmp even more, if you want to.
       local cmp = require('cmp')
       local cmp_Select = { behavior = cmp.SelectBehavior.Select }
-      -- local cmp_mappings = lsp.defaults.cmp_mappings({
-      --   ['<C-n>'] = cmp.mapping.select_next_item(cmp_Select),
-      --   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_Select),
-      --   ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-      --   ['<CR>'] = cmp.mapping.confirm({
-      --     behavior = cmp.ConfirmBehavior.Replace,
-      --     select = true,
-      --   }),
-      -- })
 
       local lspkind = require('lspkind')
       local luasnip = require('luasnip')
@@ -171,7 +168,7 @@ return {
         sources = cmp.config.sources({
           { name = 'nvim_lsp' }, -- lsp
           { name = 'buffer', max_item_count = 5 }, -- text within current buffer
-          { name = 'path', max_item_count = 5 }, -- file system paths
+          { name = 'path' }, -- file system paths
           { name = 'luasnip', max_item_count = 3 }, -- snippets
           { name = 'lazydev', max_item_count = 3 },
         }),
