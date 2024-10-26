@@ -11,6 +11,7 @@ return {
   keys = {
     { '<leader>oe', ':Neot reveal<CR>', desc = '[O]pen [E]xplorer', noremap = true, silent = true },
     { '<leader>ds', ':Neot document_symbols<CR>', desc = '[D]ocument [S]ymbols', noremap = true, silent = true },
+    { '<leader>ce', ':Neot close<CR>', desc = '[C]lose [E]xplorer', noremap = true, silent = true },
   },
   opts = {},
   config = function()
