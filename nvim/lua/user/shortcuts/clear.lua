@@ -1,26 +1,47 @@
 local function clear_buffers()
-  local buffers = vim.api.nvim_list_bufs() -- list all buffers
-  local current_buf = vim.api.nvim_get_current_buf() -- current buffer
+  local buffers = vim.api.nvim_list_bufs()
+  local current_buf = vim.api.nvim_get_current_buf()
+
+  -- Get pinned buffer paths and convert to a lookup table of buffer numbers
+  local pinned_bufs = {}
+  local pinned_str = vim.g['BufferlinePinnedBuffers']
+  if pinned_str and pinned_str ~= '' then
+    for _, path in ipairs(vim.split(pinned_str, ',')) do
+      local buf_id = vim.fn.bufnr(path)
+      if buf_id ~= -1 then
+        pinned_bufs[buf_id] = true
+      end
+    end
+  end
 
   local cleared_count = 0
   local skipped_count = 0
+  local pinned_count = 0
+
   for _, buf in ipairs(buffers) do
-    -- Skip the current buffer
+    -- Skip current buffer and pinned buffers
     if buf ~= current_buf then
-      -- Check if the buffer is loaded and modifiable
-      if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].modifiable then
-        -- Check if the buffer has unsaved changes
+      if pinned_bufs[buf] then
+        pinned_count = pinned_count + 1
+      elseif vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].modifiable then
         if vim.bo[buf].modified then
           skipped_count = skipped_count + 1
         else
-          -- Delete the buffer
           vim.api.nvim_buf_delete(buf, { force = true })
           cleared_count = cleared_count + 1
         end
       end
     end
   end
-  print('Cleared ' .. cleared_count .. ' buffer(s). Skipped ' .. skipped_count .. ' unsaved buffer(s).')
+
+  print(
+    string.format(
+      'Cleared %d buffer(s). Skipped %d unsaved buffer(s). Preserved %d pinned buffer(s).',
+      cleared_count,
+      skipped_count,
+      pinned_count
+    )
+  )
 end
 
 local clear_commands = {

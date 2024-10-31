@@ -93,5 +93,11 @@ return {
       ':BufferLinePickClose<enter>',
       { desc = '[B]uffer line pick [C]lose', noremap = false }
     )
+    vim.api.nvim_set_keymap(
+      'n',
+      '<leader>bP',
+      ':BufferLineTogglePin<enter>',
+      { desc = '[B]uffer [P]in', noremap = false }
+    )
   end,
 }
