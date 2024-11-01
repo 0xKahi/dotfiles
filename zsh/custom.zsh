@@ -10,11 +10,14 @@ compinit
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 
+# ATAC stuff
+export ATAC_KEY_BINDINGS=~/.config/atac/keybindings.toml
+export ATAC_THEME=~/.config/atac/theme.toml
+
 # FZF stuff
 eval "$(fzf --zsh)"
 # --- setup fzf config ---
 [ -f "$HOME/.config/zsh/configs/fzf-config.zsh" ] && source "$HOME/.config/zsh/configs/fzf-config.zsh"
-
 
 # conda setup
 __conda_setup="$('/Users/kahi/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
