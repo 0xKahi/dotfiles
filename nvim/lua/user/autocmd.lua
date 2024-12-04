@@ -4,7 +4,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'qf',
   },
   callback = function()
-    vim.keymap.set('n', 'q', ':cclose<CR>', { buffer = true, noremap = true, silent = true, desc = 'quickfix [Q]uit' })
+    vim.keymap.set('n', 'q', ':cclose<CR>', { buffer = true, noremap = true, silent = true, desc = '[Q]uit [1]' })
   end,
 })
 
@@ -13,7 +13,16 @@ vim.api.nvim_create_autocmd('FileType', {
     'notify',
   },
   callback = function()
-    vim.keymap.set('n', 'q', ':q<CR>', { buffer = true, noremap = true, silent = true, desc = 'notify [Q]uit' })
+    vim.keymap.set('n', 'q', ':q<CR>', { buffer = true, noremap = true, silent = true, desc = '[Q]uit [2]' })
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {
+    'grug-far',
+  },
+  callback = function()
+    vim.keymap.set('n', 'q', ':bd<CR>', { buffer = true, noremap = true, silent = true, desc = '[Q]uit [3]' })
   end,
 })
 

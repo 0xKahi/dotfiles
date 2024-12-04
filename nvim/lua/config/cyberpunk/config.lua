@@ -4,6 +4,12 @@ local M = {}
 
 local cyberpunk = require('config.cyberpunk.colors')
 
+local function set_highlight(highlights, groups, style)
+  for _, group in ipairs(groups) do
+    highlights[group] = style
+  end
+end
+
 function M.apply_highlight(highlights, colors)
   highlights['CursorLine'] = { bg = '' }
   highlights['CursorLineNr'] = { bold = true, fg = cyberpunk.core.green }
@@ -44,23 +50,28 @@ function M.apply_highlight(highlights, colors)
   highlights['ArrowCurrentFile'] = { fg = cyberpunk.core.blue }
   highlights['ArrowAction'] = { fg = cyberpunk.core.cyan }
   highlights['ArrowDeleteMode'] = { fg = cyberpunk.core.red }
+
+  highlights['GrugFarHelpHeader'] = { fg = cyberpunk.core.bright_yellow }
+  highlights['GrugFarResultsNumberLabel'] = { fg = cyberpunk.core.bright_magenta }
+  highlights['GrugFarInputLabel'] = { fg = cyberpunk.core.bright_blue }
+  highlights['GrugFarResultsPath'] = { fg = cyberpunk.core.neon_green }
+  highlights['GrugFarHelpWinActionText'] = { fg = cyberpunk.core.yellow }
+  highlights['GrugFarHelpWinActionKey'] = { fg = cyberpunk.core.green }
+  set_highlight(highlights, { 'GrugFarResultsLineNo', 'GrugFarResultsLineColumn' }, { fg = cyberpunk.markview.dev })
+  highlights['GrugFarResultsAddIndicator'] = { fg = cyberpunk.core.bright_green }
+  highlights['GrugFarResultsRemoveIndicator'] = { fg = cyberpunk.core.bright_red }
+  highlights['GrugFarResultsChangeIndicator'] = { fg = cyberpunk.core.bright_magenta }
 end
 
 function M.apply_lsp_highlights(highlights)
-  local function set_highlight(groups, style)
-    for _, group in ipairs(groups) do
-      highlights[group] = style
-    end
-  end
+  set_highlight(highlights, { '@lsp.type.interface.typescriptreact' }, { fg = cyberpunk.lsp.interface })
+  set_highlight(highlights, { '@keyword.operator', '@operator' }, { fg = cyberpunk.lsp.operator })
+  set_highlight(highlights, { '@keyword.import', '@keyword.return' }, { fg = cyberpunk.lsp.keyword_red })
+  set_highlight(highlights, { '@tag.builtin.tsx' }, { fg = cyberpunk.lsp.html_tag })
 
-  set_highlight({ '@lsp.type.interface.typescriptreact' }, { fg = cyberpunk.lsp.interface })
-  set_highlight({ '@keyword.operator', '@operator' }, { fg = cyberpunk.lsp.operator })
-  set_highlight({ '@keyword.import', '@keyword.return' }, { fg = cyberpunk.lsp.keyword_red })
-  set_highlight({ '@tag.builtin.tsx' }, { fg = cyberpunk.lsp.html_tag })
-
-  set_highlight({ '@lsp.type.type', '@type.builtin' }, { fg = cyberpunk.lsp.builtin })
-  set_highlight({ '@boolean', '@number', '@constant.builtin' }, { fg = cyberpunk.lsp.builtin_bright })
-  set_highlight({
+  set_highlight(highlights, { '@lsp.type.type', '@type.builtin' }, { fg = cyberpunk.lsp.builtin })
+  set_highlight(highlights, { '@boolean', '@number', '@constant.builtin' }, { fg = cyberpunk.lsp.builtin_bright })
+  set_highlight(highlights, {
     '@lsp.typemod.class.defaultLibrary.typescript',
     '@lsp.typemod.class.defaultLibrary.typescriptreact',
     '@lsp.type.class',
