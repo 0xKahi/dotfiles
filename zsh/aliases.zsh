@@ -3,7 +3,7 @@ alias l="eza -l --icons --git -a"
 alias lt="eza --tree --level=2 --long --icons --git"
 
 # lazy
-alias lg="lazygit --use-config-file="$HOME/.config/lazygit/lazygit-config.yml""
+alias lg="lazygit"
 alias ldg="lazydocker"
 
 # vim

@@ -14,6 +14,9 @@ export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export ATAC_KEY_BINDINGS=~/.config/atac/keybindings.toml
 export ATAC_THEME=~/.config/atac/theme.toml
 
+# lazygit stuff
+export LG_CONFIG_FILE="$HOME/.config/lazygit/lazygit-config.yml"
+
 # FZF stuff
 eval "$(fzf --zsh)"
 # --- setup fzf config ---

@@ -27,6 +27,19 @@ return {
             ':Gitsigns blame_line<cr>',
             { desc = '[S]how [B]lame', silent = true, noremap = true }
           )
+          vim.keymap.set(
+            'n',
+            '<leader>rh',
+            ':Gitsigns reset_hunk<cr>',
+            { desc = '[R]eset [H]unk', silent = true, noremap = true }
+          )
+
+          vim.keymap.set(
+            'n',
+            '<leader>Sh',
+            ':Gitsigns stage_hunk<cr>',
+            { desc = '[S]tage [H]unk', silent = true, noremap = true }
+          )
 
           vim.keymap.set('n', ']c', function()
             if vim.wo.diff then
