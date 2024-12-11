@@ -1,7 +1,8 @@
 return {
   'akinsho/bufferline.nvim',
   dependencies = {
-    'nvim-tree/nvim-web-devicons',
+    -- 'nvim-tree/nvim-web-devicons',
+    'echasnovski/mini.icons',
   },
   config = function()
     local cyberpunk = require('config.cyberpunk.colors')

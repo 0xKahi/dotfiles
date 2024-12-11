@@ -4,7 +4,10 @@ return {
   keys = {
     { '<leader>oo', '<CMD>Oil --float<CR>', desc = '[O]pen [O]il', noremap = true },
   },
-  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  dependencies = {
+    -- 'nvim-tree/nvim-web-devicons',
+    'echasnovski/mini.icons',
+  },
   config = function()
     require('oil').setup({
       default_file_explorer = false,
