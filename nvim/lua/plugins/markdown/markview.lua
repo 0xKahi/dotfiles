@@ -1,3 +1,16 @@
+local function create_callout(match_string, icon, hl)
+  return {
+    match_string = match_string,
+    hl = hl,
+    preview_hl = nil,
+    title = true,
+    icon = icon,
+    preview = icon .. string.upper(string.sub(match_string, 1, 1)) .. string.sub(match_string, 2),
+    border = '▋',
+    border_hl = nil,
+  }
+end
+
 return {
   {
     'OXY2DEV/markview.nvim',
@@ -58,118 +71,16 @@ return {
           },
           --- Configuration for custom block quotes
           callouts = {
-            {
-              --- String between "[!" & "]"
-              match_string = 'gem',
-              hl = 'MarkviewBlockQuoteGem',
-              --- Highlight group for the preview text.
-              ---@type string?
-              preview_hl = nil,
-              --- When true, adds the ability to add a title
-              --- to the block quote.
-              ---@type boolean
-              title = true,
-              --- Icon to show before the title.
-              ---@type string?
-              icon = ' ',
-              --- Text to show in the preview.
-              ---@type string
-              preview = ' Gem',
-              ---@type string | string
-              border = '▋',
-              ---@type (string | string[])?
-              border_hl = nil,
-            },
-            {
-              match_string = 'candy',
-              hl = 'MarkviewBlockQuoteCandy',
-              preview_hl = nil,
-              title = true,
-              icon = '󱥳 ',
-              preview = '󱥳 Candy',
-              border = '▋',
-              border_hl = nil,
-            },
-            {
-              match_string = 'tip',
-              hl = 'MarkviewBlockQuoteTip',
-              preview_hl = nil,
-              title = true,
-              icon = '󰌶 ',
-              preview = '󰌶 Tip',
-              border = '▋',
-              border_hl = nil,
-            },
-            {
-              match_string = 'note',
-              hl = 'MarkviewBlockQuoteNote',
-              preview_hl = nil,
-              title = true,
-              icon = ' ',
-              preview = ' Note',
-              border = '▋',
-              border_hl = nil,
-            },
-            {
-              match_string = 'dev',
-              hl = 'MarkviewBlockQuoteDev',
-              preview_hl = nil,
-              title = true,
-              preview = '󱚤 Dev',
-              icon = '󱚤 ',
-              border = '▋',
-              border_hl = nil,
-            },
-            {
-              match_string = 'warn',
-              hl = 'MarkviewBlockQuoteWarn',
-              preview_hl = nil,
-              title = true,
-              preview = ' Warn',
-              icon = ' ',
-              border = '▋',
-              border_hl = nil,
-            },
-            {
-              match_string = 'important',
-              hl = 'MarkviewBlockQuoteImportant',
-              preview_hl = nil,
-              title = true,
-              preview = ' Important',
-              icon = ' ',
-              border = '▋',
-              border_hl = nil,
-            },
-            {
-              match_string = 'success',
-              hl = 'MarkviewBlockQuoteSuccess',
-              preview_hl = nil,
-              title = true,
-              preview = ' Success',
-              icon = ' ',
-              border = '▋',
-              border_hl = nil,
-            },
-            {
-              match_string = 'fail',
-              hl = 'MarkviewBlockQuoteFail',
-              preview_hl = nil,
-              title = true,
-              preview = ' Fail',
-              icon = ' ',
-              border = '▋',
-              border_hl = nil,
-            },
-            {
-              match_string = 'info',
-              hl = 'MarkviewBlockQuoteInfo',
-              preview_hl = nil,
-              title = true,
-              preview = '󰋽 Info',
-              icon = '󰋽 ',
-              border = '▋',
-              border_hl = nil,
-            },
+            create_callout('gem', ' ', 'MarkviewBlockQuoteGem'),
+            create_callout('candy', '󱥳 ', 'MarkviewBlockQuoteCandy'),
+            create_callout('tip', '󰌶 ', 'MarkviewBlockQuoteTip'),
+            create_callout('note', ' ', 'MarkviewBlockQuoteNote'),
+            create_callout('dev', '󱚤 ', 'MarkviewBlockQuoteDev'),
+            create_callout('warn', ' ', 'MarkviewBlockQuoteWarn'),
+            create_callout('important', ' ', 'MarkviewBlockQuoteImportant'),
+            create_callout('success', ' ', 'MarkviewBlockQuoteSuccess'),
+            create_callout('fail', ' ', 'MarkviewBlockQuoteFail'),
+            create_callout('info', '󰋽 ', 'MarkviewBlockQuoteInfo'),
           },
         },
         footnotes = {},
