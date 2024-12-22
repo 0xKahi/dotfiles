@@ -61,6 +61,9 @@ function M.apply_highlight(highlights, colors)
   highlights['GrugFarResultsAddIndicator'] = { fg = cyberpunk.core.bright_green }
   highlights['GrugFarResultsRemoveIndicator'] = { fg = cyberpunk.core.bright_red }
   highlights['GrugFarResultsChangeIndicator'] = { fg = cyberpunk.core.bright_magenta }
+
+  highlights['LazyGitFloat'] = { fg = cyberpunk.core.fg }
+  highlights['LazyGitBorder'] = { fg = cyberpunk.core.neon_green }
 end
 
 function M.apply_lsp_highlights(highlights)
