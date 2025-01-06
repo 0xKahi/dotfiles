@@ -5,8 +5,10 @@ window-padding-y = 2,0
 
 font-family = "JetBrainsMono Nerd Font"
 font-size = 12.5 
-font-thicken = true
+font-thicken = true 
 
+# mac-only
+#window-colorspace = display-p3 
 
 macos-titlebar-style = hidden
 background-blur-radius = 20 
@@ -14,12 +16,15 @@ background-opacity = 0.85
 
 mouse-hide-while-typing = true
 window-decoration = true
-quick-terminal-position = right 
 
 macos-option-as-alt = true 
+
+#quick-terminal-screen = macos-menu-bar
+quick-terminal-position = right 
 quick-terminal-animation-duration = 0.08
+quick-terminal-autohide = false
 
 keybind = super+i=inspector:toggle
 keybind = super+r=reload_config
-keybind = cmd+P=toggle_quick_terminal
+keybind = global:cmd+P=toggle_quick_terminal
 
