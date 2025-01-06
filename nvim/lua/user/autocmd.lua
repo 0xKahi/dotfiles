@@ -1,4 +1,4 @@
--- close quickfix list with q
+------ for closing files ----
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {
     'qf',
@@ -25,15 +25,18 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.keymap.set('n', 'q', ':bd<CR>', { buffer = true, noremap = true, silent = true, desc = '[Q]uit [3]' })
   end,
 })
+------ for closing files ------
 
+------ for markdown ------
 vim.api.nvim_create_autocmd('FileType', {
   pattern = 'markdown',
   callback = function()
     vim.opt_local.conceallevel = 1
   end,
 })
+------ for markdown ------
 
--- for resty nvim
+------ for RESTY PLUGIN ------
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {
     'rest_nvim_result',
@@ -50,3 +53,4 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.api.nvim_set_option_value('formatprg', 'jq', { scope = 'local' })
   end,
 })
+------ for RESTY PLUGIN ------
