@@ -64,6 +64,10 @@ function M.apply_highlight(highlights, colors)
 
   highlights['LazyGitFloat'] = { fg = cyberpunk.core.fg }
   highlights['LazyGitBorder'] = { fg = cyberpunk.core.neon_green }
+
+  highlights['BlinkCmpScrollBarThumb'] = { bg = cyberpunk.core.neon_blue }
+  highlights['BlinkCmpMenuSelection'] = { bg = cyberpunk.core.highlight2 }
+  highlights['BlinkCmpKindClass'] = { fg = cyberpunk.lsp.class }
 end
 
 function M.apply_lsp_highlights(highlights)
