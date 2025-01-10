@@ -1,11 +1,11 @@
 return {
-  require('plugins.lsp.lsp_config'),
+  require('plugins.lsp.lsp-config'),
   -- require('plugins.lsp.nvim_cmp'),
   require('plugins.lsp.blink'),
   require('plugins.lsp.conform'),
   require('plugins.lsp.lazydev'),
   require('plugins.lsp.kdl'),
-  require('plugins.lsp.ts_comments'),
+  require('plugins.lsp.ts-comments'),
   -- some file type stuff
   {
     vim.filetype.add({

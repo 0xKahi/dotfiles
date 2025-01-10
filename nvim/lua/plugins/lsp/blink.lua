@@ -80,6 +80,9 @@ return {
 
     signature = {
       enabled = true,
+      window = {
+        border = 'single',
+      },
     },
 
     -- Default list of enabled providers defined so that you can extend it
