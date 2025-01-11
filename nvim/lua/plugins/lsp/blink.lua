@@ -3,6 +3,9 @@ return {
 
   -- use a release tag to download pre-built binaries
   version = '*',
+  dependencies = {
+    { 'saghen/blink.compat', lazy = true },
+  },
 
   opts = {
     -- 'default' for mappings similar to built-in completion
