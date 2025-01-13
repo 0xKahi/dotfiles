@@ -68,6 +68,10 @@ function M.apply_highlight(highlights, colors)
   highlights['BlinkCmpScrollBarThumb'] = { bg = cyberpunk.core.neon_blue }
   highlights['BlinkCmpMenuSelection'] = { bg = cyberpunk.core.highlight2 }
   highlights['BlinkCmpKindClass'] = { fg = cyberpunk.lsp.class }
+
+  highlights['SnacksDashboardFooter'] = { fg = cyberpunk.core.bright_green }
+  highlights['SnacksDashboardSpecial'] = { fg = cyberpunk.core.bright_magenta }
+  highlights['SnacksDashboardFile'] = { fg = cyberpunk.core.bright_blue }
 end
 
 function M.apply_lsp_highlights(highlights)
