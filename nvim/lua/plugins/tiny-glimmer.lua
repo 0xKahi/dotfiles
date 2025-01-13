@@ -1,3 +1,5 @@
+local cyberpunk = require('config.cyberpunk.colors')
+
 return {
   'rachartier/tiny-glimmer.nvim',
   event = 'TextYankPost',
@@ -8,11 +10,10 @@ return {
 
     -- Only use if you have a transparent background
     -- It will override the highlight group background color for `to_color` in all animations
-    transparency_color = '#312954',
+    transparency_color = cyberpunk.core.bg,
     animations = {
       fade = {
-        from_color = '#3d5afe',
-        to_color = '#2d3f76',
+        from_color = cyberpunk.core.bright_magenta,
       },
     },
   },
