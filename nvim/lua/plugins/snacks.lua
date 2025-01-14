@@ -16,11 +16,10 @@ return {
       sections = {
         { section = 'header' },
         { title = 'Recent Files', padding = 1 },
-        { section = 'recent_files', padding = 1, cwd = true },
+        { section = 'recent_files', padding = 1, limit = 9, cwd = true },
         { section = 'startup' },
       },
     },
-
     notifier = {
       enable = true,
       timeout = 3000, -- default timeout in ms
@@ -43,6 +42,14 @@ return {
       end,
       { desc = '[F]ind [N]otification', silent = false, noremap = true },
       mode = { 'n' },
+    },
+    {
+      '<leader>gb',
+      function()
+        require('snacks').gitbrowse()
+      end,
+      { desc = '[G]it [B]rowse', silent = false, noremap = true },
+      mode = { 'n', 'v' },
     },
   },
 }
