@@ -75,12 +75,12 @@ vim.keymap.set(
   { desc = '[P]ast telescope [P]ickers', silent = false, noremap = true }
 )
 
-vim.keymap.set(
-  'n',
-  '<leader>fn',
-  '<cmd>Telescope notify<CR>',
-  { desc = '[F]ind [N]otify', silent = false, noremap = true }
-)
+-- vim.keymap.set(
+--   'n',
+--   '<leader>fn',
+--   '<cmd>Telescope notify<CR>',
+--   { desc = '[F]ind [N]otify', silent = false, noremap = true }
+-- )
 
 -- lualine
 -- Map <leader>ll{number} to jump to that buffer

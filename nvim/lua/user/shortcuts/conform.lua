@@ -1,5 +1,5 @@
 local function show_notification(message, level)
-  require('notify')(message, level, { title = 'conform.nvim' })
+  require('snacks.notifier.notify')(message, level, { title = 'conform.nvim' })
 end
 
 vim.api.nvim_create_user_command('FormatToggle', function(args)
