@@ -53,7 +53,7 @@ return {
 
         -- Rendering related configuration
         headings = { enable = false },
-        checkboxes = { enable = false },
+        checkboxes = { enable = true },
         inline_codes = { enable = false },
         list_items = { enable = false },
         links = { enable = true },
