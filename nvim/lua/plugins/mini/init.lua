@@ -3,4 +3,5 @@ return {
   require('plugins.mini.indentscope'),
   require('plugins.mini.comment'),
   require('plugins.mini.icons'),
+  require('plugins.mini.files'),
 }

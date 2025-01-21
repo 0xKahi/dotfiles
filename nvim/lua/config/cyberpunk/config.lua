@@ -35,16 +35,19 @@ function M.apply_highlight(highlights, colors)
   highlights['TelescopePreviewBorder'] = { fg = cyberpunk.core.blue }
   highlights['TelescopeMatching'] = { fg = cyberpunk.core.bright_yellow }
 
-  highlights['MiniIndentscopeSymbol'] = { fg = cyberpunk.core.green, nocombine = true }
-
   highlights['NeoTreeGitModified'] = { fg = cyberpunk.core.bright_magenta }
   highlights['NeoTreeGitUntracked'] = { fg = cyberpunk.core.bright_green }
   highlights['NeoTreeCursorLine'] = { bold = true, bg = cyberpunk.core.highlight }
+
+  highlights['MiniIndentscopeSymbol'] = { fg = cyberpunk.core.green, nocombine = true }
 
   highlights['MiniDiffSignChange'] = { fg = cyberpunk.core.bright_magenta }
   highlights['MiniDiffSignAdd'] = { fg = cyberpunk.core.bright_green }
   highlights['MiniDiffSignDelete'] = { fg = cyberpunk.core.bright_red }
   highlights['MiniDiffSignIgnored'] = { fg = cyberpunk.lsp.comments }
+
+  highlights['MiniFilesBorderModified'] = { fg = cyberpunk.core.red }
+  highlights['MiniFilesTitleFocused'] = { fg = cyberpunk.core.bright_yellow }
 
   highlights['ArrowFileIndex'] = { fg = cyberpunk.core.green }
   highlights['ArrowCurrentFile'] = { fg = cyberpunk.core.blue }
