@@ -4,4 +4,5 @@ return {
   require('plugins.mini.comment'),
   require('plugins.mini.icons'),
   require('plugins.mini.files'),
+  require('plugins.mini.surround'),
 }
