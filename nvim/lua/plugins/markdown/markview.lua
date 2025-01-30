@@ -1,6 +1,6 @@
 local function create_callout(match_string, icon, hl)
   return {
-    match_string = match_string,
+    -- match_string = match_string,
     hl = hl,
     preview_hl = nil,
     title = true,
@@ -23,71 +23,61 @@ return {
     },
     config = function()
       require('markview').setup({
-        __inside_code_block = true,
-        -- -- Buffer types to ignore
-        buf_ignore = { 'nofile' },
-        -- -- Delay, in miliseconds
-        -- -- to wait before a redraw occurs(after an event is triggered)
-        debounce = 50,
-        -- -- Filetypes where the plugin is enabled filetypes = { 'markdown', 'quarto', 'rmd' },
-        -- -- Highlight groups to use
-        -- -- "dynamic" | "light" | "dark"
-        -- highlight_groups = 'dynamic',
-        -- -- Modes where hybrid mode is enabled
-        hybrid_modes = { 'n' },
-        -- -- Tree-sitter query injections
-        -- injections = {},
-        -- -- Initial plugin state,
-        -- -- true = show preview
-        -- -- falss = don't show preview
-        -- initial_state = true,
-        -- -- Max file size that is rendered entirely
-        -- max_file_length = 1000,
-        -- -- Modes where preview is shown
-        -- modes = { 'n', 'no', 'c' },
-        -- -- Lines from the cursor to draw when the
-        -- -- file is too big
-        -- render_distance = 100,
-        -- -- Window configuration for split view
-        -- split_conf = {},
+        -- __inside_code_block = true,
+
+        preview = {
+          enable = true,
+          buf_ignore = { 'nofile' },
+          debounce = 50,
+          hybrid_modes = { 'n' },
+        },
 
         -- Rendering related configuration
-        headings = { enable = false },
-        checkboxes = { enable = true },
-        inline_codes = { enable = false },
-        list_items = { enable = false },
-        links = { enable = true },
-        code_blocks = {
-          enable = true,
-          icons = 'devicons',
-          sign = false,
-        },
-        block_quotes = {
-          enable = true,
-          default = {
-            border = '▋',
-            hl = 'MarkviewBlockQuoteDefault',
-            title = true,
+        markdown = {
+          code_blocks = {
+            enable = true,
+            icons = 'devicons',
+            sign = false,
+            border_hl = 'MarkviewCode',
+            default = {
+              block_hl = 'MarkviewBlockCode',
+              pad_hl = 'MarkviewBlockCode',
+            },
           },
-          --- Configuration for custom block quotes
-          callouts = {
-            create_callout('gem', ' ', 'MarkviewBlockQuoteGem'),
-            create_callout('candy', '󱥳 ', 'MarkviewBlockQuoteCandy'),
-            create_callout('tip', '󰌶 ', 'MarkviewBlockQuoteTip'),
-            create_callout('note', ' ', 'MarkviewBlockQuoteNote'),
-            create_callout('dev', '󱚤 ', 'MarkviewBlockQuoteDev'),
-            create_callout('warn', ' ', 'MarkviewBlockQuoteWarn'),
-            create_callout('important', ' ', 'MarkviewBlockQuoteImportant'),
-            create_callout('success', ' ', 'MarkviewBlockQuoteSuccess'),
-            create_callout('fail', ' ', 'MarkviewBlockQuoteFail'),
-            create_callout('info', '󰋽 ', 'MarkviewBlockQuoteInfo'),
+          block_quotes = {
+            enable = true,
+            default = {
+              border = '▋',
+              hl = 'MarkviewBlockQuoteDefault',
+              title = true,
+            },
+            --- Configuration for custom block quotes
+            ['gem'] = create_callout('gem', ' ', 'MarkviewBlockQuoteGem'),
+            ['candy'] = create_callout('candy', '󱥳 ', 'MarkviewBlockQuoteCandy'),
+            ['tip'] = create_callout('tip', '󰌶 ', 'MarkviewBlockQuoteTip'),
+            ['note'] = create_callout('note', ' ', 'MarkviewBlockQuoteNote'),
+            ['dev'] = create_callout('dev', '󱚤 ', 'MarkviewBlockQuoteDev'),
+            ['warn'] = create_callout('warn', ' ', 'MarkviewBlockQuoteWarn'),
+            ['important'] = create_callout('important', ' ', 'MarkviewBlockQuoteImportant'),
+            ['success'] = create_callout('success', ' ', 'MarkviewBlockQuoteSuccess'),
+            ['fail'] = create_callout('fail', ' ', 'MarkviewBlockQuoteFail'),
+            ['info'] = create_callout('info', '󰋽 ', 'MarkviewBlockQuoteInfo'),
           },
+          headings = { enable = false },
+          horizontal_rules = {},
+          list_items = { enable = false },
+          tables = {},
         },
-        footnotes = {},
-        horizontal_rules = {},
+
+        markdown_inline = {
+          inline_codes = { enable = false },
+          hyperlinks = { enable = true },
+          internal_links = { enable = true },
+          footnotes = {},
+        },
+
         html = {},
         latex = {},
-        tables = {},
       })
     end,
   },

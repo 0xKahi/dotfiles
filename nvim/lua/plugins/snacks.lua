@@ -17,6 +17,31 @@ return {
         { section = 'header' },
         { title = 'Recent Files', padding = 1 },
         { section = 'recent_files', padding = 1, limit = 9, cwd = true },
+        -- function()
+        --   local in_git = require('snacks').git.get_root() ~= nil
+        --   local cmds = {
+        --     {
+        --       icon = ' ',
+        --       title = 'Open PRs',
+        --       cmd = 'gh pr list -A @me',
+        --       key = 'pr',
+        --       action = function()
+        --         vim.fn.jobstart('gh pr list --web', { detach = true })
+        --       end,
+        --       height = 7,
+        --     },
+        --   }
+        --   return vim.tbl_map(function(cmd)
+        --     return vim.tbl_extend('force', {
+        --       pane = 2,
+        --       section = 'terminal',
+        --       enabled = in_git,
+        --       padding = 1,
+        --       ttl = 5 * 60,
+        --       indent = 3,
+        --     }, cmd)
+        --   end, cmds)
+        -- end,
         { section = 'startup' },
       },
     },
