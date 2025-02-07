@@ -19,4 +19,16 @@ function M.random_selector(tbl)
   return tbl[key]
 end
 
+-- for printing tables
+function M.debug_table(tbl, title)
+  -- Convert the table to a string using vim.inspect
+  local table_str = vim.inspect(tbl)
+  -- Add a title if one was provided
+  if title then
+    table_str = title .. ':\n' .. table_str
+  end
+  -- Show the table contents as a notification
+  vim.notify(table_str, vim.log.levels.DEBUG)
+end
+
 return M

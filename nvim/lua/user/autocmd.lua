@@ -11,6 +11,7 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {
     'notify',
+    'help',
   },
   callback = function()
     vim.keymap.set('n', 'q', ':q<CR>', { buffer = true, noremap = true, silent = true, desc = '[Q]uit [2]' })

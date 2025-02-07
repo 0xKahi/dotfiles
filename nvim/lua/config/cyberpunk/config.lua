@@ -75,6 +75,14 @@ function M.apply_highlight(highlights, colors)
   highlights['SnacksDashboardFooter'] = { fg = cyberpunk.core.bright_green }
   highlights['SnacksDashboardSpecial'] = { fg = cyberpunk.core.bright_magenta }
   highlights['SnacksDashboardFile'] = { fg = cyberpunk.core.bright_blue }
+  highlights['SnacksPickerBoxTitle'] = { fg = cyberpunk.core.red }
+  highlights['SnacksPickerInputBorder'] = { fg = cyberpunk.core.yellow }
+  highlights['SnacksPickerInputTitle'] = { fg = cyberpunk.core.red }
+  highlights['SnacksPickerPreviewTitle'] = { fg = cyberpunk.core.magenta }
+  highlights['SnacksPickerPreviewBorder'] = { fg = cyberpunk.core.blue }
+  highlights['SnacksPickerDir'] = { fg = cyberpunk.core.cyan }
+  highlights['SnacksPickerPrompt'] = { fg = cyberpunk.core.red }
+  highlights['SnacksPickerMatch'] = { fg = cyberpunk.core.bright_yellow }
 end
 
 function M.apply_lsp_highlights(highlights)

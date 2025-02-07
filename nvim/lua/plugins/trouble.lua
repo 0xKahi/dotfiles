@@ -63,15 +63,15 @@ return {
         noremap = true,
       },
     },
-    {
-      '<leader>ts',
-      '<cmd>Trouble symbols toggle focus=false<cr>',
-      {
-        desc = '[T]rouble [S]ymbol toggle',
-        silent = true,
-        noremap = true,
-      },
-    },
+    -- {
+    --   '<leader>ts',
+    --   '<cmd>Trouble symbols toggle focus=false<cr>',
+    --   {
+    --     desc = '[T]rouble [S]ymbol toggle',
+    --     silent = true,
+    --     noremap = true,
+    --   },
+    -- },
     {
       '<leader>qf',
       '<cmd>Trouble qflist open focus=true win.position=right<cr>',

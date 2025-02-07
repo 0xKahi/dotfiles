@@ -18,12 +18,10 @@ return {
     ft = 'markdown', -- If you decide to lazy-load anyway
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
-      -- 'nvim-tree/nvim-web-devicons',
       'echasnovski/mini.icons',
     },
     config = function()
       require('markview').setup({
-        -- __inside_code_block = true,
 
         preview = {
           enable = true,
