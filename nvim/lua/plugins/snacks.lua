@@ -175,7 +175,18 @@ return {
 
     picker = {
       matcher = {
-        frecency = true,
+        fuzzy = true, -- use fuzzy matching
+        smartcase = true, -- use smartcase
+        ignorecase = true, -- use ignorecase
+        filename_bonus = true, -- give bonus for matching file names (last part of the path)
+        file_pos = true, -- support patterns like `file:line:col` and `file:line`
+        sort_empty = false, -- sort results when the search string is empty
+
+        -- the bonusses below, possibly require string concatenation and path normalization,
+        -- so this can have a performance impact for large lists and increase memory usage
+        frecency = true, -- frecency bonus
+        cwd_bonus = false, -- give bonus for matching files in the cwd
+        history_bonus = false, -- give more weight to chronological order
       },
 
       ui_select = true,
