@@ -87,7 +87,9 @@ return {
       '<leader>/',
       function()
         Snacks.picker.lines({
-          layout = 'dropdown',
+          layout = { preset = 'bottom', layout = {
+            title_pos = 'left',
+          } },
         })
       end,
       { desc = '[/] Fuzzy Find in current buffer]' },
