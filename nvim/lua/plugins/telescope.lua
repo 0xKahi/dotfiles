@@ -3,6 +3,7 @@ return {
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
+    enabled = false,
     cond = function()
       return vim.fn.executable('make') == 1
     end,
@@ -11,6 +12,7 @@ return {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' },
+    enabled = false,
     config = function()
       local actions = require('telescope.actions')
       require('telescope').setup({
@@ -54,12 +56,12 @@ return {
       require('telescope').load_extension('noice')
       require('telescope').load_extension('fzf')
 
-      local telescope = require('telescope.builtin')
-
+      -- local telescope = require('telescope.builtin')
+      --
       -- vim.keymap.set('n', '<C-p>', function()
       --   telescope.git_files({ show_untracked = true })
       -- end, { desc = 'find files in git', noremap = true })
-
+      --
       -- vim.keymap.set('n', '<leader>/', function()
       --   telescope.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
       --     previewer = true,
@@ -75,25 +77,25 @@ return {
       -- vim.keymap.set('n', '<leader>fb', function()
       --   telescope.buffers(require('telescope.themes').get_ivy())
       -- end, { desc = '[F]ind [B]uffers', silent = false, noremap = true })
-
-      vim.keymap.set(
-        'n',
-        '<leader>fw',
-        telescope.grep_string,
-        { desc = '[F]ind current [W]ord in directory', noremap = true }
-      )
-
-      vim.keymap.set('n', '<leader>fp', function()
-        telescope.oldfiles({ only_cwd = true })
-      end, { desc = '[F]ind [P]ast files', silent = false, noremap = true })
-
-      vim.keymap.set(
-        'n',
-        '<leader>pp',
-        telescope.resume,
-        { desc = '[P]ast telescope [P]ickers', silent = false, noremap = true }
-      )
-
+      --
+      -- vim.keymap.set(
+      --   'n',
+      --   '<leader>pp',
+      --   telescope.resume,
+      --   { desc = '[P]ast telescope [P]ickers', silent = false, noremap = true }
+      -- )
+      --
+      -- vim.keymap.set(
+      --   'n',
+      --   '<leader>fw',
+      --   telescope.grep_string,
+      --   { desc = '[F]ind current [W]ord in directory', noremap = true }
+      -- )
+      --
+      -- vim.keymap.set('n', '<leader>fp', function()
+      --   telescope.oldfiles({ only_cwd = true })
+      -- end, { desc = '[F]ind [P]ast files', silent = false, noremap = true })
+      --
       -- vim.keymap.set(
       --   'n',
       --   '<leader>fn',

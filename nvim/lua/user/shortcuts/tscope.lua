@@ -1,13 +1,24 @@
 -- commands shortcuts
 
--- Telecope
-local telescope = require('telescope.builtin')
-
 local telescope_commands = {
-  dg = { func = telescope.diagnostics, desc = 'Diagnostics' },
-  ['git status'] = { func = telescope.git_status, desc = 'Git Status' },
-  ['doc symb'] = { func = telescope.git_status, desc = 'Lists LSP document symbols in the current buffer' },
-  --noice = { func = ':Telescope noice<CR>', desc = 'noice' },
+  dg = {
+    func = function()
+      require('telescope.builtin').diagnostics()
+    end,
+    desc = 'Diagnostics',
+  },
+  ['git status'] = {
+    func = function()
+      require('telescope.builtin').git_status()
+    end,
+    desc = 'Git Status',
+  },
+  ['doc symb'] = {
+    func = function()
+      require('telescope.builtin').lsp_document_symbols()
+    end,
+    desc = 'Lists LSP document symbols in the current buffer',
+  },
 }
 
 -- Create custom command for Telescope

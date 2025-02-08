@@ -84,6 +84,20 @@ return {
       { desc = '[F]ind all [F]iles', noremap = true },
     },
     {
+      '<leader>fp',
+      function()
+        Snacks.picker.recent({
+          finder = 'recent_files',
+          format = 'file',
+          layout = 'basic',
+          filter = {
+            cwd = true,
+          },
+        })
+      end,
+      { desc = '[F]ind [P]ast files', noremap = true },
+    },
+    {
       '<leader>/',
       function()
         Snacks.picker.lines({
@@ -125,6 +139,13 @@ return {
         silent = true,
         noremap = true,
       },
+    },
+    {
+      '<leader>pp',
+      function()
+        Snacks.picker.resume()
+      end,
+      { desc = '[P]ast [P]ickers', silent = false, noremap = true },
     },
   },
 
@@ -227,9 +248,9 @@ return {
             {
               box = 'vertical',
               border = 'rounded',
-              title = '{title} {live} {flags}',
+              title = '{title}',
               { win = 'list', border = 'none' },
-              { win = 'input', height = 1, border = 'top' },
+              { win = 'input', title = 'Input   {live} {flags}', title_pos = 'left', height = 1, border = 'top' },
             },
             { win = 'preview', title = '{preview}', border = 'rounded', width = 0.5 },
           },
