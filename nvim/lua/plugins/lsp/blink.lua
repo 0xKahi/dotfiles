@@ -93,6 +93,10 @@ return {
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
 
+      per_filetype = {
+        typr = {},
+      },
+
       cmdline = function()
         local type = vim.fn.getcmdtype()
         -- Search forward and backward
