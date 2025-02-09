@@ -3,7 +3,7 @@ return {
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
-    enabled = false,
+    lazy = true,
     cond = function()
       return vim.fn.executable('make') == 1
     end,
@@ -12,7 +12,7 @@ return {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    enabled = false,
+    lazy = true,
     config = function()
       local actions = require('telescope.actions')
       require('telescope').setup({

@@ -27,7 +27,7 @@ return {
     dependencies = {
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'williamboman/mason-lspconfig.nvim' },
-      { 'nvim-telescope/telescope.nvim' },
+      -- { 'nvim-telescope/telescope.nvim' },
       {
         'j-hui/fidget.nvim',
         tag = 'v1.4.5',

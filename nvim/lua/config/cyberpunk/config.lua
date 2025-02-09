@@ -135,6 +135,7 @@ function M.apply_markview_highlights(highlights)
   highlights['MarkviewBlockQuoteFail'] = { fg = cyberpunk.markview.fail }
   highlights['MarkviewBlockQuoteImportant'] = { fg = cyberpunk.markview.important }
   highlights['MarkviewBlockQuoteInfo'] = { fg = cyberpunk.markview.info }
+  highlights['MarkviewListItemMinus'] = { fg = cyberpunk.core.tky_blue }
 end
 
 function M.apply_colors(colors)

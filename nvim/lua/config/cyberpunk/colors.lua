@@ -25,6 +25,7 @@ M.core = {
   highlight2 = '#2d3f76', -- combination of cyberpunk highlight and tky highlight kinda like it so gona leave it here
   orange = '#ff966c',
   hint = '#41a6b5',
+  tky_blue = '#82aaff',
 }
 
 M.lsp = {
