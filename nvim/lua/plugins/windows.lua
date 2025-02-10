@@ -1,18 +1,64 @@
 return {
   {
     'mrjones2014/smart-splits.nvim',
-    config = function()
-      vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left, { desc = 'navigate left pane' })
-      vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down, { desc = 'navigate down pane' })
-      vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up, { desc = 'navigate up pane' })
-      vim.keymap.set('n', '<C-l>', require('smart-splits').move_cursor_right, { desc = 'navigate right pane' })
-      -- vim.keymap.set("n", "<C-c>", "<C-w>c")
-
-      vim.keymap.set('n', '<A-h>', require('smart-splits').resize_left)
-      vim.keymap.set('n', '<A-j>', require('smart-splits').resize_down)
-      vim.keymap.set('n', '<A-k>', require('smart-splits').resize_up)
-      vim.keymap.set('n', '<A-l>', require('smart-splits').resize_right)
-    end,
+    keys = {
+      {
+        '<C-h>',
+        function()
+          require('smart-splits').move_cursor_left()
+        end,
+        { desc = 'navigate left pane', mode = { 'n' } },
+      },
+      {
+        '<C-j>',
+        function()
+          require('smart-splits').move_cursor_down()
+        end,
+        { desc = 'navigate down pane', mode = { 'n' } },
+      },
+      {
+        '<C-k>',
+        function()
+          require('smart-splits').move_cursor_up()
+        end,
+        { desc = 'navigate up pane', mode = { 'n' } },
+      },
+      {
+        '<C-l>',
+        function()
+          require('smart-splits').move_cursor_right()
+        end,
+        { desc = 'navigate right pane', mode = { 'n' } },
+      },
+      {
+        '<A-h>',
+        function()
+          require('smart-splits').resize_left()
+        end,
+        { desc = 'resize left', mode = { 'n' } },
+      },
+      {
+        '<A-j>',
+        function()
+          require('smart-splits').resize_down()
+        end,
+        { desc = 'resize down', mode = { 'n' } },
+      },
+      {
+        '<A-k>',
+        function()
+          require('smart-splits').resize_up()
+        end,
+        { desc = 'resize up', mode = { 'n' } },
+      },
+      {
+        '<A-l>',
+        function()
+          require('smart-splits').resize_right()
+        end,
+        { desc = 'resize right', mode = { 'n' } },
+      },
+    },
   },
   {
     'anuvyklack/windows.nvim',
