@@ -1,4 +1,3 @@
-local ascii = require('config.cyberpunk.ascii-art')
 return {
   'folke/snacks.nvim',
   lazy = false,
@@ -9,14 +8,6 @@ return {
         require('snacks').notifier.hide()
       end,
       { desc = '[N]o [N]otification', silent = false, noremap = true },
-      mode = { 'n' },
-    },
-    {
-      '<leader>fn',
-      function()
-        require('snacks').notifier.show_history()
-      end,
-      { desc = '[F]ind [N]otification', silent = false, noremap = true },
       mode = { 'n' },
     },
     {
@@ -147,6 +138,22 @@ return {
       end,
       { desc = '[P]ast [P]ickers', silent = false, noremap = true },
     },
+    {
+      '<leader>pc',
+      function()
+        Snacks.picker.command_history()
+      end,
+      { desc = '[P]ast [C]ommands', silent = false, noremap = true },
+      mode = { 'n' },
+    },
+    {
+      '<leader>fn',
+      function()
+        Snacks.picker.notifications()
+      end,
+      { desc = '[F]ind [N]otification', silent = false, noremap = true },
+      mode = { 'n' },
+    },
   },
 
   opts = {
@@ -158,7 +165,7 @@ return {
 
       preset = {
         pick = nil,
-        header = require('utils.misc').random_selector(ascii),
+        header = require('utils.misc').random_selector(require('config.cyberpunk.ascii-art')),
       },
       sections = {
         { section = 'header' },
