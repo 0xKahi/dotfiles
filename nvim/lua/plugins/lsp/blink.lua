@@ -6,6 +6,7 @@ return {
   dependencies = {
     { 'saghen/blink.compat', lazy = true },
   },
+  event = { 'InsertEnter', 'CmdlineEnter' },
 
   opts = {
     -- 'default' for mappings similar to built-in completion
