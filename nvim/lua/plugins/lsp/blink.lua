@@ -97,8 +97,10 @@ return {
       per_filetype = {
         typr = {},
       },
+    },
 
-      cmdline = function()
+    cmdline = {
+      sources = function()
         local type = vim.fn.getcmdtype()
         -- Search forward and backward
         if type == '/' or type == '?' then

@@ -92,9 +92,7 @@ return {
       '<leader>/',
       function()
         Snacks.picker.lines({
-          layout = { preset = 'bottom', layout = {
-            title_pos = 'left',
-          } },
+          layout = { layout = { height = 0.3 } },
         })
       end,
       { desc = '[/] Fuzzy Find in current buffer]' },
@@ -237,7 +235,9 @@ return {
       },
 
       layouts = {
+
         bottom = {
+          cycle = true,
           layout = {
             box = 'vertical',
             backdrop = false,
@@ -258,6 +258,7 @@ return {
         },
         basic = {
           reverse = true,
+          cycle = true,
           layout = {
             box = 'horizontal',
             width = 0.8,
