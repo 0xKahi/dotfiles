@@ -100,6 +100,7 @@ return {
     },
 
     cmdline = {
+      completion = { menu = { auto_show = true }, ghost_text = { enabled = true } },
       sources = function()
         local type = vim.fn.getcmdtype()
         -- Search forward and backward
@@ -107,15 +108,16 @@ return {
           return { 'buffer' }
         end
 
+        -- Commands
+        if type == ':' or type == '@' then
+          return { 'cmdline' }
+        end
+
         -- lua command:
         if type == ':lua' then
           return { 'lsp' }
         end
 
-        -- Commands
-        if type == ':' or type == '@' then
-          return { 'cmdline' }
-        end
         return {}
       end,
     },
