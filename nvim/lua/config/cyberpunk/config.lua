@@ -83,6 +83,13 @@ function M.apply_highlight(highlights, colors)
   highlights['SnacksPickerDir'] = { fg = cyberpunk.core.cyan }
   highlights['SnacksPickerPrompt'] = { fg = cyberpunk.core.red }
   highlights['SnacksPickerMatch'] = { fg = cyberpunk.core.bright_yellow }
+
+  highlights['AvanteTitle'] = { fg = cyberpunk.core.black, bg = cyberpunk.core.bright_green }
+  highlights['AvanteSubTitle'] = { fg = cyberpunk.core.black, bg = cyberpunk.core.bright_cyan }
+  highlights['AvanteThirdTitle'] = { fg = cyberpunk.core.white, bg = cyberpunk.core.semi_light_black }
+  highlights['AvanteReversedTitle'] = { fg = cyberpunk.core.bright_green }
+  highlights['AvanteReversedSubTitle'] = { fg = cyberpunk.core.bright_cyan }
+  highlights['AvanteReversedThirdTitle'] = { fg = cyberpunk.core.semi_light_black }
 end
 
 function M.apply_lsp_highlights(highlights)

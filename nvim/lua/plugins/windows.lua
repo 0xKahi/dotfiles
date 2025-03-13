@@ -81,7 +81,19 @@ return {
         },
         ignore = {
           buftype = { 'quickfix', 'oil', 'telescope', 'DiffviewFilePanel' },
-          filetype = { 'NvimTree', 'neo-tree', 'undotree', 'gundo', 'oil', 'trouble', 'telescope', 'DiffviewFiles' },
+          filetype = {
+            'NvimTree',
+            'neo-tree',
+            'undotree',
+            'gundo',
+            'oil',
+            'trouble',
+            'telescope',
+            'DiffviewFiles',
+            'Avante',
+            'AvanteSelectedFiles',
+            'AvanteInput',
+          },
         },
         animation = {
           -- enable = true,

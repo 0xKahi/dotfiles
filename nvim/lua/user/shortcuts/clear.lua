@@ -52,6 +52,12 @@ local clear_commands = {
     end,
     desc = 'clear quickfix list',
   },
+  avante = {
+    func = function()
+      vim.api.nvim_command('AvanteClear')
+    end,
+    desc = 'clear Avante buffers',
+  },
 }
 
 -- Create custom command for clearing stuff

@@ -53,6 +53,7 @@ return {
       --- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
       lsp.on_attach(function(client, bufnr)
         require('config.lsp-picker-keymap').setup_snacks_lsp_keymaps(bufnr)
+        require('config.lsp-picker-keymap').setup_avante_lsp_keymaps(bufnr)
         -- require('config.lsp-picker-keymap').setup_telescope_lsp_keymaps(bufnr)
 
         -- see :help lsp-zero-keybindings
