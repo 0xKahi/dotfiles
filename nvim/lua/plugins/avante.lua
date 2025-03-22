@@ -7,16 +7,9 @@ return {
       {
         '<leader>oa',
         function()
-          require('avante').toggle()
+          require('avante').open_sidebar()
         end,
         { mode = { 'n' }, desc = '[O]pen [A]vante' },
-      },
-      {
-        '<leader>ca',
-        function()
-          require('avante').close_sidebar()
-        end,
-        { mode = { 'n' }, desc = '[C]lose [A]vante' },
       },
       {
         '<leader>ca',
@@ -30,7 +23,7 @@ return {
         function()
           require('avante.api').ask()
         end,
-        mode = { 'v' },
+        mode = { 'v', 'n' },
         desc = '[A]vante [A]sk',
       },
       {
@@ -38,7 +31,7 @@ return {
         function()
           require('avante.api').edit()
         end,
-        mode = { 'v' },
+        mode = { 'v', 'n' },
         desc = '[A]vante [E]dit',
       },
       {
@@ -46,7 +39,7 @@ return {
         function()
           require('avante.api').refresh()
         end,
-        mode = { 'v' },
+        mode = { 'v', 'n' },
         desc = '[A]vante [R]efresh',
       },
     },
@@ -82,12 +75,12 @@ return {
       behaviour = {
         auto_suggestions = false, -- Experimental stage
         auto_set_highlight_group = true,
-        auto_set_keymaps = false,
+        auto_set_keymaps = true,
         auto_apply_diff_after_generation = false,
         support_paste_from_clipboard = false,
         minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
         enable_token_counting = true, -- Whether to enable token counting. Default to true.
-        enable_cursor_planning_mode = true, -- Whether to enable Cursor Planning Mode. Default to false.
+        enable_cursor_planning_mode = false, -- Whether to enable Cursor Planning Mode. Default to false.
       },
       file_selector = {
         provider = 'snacks',
@@ -134,7 +127,7 @@ return {
           close_from_input = { normal = { '<Esc>', 'q' } },
         },
       },
-      hints = { enabled = true },
+      hints = { enabled = false },
       windows = {
         ---@type "right" | "left" | "top" | "bottom"
         position = 'right', -- the position of the sidebar
@@ -146,7 +139,7 @@ return {
           rounded = true,
         },
         input = {
-          prefix = '> ',
+          prefix = '󱋊 ', -- Prefix for the input window',
           height = 8, -- Height of the input window in vertical layout
         },
         edit = {
@@ -154,7 +147,7 @@ return {
           start_insert = false, -- Start insert mode when opening the edit window
         },
         ask = {
-          floating = true, -- Open the 'AvanteAsk' prompt in a floating window
+          floating = false, -- Open the 'AvanteAsk' prompt in a floating window
           start_insert = false, -- Start insert mode when opening the ask window
           border = 'rounded',
           ---@type "ours" | "theirs"
