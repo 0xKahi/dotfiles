@@ -59,15 +59,14 @@ return {
         max_tokens = 4096,
       },
       vendors = {
+        -- set claude providers seperately so its easier to switch between them
         ['claude-big'] = {
           __inherited_from = 'claude',
-          -- api_key_name = require('utils.secrets').get('avante_api_key'),
           endpoint = 'https://api.anthropic.com',
           model = 'claude-3-7-sonnet-latest',
         },
         ['claude-small'] = {
           __inherited_from = 'claude',
-          -- api_key_name = require('utils.secrets').get('avante_api_key'),
           endpoint = 'https://api.anthropic.com',
           model = 'claude-3-5-haiku-latest',
         },
@@ -77,10 +76,11 @@ return {
         auto_set_highlight_group = true,
         auto_set_keymaps = true,
         auto_apply_diff_after_generation = false,
-        support_paste_from_clipboard = false,
+        support_paste_from_clipboard = true,
         minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
         enable_token_counting = true, -- Whether to enable token counting. Default to true.
         enable_cursor_planning_mode = false, -- Whether to enable Cursor Planning Mode. Default to false.
+        enable_claude_text_editor_tool_mode = false, -- Whether to enable Claude Text Editor Tool Mode.
       },
       file_selector = {
         provider = 'snacks',
