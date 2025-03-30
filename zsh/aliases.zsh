@@ -25,3 +25,4 @@ alias MYZSHPROFILE="nvim ~/.zprofile"
 
 # for brew x86_64
 alias brew86="arch -x86_64 /usr/local/bin/brew"
+alias love="/Applications/love.app/Contents/MacOS/love"
