@@ -11,6 +11,8 @@ local function set_highlight(highlights, groups, style)
 end
 
 function M.apply_highlight(highlights, colors)
+  highlights['TabLineFill'] = { fg = '', bg = '' }
+  highlights['TabLine'] = { fg = cyberpunk.lsp.comments, bg = '' }
   highlights['CursorLine'] = { bg = '' }
   highlights['CursorLineNr'] = { bold = true, fg = cyberpunk.core.green }
 
