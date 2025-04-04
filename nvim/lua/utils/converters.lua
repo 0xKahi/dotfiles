@@ -1,5 +1,7 @@
 local M = {}
 
+local cryptoStorageDecimals = 17
+
 function M.pxToRem(px)
   if type(px) ~= 'number' then
     return nil, 'Input must be a number'
@@ -19,6 +21,13 @@ function M.sToMs(s)
     return nil, 'Input must be a number'
   end
   return s * 1000
+end
+
+function M.cryptoBN(bn)
+  if type(bn) ~= 'number' then
+    return nil, 'Input must be a number'
+  end
+  return bn / (10 ^ cryptoStorageDecimals)
 end
 
 return M
