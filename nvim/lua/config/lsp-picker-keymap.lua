@@ -59,14 +59,14 @@ local function add_to_avante(filepath)
 end
 
 local function format_path(filepath)
-  local cwd = svim.fs.normalize(vim.fn.getcwd(), { _fast = true, expand_env = false })
-  local home = svim.fs.normalize('~')
-  local path = svim.fs.normalize(filepath, { _fast = true, expand_env = false })
+  local cwd = vim.fs.normalize(vim.fn.getcwd(), { _fast = true, expand_env = false })
+  local home = vim.fs.normalize('~')
+  local path = vim.fs.normalize(filepath, { _fast = true, expand_env = false })
 
   if path:find(cwd .. '/', 1, true) == 1 and #path > #cwd then
     path = path:sub(#cwd + 2)
   else
-    local root = Snacks.git.get_root(path)
+    local root = require('snacks').git.get_root(path)
     if root and root ~= '' and path:find(root, 1, true) == 1 then
       local tail = vim.fn.fnamemodify(root, ':t')
       path = '⋮' .. tail .. '/' .. path:sub(#root + 2)

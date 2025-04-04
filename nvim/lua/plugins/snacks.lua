@@ -152,6 +152,22 @@ return {
       { desc = '[F]ind [N]otification', silent = false, noremap = true },
       mode = { 'n' },
     },
+    {
+      '<leader>ssb',
+      function()
+        Snacks.scratch.select()
+      end,
+      { desc = '[S]elect [S]cratch [B]uffer', silent = false, noremap = true },
+      mode = { 'n' },
+    },
+    {
+      '<leader>tsb',
+      function()
+        Snacks.scratch()
+      end,
+      { desc = '[T]oggle [S]cratch [B]uffer', silent = false, noremap = true },
+      mode = { 'n' },
+    },
   },
 
   opts = {
@@ -272,6 +288,47 @@ return {
               { win = 'input', title = 'Input   {live} {flags}', title_pos = 'left', height = 1, border = 'top' },
             },
             { win = 'preview', title = '{preview}', border = 'rounded', width = 0.5 },
+          },
+        },
+      },
+    },
+
+    scratch = {
+      name = 'Scratch',
+      ft = function()
+        if vim.bo.buftype == '' and vim.bo.filetype ~= '' then
+          return vim.bo.filetype
+        end
+        return 'lua'
+      end,
+      ---@type string|string[]?
+      icon = nil, -- `icon|{icon, icon_hl}`. defaults to the filetype icon
+      root = vim.fn.stdpath('data') .. '/scratch',
+      autowrite = false, -- automatically write when the buffer is hidden
+      -- unique key for the scratch file is based on:
+      -- * name
+      -- * ft
+      -- * vim.v.count1 (useful for keymaps)
+      -- * cwd (optional)
+      -- * branch (optional)
+      filekey = {
+        cwd = true, -- use current working directory
+        branch = true, -- use current branch name
+        count = true, -- use vim.v.count1
+      },
+      win = { style = 'scratch' },
+      win_by_ft = {
+        lua = {
+          keys = {
+            ['source'] = {
+              '<cr>',
+              function(self)
+                local name = 'scratch.' .. vim.fn.fnamemodify(vim.api.nvim_buf_get_name(self.buf), ':e')
+                Snacks.debug.run({ buf = self.buf, name = name })
+              end,
+              desc = 'Source buffer',
+              mode = { 'n', 'x' },
+            },
           },
         },
       },

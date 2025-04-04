@@ -60,4 +60,11 @@ M.markview = {
   info = '#6F94FF',
 }
 
+M.lualine = {
+  fg_gutter = '#3b4261',
+  fg_sidebar = '#828bb8',
+  bg_statusline = '#1e2030',
+  green = '#4fd6be',
+}
+
 return M

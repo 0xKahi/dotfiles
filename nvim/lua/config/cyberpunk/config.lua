@@ -93,7 +93,7 @@ function M.apply_highlight(highlights, colors)
   highlights['AvanteReversedSubTitle'] = { fg = cyberpunk.core.bright_cyan }
   highlights['AvanteReversedThirdTitle'] = { fg = cyberpunk.core.semi_light_black }
   highlights['AvanteSidebarWinSeparator'] = { fg = cyberpunk.core.neon_blue }
-  highlights['AvanteSidebarWinHorizontalSeparator'] = { fg = cyberpunk.core.neon_green }
+  highlights['AvanteSidebarWinHorizontalSeparator'] = { fg = cyberpunk.core.neon_green, bg = '' }
 end
 
 function M.apply_lsp_highlights(highlights)
