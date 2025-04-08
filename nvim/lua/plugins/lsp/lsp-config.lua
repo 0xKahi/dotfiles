@@ -68,15 +68,16 @@ return {
           lsp.default_setup,
           lua_ls = function()
             local lua_opts = lsp.nvim_lua_ls()
-            lua_opts.settings = {
-              Lua = {
-                workspace = {
-                  library = {
-                    '${3rd}/love2d/library',
-                  },
-                },
-              },
-            }
+            -- lua_opts.capabilities = require('blink.cmp').get_lsp_capabilities()
+            -- lua_opts.settings = {
+            --   Lua = {
+            --     workspace = {
+            --       library = {
+            --         '${3rd}/love2d/library',
+            --       },
+            --     },
+            --   },
+            -- }
             nvim_lsp.lua_ls.setup(lua_opts)
           end,
           denols = function()
