@@ -9,6 +9,18 @@ return {
 
       vim.keymap.set('i', '<right>', function()
         if vim.fn['copilot#GetDisplayedSuggestion']().text ~= '' then
+          -- Clear any blink completions before accepting Copilot suggestion
+          -- This helps prevent the blinks ghost text re_draw error
+          if package.loaded['blink.cmp'] then
+            local blink = require('blink.cmp')
+            if blink.is_ghost_text_visible() then
+              pcall(function()
+                require('blink.cmp.completion.windows.ghost_text').clear_preview()
+              end)
+            end
+          end
+
+          -- Now accept the Copilot suggestion
           vim.api.nvim_feedkeys(vim.fn['copilot#Accept'](), 'i', true)
           return ''
         else
