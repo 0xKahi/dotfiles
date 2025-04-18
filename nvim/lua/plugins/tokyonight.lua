@@ -27,6 +27,7 @@ return {
       theme.apply_highlight(highlights, colors)
       theme.apply_lsp_highlights(highlights)
       theme.apply_markview_highlights(highlights)
+      theme.apply_icon_highlights(highlights)
     end,
 
     cache = true,

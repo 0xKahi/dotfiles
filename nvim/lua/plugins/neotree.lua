@@ -5,6 +5,7 @@ return {
   dependencies = {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
+    'echasnovski/mini.icons',
     -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     -- 'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
   },
@@ -68,6 +69,33 @@ return {
             staged = ' ',
             conflict = '󰗖 ',
           },
+        },
+        icon = {
+          provider = function(icon, node) -- setup a custom icon provider
+            local text, hl
+            local mini_icons = require('mini.icons')
+            if node.type == 'file' then -- if it's a file, set the text/hl
+              text, hl = mini_icons.get('file', node.name)
+            elseif node.type == 'directory' then -- get directory icons
+              text, hl = mini_icons.get('directory', node.name)
+              -- only set the icon text if it is not expanded
+              if node:is_expanded() then
+                text = nil
+              end
+            end
+
+            -- set the icon text/highlight only if it exists
+            if text then
+              icon.text = text
+            end
+            if hl then
+              icon.highlight = hl
+            end
+          end,
+          -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
+          -- then these will never be used.
+          default = '*',
+          highlight = 'NeoTreeFileIcon',
         },
         file_size = {
           enabled = false,

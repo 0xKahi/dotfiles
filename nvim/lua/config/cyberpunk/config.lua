@@ -149,6 +149,17 @@ function M.apply_markview_highlights(highlights)
   highlights['MarkviewListItemMinus'] = { fg = cyberpunk.core.tky_blue }
 end
 
+function M.apply_icon_highlights(highlights)
+  highlights['DefaultFolderIcon'] = { fg = '#82AAFF' }
+  highlights['AppFolderIcon'] = { fg = '#EF8FA4' }
+  highlights['LibraryFolderIcon'] = { fg = '#8EEDB0' }
+  highlights['TestFolderIcon'] = { fg = '#0db9d7' }
+  highlights['NestJsModuleIcon'] = { fg = '#FF757F' }
+  highlights['NestJsServiceIcon'] = { fg = '#FFE675' }
+  highlights['NestJsResolverIcon'] = { fg = '#4fd6be' }
+  highlights['NestJsControllerIcon'] = { fg = '#75B4FF' }
+end
+
 function M.apply_colors(colors)
   colors['border_highlight'] = cyberpunk.core.neon_green
   colors['hint'] = cyberpunk.core.hint
