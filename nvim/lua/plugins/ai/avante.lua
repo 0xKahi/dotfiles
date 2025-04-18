@@ -46,7 +46,7 @@ return {
     opts = {
       -- add any opts here
       -- for example
-      provider = 'claude-small', -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
+      provider = 'openai-small', -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
       -- WARNING: Since auto-suggestions are a high-frequency operation and therefore expensive,
       -- currently designating it as `copilot` provider is dangerous because: https://github.com/yetone/avante.nvim/issues/1048
       -- Of course, you can reduce the request frequency by increasing `suggestion.debounce`.
@@ -56,7 +56,15 @@ return {
         endpoint = 'https://api.anthropic.com',
         model = 'claude-3-7-sonnet-latest',
         temperature = 0,
-        max_tokens = 4096,
+        max_tokens = 10000,
+      },
+      openai = {
+        endpoint = 'https://api.openai.com/v1',
+        model = 'gpt-4.1',
+        temperature = 0,
+        max_tokens = 8192,
+        max_completion_tokens = 10000, -- Increase this to include reasoning tokens (for reasoning models)
+        reasoning_effort = 'medium', -- low|medium|high, only used for reason
       },
       vendors = {
         -- set claude providers seperately so its easier to switch between them
@@ -64,11 +72,23 @@ return {
           __inherited_from = 'claude',
           endpoint = 'https://api.anthropic.com',
           model = 'claude-3-7-sonnet-latest',
+          max_tokens = 8192,
         },
         ['claude-small'] = {
           __inherited_from = 'claude',
           endpoint = 'https://api.anthropic.com',
           model = 'claude-3-5-haiku-latest',
+          max_tokens = 4096,
+        },
+        ['openai-big'] = {
+          __inherited_from = 'openai',
+          model = 'gpt-4.1',
+          max_tokens = 8192,
+        },
+        ['openai-small'] = {
+          __inherited_from = 'openai',
+          model = 'gpt-4.1-mini',
+          max_tokens = 4096,
         },
       },
       behaviour = {

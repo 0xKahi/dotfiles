@@ -9,6 +9,16 @@ local switch_commands = {
       require('avante.api').switch_provider('claude-small')
     end,
   },
+  ['avante_openai_4.1'] = {
+    func = function()
+      require('avante.api').switch_provider('openai-big')
+    end,
+  },
+  ['avante_openai_4.1-mini'] = {
+    func = function()
+      require('avante.api').switch_provider('openai-small')
+    end,
+  },
 }
 
 vim.api.nvim_create_user_command('Switch', function(opts)
