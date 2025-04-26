@@ -158,6 +158,7 @@ function M.apply_icon_highlights(highlights)
   highlights['NestJsServiceIcon'] = { fg = '#FFE675' }
   highlights['NestJsResolverIcon'] = { fg = '#4fd6be' }
   highlights['NestJsControllerIcon'] = { fg = '#75B4FF' }
+  highlights['E2ESpecIcon'] = { fg = '#3582de' }
 end
 
 function M.apply_colors(colors)

@@ -19,6 +19,7 @@ return {
         ['resolver.ts'] = { glyph = ' ', hl = 'NestJsResolverIcon' },
         ['controller.ts'] = { glyph = ' ', hl = 'NestJsControllerIcon' },
         ['conf'] = { glyph = '󰢻 ' },
+        ['e2e-spec.ts'] = { glyph = '󰂖 ', hl = 'E2ESpecIcon' },
       },
       default = {
         directory = { hl = 'DefaultFolderIcon' },
