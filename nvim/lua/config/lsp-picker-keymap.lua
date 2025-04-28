@@ -37,47 +37,6 @@ function M.setup_telescope_lsp_keymaps(bufnr)
   vim.keymap.set('n', 'gi', telescope.lsp_implementations, { buffer = bufnr, desc = '[G]o to [I]mplementation' })
 end
 
-local function add_to_avante(filepath)
-  -- Convert to relative path as needed
-  local relative_path = require('avante.utils').relative_path(filepath)
-
-  -- Get the Avante sidebar
-  local sidebar = require('avante').get()
-
-  local was_closed = not sidebar:is_open()
-  -- Ensure Avante sidebar is open
-  if was_closed then
-    require('avante.api').ask()
-    sidebar = require('avante').get()
-  end
-
-  -- Add the file to Avante
-  sidebar.file_selector:add_selected_file(relative_path)
-
-  -- Notify the user
-  vim.notify('Added ' .. relative_path .. ' to Avante', vim.log.levels.INFO)
-end
-
-local function format_path(filepath)
-  local cwd = vim.fs.normalize(vim.fn.getcwd(), { _fast = true, expand_env = false })
-  local home = vim.fs.normalize('~')
-  local path = vim.fs.normalize(filepath, { _fast = true, expand_env = false })
-
-  if path:find(cwd .. '/', 1, true) == 1 and #path > #cwd then
-    path = path:sub(#cwd + 2)
-  else
-    local root = require('snacks').git.get_root(path)
-    if root and root ~= '' and path:find(root, 1, true) == 1 then
-      local tail = vim.fn.fnamemodify(root, ':t')
-      path = '⋮' .. tail .. '/' .. path:sub(#root + 2)
-    elseif path:find(home, 1, true) == 1 then
-      path = '~' .. path:sub(#home + 1)
-    end
-  end
-  path = path:gsub('/$', '')
-  return path
-end
-
 function M.setup_avante_lsp_keymaps(bufnr)
   vim.keymap.set('n', 'ga', function()
     vim.lsp.buf.definition({
@@ -100,9 +59,9 @@ function M.setup_avante_lsp_keymaps(bufnr)
           end)
         end
 
-        local formated = format_path(filepath)
+        local formated = require('config.snacks').format_path(filepath)
         -- Add the definition file to Avante
-        add_to_avante(formated)
+        require('config.avante').add_to_avante(formated)
       end,
     })
   end, { buffer = bufnr, desc = '[G]rab [A]vante ' })
