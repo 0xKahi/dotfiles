@@ -147,6 +147,7 @@ function M.apply_markview_highlights(highlights)
   highlights['MarkviewBlockQuoteImportant'] = { fg = cyberpunk.markview.important }
   highlights['MarkviewBlockQuoteInfo'] = { fg = cyberpunk.markview.info }
   highlights['MarkviewListItemMinus'] = { fg = cyberpunk.core.tky_blue }
+  highlights['MarkviewListItemMinusScope'] = { fg = cyberpunk.core.bright_magenta }
 end
 
 function M.apply_icon_highlights(highlights)

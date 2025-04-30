@@ -109,6 +109,7 @@ return {
         inline_codes = { enable = false },
         hyperlinks = { enable = true },
         internal_links = { enable = true },
+        escapes = { enable = true },
         footnotes = {},
       },
 

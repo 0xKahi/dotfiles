@@ -80,15 +80,17 @@ return {
             -- }
             nvim_lsp.lua_ls.setup(lua_opts)
           end,
-          denols = function()
-            nvim_lsp.denols.setup({
-              root_dir = nvim_lsp.util.root_pattern('deno.json', 'deno.jsonc'),
-            })
-          end,
+
           ts_ls = function()
             nvim_lsp.ts_ls.setup({
               root_dir = nvim_lsp.util.root_pattern('package.json'),
               single_file_support = false,
+            })
+          end,
+
+          denols = function()
+            nvim_lsp.denols.setup({
+              root_dir = nvim_lsp.util.root_pattern('deno.json', 'deno.jsonc'),
             })
           end,
         },
