@@ -64,7 +64,7 @@ return {
         temperature = 0,
         max_tokens = 8192,
         max_completion_tokens = 10000, -- Increase this to include reasoning tokens (for reasoning models)
-        reasoning_effort = 'medium', -- low|medium|high, only used for reason
+        -- reasoning_effort = 'medium', -- low|medium|high, only used for reason
       },
       vendors = {
         -- set claude providers seperately so its easier to switch between them
