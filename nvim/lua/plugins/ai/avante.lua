@@ -195,6 +195,26 @@ return {
         debounce = 600,
         throttle = 600,
       },
+
+      web_search_engine = {
+        provider = 'tavily', -- tavily, serpapi, searchapi, google, kagi, brave, or searxng
+        proxy = nil, -- proxy support, e.g., http://127.0.0.1:7890
+      },
+
+      ---- mcp hub specific options ----
+      -- system_prompt as function ensures LLM always has latest MCP server state
+      -- This is evaluated for every message, even in existing chats
+      system_prompt = function()
+        local hub = require('mcphub').get_hub_instance()
+        return hub:get_active_servers_prompt()
+      end,
+      -- Using function prevents requiring mcphub before it's loaded
+      custom_tools = function()
+        return {
+          require('mcphub.extensions.avante').mcp_tool(),
+        }
+      end,
+      ---- mcp hub specific options ----
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = 'make',

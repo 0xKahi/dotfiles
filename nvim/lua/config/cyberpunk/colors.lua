@@ -5,6 +5,7 @@ M.core = {
   bg = '#312954',
   dark_bg = '#261d45',
   black = '#1b1d2b',
+  secondary_black = '#1e2030',
   white = '#c8d3f5',
   magenta = '#D498F8',
   red = '#ED7892',
@@ -45,6 +46,7 @@ M.lsp = {
   operator = '#fca7ea',
   keyword_purple = '#c099ff',
   func = '#82aaff',
+  delimiter = '#89DDFF',
 }
 
 M.markview = {

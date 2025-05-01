@@ -94,6 +94,24 @@ function M.apply_highlight(highlights, colors)
   highlights['AvanteReversedThirdTitle'] = { fg = cyberpunk.core.semi_light_black }
   highlights['AvanteSidebarWinSeparator'] = { fg = cyberpunk.core.neon_blue }
   highlights['AvanteSidebarWinHorizontalSeparator'] = { fg = cyberpunk.core.neon_green, bg = '' }
+
+  highlights['MCPHubNormal'] = { fg = cyberpunk.core.fg, bg = '', default = true }
+  highlights['MCPHubSuccess'] = { fg = cyberpunk.core.bright_green }
+  highlights['MCPHubLink'] = { cterm = { underline = true }, underline = true, fg = cyberpunk.core.cyan }
+  -- highlights['MCPHubHeaderAccent'] = { bg = cyberpunk.core.secondary_black, fg = cyberpunk.core.tky_blue }
+  set_highlight(highlights, { 'MCPHubJsonNumber', 'MCPHubJsonBoolean' }, { fg = cyberpunk.lsp.builtin })
+  highlights['MCPHubJsonNull'] = { fg = cyberpunk.lsp.builtin_bright }
+  highlights['MCPHubJsonString'] = { fg = cyberpunk.lsp.string }
+  highlights['MCPHubJsonProperty'] = { fg = cyberpunk.lsp.property }
+  highlights['MCPHubJsonPunctuation'] = { fg = cyberpunk.lsp.delimiter }
+  set_highlight(
+    highlights,
+    { 'MCPHubActiveItem', 'MCPHubSuccessFill' },
+    { cterm = { bold = true }, bold = true, fg = '#1A1B26', bg = cyberpunk.core.bright_green }
+  )
+  highlights['MCPHubActiveItemMuted'] =
+    { cterm = { bold = true }, bold = true, fg = cyberpunk.lsp.comments, bg = cyberpunk.core.bright_green }
+  set_highlight(highlights, { 'MCPHubInfo', 'MCPHubCode' }, { fg = cyberpunk.core.bright_magenta })
 end
 
 function M.apply_lsp_highlights(highlights)
