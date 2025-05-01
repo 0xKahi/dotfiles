@@ -17,6 +17,7 @@ alias code_file="z ~/Desktop/code"
 alias obs_file="z ~/Desktop/code/obsidian"
 alias SHUFFLE="z ~/Desktop/code/shuffle"
 alias J2="z ~/Desktop/code/J2"
+alias claude_config="cd ~/Library/Application\ Support/Claude"
 
 # for configs 
 alias MYZSHRC="nvim ~/.config/zsh/.zshrc"

@@ -6,6 +6,12 @@ autoload bashcompinit && bashcompinit
 autoload -Uz compinit
 compinit
 
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(${HOME}/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
 #source $ZSH/oh-my-zsh.sh
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
