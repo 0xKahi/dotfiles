@@ -1,14 +1,11 @@
--- personal keymap
+----------------------------------------
+---------------- core ------------------
+----------------------------------------
+
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true }) -- set space as leader key
 vim.api.nvim_set_keymap('i', 'kj', '<ESC>', { noremap = true })
 vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 vim.keymap.set('n', 'U', '<C-r>', { noremap = true, desc = 'Redo' })
-
--- toggle nvim virtual lines
-vim.keymap.set('n', 'gk', function()
-  local new_config = not vim.diagnostic.config().virtual_lines
-  vim.diagnostic.config({ virtual_lines = new_config })
-end, { desc = 'Toggle diagnostic virtual_lines' })
 
 vim.api.nvim_set_keymap('n', ']b', ':bnext<enter>', { desc = '[B]uffer next', noremap = false })
 vim.api.nvim_set_keymap('n', '[b', ':bprev<enter>', { desc = '[B]uffer previous', noremap = false })
@@ -39,12 +36,23 @@ vim.keymap.set({ 'n', 'v' }, '<leader>sr', function()
   vim.fn.feedkeys(':%s/' .. escaped_text, 'n')
 end, { noremap = true, silent = true, desc = '[S]earch and [R]eplace' })
 
---- Plugin Remaps --
+----------------------------------------
+------------- diagnostic ---------------
+----------------------------------------
 
--- Telescope
+-- toggle nvim virtual lines
+vim.keymap.set('n', 'gk', function()
+  local new_config = not vim.diagnostic.config().virtual_lines
+  vim.diagnostic.config({ virtual_lines = new_config })
+end, { desc = 'Toggle diagnostic virtual_lines' })
+
+vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
+
+----------------------------------------
+-------------- plugins -----------------
+----------------------------------------
 
 -- lualine
--- Map <leader>ll{number} to jump to that buffer
 for i = 1, 9 do
   vim.keymap.set(
     'n',
@@ -60,9 +68,8 @@ vim.keymap.set('n', '<leader>llr', function()
 end, { desc = '[L]ua [L]ine [R]efresh', silent = false, noremap = true })
 
 -- Conform (Formatter)
-local conform = require('conform')
 vim.keymap.set({ 'n', 'v' }, '<leader>fm', function()
-  conform.format({
+  require('conform').format({
     lsp_fallback = true,
     async = false,
     timeout_ms = 500,

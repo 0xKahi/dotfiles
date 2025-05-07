@@ -1,24 +1,26 @@
 return {
   {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v3.x',
-    lazy = true,
-    config = false,
-    init = function()
-      -- Disable automatic setup, we are doing it manually
-      vim.g.lsp_zero_extend_cmp = 0
-      vim.g.lsp_zero_extend_lspconfig = 0
-    end,
-  },
-  {
-    'williamboman/mason.nvim',
+    'mason-org/mason.nvim',
     lazy = false,
     opts = {
       ui = {
         border = 'rounded',
       },
     },
-    config = true,
+  },
+  {
+    'mason-org/mason-lspconfig.nvim',
+    lazy = true,
+    dependencies = {
+      'mason-org/mason.nvim',
+    },
+    config = function()
+      require('mason-lspconfig').setup({
+        automatic_enable = true,
+        ensure_installed = { 'ts_ls', 'eslint', 'lua_ls', 'rust_analyzer', 'marksman', 'autotools_ls', 'pyright' },
+        automatic_installation = false,
+      })
+    end,
   },
   {
     'neovim/nvim-lspconfig',
@@ -26,7 +28,8 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       { 'hrsh7th/cmp-nvim-lsp' },
-      { 'williamboman/mason-lspconfig.nvim' },
+      { 'mason-org/mason.nvim' },
+      { 'mason-org/mason-lspconfig.nvim' },
       -- { 'nvim-telescope/telescope.nvim' },
       {
         'j-hui/fidget.nvim',
@@ -46,55 +49,90 @@ return {
       },
     },
     config = function(_, opts)
-      -- This is where all the LSP shenanigans will live
-      local lsp = require('lsp-zero')
-      lsp.extend_lspconfig()
-      --- if you want to know more about lsp-zero and mason.nvim
-      --- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
-      lsp.on_attach(function(client, bufnr)
+      -- Common setup function for all LSP servers
+      local on_attach = function(client, bufnr)
+        -- Load your keymaps
         require('config.lsp-picker-keymap').setup_snacks_lsp_keymaps(bufnr)
         require('config.lsp-picker-keymap').setup_avante_lsp_keymaps(bufnr)
-        -- require('config.lsp-picker-keymap').setup_telescope_lsp_keymaps(bufnr)
+      end
 
-        -- see :help lsp-zero-keybindings
-        -- to learn the available actions
-        lsp.default_keymaps({ buffer = bufnr })
-      end)
+      local validate_start = function(bufnr, on_dir, root_markers)
+        local filename = vim.api.nvim_buf_get_name(bufnr)
+        local root = vim.fs.find(root_markers, {
+          path = vim.fs.dirname(filename),
+          upward = true,
+        })[1]
 
-      local nvim_lsp = require('lspconfig')
-      require('mason-lspconfig').setup({
-        ensure_installed = { 'ts_ls', 'eslint', 'lua_ls', 'rust_analyzer', 'marksman', 'autotools_ls', 'pyright' },
-        handlers = {
-          lsp.default_setup,
-          lua_ls = function()
-            local lua_opts = lsp.nvim_lua_ls()
-            -- lua_opts.capabilities = require('blink.cmp').get_lsp_capabilities()
-            -- lua_opts.settings = {
-            --   Lua = {
-            --     workspace = {
-            --       library = {
-            --         '${3rd}/love2d/library',
-            --       },
-            --     },
-            --   },
-            -- }
-            nvim_lsp.lua_ls.setup(lua_opts)
-          end,
+        if root then
+          on_dir(vim.fs.dirname(root))
+        end
+      end
 
-          ts_ls = function()
-            nvim_lsp.ts_ls.setup({
-              root_dir = nvim_lsp.util.root_pattern('package.json'),
-              single_file_support = false,
-            })
-          end,
+      -- Define default config
+      vim.lsp.config('*', {
+        on_attach = on_attach,
+      })
 
-          denols = function()
-            nvim_lsp.denols.setup({
-              root_dir = nvim_lsp.util.root_pattern('deno.json', 'deno.jsonc'),
-            })
-          end,
+      -- TypeScript config
+      vim.lsp.config('ts_ls', {
+        root_markers = { 'package.json' },
+        root_dir = function(bufnr, on_dir)
+          validate_start(bufnr, on_dir, { 'package.json' })
+        end,
+        single_file_support = false,
+      })
+
+      -- Deno config
+      vim.lsp.config('denols', {
+        root_markers = { 'deno.json', 'deno.jsonc' },
+        root_dir = function(bufnr, on_dir)
+          validate_start(bufnr, on_dir, { 'deno.json', 'deno.jsonc' })
+        end,
+      })
+
+      -- ESLint config
+      vim.lsp.config('eslint', {
+        root_dir = function(bufnr, on_dir)
+          validate_start(bufnr, on_dir, { 'eslint.config.js', 'eslint.config.mjs' })
+        end,
+      })
+
+      -- Biome config
+      vim.lsp.config('biome', {
+        root_dir = function(bufnr, on_dir)
+          validate_start(bufnr, on_dir, { 'biome.json', 'biome.jsonc' })
+        end,
+      })
+
+      -- Lua config
+      vim.lsp.config('lua_ls', {
+        settings = {
+          Lua = {
+            runtime = {
+              version = 'LuaJIT',
+            },
+            diagnostics = {
+              globals = { 'vim' },
+            },
+            workspace = {
+              library = vim.api.nvim_get_runtime_file('', true),
+              checkThirdParty = false,
+            },
+            telemetry = {
+              enable = false,
+            },
+          },
         },
-        automatic_installation = false,
+      })
+
+      vim.api.nvim_create_autocmd('LspAttach', {
+        desc = 'LSP actions',
+        callback = function(event)
+          local conf = { buffer = event.buf }
+          vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', conf)
+          vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', conf)
+          vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', conf)
+        end,
       })
     end,
   },

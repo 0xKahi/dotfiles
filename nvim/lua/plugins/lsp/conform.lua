@@ -6,11 +6,11 @@ return {
       typescript = { 'biome', 'prettier' },
       javascriptreact = { 'biome', 'prettier', stop_after_first = true },
       typescriptreact = { 'biome', 'prettier', stop_after_first = true },
-      css = { 'prettier' },
-      html = { 'prettier' },
-      json = { 'prettier' },
-      yaml = { 'prettier' },
-      markdown = { 'prettier' },
+      css = { 'biome', 'prettier', stop_after_first = true },
+      -- html = { 'prettier' },
+      json = { 'biome', 'prettier', stop_after_first = true },
+      -- yaml = { 'prettier' },
+      -- markdown = { 'prettier' },
       lua = { 'stylua' },
     },
 
@@ -21,6 +21,10 @@ return {
       end
       return { timeout_ms = 500, lsp_fallback = true }
     end,
+
+    default_format_opts = {
+      lsp_format = "fallback",
+    },
 
     formatters = {
       prettier = {
