@@ -1,5 +1,5 @@
 return {
-  'brenoprata10/nvim-highlight-colors',
+  '0xKahi/nvim-highlight-colors',
   event = { 'BufReadPre', 'BufNewFile' },
   opts = {
     ---Render style
@@ -33,6 +33,9 @@ return {
 
     ---Highlight hsl colors, e.g. 'hsl(150deg 30% 40%)'
     enable_hsl = true,
+
+    ---Highlight oklch colors e.g. 'oklch(0.88 0.1519 158.49)'
+    enable_oklch = true,
 
     ---Highlight CSS variables, e.g. 'var(--testing-color)'
     enable_var_usage = true,
