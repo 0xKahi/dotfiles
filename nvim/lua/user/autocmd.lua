@@ -26,7 +26,14 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.keymap.set('n', 'q', ':bd<CR>', { buffer = true, noremap = true, silent = true, desc = '[Q]uit [3]' })
   end,
 })
------- for closing files ------
+--------- others --------
+
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function()
+    -- disable insert comment header on new line
+    vim.opt.formatoptions:remove({ 'c', 'r', 'o' })
+  end,
+})
 
 ------ for markdown ------
 vim.api.nvim_create_autocmd('FileType', {
@@ -35,7 +42,6 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.opt_local.conceallevel = 1
   end,
 })
------- for markdown ------
 
 ------ for RESTY PLUGIN ------
 vim.api.nvim_create_autocmd('FileType', {
@@ -54,4 +60,3 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.api.nvim_set_option_value('formatprg', 'jq', { scope = 'local' })
   end,
 })
------- for RESTY PLUGIN ------

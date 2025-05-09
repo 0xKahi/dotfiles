@@ -1,5 +1,4 @@
 -- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -46,10 +45,12 @@ vim.opt.termguicolors = true
 vim.opt.colorcolumn = ''
 vim.opt.cursorline = true
 
+vim.o.winborder = 'single'
+vim.o.winblend = 0
+
 vim.opt.clipboard:append('unnamedplus')
 
 vim.opt.conceallevel = 0
-vim.opt.formatoptions:remove({ 'c', 'r', 'o' }) -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
 
 -- Highlight settings
 vim.cmd('highlight Visual cterm=NONE gui=NONE guibg=#311b92')
