@@ -9,6 +9,13 @@ function M.pxToRem(px)
   return px / 16
 end
 
+function M.remToPx(rem)
+  if type(rem) ~= 'number' then
+    return nil, 'Input must be a number'
+  end
+  return rem * 16
+end
+
 function M.msToSec(ms)
   if type(ms) ~= 'number' then
     return nil, 'Input must be a number'

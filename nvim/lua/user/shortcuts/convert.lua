@@ -1,26 +1,35 @@
 local converters = require('utils.converters')
 
 local convert_commands = {
-  pxToRem = {
+  pxOrRem = {
     func = function()
-      local px = tonumber(vim.fn.input('Enter px value: '))
+      vim.ui.select({ 'px', 'rem' }, {
+        prompt = 'Select px or rem',
+      }, function(choice)
+        local value = tonumber(vim.fn.input('Enter the value to convert: '))
+        if not value then
+          print('Invalid input. Please enter a number.')
+          return
+        end
 
-      -- Check if we have a valid number
-      if not px then
-        print('Invalid input. Please enter a number.')
-        return
-      end
+        local error, message
+        if choice == 'px' then
+          local converted, err = converters.pxToRem(value)
+          error = err
+          message = string.format('%dpx is equal to %.2frem', value, converted)
+        else
+          local converted, err = converters.remToPx(value)
+          error = err
+          message = string.format('%.2frem is equal to %dpx', value, converted)
+        end
 
-      -- Convert px to rem using our imported function
-      local rem, error = converters.pxToRem(px)
+        if error then
+          print(error)
+          return
+        end
 
-      if error then
-        print(error)
-        return
-      end
-
-      -- Print the result
-      print(string.format('%dpx is equal to %.2frem', px, rem))
+        print(message)
+      end)
     end,
   },
   msToSec = {

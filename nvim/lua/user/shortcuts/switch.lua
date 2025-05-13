@@ -1,22 +1,18 @@
+local avante_models = {
+  ['claude_sonnet'] = 'claude-big',
+  ['claude_haiku'] = 'claude-small',
+  ['openai_4.1'] = 'openai-big',
+  ['openai_4.1-mini'] = 'openai-small',
+}
+
 local switch_commands = {
-  avante_claude_sonnet = {
+  avante = {
     func = function()
-      require('avante.api').switch_provider('claude-big')
-    end,
-  },
-  avante_claude_haiku = {
-    func = function()
-      require('avante.api').switch_provider('claude-small')
-    end,
-  },
-  ['avante_openai_4.1'] = {
-    func = function()
-      require('avante.api').switch_provider('openai-big')
-    end,
-  },
-  ['avante_openai_4.1-mini'] = {
-    func = function()
-      require('avante.api').switch_provider('openai-small')
+      vim.ui.select(vim.tbl_keys(avante_models), {
+        prompt = 'Select Avante AI Model',
+      }, function(choice)
+        require('avante.api').switch_provider(avante_models[choice])
+      end)
     end,
   },
 }
