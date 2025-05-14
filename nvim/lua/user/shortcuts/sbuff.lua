@@ -4,7 +4,24 @@ local scratch_buffers = {
       Snacks.scratch.open({
         name = 'calculator',
         ft = 'lua',
-        icon = '󰃬 ',
+        icon = '󰃬',
+        autowrite = true,
+        root = vim.fn.stdpath('data') .. '/scratch',
+        filekey = {
+          cwd = false, -- use current working directory
+          branch = false, -- use current branch name
+          count = false, -- use vim.v.count1
+        },
+        win = { style = 'scratch', relative = 'editor' },
+      })
+    end,
+  },
+  ['  scrap-paper'] = {
+    func = function()
+      Snacks.scratch.open({
+        name = 'scrap-paper',
+        ft = 'markdown',
+        icon = ' ',
         autowrite = true,
         root = vim.fn.stdpath('data') .. '/scratch',
         filekey = {
