@@ -11,6 +11,11 @@ local switch_commands = {
       vim.ui.select(vim.tbl_keys(avante_models), {
         prompt = 'Select Avante AI Model',
       }, function(choice)
+        if choice == nil then
+          print('No choice made. Conversion cancelled.')
+          return
+        end
+
         require('avante.api').switch_provider(avante_models[choice])
       end)
     end,

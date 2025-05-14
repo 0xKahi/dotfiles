@@ -152,22 +152,6 @@ return {
       { desc = '[F]ind [N]otification', silent = false, noremap = true },
       mode = { 'n' },
     },
-    {
-      '<leader>ssb',
-      function()
-        Snacks.scratch.select()
-      end,
-      { desc = '[S]elect [S]cratch [B]uffer', silent = false, noremap = true },
-      mode = { 'n' },
-    },
-    {
-      '<leader>tsb',
-      function()
-        Snacks.scratch()
-      end,
-      { desc = '[T]oggle [S]cratch [B]uffer', silent = false, noremap = true },
-      mode = { 'n' },
-    },
   },
 
   opts = {
@@ -311,7 +295,7 @@ return {
       ---@type string|string[]?
       icon = nil, -- `icon|{icon, icon_hl}`. defaults to the filetype icon
       root = vim.fn.stdpath('data') .. '/scratch',
-      autowrite = false, -- automatically write when the buffer is hidden
+      autowrite = true, -- automatically write when the buffer is hidden
       -- unique key for the scratch file is based on:
       -- * name
       -- * ft

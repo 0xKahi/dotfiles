@@ -6,6 +6,11 @@ local convert_commands = {
       vim.ui.select({ 'px', 'rem' }, {
         prompt = 'Select px or rem',
       }, function(choice)
+        if choice == nil then
+          print('No choice made. Conversion cancelled.')
+          return
+        end
+
         local value = tonumber(vim.fn.input('Enter the value to convert: '))
         if not value then
           print('Invalid input. Please enter a number.')
