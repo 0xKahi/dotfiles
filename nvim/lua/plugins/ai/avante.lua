@@ -22,6 +22,7 @@ return {
         '<leader>aa',
         function()
           require('avante.api').ask()
+          vim.cmd('noautocmd startinsert!') -- gotta do this janky way cos `start_insert` bugs out
         end,
         mode = { 'v', 'n' },
         desc = '[A]vante [A]sk',

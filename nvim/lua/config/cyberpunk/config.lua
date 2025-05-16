@@ -233,6 +233,7 @@ local M = {}
 function M.apply_colors(colors)
   colors['border_highlight'] = cyberpunk.core.neon_green
   colors['hint'] = cyberpunk.core.hint
+  colors['bg_statusline'] = '' -- to remove avante header lines unser of other side effects
 end
 
 function M.apply_highlight(highlights, colors)
