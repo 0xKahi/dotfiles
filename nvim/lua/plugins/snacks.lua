@@ -27,7 +27,7 @@ return {
             vim.cmd.stopinsert()
           end,
           finder = 'buffers',
-          format = 'buffer',
+          format = 'file',
           hidden = false,
           unloaded = true,
           current = true,
