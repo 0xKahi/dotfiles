@@ -21,16 +21,22 @@ return {
       {
         '<leader>aa',
         function()
-          require('avante.api').ask()
-          vim.cmd('noautocmd startinsert!') -- gotta do this janky way cos `start_insert` bugs out
+          local mode = vim.api.nvim_get_mode().mode
+          if mode == 'n' then
+            require('avante.api').ask({ ask = true, without_selection = true })
+          else
+            require('avante.api').ask()
+          end
+          vim.cmd.normal('<Esc>') -- gotta do this janky way cos `start_insert` bugs out
         end,
-        mode = { 'v', 'n' },
+        mode = { 'n', 'v' },
         desc = '[A]vante [A]sk',
       },
       {
         '<leader>ae',
         function()
           require('avante.api').edit()
+          vim.cmd.normal('<Esc>') -- gotta do this janky way cos `start_insert` bugs out
         end,
         mode = { 'v', 'n' },
         desc = '[A]vante [E]dit',
@@ -48,6 +54,7 @@ return {
       -- add any opts here
       -- for example
       provider = 'openai-small', -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
+      mode = 'agentic',
       -- WARNING: Since auto-suggestions are a high-frequency operation and therefore expensive,
       -- currently designating it as `copilot` provider is dangerous because: https://github.com/yetone/avante.nvim/issues/1048
       -- Of course, you can reduce the request frequency by increasing `suggestion.debounce`.
@@ -166,6 +173,7 @@ return {
         edit = {
           border = 'rounded',
           start_insert = false, -- Start insert mode when opening the edit window
+          floating = false,
         },
         ask = {
           floating = false, -- Open the 'AvanteAsk' prompt in a floating window
