@@ -31,4 +31,30 @@ function M.debug_table(tbl, title)
   vim.notify(table_str, vim.log.levels.DEBUG)
 end
 
+---@class StartInINormaModeOpts
+---@field generic? fun() function to run on other modes without any specific mode functions
+---@field normal? fun() function to run on normal mode
+---@field other? fun() function to run on other modes
+
+--- Factory function to create snippet handlers.
+---@param opts StartInINormaModeOpts The configuration for this specific snippet type.
+function M.start_in_normal_mode(opts)
+  local func_to_call
+
+  if vim.api.nvim_get_mode().mode == 'n' then
+    func_to_call = opts.normal or opts.generic
+  else
+    func_to_call = opts.other or opts.generic
+  end
+
+  if func_to_call then
+    func_to_call()
+  end
+
+  if vim.api.nvim_get_mode().mode ~= 'n' then
+    -- feed the keys directly cos vim.cmd.normal() is buggy
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'n', false) -- gotta do this janky way cos `start_insert` in plugin bugs out
+  end
+end
+
 return M

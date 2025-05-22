@@ -1,4 +1,5 @@
 return {
+
   {
     'yetone/avante.nvim',
     -- event = 'VeryLazy',
@@ -21,13 +22,14 @@ return {
       {
         '<leader>aa',
         function()
-          local mode = vim.api.nvim_get_mode().mode
-          if mode == 'n' then
-            require('avante.api').ask({ ask = true, without_selection = true })
-          else
-            require('avante.api').ask()
-          end
-          vim.cmd.normal('<Esc>') -- gotta do this janky way cos `start_insert` bugs out
+          require('utils.misc').start_in_normal_mode({
+            normal = function()
+              require('avante.api').ask({ ask = true, without_selection = true })
+            end,
+            other = function()
+              require('avante.api').ask()
+            end,
+          })
         end,
         mode = { 'n', 'v' },
         desc = '[A]vante [A]sk',
@@ -53,7 +55,7 @@ return {
     opts = {
       -- add any opts here
       -- for example
-      provider = 'openai-small', -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
+      provider = 'gemini-pro', -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
       mode = 'agentic',
       -- WARNING: Since auto-suggestions are a high-frequency operation and therefore expensive,
       -- currently designating it as `copilot` provider is dangerous because: https://github.com/yetone/avante.nvim/issues/1048
@@ -74,12 +76,20 @@ return {
         max_completion_tokens = 10000, -- Increase this to include reasoning tokens (for reasoning models)
         -- reasoning_effort = 'medium', -- low|medium|high, only used for reason
       },
+      gemini = {
+        endpoint = 'https://generativelanguage.googleapis.com/v1beta/models',
+        -- endpoint = 'https://aiplatform.googleapis.com/v1',
+        model = 'gemini-2.5-pro-preview-05-06',
+        temperature = 0,
+        max_tokens = 8192,
+        -- reasoning_effort = 'medium', -- low|medium|high, only used for reason
+      },
       vendors = {
         -- set claude providers seperately so its easier to switch between them
         ['claude-big'] = {
           __inherited_from = 'claude',
           endpoint = 'https://api.anthropic.com',
-          model = 'claude-3-7-sonnet-latest',
+          model = 'claude-sonnet-4-20250514',
           max_tokens = 8192,
         },
         ['claude-small'] = {
@@ -97,6 +107,16 @@ return {
           __inherited_from = 'openai',
           model = 'gpt-4.1-mini',
           max_tokens = 4096,
+        },
+        ['gemini-pro'] = {
+          __inherited_from = 'gemini',
+          model = 'gemini-2.5-pro-preview-05-06',
+          max_tokens = 8192,
+        },
+        ['gemini-flash'] = {
+          __inherited_from = 'gemini',
+          model = 'gemini-2.5-flash-preview-05-20',
+          max_tokens = 8192,
         },
       },
       behaviour = {

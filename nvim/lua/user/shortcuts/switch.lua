@@ -3,6 +3,8 @@ local avante_models = {
   ['claude_haiku'] = 'claude-small',
   ['openai_4.1'] = 'openai-big',
   ['openai_4.1-mini'] = 'openai-small',
+  ['gemini-flash'] = 'gemini-flash',
+  ['gemini-pro'] = 'gemini-pro',
 }
 
 local switch_commands = {
