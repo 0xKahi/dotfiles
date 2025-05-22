@@ -1,4 +1,4 @@
-local snippetUtils = require('utils.snippets')
+local snippetUtils = require('snippets.libs.util')
 local M = {}
 
 M.entity = snippetUtils.basicSnippetHandler({
