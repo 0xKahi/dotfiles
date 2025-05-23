@@ -165,6 +165,7 @@ local function set_markview_plugin(highlights)
   highlights['MarkviewBlockQuoteDefault'] = { fg = cyberpunk.core.bright_magenta }
   highlights['MarkviewListItemMinus'] = { fg = cyberpunk.core.tky_blue }
   highlights['MarkviewListItemMinusScope'] = { fg = cyberpunk.core.bright_magenta }
+  highlights['MarkviewListItemStar'] = { fg = cyberpunk.core.bright_yellow }
 end
 
 ----------------------------------------
