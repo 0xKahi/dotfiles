@@ -188,9 +188,28 @@ return {
         group_empty_dirs = false,
         hijack_netrw_behavior = 'open_default',
         use_libuv_file_watcher = false,
+        commands = {
+          avante_add_files = function(state)
+            require('config.avante'):neotree_add_to_avante(state, { type = 'filesystem' })
+          end,
+        },
         window = {
           mappings = {
             -- Add your filesystem-specific mappings here
+            ['@'] = 'avante_add_files',
+          },
+        },
+      },
+      git_status = {
+        commands = {
+          avante_add_files = function(state)
+            require('config.avante'):neotree_add_to_avante(state, { type = 'git_status' })
+          end,
+        },
+        window = {
+          position = 'left',
+          mappings = {
+            ['@'] = 'avante_add_files',
           },
         },
       },
@@ -204,14 +223,6 @@ return {
         window = {
           mappings = {
             -- Add your buffers-specific mappings here
-          },
-        },
-      },
-      git_status = {
-        window = {
-          position = 'left',
-          mappings = {
-            -- Add your git_status-specific mappings here
           },
         },
       },

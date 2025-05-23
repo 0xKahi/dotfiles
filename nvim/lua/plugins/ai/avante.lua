@@ -55,7 +55,7 @@ return {
     opts = {
       -- add any opts here
       -- for example
-      provider = 'gemini-pro', -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
+      provider = 'gemini-flash', -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
       mode = 'agentic',
       -- WARNING: Since auto-suggestions are a high-frequency operation and therefore expensive,
       -- currently designating it as `copilot` provider is dangerous because: https://github.com/yetone/avante.nvim/issues/1048
