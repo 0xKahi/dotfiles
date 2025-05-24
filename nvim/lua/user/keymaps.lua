@@ -21,20 +21,42 @@ vim.keymap.set(
 )
 
 vim.keymap.set({ 'n', 'v' }, '<leader>sr', function()
-  local selected_text
-  if vim.fn.mode() == 'v' or vim.fn.mode() == 'V' then
-    -- Visual mode: yank selection to 'v' register
-    vim.cmd('normal! "vy')
-    selected_text = vim.fn.getreg('v')
-  else
-    -- Normal mode: get word under cursor
-    selected_text = vim.fn.expand('<cword>')
-  end
+  local cursorWord = require('utils.misc').get_word_under_cursor()
   -- Escape special characters
-  local escaped_text = vim.fn.escape(selected_text, '/\\')
+  local escaped_text = vim.fn.escape(cursorWord.selectedText, '/\\')
   -- Set command line with search pattern, ready for user input
   vim.fn.feedkeys(':%s/' .. escaped_text, 'n')
 end, { noremap = true, silent = true, desc = '[S]earch and [R]eplace' })
+
+-- keymap to format string under cursor
+vim.keymap.set({ 'n', 'v' }, '<leader>fs', function()
+  local formatList = {
+    ['camelCase'] = require('utils.fmt').toCamelCase,
+    ['PascalCase'] = require('utils.fmt').toPascalCase,
+    ['snake_case'] = require('utils.fmt').toSnakeCase,
+    ['kebab-case'] = require('utils.fmt').toKebabCase,
+  }
+
+  local cursorWord = require('utils.misc').get_word_under_cursor()
+
+  vim.ui.select(vim.tbl_keys(formatList), {
+    prompt = 'Choose Format Type',
+  }, function(formatChoice)
+    if formatChoice == nil then
+      print('No choice made.')
+      return
+    end
+
+    -- Replace the selected text or word under cursor with the snake_case version
+    if cursorWord.cursorPos then
+      vim.fn.setpos("'<", cursorWord.cursorPos.startPos)
+      vim.fn.setpos("'>", cursorWord.cursorPos.endPos)
+      vim.cmd('normal! gvc' .. formatList[formatChoice](cursorWord.selectedText))
+    else
+      vim.cmd('normal! ciw' .. formatList[formatChoice](cursorWord.selectedText))
+    end
+  end)
+end, { noremap = true, silent = true, desc = '[F]ormat [S]tring' })
 
 ----------------------------------------
 ------------- diagnostic ---------------

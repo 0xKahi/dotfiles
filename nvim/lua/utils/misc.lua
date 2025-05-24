@@ -57,4 +57,27 @@ function M.start_in_normal_mode(opts)
   end
 end
 
+---@class WordUnderCursor
+---@field selectedText string selected text under cursor
+---@field cursorPos? {startPos: integer[], endPos: integer[]} start and end positions of the selected text if in visual mmode
+
+--- function to get the word under cursor or selected text in visual mode
+---@return WordUnderCursor cursorWord a table containing the selected text and cursor position
+function M.get_word_under_cursor()
+  if vim.fn.mode() == 'v' or vim.fn.mode() == 'V' then
+    -- Visual mode: yank selection to 'v' register
+    vim.cmd('normal! "vy')
+    local selectedText = vim.fn.getreg('v')
+    local cursorPos = {
+      startPos = vim.fn.getpos("'<"),
+      endPos = vim.fn.getpos("'>"),
+    }
+    return { selectedText = selectedText, cursorPos = cursorPos }
+  else
+    -- Normal mode: get word under cursor
+    local selectedText = vim.fn.expand('<cword>')
+    return { selectedText = selectedText }
+  end
+end
+
 return M
