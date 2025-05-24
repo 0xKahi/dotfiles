@@ -11,7 +11,7 @@ local M = {}
 
 --- Factory function to create snippet handlers.
 ---@param config SnippetHandlerConfig The configuration for this specific snippet type.
----@return SnippetActions A table containing getSnippet and pasteSnippet functions.
+---@return SnippetActions snippetAction containing getSnippet and pasteSnippet functions.
 M.basicSnippetHandler = function(config)
   return {
     getSnippet = function()
@@ -29,6 +29,24 @@ M.basicSnippetHandler = function(config)
       end
 
       vim.api.nvim_paste(snippetText, false, -1)
+    end,
+  }
+end
+
+---@class SimpleSnippetHandlerConfig
+---@field snippet string The raw snippet string with placeholders.
+
+--- Factory function to create simple snippet handlers.
+---@param config SimpleSnippetHandlerConfig The configuration for this specific snippet type.
+---@return SnippetActions snipetAction table containing getSnippet and pasteSnippet functions.
+M.simpleSnippetHandler = function(config)
+  return {
+    getSnippet = function()
+      return config.snippet
+    end,
+
+    pasteSnippet = function()
+      vim.api.nvim_paste(config.snippet, false, -1)
     end,
   }
 end
