@@ -47,6 +47,9 @@ M.lsp = {
   keyword_purple = '#c099ff',
   func = '#82aaff',
   delimiter = '#89DDFF',
+  bold = '#b4637a',
+  -- highlighter= '#ab936e',
+  -- highlighter_bg = '#555555'
 }
 
 M.markview = {

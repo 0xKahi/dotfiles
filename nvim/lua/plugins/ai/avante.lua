@@ -80,7 +80,7 @@ return {
         endpoint = 'https://generativelanguage.googleapis.com/v1beta/models',
         -- endpoint = 'https://aiplatform.googleapis.com/v1',
         model = 'gemini-2.5-pro-preview-05-06',
-        temperature = 0,
+        temperature = 0.5,
         max_tokens = 8192,
         -- reasoning_effort = 'medium', -- low|medium|high, only used for reason
       },
