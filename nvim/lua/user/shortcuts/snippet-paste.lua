@@ -3,6 +3,7 @@ local snippet_commands = {
   [' nestJs-graphql'] = require('snippets.nestjs-graphql'),
   [' typeorm'] = require('snippets.typeorm'),
   ['󱢨 shuffle'] = require('snippets.shuffle'),
+  ['󰙨 test'] = require('snippets.quick-tests'),
 }
 
 vim.api.nvim_create_user_command('SnippetPaste', function()
