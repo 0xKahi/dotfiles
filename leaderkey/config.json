@@ -1,0 +1,157 @@
+{
+  "actions" : [
+    {
+      "actions" : [
+        {
+          "key" : "t",
+          "label" : "[T]erminal",
+          "type" : "application",
+          "value" : "/Applications/Ghostty.app"
+        },
+        {
+          "key" : "b",
+          "label" : "[B]rowser (Brave)",
+          "type" : "application",
+          "value" : "/Applications/Brave Browser.app"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "c",
+              "label" : "[D]is[C]ord",
+              "type" : "application",
+              "value" : "/Applications/Discord.app"
+            },
+            {
+              "key" : "g",
+              "label" : "[D]ata [G]rip",
+              "type" : "application",
+              "value" : "/Applications/DataGrip.app"
+            },
+            {
+              "key" : "k",
+              "label" : "[D]oc[K]er",
+              "type" : "application",
+              "value" : "/Applications/Docker.app"
+            }
+          ],
+          "key" : "d",
+          "label" : "[D]apps",
+          "type" : "group"
+        },
+        {
+          "key" : "a",
+          "label" : "[A]ctivity Monitor",
+          "type" : "application",
+          "value" : "/System/Applications/Utilities/Activity Monitor.app"
+        },
+        {
+          "key" : "c",
+          "label" : "[C]laude",
+          "type" : "application",
+          "value" : "/Applications/Claude.app"
+        }
+      ],
+      "key" : "o",
+      "label" : "[O]pen",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "actions" : [
+            {
+              "key" : "s",
+              "label" : "[S]huffle",
+              "type" : "url",
+              "value" : "https://github.com/shuffle-labs"
+            },
+            {
+              "key" : "k",
+              "label" : "[K]ahi",
+              "type" : "url",
+              "value" : "https://github.com/0xKahi?tab=repositories"
+            }
+          ],
+          "key" : "g",
+          "label" : "[G]it",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "7",
+              "label" : "[C]ontext[7]",
+              "type" : "url",
+              "value" : "https://context7.com/"
+            }
+          ],
+          "key" : "c",
+          "label" : "[C]...",
+          "type" : "group"
+        }
+      ],
+      "key" : "b",
+      "label" : "[B]ookmarks",
+      "type" : "group"
+    },
+    {
+      "actions" : [
+        {
+          "actions" : [
+            {
+              "key" : "b",
+              "label" : "[B]E repo",
+              "type" : "url",
+              "value" : "https://github.com/shuffle-labs/shufflecom-api"
+            },
+            {
+              "key" : "f",
+              "label" : "[F]E repo",
+              "type" : "url",
+              "value" : "https://github.com/shuffle-labs/shufflecom-interface"
+            },
+            {
+              "key" : "a",
+              "label" : "[A]dmin repo",
+              "type" : "url",
+              "value" : "https://github.com/shuffle-labs/shufflecom-admin-interface"
+            },
+            {
+              "key" : "d",
+              "label" : "[D]ev Ops repo",
+              "type" : "url",
+              "value" : "https://github.com/shuffle-labs/terraform-aws"
+            }
+          ],
+          "key" : "g",
+          "label" : "[G]it",
+          "type" : "group"
+        },
+        {
+          "actions" : [
+            {
+              "key" : "f",
+              "label" : "[F]eatures",
+              "type" : "url",
+              "value" : "https://www.notion.so/shufflecom/3e980f1dbc9448d5b72e57efd237fb11"
+            },
+            {
+              "key" : "d",
+              "label" : "[D]ocs",
+              "type" : "url",
+              "value" : "https://www.notion.so/shufflecom/Documentation-0873652436b249018e8f6967feaa7572"
+            }
+          ],
+          "key" : "n",
+          "label" : "[N]otion",
+          "type" : "group"
+        }
+      ],
+      "key" : "s",
+      "label" : "[S]huffle",
+      "type" : "group"
+    }
+  ],
+  "type" : "group"
+}
