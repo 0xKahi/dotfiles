@@ -5,7 +5,7 @@ return {
       'nvim-lua/plenary.nvim',
     },
     cmd = 'MCPHub', -- lazy load by default
-    build = 'npm install -g mcp-hub@latest', -- Installs globally
+    build = 'npm install -g mcp-hub@latest', -- Installs `mcp-hub` node binary globally
     config = function()
       require('mcphub').setup({
         -- Server configuration
@@ -14,7 +14,7 @@ return {
 
         native_servers = {}, -- add your native servers here
         -- Extension configurations
-        auto_approve = true,
+        auto_approve = false,
         auto_toggle_mcp_servers = true,
         extensions = {
           avante = {

@@ -57,6 +57,19 @@ return {
       -- for example
       provider = 'gemini-flash', -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
       mode = 'agentic',
+
+      disabled_tools = { -- temporary disable to try mcp hub nvim servers
+        'list_files', -- Built-in file operations
+        'search_files',
+        'read_file',
+        'create_file',
+        'rename_file',
+        'delete_file',
+        'create_dir',
+        'rename_dir',
+        'delete_dir',
+        'bash', -- Built-in terminal access
+      },
       -- WARNING: Since auto-suggestions are a high-frequency operation and therefore expensive,
       -- currently designating it as `copilot` provider is dangerous because: https://github.com/yetone/avante.nvim/issues/1048
       -- Of course, you can reduce the request frequency by increasing `suggestion.debounce`.
@@ -80,7 +93,7 @@ return {
         endpoint = 'https://generativelanguage.googleapis.com/v1beta/models',
         -- endpoint = 'https://aiplatform.googleapis.com/v1',
         model = 'gemini-2.5-pro-preview-05-06',
-        temperature = 0.5,
+        temperature = 0,
         max_tokens = 8192,
         -- reasoning_effort = 'medium', -- low|medium|high, only used for reason
       },
@@ -127,8 +140,12 @@ return {
         support_paste_from_clipboard = true,
         minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
         enable_token_counting = true, -- Whether to enable token counting. Default to true.
-        enable_cursor_planning_mode = true, -- Whether to enable Cursor Planning Mode. Default to false.
-        enable_claude_text_editor_tool_mode = false, -- Whether to enable Claude Text Editor Tool Mode.
+        -- enable_cursor_planning_mode = true, -- Whether to enable Cursor Planning Mode. Default to false.
+        auto_focus_sidebar = true,
+        auto_suggestions_respect_ignore = false,
+        jump_result_buffer_on_finish = false,
+        use_cwd_as_project_root = true,
+        auto_focus_on_diff_view = false,
       },
       file_selector = {
         provider = 'snacks',
@@ -171,8 +188,8 @@ return {
           reverse_switch_windows = '<S-Tab>',
           remove_file = 'd',
           add_file = '@',
-          close = { '<Esc>', 'q' },
-          close_from_input = { normal = { '<Esc>', 'q' } },
+          close = { '<Esc>' },
+          close_from_input = { normal = { '<Esc>' } },
         },
       },
       hints = { enabled = false },
