@@ -29,9 +29,11 @@ function M.picker_to_avante()
   end
 
   local sel = snacks_picker:selected()
+  local files_to_add = {}
   for _, item in ipairs(sel) do
-    require('config.avante').add_to_avante(item.file, true)
+    table.insert(files_to_add, item.file)
   end
+  require('config.avante').add_multiple_to_avante(files_to_add, true)
 end
 
 return M
