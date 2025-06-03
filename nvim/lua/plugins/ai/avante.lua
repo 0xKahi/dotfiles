@@ -75,61 +75,78 @@ return {
       -- Of course, you can reduce the request frequency by increasing `suggestion.debounce`.
       auto_suggestions_provider = nil,
       cursor_applying_provider = nil, -- The provider used in the applying phase of Cursor Planning Mode, defaults to nil, when nil uses Config.provider as the provider for the applying phase
-      claude = {
-        endpoint = 'https://api.anthropic.com',
-        model = 'claude-3-7-sonnet-latest',
-        temperature = 0,
-        max_tokens = 10000,
-      },
-      openai = {
-        endpoint = 'https://api.openai.com/v1',
-        model = 'gpt-4.1',
-        temperature = 0,
-        max_tokens = 8192,
-        max_completion_tokens = 10000, -- Increase this to include reasoning tokens (for reasoning models)
-        -- reasoning_effort = 'medium', -- low|medium|high, only used for reason
-      },
-      gemini = {
-        endpoint = 'https://generativelanguage.googleapis.com/v1beta/models',
-        -- endpoint = 'https://aiplatform.googleapis.com/v1',
-        model = 'gemini-2.5-pro-preview-05-06',
-        temperature = 0,
-        max_tokens = 8192,
-        -- reasoning_effort = 'medium', -- low|medium|high, only used for reason
-      },
-      vendors = {
-        -- set claude providers seperately so its easier to switch between them
+      providers = {
+        claude = {
+          endpoint = 'https://api.anthropic.com',
+          model = 'claude-3-7-sonnet-latest',
+          extra_request_body = {
+            temperature = 0,
+            max_tokens = 10000,
+          },
+        },
+        openai = {
+          endpoint = 'https://api.openai.com/v1',
+          model = 'gpt-4.1',
+          extra_request_body = {
+            temperature = 0,
+            max_tokens = 8192,
+            max_completion_tokens = 10000, -- Increase this to include reasoning tokens (for reasoning models)
+          },
+          -- reasoning_effort = 'medium', -- low|medium|high, only used for reason
+        },
+        gemini = {
+          endpoint = 'https://generativelanguage.googleapis.com/v1beta/models',
+          model = 'gemini-2.5-pro-preview-05-06',
+          extra_request_body = {
+            temperature = 0,
+            max_tokens = 8192,
+          },
+          -- reasoning_effort = 'medium', -- low|medium|high, only used for reason
+        },
         ['claude-big'] = {
           __inherited_from = 'claude',
           endpoint = 'https://api.anthropic.com',
           model = 'claude-sonnet-4-20250514',
-          max_tokens = 8192,
+          extra_request_body = {
+            max_tokens = 8192,
+          },
         },
         ['claude-small'] = {
           __inherited_from = 'claude',
           endpoint = 'https://api.anthropic.com',
           model = 'claude-3-5-haiku-latest',
-          max_tokens = 4096,
+          extra_request_body = {
+            max_tokens = 4096,
+          },
         },
         ['openai-big'] = {
           __inherited_from = 'openai',
           model = 'gpt-4.1',
-          max_tokens = 8192,
+          extra_request_body = {
+            max_tokens = 8192,
+          },
         },
         ['openai-small'] = {
           __inherited_from = 'openai',
           model = 'gpt-4.1-mini',
-          max_tokens = 4096,
+
+          extra_request_body = {
+            max_tokens = 4096,
+          },
         },
         ['gemini-pro'] = {
           __inherited_from = 'gemini',
           model = 'gemini-2.5-pro-preview-05-06',
-          max_tokens = 8192,
+          extra_request_body = {
+            max_tokens = 8192,
+          },
         },
         ['gemini-flash'] = {
           __inherited_from = 'gemini',
           model = 'gemini-2.5-flash-preview-05-20',
-          max_tokens = 8192,
+          extra_request_body = {
+            max_tokens = 8192,
+          },
         },
       },
       behaviour = {
@@ -143,7 +160,7 @@ return {
         -- enable_cursor_planning_mode = true, -- Whether to enable Cursor Planning Mode. Default to false.
         auto_focus_sidebar = true,
         auto_suggestions_respect_ignore = false,
-        jump_result_buffer_on_finish = false,
+        jump_result_buffer_on_finish = true,
         use_cwd_as_project_root = true,
         auto_focus_on_diff_view = false,
       },
@@ -230,8 +247,8 @@ return {
       --- @class AvanteConflictUserConfig
       diff = {
         autojump = true,
-        ---@type string | fun(): any
-        list_opener = 'copen',
+        --- ---@type string | fun(): any
+        --- list_opener = 'copen',
         --- Override the 'timeoutlen' setting while hovering over a diff (see :help timeoutlen).
         --- Helps to avoid entering operator-pending mode with diff mappings starting with `c`.
         --- Disable by setting to -1.

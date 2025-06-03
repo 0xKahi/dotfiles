@@ -50,6 +50,12 @@
           "label" : "[C]laude",
           "type" : "application",
           "value" : "/Applications/Claude.app"
+        },
+        {
+          "key" : "s",
+          "label" : "[S]urfShark",
+          "type" : "application",
+          "value" : "/Applications/Surfshark.app"
         }
       ],
       "key" : "o",
