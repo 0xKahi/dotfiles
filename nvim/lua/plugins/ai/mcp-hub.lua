@@ -3,9 +3,16 @@ return {
     'ravitemer/mcphub.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
+      -- {
+      --   'Davidyz/VectorCode', -- Index and search code in your repositories
+      --   version = '*',
+      --   build = 'pipx upgrade vectorcode',
+      --   dependencies = { 'nvim-lua/plenary.nvim' },
+      -- },
     },
     cmd = 'MCPHub', -- lazy load by default
     build = 'npm install -g mcp-hub@latest', -- Installs `mcp-hub` node binary globally
+    -- build = 'bundled_build.lua', -- Bundles `mcp-hub` binary along with the neovim plugin
     config = function()
       require('mcphub').setup({
         -- Server configuration

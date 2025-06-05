@@ -15,7 +15,7 @@ return {
   {
     'OXY2DEV/markview.nvim',
     -- lazy = false, -- Recommended
-    ft = { 'markdown', 'Avante' }, -- If you decide to lazy-load anyway
+    ft = { 'markdown', 'Avante', 'codecompanion' }, -- If you decide to lazy-load anyway
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
       'echasnovski/mini.icons',
@@ -23,7 +23,7 @@ return {
     opts = {
       preview = {
         enable = true,
-        filetypes = { 'markdown', 'Avante' },
+        filetypes = { 'markdown', 'Avante', 'AvanteInput', 'codecompanion' },
         ignore_buftypes = {},
         buf_ignore = { 'nofile' },
         debounce = 50,
@@ -102,7 +102,9 @@ return {
             conceal_on_checkboxes = true,
           },
         },
-        tables = {},
+        tables = {
+          enable = true,
+        },
       },
 
       markdown_inline = {

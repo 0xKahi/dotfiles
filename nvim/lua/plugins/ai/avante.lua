@@ -58,18 +58,18 @@ return {
       provider = 'gemini-flash', -- The provider used in Aider mode or in the planning phase of Cursor Planning Mode
       mode = 'agentic',
 
-      disabled_tools = { -- temporary disable to try mcp hub nvim servers
-        'list_files', -- Built-in file operations
-        'search_files',
-        'read_file',
-        'create_file',
-        'rename_file',
-        'delete_file',
-        'create_dir',
-        'rename_dir',
-        'delete_dir',
-        'bash', -- Built-in terminal access
-      },
+      -- disabled_tools = { -- temporary disable to try mcp hub nvim servers
+      --   'list_files', -- Built-in file operations
+      --   'search_files',
+      --   'read_file',
+      --   'create_file',
+      --   'rename_file',
+      --   'delete_file',
+      --   'create_dir',
+      --   'rename_dir',
+      --   'delete_dir',
+      --   'bash', -- Built-in terminal access
+      -- },
       -- WARNING: Since auto-suggestions are a high-frequency operation and therefore expensive,
       -- currently designating it as `copilot` provider is dangerous because: https://github.com/yetone/avante.nvim/issues/1048
       -- Of course, you can reduce the request frequency by increasing `suggestion.debounce`.

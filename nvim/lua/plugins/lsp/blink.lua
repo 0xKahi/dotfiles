@@ -97,6 +97,7 @@ return {
         per_filetype = {
           typr = {},
           AvanteInput = { 'avante', 'lsp', 'path', 'snippets', 'buffer' },
+          codecompanion = { 'codecompanion', 'lsp', 'path', 'snippets', 'buffer' },
         },
 
         providers = {
