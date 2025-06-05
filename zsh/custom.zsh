@@ -45,6 +45,17 @@ if [ -f "/Users/kahi/miniforge3/etc/profile.d/mamba.sh" ]; then
     . "/Users/kahi/miniforge3/etc/profile.d/mamba.sh"
 fi
 
+# Created by `pipx` on 2025-05-30 19:55:17
+export PATH="/Users/kahi/.local/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/kahi/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 # initialize zoxide
 eval "$(zoxide init zsh)"
 

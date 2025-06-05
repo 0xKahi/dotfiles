@@ -3,3 +3,5 @@ tmux/plugins/
 nvim/lua/__secrets.lua
 ref/
 zsh/secrets.zsh
+.opencode/
+OpenCode.md
