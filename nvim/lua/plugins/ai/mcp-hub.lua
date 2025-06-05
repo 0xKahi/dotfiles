@@ -11,7 +11,7 @@ return {
       -- },
     },
     cmd = 'MCPHub', -- lazy load by default
-    build = 'npm install -g mcp-hub@latest', -- Installs `mcp-hub` node binary globally
+    build = 'pnpm install -g mcp-hub@latest', -- Installs `mcp-hub` node binary globally
     -- build = 'bundled_build.lua', -- Bundles `mcp-hub` binary along with the neovim plugin
     config = function()
       require('mcphub').setup({
