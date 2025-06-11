@@ -67,12 +67,16 @@ return {
         substitutions = {},
       },
 
-      -- Optional, set to true if you use the Obsidian Advanced URI plugin.
-      -- https://github.com/Vinzent03/obsidian-advanced-uri
-      use_advanced_uri = false,
+      open = {
+        -- Optional, set to true if you use the Obsidian Advanced URI plugin.
+        -- https://github.com/Vinzent03/obsidian-advanced-uri
+        use_advanced_uri = false,
 
-      -- Optional, set to true to force ':ObsidianOpen' to bring the app to the foreground.
-      open_app_foreground = false,
+        -- Optional, set to true to force ':ObsidianOpen' to bring the app to the foreground.
+        -- func = function(uri)
+        --   vim.ui.open(uri, { cmd = { 'open', '-a', '/Applications/Obsidian.app' } })
+        -- end,
+      },
 
       picker = {
         -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
