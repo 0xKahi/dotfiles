@@ -18,8 +18,10 @@ return {
         ['service.ts'] = { glyph = ' ', hl = 'NestJsServiceIcon' },
         ['resolver.ts'] = { glyph = ' ', hl = 'NestJsResolverIcon' },
         ['controller.ts'] = { glyph = ' ', hl = 'NestJsControllerIcon' },
+        ['processor.ts'] = { glyph = ' ', hl = 'NestJsProcessorIcon' },
         ['conf'] = { glyph = '󰢻 ' },
         ['e2e-spec.ts'] = { glyph = '󰂖 ', hl = 'E2ESpecIcon' },
+        ['e2e-seq-spec.ts'] = { glyph = '󱉋 ', hl = 'E2ESpecIcon' },
       },
       default = {
         directory = { hl = 'DefaultFolderIcon' },
