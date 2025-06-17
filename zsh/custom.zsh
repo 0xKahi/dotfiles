@@ -28,6 +28,9 @@ eval "$(fzf --zsh)"
 # --- setup fzf config ---
 [ -f "$HOME/.config/zsh/configs/fzf-config.zsh" ] && source "$HOME/.config/zsh/configs/fzf-config.zsh"
 
+# atuin setup place before fzf or ^r keybindings will be overwritten
+eval "$(atuin init zsh)"
+
 # conda setup
 __conda_setup="$('/Users/kahi/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then

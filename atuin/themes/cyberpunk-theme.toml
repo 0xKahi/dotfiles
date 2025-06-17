@@ -1,0 +1,13 @@
+[theme]
+name = "cyberpunk-theme"
+parent = "default"
+
+[colors]
+AlertInfo = "#72F6B2"
+AlertWarn = "#FDF980"
+AlertError = '#ED7892'
+Annotation = '#DDAFF8'
+Base = '#c8d3f5'
+Guidance = '#95C9F8'
+Important = '#3d5afe'
+Title = '#00FF9C'
