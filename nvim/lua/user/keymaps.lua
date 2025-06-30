@@ -35,6 +35,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader>fs', function()
     ['PascalCase'] = require('utils.fmt').toPascalCase,
     ['snake_case'] = require('utils.fmt').toSnakeCase,
     ['kebab-case'] = require('utils.fmt').toKebabCase,
+    ['UPPER-CASE'] = require('utils.fmt').toUpperCase,
   }
 
   local cursorWord = require('utils.misc').get_word_under_cursor()

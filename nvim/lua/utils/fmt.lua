@@ -97,4 +97,14 @@ function M.toKebabCase(str)
   return s
 end
 
+function M.toUpperCase(str)
+  -- If string is empty, return empty string
+  if str == '' then
+    return ''
+  end
+
+  -- Convert the entire string to uppercase
+  return str:upper()
+end
+
 return M
