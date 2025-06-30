@@ -14,15 +14,25 @@ local function clear_buffers()
     end
   end
 
+  -- Get buffers currently visible in any window
+  local visible_bufs = {}
+  for _, win_id in ipairs(vim.api.nvim_list_wins()) do
+    local buf_id = vim.api.nvim_win_get_buf(win_id)
+    visible_bufs[buf_id] = true
+  end
+
   local cleared_count = 0
   local skipped_count = 0
   local pinned_count = 0
+  local visible_count = 0
 
   for _, buf in ipairs(buffers) do
-    -- Skip current buffer and pinned buffers
+    -- Skip current buffer, pinned buffers, and buffers currently visible in a window
     if buf ~= current_buf then
       if pinned_bufs[buf] then
         pinned_count = pinned_count + 1
+      elseif visible_bufs[buf] then
+        visible_count = visible_count + 1
       elseif vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].modifiable then
         if vim.bo[buf].modified then
           skipped_count = skipped_count + 1
@@ -36,10 +46,11 @@ local function clear_buffers()
 
   print(
     string.format(
-      'Cleared %d buffer(s). Skipped %d unsaved buffer(s). Preserved %d pinned buffer(s).',
+      'Cleared %d buffer(s). Skipped %d unsaved buffer(s). Preserved %d pinned buffer(s). Skipped %d visible buffer(s).',
       cleared_count,
       skipped_count,
-      pinned_count
+      pinned_count,
+      visible_count
     )
   )
 end
