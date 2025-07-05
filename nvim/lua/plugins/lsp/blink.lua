@@ -29,7 +29,7 @@ return {
         -- 'prefix' will fuzzy match on the text before the cursor
         -- 'full' will fuzzy match on the text before *and* after the cursor
         -- example: 'foo_|_bar' will match 'foo_' for 'prefix' and 'foo__bar' for 'full'
-        keyword = { range = 'prefix' },
+        keyword = { range = 'full' },
 
         accept = { auto_brackets = { enabled = false } },
 
