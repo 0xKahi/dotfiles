@@ -1,5 +1,6 @@
 return {
-  'markgandolfo/lightswitch.nvim',
+  -- dir = '~/Desktop/code/vim_plugins/lightswitch.nvim',
+  '0xKahi/lightswitch.nvim',
   dependencies = { 'MunifTanjim/nui.nvim' },
   keys = { { '<leader>ls', ':LightSwitchShow<CR>', desc = '[L]ight [S]witch', noremap = true, silent = true } },
   config = function()

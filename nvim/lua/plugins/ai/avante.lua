@@ -1,5 +1,4 @@
 return {
-
   {
     'yetone/avante.nvim',
     -- event = 'VeryLazy',
@@ -151,6 +150,7 @@ return {
         jump_result_buffer_on_finish = true,
         use_cwd_as_project_root = true,
         auto_focus_on_diff_view = false,
+        auto_approve_tool_permissions = false,
       },
       file_selector = {
         provider = 'snacks',
