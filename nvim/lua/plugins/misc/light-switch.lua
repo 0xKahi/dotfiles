@@ -19,6 +19,12 @@ return {
           state = false, -- Initially disabled
         },
         {
+          name = 'Wrap Lines',
+          enable_cmd = 'set wrap!',
+          disable_cmd = 'set wrap!',
+          state = false, -- Initially disabled
+        },
+        {
           name = 'Copilot',
           enable_cmd = 'Copilot enable',
           disable_cmd = 'Copilot disable',

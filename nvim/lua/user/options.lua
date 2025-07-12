@@ -29,6 +29,7 @@ vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.o.autoindent = true -- copy indent from current line when starting new one
+vim.o.breakindent = true -- wrap lines with indent
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
