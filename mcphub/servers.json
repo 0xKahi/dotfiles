@@ -1,22 +1,35 @@
 {
   "nativeMCPServers": {
+    "mcphub": {
+      "disabled": false,
+      "autoApprove": [
+        "get_current_servers",
+        "toggle_mcp_server"
+      ]
+    },
     "neovim": {
+      "disabled": true,
       "autoApprove": [
         "find_files",
         "list_directory",
         "read_file"
-      ],
-      "disabled": true
-    },
-    "mcphub": {
-      "autoApprove": [
-        "get_current_servers",
-        "toggle_mcp_server"
-      ],
-      "disabled": false
+      ]
     }
   },
   "mcpServers": {
+    "context7-docker": {
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "context7-mcp"
+      ],
+      "autoApprove": true,
+      "timeout": 60,
+      "transportType": "stdio",
+      "disabled": true,
+      "command": "docker"
+    },
     "sequentialthinking": {
       "args": [
         "run",
@@ -24,47 +37,76 @@
         "-i",
         "mcp/sequentialthinking"
       ],
-      "command": "docker",
-      "disabled": true
+      "disabled": true,
+      "command": "docker"
     },
-    "coingecko_api_remote": {
+    "postgres": {
       "args": [
-        "mcp-remote",
-        "https://mcp.api.coingecko.com/sse"
+        "run",
+        "-i",
+        "--rm",
+        "mcp/postgres",
+        "postgresql://postgres:postgres@host.docker.internal:5433/test"
       ],
-      "command": "bunx",
-      "disabled": true
+      "autoApprove": true,
+      "disabled_tools": [
+        
+      ],
+      "disabled": true,
+      "command": "docker"
     },
     "tree_sitter": {
       "args": [
         "-m",
         "mcp_server_tree_sitter.server"
       ],
-      "command": "python",
-      "disabled": true
+      "disabled": true,
+      "command": "python"
     },
     "time": {
+      "command": "docker",
       "args": [
         "run",
         "-i",
         "--rm",
         "mcp/time"
       ],
-      "command": "docker",
       "disabled": false,
       "autoApprove": [
         "get_current_time",
         "convert_time"
       ]
     },
+    "coingecko_api_remote": {
+      "args": [
+        "mcp-remote",
+        "https://mcp.api.coingecko.com/sse"
+      ],
+      "disabled": true,
+      "command": "bunx"
+    },
+    "gitmcp": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://gitmcp.io/docs"
+      ],
+      "disabled": true,
+      "autoApprove": true
+    },
+    "context7": {
+      "command": "bunx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "disabled": false,
+      "autoApprove": true
+    },
     "claude-code": {
       "args": [
         "mcp",
         "serve"
-      ],
-      "disabled": false,
-      "env": [
-        
       ],
       "autoApprove": [
         "Read",
@@ -80,44 +122,11 @@
         "WebFetch",
         "exit_plan_mode"
       ],
-      "command": "claude"
-    },
-    "gitmcp": {
-      "args": [
-        "mcp-remote",
-        "https://gitmcp.io/docs"
-      ],
-      "command": "npx",
-      "disabled": false,
-      "autoApprove": true
-    },
-    "postgres": {
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "mcp/postgres",
-        "postgresql://postgres:postgres@host.docker.internal:5433/test"
-      ],
-      "disabled": true,
-      "autoApprove": true,
-      "command": "docker",
-      "disabled_tools": [
+      "env": [
         
-      ]
-    },
-    "context7": {
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "context7-mcp"
       ],
-      "transportType": "stdio",
       "disabled": false,
-      "autoApprove": true,
-      "command": "docker",
-      "timeout": 60
+      "command": "claude"
     }
   }
 }
