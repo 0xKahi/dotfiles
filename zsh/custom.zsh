@@ -66,4 +66,10 @@ eval "$(zoxide init zsh)"
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+## GCLOUD
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/kahi/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kahi/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/kahi/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kahi/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
 [ -f "$HOME/.config/zsh/configs/vi-mode.zsh" ] && source "$HOME/.config/zsh/configs/vi-mode.zsh"
