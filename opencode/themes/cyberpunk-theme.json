@@ -210,7 +210,7 @@
       "light": "lightStep9"
     },
     "syntaxVariable": {
-      "dark": "darkRed",
+      "dark": "#4fd6be",
       "light": "lightRed"
     },
     "syntaxString": {
