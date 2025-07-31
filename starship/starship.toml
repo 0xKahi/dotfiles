@@ -1,22 +1,27 @@
-format = """
-$username \
-$directory \
-$git_branch \
-$git_status\
-$line_break\
-$character
-"""
-right_format = """$all"""
+# format = """
+# $username \
+# $directory \
+# $git_branch \
+# $git_status\
+# $fill\
+# $all\
+# $line_break\
+# $character
+# """
+format = '''
+$username $directory $git_branch $git_status$fill$all
+$character'''
+right_format = '' 
 palette = "cyberpunk"
 add_newline = false
 command_timeout = 1000
 
 
 [character]
-success_symbol = "[](bold green)"
-error_symbol = "[✖](bold red)"
-vimcmd_symbol = "[](bold green)"
-vimcmd_visual_symbol ="[](bold bright-magenta)"
+success_symbol = "[](bold green) "
+error_symbol = "[✖](bold red) "
+vimcmd_symbol = "[](bold green) "
+vimcmd_visual_symbol ="[](bold bright-magenta) "
 
 [directory]
 format = "[in](tky-fg) [$path](bold cyan)"
@@ -54,10 +59,23 @@ format = '[$symbol $branch]($style)[](black)'
 format = 'via [🐋 $context](blue bold)'
 
 [aws]
-format = '[$symbol(profile: "$profile" )(\(region: $region\) )]($style)'
+format = '[$symbol]($style)[(profile: "$profile" )(\(region: $region\) )](tky-fg)'
 disabled = false
 style = 'bold orange'
 symbol = " "
+
+[gcloud]
+format = '[$symbol]($style)[$account(\($region\))](tky-fg) '
+disabled = true 
+style = 'bold blue'
+symbol = "󱇶 "
+
+[fill]
+symbol = ' '
+style = 'bold green'
+
+[line_break]
+disabled = true 
 
 [palettes.cyberpunk]
 black = '#444a73'
@@ -66,6 +84,7 @@ green ='#72F6B2'
 yellow='#FDF980'
 blue='#55BBF9'
 magenta='#D498F8'
+orange='#ff966c'
 cyan='#95C9F8'
 white='#FEFFFF'
 bright-red='#EF8FA4'
@@ -78,4 +97,4 @@ bg-col= '#312954'
 bg-col-dark= '#241d47'
 faded-fg='#636da6'
 tky-fg ='#c8d3f5'
-
+neon-green = '#00FF9C'
