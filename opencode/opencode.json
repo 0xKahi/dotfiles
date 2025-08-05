@@ -6,7 +6,7 @@
     "app_help": "<leader>?",
     "editor_open": "<leader>e",
     "session_new": "<leader>n",
-    "session_list": "<leader>sl",
+    "session_list": "<leader>l",
     "session_share": "<leader>ss",
     "session_interrupt": "esc",
     "session_compact": "<leader>c",
@@ -52,6 +52,21 @@
       "description": "Specialized agent for writing comprehensive tests",
       "prompt": "You are a test writing specialist. Write thorough, end to end tests, you will look at other tests examples and in the codebase to see how tests are structured. and you will try to structure the tests in a similar way"
     }
+  },
+  "lsp": {
+    "lua-ls": {
+      "disabled": false,
+      "command": [
+        "lua-language-server"
+      ],
+      "extensions": [
+        "lua"
+      ]
+    }
+  },
+  "permission": {
+    "edit": "ask",
+    "bash": "ask"
   },
   "layout": "stretch",
   "autoshare": false,
