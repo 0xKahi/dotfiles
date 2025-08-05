@@ -3,4 +3,5 @@ return {
   require('plugins.misc.twilight'),
   require('plugins.misc.typr'),
   require('plugins.misc.bloat'),
+  require('plugins.misc.screenkey'),
 }
