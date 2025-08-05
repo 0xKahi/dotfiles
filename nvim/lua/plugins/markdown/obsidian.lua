@@ -24,34 +24,8 @@ return {
         blink = true,
         -- Trigger completion at 2 chars.
         min_chars = 2,
+        create_new = false,
       },
-
-      ---- deprectaed
-      -- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
-      -- way then set 'mappings = {}'.
-      -- mappings = {
-      --   -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-      --   ['gf'] = {
-      --     action = function()
-      --       return require('obsidian').util.gf_passthrough()
-      --     end,
-      --     opts = { noremap = false, expr = true, buffer = true },
-      --   },
-      --   -- Toggle check-boxes.
-      --   ['<leader>ch'] = {
-      --     action = function()
-      --       return require('obsidian').util.toggle_checkbox()
-      --     end,
-      --     opts = { buffer = true },
-      --   },
-      --   -- Smart action depending on context, either follow link or toggle checkbox.
-      --   ['<cr>'] = {
-      --     action = function()
-      --       return require('obsidian').util.smart_action()
-      --     end,
-      --     opts = { buffer = true, expr = true },
-      --   },
-      -- },
 
       templates = {
         folder = 'jojo/templates',
@@ -62,27 +36,27 @@ return {
       },
 
       open = {
-        -- Optional, set to true if you use the Obsidian Advanced URI plugin.
-        -- https://github.com/Vinzent03/obsidian-advanced-uri
         use_advanced_uri = false,
-
-        -- Optional, set to true to force ':ObsidianOpen' to bring the app to the foreground.
-        -- func = function(uri)
-        --   vim.ui.open(uri, { cmd = { 'open', '-a', '/Applications/Obsidian.app' } })
-        -- end,
+        func = vim.ui.open,
       },
 
       picker = {
-        -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
+        -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', 'mini.pick' or 'snacks.pick'.
         name = 'snacks.pick',
         -- Optional, configure key mappings for the picker. These are the defaults.
         -- Not all pickers support all mappings.
-        mappings = {
-          -- Create a new note from your query.
-          --new = "<C-x>",
-          -- Insert a link to the selected note.
-          --insert_link = "<C-l>",
-        },
+        -- note_mappings = {
+        --   -- Create a new note from your query.
+        --   new = '<C-x>',
+        --   -- Insert a link to the selected note.
+        --   insert_link = '<C-l>',
+        -- },
+        -- tag_mappings = {
+        --   -- Add tag(s) to current note.
+        --   tag_note = '<C-x>',
+        --   -- Insert a tag at the current location.
+        --   insert_tag = '<C-l>',
+        -- },
       },
 
       -- Optional, sort search results by "path", "modified", "accessed", or "created".
