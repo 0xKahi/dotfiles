@@ -49,9 +49,7 @@
         "postgresql://postgres:postgres@host.docker.internal:5433/test"
       ],
       "autoApprove": true,
-      "disabled_tools": [
-        
-      ],
+      "disabled_tools": [],
       "disabled": true,
       "command": "docker"
     },
@@ -76,14 +74,6 @@
         "get_current_time",
         "convert_time"
       ]
-    },
-    "coingecko_api_remote": {
-      "args": [
-        "mcp-remote",
-        "https://mcp.api.coingecko.com/sse"
-      ],
-      "disabled": true,
-      "command": "bunx"
     },
     "gitmcp": {
       "command": "npx",
@@ -122,9 +112,7 @@
         "WebFetch",
         "exit_plan_mode"
       ],
-      "env": [
-        
-      ],
+      "env": [],
       "disabled": false,
       "command": "claude"
     }
