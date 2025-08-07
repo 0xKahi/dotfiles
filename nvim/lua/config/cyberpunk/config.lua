@@ -224,6 +224,7 @@ local function set_lsp_highlights(highlights)
     bg = cyberpunk.core.dark_bg,
     fg = cyberpunk.core.neon_blue,
   }
+  highlights['@markup.list.markdown'] = { fg = cyberpunk.lsp.enum }
   highlights['@markup.strong'] = {
     fg = cyberpunk.lsp.bold,
     bold = true,
