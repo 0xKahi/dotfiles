@@ -26,5 +26,5 @@ quick-terminal-autohide = false
 
 keybind = super+i=inspector:toggle
 keybind = super+r=reload_config
-keybind = global:cmd+P=toggle_quick_terminal
+keybind = global:alt+ctrl+p=toggle_quick_terminal
 
