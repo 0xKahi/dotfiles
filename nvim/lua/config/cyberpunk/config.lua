@@ -220,6 +220,8 @@ local function set_lsp_highlights(highlights)
   highlights['@markup.raw.block.markdown'] = { fg = cyberpunk.core.green }
   highlights['@markup.heading.2.markdown'] = { fg = cyberpunk.core.magenta }
   highlights['@markup.heading.3.markdown'] = { fg = cyberpunk.core.orange }
+  highlights['@markup.heading.4.markdown'] = { fg = cyberpunk.lsp.property }
+  highlights['@markup.heading.5.markdown'] = { fg = cyberpunk.core.blue }
   highlights['@markup.raw.markdown_inline'] = {
     bg = cyberpunk.core.dark_bg,
     fg = cyberpunk.core.neon_blue,
