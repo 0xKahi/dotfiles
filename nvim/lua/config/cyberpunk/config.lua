@@ -12,6 +12,13 @@ local function set_highlight(highlights, groups, style)
   end
 end
 
+-- to omit certain global highlights back to default
+local function reset_lsp_highlights(highlights, filetype, groups)
+  for _, group in ipairs(groups) do
+    highlights[group .. '.' .. filetype] = {}
+  end
+end
+
 ----------------------------------------
 -------- neovim core highlights --------
 ----------------------------------------
@@ -190,27 +197,27 @@ end
 ----------------------------------------
 
 local function set_lsp_highlights(highlights)
-  set_highlight(highlights, { '@lsp.type.interface.typescriptreact' }, { fg = cyberpunk.lsp.interface })
+  set_highlight(highlights, { '@boolean', '@number', '@constant.builtin' }, { fg = cyberpunk.lsp.builtin_bright })
   set_highlight(highlights, { '@keyword.operator', '@operator' }, { fg = cyberpunk.lsp.operator })
   set_highlight(highlights, { '@keyword.import', '@keyword.return' }, { fg = cyberpunk.lsp.keyword_red })
-  set_highlight(highlights, { '@tag.builtin.tsx' }, { fg = cyberpunk.lsp.html_tag })
-
   set_highlight(highlights, { '@lsp.type.type', '@type.builtin' }, { fg = cyberpunk.lsp.builtin })
-  set_highlight(highlights, { '@boolean', '@number', '@constant.builtin' }, { fg = cyberpunk.lsp.builtin_bright })
+
+  highlights['@constant'] = { fg = cyberpunk.core.fg }
+  highlights['@string'] = { fg = cyberpunk.lsp.string }
+  highlights['@lsp.type.parameter'] = { fg = cyberpunk.core.fg, underline = true }
+  highlights['@lsp.type.enum'] = { fg = cyberpunk.lsp.enum }
+  highlights['@lsp.type.enumMember'] = { fg = cyberpunk.lsp.property }
+  highlights['@lsp.type.class'] = { fg = cyberpunk.lsp.class }
+
+  highlights['@lsp.type.namespace.typescriptreact'] = { fg = cyberpunk.lsp.weirdbrown }
+  highlights['@lsp.type.interface.typescriptreact'] = { fg = cyberpunk.lsp.interface }
+  highlights['@tag.tsx'] = { fg = cyberpunk.lsp.react_tag }
+  highlights['@tag.attribute.tsx'] = { fg = cyberpunk.core.orange }
+  highlights['@tag.builtin.tsx'] = { fg = cyberpunk.lsp.html_tag }
   set_highlight(highlights, {
     '@lsp.typemod.class.defaultLibrary.typescript',
     '@lsp.typemod.class.defaultLibrary.typescriptreact',
-    '@lsp.type.class',
   }, { fg = cyberpunk.lsp.class })
-
-  highlights['@lsp.type.parameter'] = { fg = cyberpunk.core.fg, underline = true }
-  highlights['@tag.attribute.tsx'] = { fg = cyberpunk.core.orange }
-  highlights['@tag.tsx'] = { fg = cyberpunk.lsp.react_tag }
-  highlights['@lsp.type.enum'] = { fg = cyberpunk.lsp.enum }
-  highlights['@lsp.type.namespace.typescriptreact'] = { fg = cyberpunk.lsp.weirdbrown }
-  highlights['@constant'] = { fg = cyberpunk.core.fg }
-  highlights['@string'] = { fg = cyberpunk.lsp.string }
-  highlights['@lsp.type.enumMember'] = { fg = cyberpunk.lsp.property }
 
   highlights['@string.special.url.http'] = { fg = cyberpunk.lsp.string, underline = true, italic = true }
   highlights['@function.method.http'] = { fg = cyberpunk.lsp.keyword_purple }
@@ -235,6 +242,13 @@ local function set_lsp_highlights(highlights)
   highlights['cssCustomProp'] = { fg = cyberpunk.lsp.property }
   highlights['cssStringQQ'] = { fg = cyberpunk.lsp.string }
   highlights['cssPseudoClassId'] = { fg = cyberpunk.lsp.class }
+
+  --- terraform
+  reset_lsp_highlights(highlights, 'terraform', {
+    '@lsp.type.type',
+    '@lsp.type.enumMember',
+    '@lsp.type.keyword',
+  })
 end
 
 local M = {}
