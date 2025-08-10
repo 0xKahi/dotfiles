@@ -76,7 +76,12 @@
   },
   "permission": {
     "edit": "ask",
-    "bash": "ask"
+    "bash": {
+      "git status": "allow",
+      "git diff": "allow",
+      "ls": "allow",
+      "*": "ask"
+    }
   },
   "layout": "stretch",
   "autoshare": false,
