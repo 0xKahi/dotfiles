@@ -249,6 +249,7 @@ local function set_lsp_highlights(highlights)
     '@lsp.type.enumMember',
     '@lsp.type.keyword',
   })
+  -- highlights['@lsp.typemod.enumMember.defaultLibrary.terraform'] = { fg = cyberpunk.lsp.class }
 end
 
 local M = {}

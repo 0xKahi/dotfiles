@@ -76,19 +76,19 @@ vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 ----------------------------------------
 
 -- lualine
-for i = 1, 9 do
-  vim.keymap.set(
-    'n',
-    '<leader>ll' .. i,
-    string.format('<cmd>LualineBuffersJump! %d<CR>', i),
-    { desc = string.format('[L]ua [L]ine jump to buffer %d', i), silent = false, noremap = true }
-  )
-end
-
-vim.keymap.set('n', '<leader>llr', function()
-  require('lualine').refresh()
-  print('Lualine refreshed')
-end, { desc = '[L]ua [L]ine [R]efresh', silent = false, noremap = true })
+-- for i = 1, 9 do
+--   vim.keymap.set(
+--     'n',
+--     '<leader>ll' .. i,
+--     string.format('<cmd>LualineBuffersJump! %d<CR>', i),
+--     { desc = string.format('[L]ua [L]ine jump to buffer %d', i), silent = false, noremap = true }
+--   )
+-- end
+--
+-- vim.keymap.set('n', '<leader>llr', function()
+--   require('lualine').refresh()
+--   print('Lualine refreshed')
+-- end, { desc = '[L]ua [L]ine [R]efresh', silent = false, noremap = true })
 
 -- Conform (Formatter)
 vim.keymap.set({ 'n', 'v' }, '<leader>fm', function()
