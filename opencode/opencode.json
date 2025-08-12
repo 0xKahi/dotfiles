@@ -21,7 +21,7 @@
     "messages_page_up": "ctrl+w+u",
     "messages_page_down": "ctrl+w+d",
     "messages_half_page_up": "ctrl+u",
-    "messages_half_page_down": "ctrlt+d",
+    "messages_half_page_down": "ctrl+d",
     "messages_first": "ctrl+g",
     "messages_last": "ctrl+alt+g",
     "messages_copy": "<leader>y",
