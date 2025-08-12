@@ -36,6 +36,7 @@ return {
           'gitignore',
           'dockerfile',
           'terraform',
+          'hcl',
         },
 
         ignore_install = {},
