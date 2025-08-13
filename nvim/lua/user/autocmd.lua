@@ -13,6 +13,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'notify',
     'help',
     'qf',
+    'gitsigns-blame',
   },
   callback = function()
     vim.keymap.set('n', 'q', ':q<CR>', { buffer = true, noremap = true, silent = true, desc = '[Q]uit [2]' })
