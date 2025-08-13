@@ -275,7 +275,6 @@ function M.apply_highlight(highlights, colors)
   set_avante_plugin(highlights)
   set_mcphub_plugin(highlights)
   set_markview_plugin(highlights)
-  -- set_lightswitch_plugin(highlights)
 
   set_icon_highlights(highlights)
   set_lsp_highlights(highlights)
