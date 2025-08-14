@@ -1,98 +1,5 @@
 {
-  "nativeMCPServers": {
-    "mcphub": {
-      "disabled": false,
-      "autoApprove": [
-        "get_current_servers",
-        "toggle_mcp_server"
-      ]
-    },
-    "neovim": {
-      "disabled": true,
-      "autoApprove": [
-        "find_files",
-        "list_directory",
-        "read_file"
-      ]
-    }
-  },
   "mcpServers": {
-    "context7-docker": {
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "context7-mcp"
-      ],
-      "autoApprove": true,
-      "timeout": 60,
-      "transportType": "stdio",
-      "disabled": true,
-      "command": "docker"
-    },
-    "sequentialthinking": {
-      "args": [
-        "run",
-        "--rm",
-        "-i",
-        "mcp/sequentialthinking"
-      ],
-      "disabled": true,
-      "command": "docker"
-    },
-    "postgres": {
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "mcp/postgres",
-        "postgresql://postgres:postgres@host.docker.internal:5433/test"
-      ],
-      "autoApprove": true,
-      "disabled_tools": [],
-      "disabled": true,
-      "command": "docker"
-    },
-    "tree_sitter": {
-      "args": [
-        "-m",
-        "mcp_server_tree_sitter.server"
-      ],
-      "disabled": true,
-      "command": "python"
-    },
-    "time": {
-      "command": "docker",
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "mcp/time"
-      ],
-      "disabled": false,
-      "autoApprove": [
-        "get_current_time",
-        "convert_time"
-      ]
-    },
-    "gitmcp": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://gitmcp.io/docs"
-      ],
-      "disabled": true,
-      "autoApprove": true
-    },
-    "context7": {
-      "command": "bunx",
-      "args": [
-        "-y",
-        "@upstash/context7-mcp"
-      ],
-      "disabled": false,
-      "autoApprove": true
-    },
     "claude-code": {
       "args": [
         "mcp",
@@ -112,9 +19,96 @@
         "WebFetch",
         "exit_plan_mode"
       ],
-      "env": [],
+      "command": "claude",
       "disabled": false,
-      "command": "claude"
+      "env": []
+    },
+    "context7": {
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "autoApprove": true,
+      "command": "bunx",
+      "disabled": false
+    },
+    "context7-docker": {
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "context7-mcp"
+      ],
+      "autoApprove": true,
+      "command": "docker",
+      "disabled": true,
+      "timeout": 60,
+      "transportType": "stdio"
+    },
+    "firecrawl": {
+      "args": [
+        "-y",
+        "firecrawl-mcp"
+      ],
+      "command": "bunx",
+      "disabled": true,
+      "env": {
+        "FIRECRAWL_API_KEY": "FIRECRAWL_API_KEY"
+      }
+    },
+    "postgres": {
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "mcp/postgres",
+        "postgresql://postgres:postgres@host.docker.internal:5433/test"
+      ],
+      "autoApprove": true,
+      "command": "docker",
+      "disabled": true,
+      "disabled_tools": []
+    },
+    "sequentialthinking": {
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "mcp/sequentialthinking"
+      ],
+      "command": "docker",
+      "disabled": true
+    },
+    "time": {
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "mcp/time"
+      ],
+      "autoApprove": [
+        "get_current_time",
+        "convert_time"
+      ],
+      "command": "docker",
+      "disabled": true
+    }
+  },
+  "nativeMCPServers": {
+    "mcphub": {
+      "autoApprove": [
+        "get_current_servers",
+        "toggle_mcp_server"
+      ],
+      "disabled": false
+    },
+    "neovim": {
+      "autoApprove": [
+        "find_files",
+        "list_directory",
+        "read_file"
+      ],
+      "disabled": true
     }
   }
 }
