@@ -45,6 +45,18 @@
         "tavily-mcp"
       ],
       "enabled": true
+    },
+    "firecrawl": {
+      "type": "local",
+      "command": [
+        "bunx",
+        "-y",
+        "firecrawl-mcp"
+      ],
+      "enabled": true,
+      "environment": {
+        "FIRECRAWL_API_KEY": "FIRECRAWL_API_KEY"
+      }
     }
   },
   "agent": {
