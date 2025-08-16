@@ -18,8 +18,8 @@
     "input_paste": "ctrl+v",
     "input_submit": "enter",
     "input_newline": "shift+enter,ctrl+j",
-    "messages_page_up": "ctrl+w+u",
-    "messages_page_down": "ctrl+w+d",
+    "messages_page_up": "ctrl+w+u,pgup",
+    "messages_page_down": "ctrl+w+d,pgdown",
     "messages_half_page_up": "ctrl+u",
     "messages_half_page_down": "ctrl+d",
     "messages_first": "ctrl+g",
@@ -55,7 +55,7 @@
       ],
       "enabled": true,
       "environment": {
-        "FIRECRAWL_API_KEY": "FIRECRAWL_API_KEY"
+        "FIRECRAWL_API_KEY": "{env:FIRECRAWL_API_KEY}"
       }
     }
   },
@@ -64,15 +64,6 @@
       "mode": "subagent",
       "description": "Specialized agent for writing comprehensive tests",
       "prompt": "You are a test writing specialist. Write thorough, end to end tests, you will look at other tests examples and in the codebase to see how tests are structured. and you will try to structure the tests in a similar way"
-    },
-    "code-reviewer": {
-      "description": "Reviews code for best practices and potential issues",
-      "mode": "subagent",
-      "prompt": "You are a code reviewer. Focus on security, readability, performance, and maintainability. for all uncommited changes",
-      "tools": {
-        "write": false,
-        "edit": false
-      }
     }
   },
   "lsp": {

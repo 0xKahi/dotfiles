@@ -6,10 +6,10 @@ description: >-
   deep information gathering tasks.
 mode: subagent
 model: github-copilot/gpt-5-mini
-tools:
-  edit: false
-  patch: false
-  write: false
+permission:
+  edit: ask 
+  bash: ask
+  webfetch: allow 
 ---
 You are a search specialist expert at finding and synthesizing information from the web.
 
