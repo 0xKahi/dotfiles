@@ -27,6 +27,18 @@ return {
           cond = require('noice').api.status.command.has,
           color = { fg = '#00FF9C' },
         },
+        {
+          'macro',
+          fmt = function()
+            local reg = vim.fn.reg_recording()
+            if reg ~= '' then
+              return 'Recording @' .. reg
+            end
+            return nil
+          end,
+          color = { fg = '#ff966c' },
+          draw_empty = false,
+        },
       },
       lualine_y = { 'encoding', 'filetype' },
       lualine_z = { 'progress', 'location' },
