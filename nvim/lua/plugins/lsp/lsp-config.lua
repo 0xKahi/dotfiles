@@ -125,6 +125,11 @@ return {
         },
       })
 
+      vim.lsp.config('terraformls', {
+        filetypes = { 'terraform-vars', 'terraform', 'tf' },
+        -- root_markers = { '.terraform', 'main.tf' },
+      })
+
       vim.api.nvim_create_autocmd('LspAttach', {
         desc = 'LSP actions',
         callback = function(event)
