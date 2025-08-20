@@ -37,34 +37,4 @@ function M.setup_telescope_lsp_keymaps(bufnr)
   vim.keymap.set('n', 'gi', telescope.lsp_implementations, { buffer = bufnr, desc = '[G]o to [I]mplementation' })
 end
 
-function M.setup_avante_lsp_keymaps(bufnr)
-  vim.keymap.set('n', 'ga', function()
-    vim.lsp.buf.definition({
-      on_list = function(options)
-        if not options or not options.items or #options.items == 0 then
-          vim.notify('No definition found', vim.log.levels.WARN)
-          return
-        end
-
-        -- Get the first definition location
-        local item = options.items[1]
-        local filepath = item.filename or item.uri
-
-        -- Convert URI to file path if needed
-        if filepath:match('^file://') then
-          filepath = filepath:gsub('^file://', '')
-          -- Handle URL encoding
-          filepath = filepath:gsub('%%(%x%x)', function(h)
-            return string.char(tonumber(h, 16))
-          end)
-        end
-
-        local formated = require('config.snacks').format_path(filepath)
-        -- Add the definition file to Avante
-        require('config.avante').add_to_avante(formated)
-      end,
-    })
-  end, { buffer = bufnr, desc = '[G]rab [A]vante ' })
-end
-
 return M

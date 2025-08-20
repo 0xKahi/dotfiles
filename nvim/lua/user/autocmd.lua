@@ -29,17 +29,6 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = {
-    'AvanteInput',
-    'Avante',
-  },
-  callback = function()
-    vim.keymap.set('n', 'q', function()
-      require('avante').close_sidebar()
-    end, { buffer = true, noremap = true, silent = true, desc = '[Q]uit [Avante] [S]idebar' })
-  end,
-})
 --------- others --------
 
 vim.api.nvim_create_autocmd('FileType', {

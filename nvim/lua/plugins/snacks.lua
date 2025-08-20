@@ -214,13 +214,6 @@ return {
             ['<C-d>'] = { 'preview_scroll_down', mode = { 'i', 'n' } },
             ['<C-u>'] = { 'preview_scroll_up', mode = { 'i', 'n' } },
             ['<leader>rq'] = { 'qflist', mode = { 'n' } },
-            ['@'] = {
-              function(picker)
-                picker:close()
-                require('config.snacks').picker_to_avante()
-              end,
-              mode = { 'n' },
-            },
           },
         },
         list = {
