@@ -59,13 +59,6 @@
       }
     }
   },
-  "agent": {
-    "e2e-test-writer": {
-      "mode": "subagent",
-      "description": "Specialized agent for writing comprehensive tests",
-      "prompt": "You are a test writing specialist. Write thorough, end to end tests, you will look at other tests examples and in the codebase to see how tests are structured. and you will try to structure the tests in a similar way"
-    }
-  },
   "lsp": {
     "lua-ls": {
       "disabled": false,
