@@ -53,7 +53,6 @@ return {
       local on_attach = function(client, bufnr)
         -- Load your keymaps
         require('config.lsp-picker-keymap').setup_snacks_lsp_keymaps(bufnr)
-        require('config.lsp-picker-keymap').setup_avante_lsp_keymaps(bufnr)
       end
 
       local validate_start = function(bufnr, on_dir, root_markers)

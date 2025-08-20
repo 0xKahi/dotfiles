@@ -5,7 +5,6 @@ return {
     version = '*',
     dependencies = {
       { 'saghen/blink.compat', lazy = true },
-      { 'Kaiser-Yang/blink-cmp-avante' },
     },
     event = { 'InsertEnter', 'CmdlineEnter' },
 
@@ -100,15 +99,7 @@ return {
           codecompanion = { 'codecompanion', 'lsp', 'path', 'snippets', 'buffer' },
         },
 
-        providers = {
-          avante = {
-            module = 'blink-cmp-avante',
-            name = 'Avante',
-            opts = {
-              -- options for blink-cmp-avante
-            },
-          },
-        },
+        providers = {},
       },
 
       cmdline = {

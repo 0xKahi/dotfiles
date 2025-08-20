@@ -20,20 +20,4 @@ function M.format_path(filepath)
   return path
 end
 
-function M.picker_to_avante()
-  -- have to use this to get the proper picker object
-  local snacks_picker = Snacks.picker.get()[1]
-  if not snacks_picker then
-    vim.notify('No active picker found', vim.log.levels.ERROR)
-    return
-  end
-
-  local sel = snacks_picker:selected()
-  local files_to_add = {}
-  for _, item in ipairs(sel) do
-    table.insert(files_to_add, item.file)
-  end
-  require('config.avante').add_multiple_to_avante(files_to_add, true)
-end
-
 return M
