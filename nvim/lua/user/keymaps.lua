@@ -28,6 +28,14 @@ vim.keymap.set({ 'n', 'v' }, '<leader>sr', function()
   vim.fn.feedkeys(':%s/' .. escaped_text, 'n')
 end, { noremap = true, silent = true, desc = '[S]earch and [R]eplace' })
 
+vim.keymap.set({ 'n', 'v' }, '<leader>sR', function()
+  local cursorWord = require('utils.misc').get_word_under_cursor()
+  -- Escape special characters
+  local escaped_text = vim.fn.escape(cursorWord.selectedText, '/\\')
+  -- Set command line with search pattern using word boundaries, ready for user input
+  vim.fn.feedkeys(':%s/\\<' .. escaped_text .. '\\>', 'n')
+end, { noremap = true, silent = true, desc = '[S]earch and [R]eplace Exact word' })
+
 -- keymap to format string under cursor
 vim.keymap.set({ 'n', 'v' }, '<leader>fs', function()
   local formatList = {
