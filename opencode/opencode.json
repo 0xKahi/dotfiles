@@ -73,8 +73,9 @@
   "permission": {
     "edit": "ask",
     "bash": {
-      "git status": "allow",
-      "git diff": "allow",
+      "git status *": "allow",
+      "git diff *": "allow",
+      "git log *": "allow",
       "ls": "allow",
       "*": "ask"
     }
