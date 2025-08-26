@@ -6,6 +6,7 @@ description: >-
   examples. Use Only when user explictly ask for tutorial creation "create a tutorial".
 mode: subagent
 model: github-copilot/gpt-5
+disable: true
 permission:
   edit: ask 
   bash: ask

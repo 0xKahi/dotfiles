@@ -3,6 +3,7 @@ name: sherpa
 description: an agent that traverse the codebase and guides you through it to help you understand 
 mode: subagent
 temperature: 0.1
+disable: true
 permission:
   edit: ask 
   bash: ask
