@@ -12,7 +12,7 @@ gui:
   mainPanelSplitMode: flexible
   language: auto
   commitLength:
-      show: true
+    show: true
   skipNoStagedFilesWarning: false
   showListFooter: true
   showFileTree: true
@@ -25,6 +25,7 @@ gui:
     selectedLineBgColor:
       - "#311b92"
 git:
+  # localBranchSortOrder: recency
   paging:
     colorArg: always
     pager: delta --dark --paging=never
