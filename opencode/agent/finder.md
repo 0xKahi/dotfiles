@@ -25,7 +25,7 @@ description: >-
       assistant: "I'll use the codebase-navigator agent to locate all configuration files in the project."
     </example>
 mode: subagent
-model: anthropic/claude-sonnet-4-20250514
+model: github-copilot/gpt-5-mini
 permission:
   edit: deny 
   webfetch: ask 

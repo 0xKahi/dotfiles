@@ -20,7 +20,7 @@ description: >-
   - User reports: "My build is failing with module not found errors"
     Assistant: "I'm going to use the wtf agent to diagnose these build failures"
 mode: subagent
-model: anthropic/claude-sonnet-4-20250514
+model: github-copilot/gemini-2.5-pro
 permission:
   edit: ask 
 ---

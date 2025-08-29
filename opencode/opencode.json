@@ -7,8 +7,8 @@
     "editor_open": "<leader>e",
     "session_new": "<leader>n",
     "session_list": "<leader>l",
-    "session_share": "<leader>ss",
-    "session_interrupt": "esc",
+    "session_share": "<leader>s",
+    "session_interrupt": "<leader>esc",
     "session_compact": "<leader>c",
     "tool_details": "<leader>d",
     "model_list": "<leader>m",
@@ -78,6 +78,7 @@
       "git diff *": "allow",
       "git log *": "allow",
       "ls": "allow",
+      "find *": "allow",
       "fd *": "allow",
       "rg *": "allow",
     }
