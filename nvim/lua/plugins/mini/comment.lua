@@ -1,5 +1,5 @@
 return {
-  'echasnovski/mini.comment',
+  'nvim-mini/mini.comment',
   event = { 'BufRead', 'BufNewFile' },
   version = false,
   opts = {
