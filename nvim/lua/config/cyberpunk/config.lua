@@ -112,6 +112,7 @@ local function set_snacks_plugin(highlights)
   highlights['SnacksDashboardFooter'] = { fg = cyberpunk.core.bright_green }
   highlights['SnacksDashboardSpecial'] = { fg = cyberpunk.core.bright_magenta }
   highlights['SnacksDashboardFile'] = { fg = cyberpunk.core.bright_blue }
+
   highlights['SnacksPickerBoxTitle'] = { fg = cyberpunk.core.red }
   highlights['SnacksPickerInputBorder'] = { fg = cyberpunk.core.yellow }
   highlights['SnacksPickerInputTitle'] = { fg = cyberpunk.core.red }
@@ -120,7 +121,14 @@ local function set_snacks_plugin(highlights)
   highlights['SnacksPickerDir'] = { fg = cyberpunk.core.cyan }
   highlights['SnacksPickerPrompt'] = { fg = cyberpunk.core.red }
   highlights['SnacksPickerMatch'] = { fg = cyberpunk.core.bright_yellow }
+
   highlights['SnacksBackdrop'] = { bg = '', default = true }
+
+  -- highlights['SnacksNotifierInfo'] = { link = 'DiagnosticInfo' }
+  -- highlights['SnacksNotifierWarn'] = { link = 'DiagnosticWarn' }
+  -- highlights['SnacksNotifierError'] = { link = 'DiagnosticError' }
+  set_highlight(highlights, { 'SnacksNotifierTitleDebug', 'SnacksNotifierIconDebug' }, { link = 'Debug' })
+  highlights['SnacksNotifierBorderDebug'] = { fg = '#B4637A' }
 end
 
 local function set_avante_plugin(highlights)

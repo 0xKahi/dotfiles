@@ -7,6 +7,9 @@ return {
   },
 
   opts = {
+    notify = {
+      enabled = false,
+    },
     lsp = {
       progress = {
         enabled = false,

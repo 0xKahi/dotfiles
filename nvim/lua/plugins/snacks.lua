@@ -176,6 +176,13 @@ return {
     notifier = {
       enable = true,
       timeout = 3000, -- default timeout in ms
+      icons = {
+        error = ' ',
+        warn = ' ',
+        info = ' ',
+        debug = ' ',
+        trace = ' ',
+      },
     },
 
     picker = {
@@ -315,6 +322,33 @@ return {
             },
           },
         },
+      },
+    },
+
+    input = {
+      enable = true,
+      bo = {
+        filetype = 'snacks_input',
+        buftype = 'prompt',
+      },
+      --- buffer local variables
+      b = {
+        completion = true, -- disable blink completions in input
+      },
+    },
+
+    styles = {
+      notification = {
+        border = 'rounded',
+        zindex = 100,
+        ft = 'markdown',
+        wo = {
+          winblend = 0,
+          wrap = false,
+          conceallevel = 2,
+          colorcolumn = '',
+        },
+        bo = { filetype = 'snacks_notif' },
       },
     },
   },
