@@ -22,4 +22,8 @@ return {
   opts = {
     auto_fallback_to_enbedded = false,
   },
+  config = function()
+    require('config.opencode.notifications').setup()
+  end,
 }
+
