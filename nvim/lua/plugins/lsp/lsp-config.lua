@@ -126,7 +126,15 @@ return {
 
       vim.lsp.config('terraformls', {
         filetypes = { 'terraform-vars', 'terraform', 'tf' },
-        -- root_markers = { '.terraform', 'main.tf' },
+        settings = {
+          terraformls = {
+            experimentalFeatures = {
+              prefillRequiredFields = true,
+              -- validateOnSave = true,
+            },
+          },
+        },
+        -- root_markers = { '.terraform', '.git', 'main.tf' },
       })
 
       vim.api.nvim_create_autocmd('LspAttach', {

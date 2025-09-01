@@ -7,10 +7,16 @@ return {
     require('lightswitch').setup({
       toggles = {
         {
-          name = 'Formatting',
+          name = 'Format On Save',
           enable_cmd = 'FormatToggle!',
           disable_cmd = 'FormatToggle!',
-          state = false,
+          state = true,
+        },
+        {
+          name = 'Windows Auto Width',
+          enable_cmd = 'WindowsEnableAutowidth',
+          disable_cmd = 'WindowsDisableAutowidth',
+          state = true,
         },
         {
           name = 'Twilight',
