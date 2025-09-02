@@ -32,6 +32,7 @@ end
 local function handle_permission_events(event_type, data)
   -- when permissions are asked
   if event_type == 'permission.updated' then
+    -- vim.notify(vim.inspect(data), vim.log.levels.TRACE)
     cleanup_permission_timer()
 
     local permission_info = {
@@ -64,6 +65,7 @@ local function handle_permission_events(event_type, data)
     and data.properties.part.state.status == 'error'
     and data.properties.part.state.error:match('rejected permission')
   then
+    -- vim.notify(vim.inspect(data), vim.log.levels.TRACE)
     cleanup_permission_timer()
     local message = 'permissions rejected\n [ERROR]' .. tostring(data.properties.part.state.error)
     create_permission_notification(message, vim.log.levels.ERROR, ' ')
