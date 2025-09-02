@@ -63,6 +63,7 @@ M.markview = {
   fail = '#fb464c',
   important = '#ff3838',
   info = '#6F94FF',
+  pending = '#f2ca8e',
 }
 
 M.lualine = {

@@ -108,7 +108,29 @@ return {
       },
 
       markdown_inline = {
-        inline_codes = { enable = false },
+        inline_codes = {
+          -- enable = true,
+          checkboxes = {
+            enable = true,
+
+            checked = { text = '󰗠', hl = 'MarkviewCheckboxChecked', scope_hl = 'MarkviewCheckboxChecked' },
+            unchecked = { text = '󰄰', hl = 'MarkviewCheckboxUnchecked', scope_hl = 'MarkviewCheckboxUnchecked' },
+
+            -- none of theese overwrites works rn for whatever reason
+            ['/'] = { text = '󱎖', hl = 'MarkviewCheckboxHalf' },
+            ['-'] = { text = '󰍶', hl = 'MarkviewCheckboxCancelled', scope_hl = 'MarkviewCheckboxStriked' },
+            ['?'] = { text = '󰋗', hl = 'MarkviewCheckboxPending' },
+            ['!'] = { text = '󰀦', hl = 'MarkviewBlockQuoteWarn' },
+            ['*'] = { text = '󰓎', hl = 'MarkviewCheckboxStar' },
+            -- ['b'] = { text = '󰃀', hl = 'MarkviewCheckboxProgress' },
+            ['info'] = { text = '󰰄', hl = 'MarkviewBlockQuoteInfo' },
+            ['tu'] = { text = '', hl = 'MarkviewBlockQuoteSuccess' },
+            ['td'] = { text = '', hl = 'MarkviewBlockQuoteFail' },
+            ['gem'] = { text = '', hl = 'MarkviewBlockQuoteGem' },
+            ['u'] = { text = '󰔵', hl = 'MarkviewBlockQuoteSuccess' },
+            ['d'] = { text = '󰔳', hl = 'MarkviewBlockQuoteFail' },
+          },
+        },
         hyperlinks = { enable = true },
         internal_links = { enable = true },
         escapes = { enable = true },

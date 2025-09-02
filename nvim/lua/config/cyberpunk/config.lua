@@ -181,6 +181,8 @@ local function set_markview_plugin(highlights)
   highlights['MarkviewListItemMinus'] = { fg = cyberpunk.core.tky_blue }
   highlights['MarkviewListItemMinusScope'] = { fg = cyberpunk.core.bright_magenta }
   highlights['MarkviewListItemStar'] = { fg = cyberpunk.core.bright_yellow }
+  highlights['MarkviewCheckboxStar'] = { fg = cyberpunk.core.bright_yellow }
+  highlights['MarkviewCheckboxHalf'] = { fg = cyberpunk.markview.pending }
 end
 
 ----------------------------------------
