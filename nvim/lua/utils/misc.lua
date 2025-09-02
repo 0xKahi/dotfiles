@@ -80,4 +80,12 @@ function M.get_word_under_cursor()
   end
 end
 
+function M.copy_to_clipboard(text)
+  -- Use the system clipboard register
+  vim.fn.setreg('+', text)
+  vim.notify('Copied to clipboard: ' .. text, vim.log.levels.INFO, {
+    title = 'custom-keymap',
+  })
+end
+
 return M

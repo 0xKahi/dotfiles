@@ -22,17 +22,19 @@ vim.keymap.set(
 
 vim.keymap.set({ 'n', 'v' }, '<leader>sr', function()
   local cursorWord = require('utils.misc').get_word_under_cursor()
-  -- Escape special characters
-  local escaped_text = vim.fn.escape(cursorWord.selectedText, '/\\')
+  require('utils.misc').copy_to_clipboard(cursorWord.selectedText)
+  -- Escape special characters and
   -- Set command line with search pattern, ready for user input
+  local escaped_text = vim.fn.escape(cursorWord.selectedText, '/\\')
   vim.fn.feedkeys(':%s/' .. escaped_text, 'n')
 end, { noremap = true, silent = true, desc = '[S]earch and [R]eplace' })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>sR', function()
   local cursorWord = require('utils.misc').get_word_under_cursor()
-  -- Escape special characters
+  require('utils.misc').copy_to_clipboard(cursorWord.selectedText)
+  -- Escape special characters and
+  -- Set command line with search pattern, ready for user input
   local escaped_text = vim.fn.escape(cursorWord.selectedText, '/\\')
-  -- Set command line with search pattern using word boundaries, ready for user input
   vim.fn.feedkeys(':%s/\\<' .. escaped_text .. '\\>', 'n')
 end, { noremap = true, silent = true, desc = '[S]earch and [R]eplace Exact word' })
 
@@ -82,21 +84,6 @@ vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 ----------------------------------------
 -------------- plugins -----------------
 ----------------------------------------
-
--- lualine
--- for i = 1, 9 do
---   vim.keymap.set(
---     'n',
---     '<leader>ll' .. i,
---     string.format('<cmd>LualineBuffersJump! %d<CR>', i),
---     { desc = string.format('[L]ua [L]ine jump to buffer %d', i), silent = false, noremap = true }
---   )
--- end
---
--- vim.keymap.set('n', '<leader>llr', function()
---   require('lualine').refresh()
---   print('Lualine refreshed')
--- end, { desc = '[L]ua [L]ine [R]efresh', silent = false, noremap = true })
 
 -- Conform (Formatter)
 vim.keymap.set({ 'n', 'v' }, '<leader>fm', function()
