@@ -3,6 +3,7 @@ return {
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
+    enabled = false,
     lazy = true,
     cond = function()
       return vim.fn.executable('make') == 1
@@ -10,6 +11,7 @@ return {
   },
   {
     'nvim-telescope/telescope.nvim',
+    enabled = false,
     tag = '0.1.8',
     dependencies = { 'nvim-lua/plenary.nvim' },
     lazy = true,
