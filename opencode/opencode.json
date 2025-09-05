@@ -8,7 +8,7 @@
     "session_new": "<leader>n",
     "session_list": "<leader>l",
     "session_share": "<leader>s",
-    "session_interrupt": "<leader>esc",
+    "session_interrupt": "esc",
     "session_compact": "<leader>c",
     "tool_details": "<leader>d",
     "model_list": "<leader>m",
@@ -57,6 +57,10 @@
       "environment": {
         "FIRECRAWL_API_KEY": "{env:FIRECRAWL_API_KEY}"
       }
+    },
+    "coingecko_mcp": {
+      "type": "remote",
+      "url": "https://mcp.api.coingecko.com/sse",
     }
   },
   "lsp": {
