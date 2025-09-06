@@ -27,7 +27,6 @@ return {
     cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      { 'hrsh7th/cmp-nvim-lsp' },
       { 'mason-org/mason.nvim' },
       { 'mason-org/mason-lspconfig.nvim' },
       -- { 'nvim-telescope/telescope.nvim' },

@@ -1,9 +1,10 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    build = function()
-      require('nvim-treesitter.install').update({ with_sync = true })
-    end,
+    -- build = function()
+    --   require('nvim-treesitter.install').update({ with_sync = true })
+    -- end,
+    build = ':TSUpdate',
     event = { 'BufEnter' },
     config = function()
       local configs = require('nvim-treesitter.configs')
@@ -61,15 +62,6 @@ return {
         },
         autopairs = { enable = true },
       })
-    end,
-  },
-  {
-    'windwp/nvim-ts-autotag',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    ft = { 'html', 'javascriptreact', 'typescriptreact' },
-    -- event = { 'BufEnter' },
-    config = function()
-      require('nvim-ts-autotag').setup({})
     end,
   },
 }

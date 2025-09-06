@@ -1,11 +1,12 @@
 return {
+  require('plugins.lsp.treesitter'),
   require('plugins.lsp.lsp-config'),
-  -- require('plugins.lsp.nvim_cmp'),
-  require('plugins.lsp.blink'),
-  require('plugins.lsp.conform'),
-  require('plugins.lsp.lazydev'),
+  require('plugins.lsp.completion.blink'),
+  require('plugins.lsp.formatters.conform'),
   require('plugins.lsp.kdl'),
-  require('plugins.lsp.ts-comments'),
+  require('plugins.lsp.helpers.lazydev'),
+  require('plugins.lsp.helpers.ts-comments'),
+  require('plugins.lsp.helpers.ts-autotag'),
   -- some file type stuff
   {
     vim.filetype.add({
