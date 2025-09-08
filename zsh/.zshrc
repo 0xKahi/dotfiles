@@ -11,4 +11,6 @@ setopt INC_APPEND_HISTORY
 
 [ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
 
+[ -f "$HOME/.config/zsh/external.zsh" ] && source "$HOME/.config/zsh/external.zsh"
+
 [ -f "$HOME/.config/zsh/secrets.zsh" ] && source "$HOME/.config/zsh/secrets.zsh"
