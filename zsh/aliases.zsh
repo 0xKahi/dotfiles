@@ -14,8 +14,8 @@ alias gcom="git commit -m"
 
 # frequent access
 alias code_file="z ~/Desktop/code"
-alias obs_file="z ~/Desktop/code/obsidian"
-alias SHUFFLE="z ~/Desktop/code/shuffle"
+alias obs_file="z ~/Desktop/code/jojo/obsidian"
+alias SHUFFLE="z ~/Desktop/code/orgs/shuffle"
 alias J2="z ~/Desktop/code/J2"
 alias claude_config="cd ~/Library/Application\ Support/Claude"
 

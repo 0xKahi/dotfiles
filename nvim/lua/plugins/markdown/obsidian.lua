@@ -11,7 +11,7 @@ return {
       workspaces = {
         {
           name = 'jojo',
-          path = '~/Desktop/code/obsidian',
+          path = '~/Desktop/code/jojo/obsidian',
         },
       },
 
