@@ -40,6 +40,25 @@ local function set_nvim_core(highlights, colors)
 end
 
 ----------------------------------------
+---------- custom highlights -----------
+----------------------------------------
+
+local function set_jojo_git(highlights)
+  highlights['JoJoGitModified'] = { fg = cyberpunk.git.modified }
+  highlights['JoJoGitUntracked'] = { fg = cyberpunk.git.untracked }
+  highlights['JoJoGitStaged'] = { fg = cyberpunk.git.staged }
+  highlights['JoJoGitConflict'] = {
+    fg = cyberpunk.git.conflict,
+    bold = true,
+    italic = true,
+  }
+  highlights['JoJoGitAdded'] = { fg = cyberpunk.git.added }
+  highlights['JoJoGitDeleted'] = { fg = cyberpunk.git.deleted }
+  highlights['JoJoGitIgnored'] = { fg = cyberpunk.git.ignored }
+  highlights['JoJoGitChanged'] = { fg = cyberpunk.git.changed }
+end
+
+----------------------------------------
 ---------- plugins highlights ----------
 ----------------------------------------
 
@@ -60,8 +79,13 @@ local function set_telescope_plugin(highlights)
 end
 
 local function set_neotree_plugin(highlights)
-  highlights['NeoTreeGitModified'] = { fg = cyberpunk.core.bright_magenta }
-  highlights['NeoTreeGitUntracked'] = { fg = cyberpunk.core.bright_green }
+  highlights['NeoTreeGitModified'] = { link = 'JoJoGitModified' }
+  highlights['NeoTreeGitUntracked'] = { link = 'JoJoGitUntracked' }
+  highlights['NeoTreeGitStaged'] = { link = 'JoJoGitStaged' }
+  highlights['NeoTreeGitConflict'] = { link = 'JoJoGitConflict' }
+  highlights['NeoTreeGitAdded'] = { link = 'JoJoGitAdded' }
+  highlights['NeoTreeGitDeleted'] = { link = 'JoJoGitDeleted' }
+  highlights['NeoTreeGitIgnored'] = { link = 'JoJoGitIgnored' }
   highlights['NeoTreeCursorLine'] = { bold = true, bg = cyberpunk.core.highlight }
 end
 
@@ -261,6 +285,13 @@ local function set_lsp_highlights(highlights)
     '@lsp.type.keyword',
   })
   -- highlights['@lsp.typemod.enumMember.defaultLibrary.terraform'] = { fg = cyberpunk.lsp.class }
+
+  --- rust
+  highlights['@lsp.typemod.method.defaultLibrary.rust'] = { fg = cyberpunk.lsp.func }
+  highlights['@lsp.type.macro.rust'] = { fg = cyberpunk.core.orange }
+  highlights['@lsp.typemod.enumMember.library.rust'] = { fg = cyberpunk.lsp.property }
+
+  set_highlight(highlights, { '@module.rust', '@lsp.type.namespace.rust' }, { fg = cyberpunk.lsp.weirdbrown })
 end
 
 local M = {}
@@ -273,6 +304,8 @@ end
 
 function M.apply_highlight(highlights, colors)
   set_nvim_core(highlights, colors)
+
+  set_jojo_git(highlights)
 
   set_noice_plugin(highlights)
   set_telescope_plugin(highlights)

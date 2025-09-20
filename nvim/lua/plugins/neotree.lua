@@ -58,17 +58,7 @@ return {
           highlight = 'NeoTreeFileName',
         },
         git_status = {
-          symbols = {
-            added = '',
-            modified = '',
-            deleted = '',
-            renamed = '',
-            untracked = '󱔢 ',
-            ignored = '',
-            -- unstaged = '[-S]',
-            staged = ' ',
-            conflict = '󰗖 ',
-          },
+          symbols = require('config.cyberpunk.icons').git_status,
         },
         icon = {
           provider = function(icon, node) -- setup a custom icon provider

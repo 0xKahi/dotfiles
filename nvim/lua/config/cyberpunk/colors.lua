@@ -73,4 +73,15 @@ M.lualine = {
   green = '#4fd6be',
 }
 
+M.git = {
+  added = '#B8DB87',
+  modified = M.core.bright_magenta,
+  untracked = M.core.bright_green,
+  staged = M.lsp.property,
+  conflict = '#FF8700',
+  deleted = '#E26A75',
+  ignored = '#626262',
+  changed = '#7CA1F2',
+}
+
 return M
