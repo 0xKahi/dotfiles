@@ -21,7 +21,7 @@ return {
       completion = {
         -- Set to false to disable completion.
         nvim_cmp = false,
-        blink = true,
+        blink = false,
         -- Trigger completion at 2 chars.
         min_chars = 2,
         create_new = false,

@@ -55,8 +55,9 @@ style = 'bold orange'
 symbol = " "
 
 [gcloud]
-format = '[$symbol]($style)[$account(\($region\))](tky-fg) '
-disabled = true 
+# format = '[$symbol]($style)[$active(\($region\))](tky-fg) '
+format = '[$symbol]($style)[$active](tky-fg) '
+disabled = false 
 style = 'bold blue'
 symbol = "󱇶 "
 
