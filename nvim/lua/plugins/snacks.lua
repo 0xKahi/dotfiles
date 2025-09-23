@@ -1,6 +1,7 @@
 return {
   'folke/snacks.nvim',
   lazy = false,
+  -- dependencies = { 'dmtrKovalenko/fff.nvim' },
   keys = {
     {
       '<leader>nn',
@@ -47,20 +48,23 @@ return {
     {
       '<C-p>',
       function()
-        Snacks.picker.git_files({
-          finder = 'git_files',
-          show_empty = true,
-          format = 'file',
-          untracked = true,
-          submodules = false,
-          layout = 'basic',
-        })
+        local picker = require('config.snacks.fff-picker')
+        picker.fff()
+        -- Snacks.picker.git_files({
+        --   finder = 'git_files',
+        --   show_empty = true,
+        --   format = 'file',
+        --   untracked = true,
+        --   submodules = false,
+        --   layout = 'basic',
+        -- })
       end,
       { desc = 'find files in git', noremap = true },
     },
     {
       '<leader>ff',
       function()
+        -- require('config.snacks.fff-picker').fff()
         Snacks.picker.files({
           finder = 'files',
           format = 'file',
