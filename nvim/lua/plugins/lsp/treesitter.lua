@@ -38,6 +38,7 @@ return {
           'dockerfile',
           'terraform',
           'hcl',
+          'rust',
         },
 
         ignore_install = {},
