@@ -34,5 +34,12 @@ keybind = super+i=inspector:toggle
 keybind = super+r=reload_config
 keybind = global:alt+ctrl+p=toggle_quick_terminal
 
+# screen shaders
+#custom-shader = shaders/screen/glitchy.glsl
+#custom-shader = shaders/screen/retro-terminal.glsl
+#custom-shader = shaders/screen/bettercrt.glsl
+#custom-shader = shaders/screen/in-game-crt.glsl
+
+# cursor shaders
 #custom-shader = shaders/cursor_blaze.glsl
 custom-shader = shaders/cursor_blaze_no_trail.glsl
