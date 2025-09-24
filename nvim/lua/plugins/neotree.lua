@@ -167,7 +167,7 @@ return {
       filesystem = {
         filtered_items = {
           visible = false,
-          hide_dotfiles = true,
+          hide_dotfiles = false,
           hide_gitignored = true,
           hide_hidden = true,
         },
