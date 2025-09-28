@@ -48,16 +48,14 @@ return {
     {
       '<C-p>',
       function()
-        local picker = require('config.snacks.fff-picker')
-        picker.fff()
-        -- Snacks.picker.git_files({
-        --   finder = 'git_files',
-        --   show_empty = true,
-        --   format = 'file',
-        --   untracked = true,
-        --   submodules = false,
-        --   layout = 'basic',
-        -- })
+        Snacks.picker.git_files({
+          finder = 'git_files',
+          show_empty = true,
+          format = 'file',
+          untracked = true,
+          submodules = false,
+          layout = 'basic',
+        })
       end,
       { desc = 'find files in git', noremap = true },
     },
