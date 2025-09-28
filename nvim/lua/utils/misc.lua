@@ -88,4 +88,14 @@ function M.copy_to_clipboard(text)
   })
 end
 
+function M.filter_out(tbl, property)
+  local result = {}
+  for key, value in pairs(tbl) do
+    if key ~= property then
+      result[key] = value
+    end
+  end
+  return result
+end
+
 return M
