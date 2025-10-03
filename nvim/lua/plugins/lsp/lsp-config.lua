@@ -96,11 +96,11 @@ return {
       })
 
       -- Biome config
-      vim.lsp.config('biome', {
-        root_dir = function(bufnr, on_dir)
-          validate_start(bufnr, on_dir, { 'biome.json', 'biome.jsonc' })
-        end,
-      })
+      -- vim.lsp.config('biome', {
+      --   root_dir = function(bufnr, on_dir)
+      --     validate_start(bufnr, on_dir, { 'biome.json', 'biome.jsonc' })
+      --   end,
+      -- })
 
       -- Lua config
       vim.lsp.config('lua_ls', {

@@ -1,13 +1,4 @@
 ------ for closing files ----
--- vim.api.nvim_create_autocmd('FileType', {
---   pattern = {
---     'qf',
---   },
---   callback = function()
---     vim.keymap.set('n', 'q', ':cclose<CR>', { buffer = true, noremap = true, silent = true, desc = '[Q]uit [1]' })
---   end,
--- })
-
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {
     'notify',

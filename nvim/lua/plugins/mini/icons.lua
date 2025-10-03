@@ -30,7 +30,7 @@ return {
         apps = { glyph = '󱋣 ', hl = 'AppFolderIcon' },
         libs = { glyph = '󰣞 ', hl = 'LibraryFolderIcon' },
         test = { hl = 'TestFolderIcon' },
-        ['.opencode'] = { glyph = '󱁿 ', hl = 'OpenSourceFolderIcon' },
+        ['.opencode'] = { glyph = '󱁿', hl = 'OpenSourceFolderIcon' },
         -- shared = { glyph = '󰉒 ', hl = 'SharedFolderIcon' },
       },
     })

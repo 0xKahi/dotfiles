@@ -82,14 +82,22 @@ end, { desc = 'Toggle diagnostic virtual_lines' })
 vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 
 ----------------------------------------
+--------------- format -----------------
+----------------------------------------
+
+vim.keymap.set({ 'n', 'v' }, '<leader>fm', function()
+  vim.lsp.buf.format({ async = false })
+end, { desc = '[F]or[M]at file' })
+
+----------------------------------------
 -------------- plugins -----------------
 ----------------------------------------
 
 -- Conform (Formatter)
-vim.keymap.set({ 'n', 'v' }, '<leader>fm', function()
-  require('conform').format({
-    lsp_fallback = true,
-    async = false,
-    timeout_ms = 500,
-  })
-end, { desc = '[F]or[M]at file or range (in visual mode)' })
+-- vim.keymap.set({ 'n', 'v' }, '<leader>fm', function()
+--   require('conform').format({
+--     lsp_fallback = true,
+--     async = false,
+--     timeout_ms = 500,
+--   })
+-- end, { desc = '[F]or[M]at file or range (in visual mode)' })

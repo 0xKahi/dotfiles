@@ -1,11 +1,12 @@
 return {
   'stevearc/conform.nvim',
+  enabled = false,
   opts = {
     formatters_by_ft = {
-      javascript = { 'biome', 'prettier' },
-      typescript = { 'biome', 'prettier' },
+      javascript = { 'biome', 'prettier', stop_after_first = true },
+      typescript = { 'biome', 'prettier', stop_after_first = true },
       javascriptreact = { 'biome', 'prettier', stop_after_first = true },
-      typescriptreact = { 'biome', 'prettier', stop_after_first = true },
+      typescriptreact = { 'biome', stop_after_first = true },
       css = { 'biome', 'prettier', stop_after_first = true },
       -- html = { 'prettier' },
       json = { 'biome', 'prettier', stop_after_first = true },
@@ -23,7 +24,7 @@ return {
     end,
 
     default_format_opts = {
-      lsp_format = "fallback",
+      lsp_format = 'fallback',
     },
 
     formatters = {
@@ -42,11 +43,11 @@ return {
           }, { path = ctx.filename, upward = true })[1]
         end,
       },
-      biome = {
-        condition = function(ctx)
-          return vim.fs.find({ 'biome.json', 'biome.jsonc' }, { path = ctx.filename, upward = true })[1]
-        end,
-      },
+      -- biome = {
+      --   condition = function(self, ctx)
+      --     return vim.fs.find({ 'biome.json', 'biome.jsonc' }, { path = ctx.filename, upward = true })[1]
+      --   end,
+      -- },
     },
   },
 }
