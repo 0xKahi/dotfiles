@@ -86,7 +86,7 @@ vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 ----------------------------------------
 
 vim.keymap.set({ 'n', 'v' }, '<leader>fm', function()
-  vim.lsp.buf.format({ async = false })
+  require('utils.lsp-fmt').lsp_format(0)
 end, { desc = '[F]or[M]at file' })
 
 ----------------------------------------
