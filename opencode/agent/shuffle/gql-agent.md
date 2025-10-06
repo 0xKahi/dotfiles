@@ -3,7 +3,7 @@ name: gql-agent
 description: >-
   Use this agent when you want to create or fix gql test queries 
 mode: subagent
-model: anthropic/claude-sonnet-4-20250514
+model: anthropic/claude-sonnet-4-5-20250929
 permission:
   edit: ask 
 ---

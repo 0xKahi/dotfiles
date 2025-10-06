@@ -25,7 +25,7 @@ description: >-
       assistant: "I'll launch the code-quality-reviewer agent to perform a comprehensive review of your changes."
     </example>
 mode: subagent
-model: anthropic/claude-sonnet-4-20250514
+model: anthropic/claude-sonnet-4-5-20250929
 permission:
   edit: deny 
   webfetch: ask 
