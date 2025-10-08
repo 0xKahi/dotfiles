@@ -59,40 +59,23 @@
     {
       "actions" : [
         {
-          "actions" : [
-            {
-              "key" : "s",
-              "label" : "[S]huffle",
-              "type" : "url",
-              "value" : "https://github.com/shuffle-labs"
-            },
-            {
-              "key" : "k",
-              "label" : "[K]ahi",
-              "type" : "url",
-              "value" : "https://github.com/0xKahi?tab=repositories"
-            }
-          ],
-          "key" : "g",
-          "label" : "[G]it",
-          "type" : "group"
+          "key" : "b",
+          "type" : "application",
+          "value" : "/Applications/Brave Browser.app"
         },
         {
-          "actions" : [
-            {
-              "key" : "7",
-              "label" : "[C]ontext[7]",
-              "type" : "url",
-              "value" : "https://context7.com/"
-            }
-          ],
+          "key" : "s",
+          "type" : "application",
+          "value" : "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+        },
+        {
           "key" : "c",
-          "label" : "[C]...",
-          "type" : "group"
+          "type" : "application",
+          "value" : "/Applications/Comet.app"
         }
       ],
       "key" : "b",
-      "label" : "[B]ookmarks",
+      "label" : "[B]rowser",
       "type" : "group"
     },
     {
