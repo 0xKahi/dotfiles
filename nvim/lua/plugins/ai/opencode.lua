@@ -5,7 +5,7 @@ return {
     {
       '<leader>oc',
       function()
-        require('opencode').ask()
+        require('opencode').ask('', { submit = false })
       end,
       desc = '[O]pen [C]ode ask',
       mode = 'n',
@@ -13,7 +13,7 @@ return {
     {
       '<leader>oc',
       function()
-        require('opencode').ask('@selection: ')
+        require('opencode').ask('@this', { submit = false })
       end,
       desc = '[O]pen [C]ode ask selection',
       mode = 'v',
@@ -26,4 +26,3 @@ return {
     require('config.opencode.notifications').setup()
   end,
 }
-
