@@ -5,5 +5,6 @@ require('user.shortcuts.convert')
 require('user.shortcuts.snippet-paste')
 require('user.shortcuts.filter-diagnostics')
 require('user.shortcuts.format-toggle')
+require('user.shortcuts.buffer-lsp-clients')
 -- plugins settings
 require('user.shortcuts.sbuff')

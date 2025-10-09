@@ -22,7 +22,7 @@ vim.keymap.set(
 
 vim.keymap.set({ 'n', 'v' }, '<leader>sr', function()
   local cursorWord = require('utils.misc').get_word_under_cursor()
-  require('utils.misc').copy_to_clipboard(cursorWord.selectedText)
+  -- require('utils.misc').copy_to_clipboard(cursorWord.selectedText)
   -- Escape special characters and
   -- Set command line with search pattern, ready for user input
   local escaped_text = vim.fn.escape(cursorWord.selectedText, '/\\')

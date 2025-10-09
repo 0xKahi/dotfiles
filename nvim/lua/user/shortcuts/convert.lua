@@ -17,23 +17,28 @@ local convert_commands = {
           return
         end
 
-        local error, message
+        local error, message, title
         if choice == 'px' then
           local converted, err = converters.pxToRem(value)
           error = err
-          message = string.format('%dpx is equal to %.2frem', value, converted)
+          message = string.format('%dpx is equal to %.3frem', value, converted)
+          title = 'PX to REM Convert'
         else
           local converted, err = converters.remToPx(value)
           error = err
-          message = string.format('%.2frem is equal to %dpx', value, converted)
+          message = string.format('%.3frem is equal to %dpx', value, converted)
+          title = 'REM to PX Convert'
         end
 
         if error then
-          print(error)
+          vim.notify(error, vim.log.levels.ERROR, { title = title })
           return
         end
 
-        print(message)
+        vim.notify(message, vim.log.levels.INFO, {
+          title = title,
+          timeout = 10000,
+        })
       end)
     end,
   },
@@ -52,12 +57,14 @@ local convert_commands = {
       local sec, error = converters.msToSec(ms)
 
       if error then
-        print(error)
+        vim.notify(error, vim.log.levels.ERROR, { title = 'MS to SEC Convert' })
         return
       end
 
-      -- Print the result
-      print(string.format('%dms is equal to %.2fsec', ms, sec))
+      vim.notify(string.format('%dms is equal to %.2fsec', ms, sec), vim.log.levels.INFO, {
+        title = 'MS to SEC Convert',
+        timeout = 5000,
+      })
     end,
   },
   cryptoBN = {
@@ -74,12 +81,15 @@ local convert_commands = {
       local amt, error = converters.cryptoBN(bn)
 
       if error then
-        print(error)
+        vim.notify(error, vim.log.levels.ERROR, { title = 'CryptoBN convert' })
         return
       end
 
       -- Print the result
-      print(string.format('converted value is %.2f', amt))
+      vim.notify(string.format('converted value is %.2f', amt), vim.log.levels.INFO, {
+        title = 'Crypto BN convert',
+        timeout = 5000,
+      })
     end,
   },
 }

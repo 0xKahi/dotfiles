@@ -136,6 +136,18 @@ return {
         -- root_markers = { '.terraform', '.git', 'main.tf' },
       })
 
+      -- default settings: https://github.com/neovim/nvim-lspconfig/blob/master/lsp/tailwindcss.lua#L10
+
+      vim.lsp.config('tailwindcss', {
+        filetypes = vim.tbl_filter(function(ft)
+          return not vim.tbl_contains({ 'postcss', 'scss' }, ft)
+        end, vim.lsp.config['tailwindcss'].filetypes),
+      })
+
+      vim.lsp.config('cssmodules_ls', {
+        filetypes = { 'javascriptreact', 'typescriptreact' },
+      })
+
       vim.api.nvim_create_autocmd('LspAttach', {
         desc = 'LSP actions',
         callback = function(event)

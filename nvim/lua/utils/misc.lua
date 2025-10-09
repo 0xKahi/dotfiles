@@ -20,15 +20,25 @@ function M.random_selector(tbl)
 end
 
 -- for printing tables
-function M.debug_table(tbl, title)
+---@class DebugTableOpts
+---@field tbl table
+---@field header? string optional header for the table
+---@field title? string optional title for notification
+---@field timeout? integer optional timeout for notification
+
+---@param opts DebugTableOpts the options for debugging the table
+function M.debug_table(opts)
   -- Convert the table to a string using vim.inspect
-  local table_str = vim.inspect(tbl)
-  -- Add a title if one was provided
-  if title then
-    table_str = title .. ':\n' .. table_str
+  local table_str = vim.inspect(opts.tbl)
+  -- Add a header if one was provided
+  if opts.header then
+    table_str = opts.header .. ':\n' .. table_str
   end
   -- Show the table contents as a notification
-  vim.notify(table_str, vim.log.levels.DEBUG)
+  vim.notify(table_str, vim.log.levels.DEBUG, {
+    title = opts.title or 'Debug Table',
+    timeout = opts.timeout or 1000,
+  })
 end
 
 ---@class StartInINormaModeOpts
