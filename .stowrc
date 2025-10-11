@@ -4,3 +4,4 @@
 --ignore=scripts
 --ignore=symlinks_config.conf
 --ignore=ref
+--ignore=assets
