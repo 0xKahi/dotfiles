@@ -59,5 +59,5 @@ a custom theme based on [tokyonight moon](https://github.com/folke/tokyonight.nv
 
 ## 🙏 Acknowledgments
 
-- custom symlink script from [hedrikmi]("https://github.com/hendrikmi/dotfiles/tree/main")
+- custom symlink script from [hedrikmi](https://github.com/hendrikmi/dotfiles/tree/main)
 - theme Inspired by [tokyonight moon](https://github.com/folke/tokyonight.nvim) and [prometheux-ar/cyberpunk](https://github.com/prometheux-ar/cyberpunk).
