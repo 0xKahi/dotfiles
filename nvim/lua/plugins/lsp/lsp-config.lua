@@ -54,6 +54,8 @@ return {
         require('config.lsp-picker-keymap').setup_snacks_lsp_keymaps(bufnr)
       end
 
+      local workspace = require('config.workspace')
+
       local validate_start = function(bufnr, on_dir, root_markers)
         local filename = vim.api.nvim_buf_get_name(bufnr)
         local root = vim.fs.find(root_markers, {
@@ -103,7 +105,7 @@ return {
       })
 
       -- Lua config
-      vim.lsp.config('lua_ls', {
+      workspace.workspace_lsp_config('lua_ls', {
         settings = {
           Lua = {
             runtime = {
@@ -123,7 +125,7 @@ return {
         },
       })
 
-      vim.lsp.config('terraformls', {
+      workspace.workspace_lsp_config('terraformls', {
         filetypes = { 'terraform-vars', 'terraform', 'tf' },
         settings = {
           terraformls = {
@@ -133,20 +135,25 @@ return {
             },
           },
         },
-        -- root_markers = { '.terraform', '.git', 'main.tf' },
       })
 
-      -- default settings: https://github.com/neovim/nvim-lspconfig/blob/master/lsp/tailwindcss.lua#L10
+      workspace.workspace_lsp_config('graphql', {
+        filetypes = { 'graphql' },
+      })
 
-      vim.lsp.config('tailwindcss', {
+      workspace.workspace_lsp_config('tailwindcss', {
         filetypes = vim.tbl_filter(function(ft)
           return not vim.tbl_contains({ 'postcss', 'scss' }, ft)
         end, vim.lsp.config['tailwindcss'].filetypes),
       })
 
-      vim.lsp.config('cssmodules_ls', {
+      workspace.workspace_lsp_config('cssls', {})
+
+      workspace.workspace_lsp_config('cssmodules_ls', {
         filetypes = { 'javascriptreact', 'typescriptreact' },
       })
+
+      workspace.workspace_lsp_config('css_variables', {})
 
       vim.api.nvim_create_autocmd('LspAttach', {
         desc = 'LSP actions',
