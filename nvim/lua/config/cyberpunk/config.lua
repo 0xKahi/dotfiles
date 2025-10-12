@@ -219,8 +219,9 @@ local function set_icon_highlights(highlights)
   highlights['AppFolderIcon'] = { fg = '#EF8FA4' }
   highlights['LibraryFolderIcon'] = { fg = '#8EEDB0' }
   highlights['TestFolderIcon'] = { fg = '#0db9d7' }
-  highlights['OpenSourceFolderIcon'] = { fg = '#9d7cd8' }
+  highlights['OpenCodeFolderIcon'] = { fg = '#9d7cd8' }
   highlights['SharedFolderIcon'] = { fg = '#8EEDB0' }
+  highlights['NvimWorkspaceFolderIcon'] = { fg = '#508e38' }
 
   highlights['NestJsModuleIcon'] = { fg = '#FF757F' }
   highlights['NestJsServiceIcon'] = { fg = '#FFE675' }
