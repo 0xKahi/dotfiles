@@ -91,21 +91,21 @@ return {
       })
 
       -- ESLint config
-      vim.lsp.config('eslint', {
+      workspace.lsp_config('eslint', {
         root_dir = function(bufnr, on_dir)
           validate_start(bufnr, on_dir, { 'eslint.config.js', 'eslint.config.mjs' })
         end,
       })
 
       -- Biome config
-      vim.lsp.config('biome', {
+      workspace.lsp_config('biome', {
         root_dir = function(bufnr, on_dir)
           validate_start(bufnr, on_dir, { 'biome.json', 'biome.jsonc' })
         end,
       })
 
       -- Lua config
-      workspace.workspace_lsp_config('lua_ls', {
+      workspace.lsp_config('lua_ls', {
         settings = {
           Lua = {
             runtime = {
@@ -125,7 +125,7 @@ return {
         },
       })
 
-      workspace.workspace_lsp_config('terraformls', {
+      vim.lsp.config('terraformls', {
         filetypes = { 'terraform-vars', 'terraform', 'tf' },
         settings = {
           terraformls = {
@@ -137,23 +137,23 @@ return {
         },
       })
 
-      workspace.workspace_lsp_config('graphql', {
+      workspace.lsp_config('graphql', {
         filetypes = { 'graphql' },
       })
 
-      workspace.workspace_lsp_config('tailwindcss', {
+      workspace.lsp_config('tailwindcss', {
         filetypes = vim.tbl_filter(function(ft)
           return not vim.tbl_contains({ 'postcss', 'scss' }, ft)
         end, vim.lsp.config['tailwindcss'].filetypes),
       })
 
-      workspace.workspace_lsp_config('cssls', {})
+      workspace.lsp_config('cssls', {})
 
-      workspace.workspace_lsp_config('cssmodules_ls', {
+      workspace.lsp_config('cssmodules_ls', {
         filetypes = { 'javascriptreact', 'typescriptreact' },
       })
 
-      workspace.workspace_lsp_config('css_variables', {})
+      workspace.lsp_config('css_variables', {})
 
       vim.api.nvim_create_autocmd('LspAttach', {
         desc = 'LSP actions',
