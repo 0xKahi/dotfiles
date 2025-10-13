@@ -57,7 +57,7 @@ end
 
 ---@param client_name string
 ---@param config vim.lsp.Config
-M.workspace_lsp_config = function(client_name, config)
+M.lsp_config = function(client_name, config)
   local default_config = vim.lsp.config[client_name]
 
   local root_dir = config.root_dir or default_config.root_dir
