@@ -189,9 +189,15 @@ local function set_mcphub_plugin(highlights)
 end
 
 local function set_markview_plugin(highlights)
+  --- Palattes
+  highlights['MarkviewPalette6Fg'] = { fg = cyberpunk.lsp.operator }
+
+  --- Code Blocks
   highlights['MarkviewCode'] = { bg = cyberpunk.core.dark_bg }
   highlights['MarkviewInlineCode'] = { bg = cyberpunk.core.dark_bg }
   highlights['MarkviewBlockCode'] = { bg = cyberpunk.core.dark_bg }
+
+  --- Block Quotes
   highlights['MarkviewBlockQuoteGem'] = { fg = cyberpunk.markview.gem }
   highlights['MarkviewBlockQuoteCandy'] = { fg = cyberpunk.markview.candy }
   highlights['MarkviewBlockQuoteTip'] = { fg = cyberpunk.markview.tip }
@@ -203,11 +209,20 @@ local function set_markview_plugin(highlights)
   highlights['MarkviewBlockQuoteImportant'] = { fg = cyberpunk.markview.important }
   highlights['MarkviewBlockQuoteInfo'] = { fg = cyberpunk.markview.info }
   highlights['MarkviewBlockQuoteDefault'] = { fg = cyberpunk.core.bright_magenta }
+
+  --- List Items
   highlights['MarkviewListItemMinus'] = { fg = cyberpunk.core.tky_blue }
   highlights['MarkviewListItemMinusScope'] = { fg = cyberpunk.core.bright_magenta }
   highlights['MarkviewListItemStar'] = { fg = cyberpunk.core.bright_yellow }
-  highlights['MarkviewCheckboxStar'] = { fg = cyberpunk.core.bright_yellow }
+
+  --- Checkboxes
+  highlights['MarkviewCheckboxUnchecked'] = { fg = cyberpunk.core.tky_blue }
+  highlights['MarkviewCheckboxChecked'] = { fg = cyberpunk.lsp.property }
+  highlights['MarkviewCheckboxCancelled'] = { fg = cyberpunk.core.light_black }
+  highlights['MarkviewCheckboxPending'] = { fg = cyberpunk.markview.info }
   highlights['MarkviewCheckboxHalf'] = { fg = cyberpunk.markview.pending }
+  highlights['MarkviewBlockQuoteWarn'] = { fg = cyberpunk.markview.warn }
+  highlights['MarkviewCheckboxStar'] = { fg = cyberpunk.core.bright_yellow }
 end
 
 ----------------------------------------
