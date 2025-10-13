@@ -28,6 +28,7 @@ return {
         buf_ignore = { 'nofile' },
         debounce = 50,
         hybrid_modes = { 'n' },
+        icon_provider = 'mini'
       },
       max_length = 99999,
 
@@ -63,7 +64,9 @@ return {
           ['info'] = create_callout('info', '󰋽 ', 'MarkviewBlockQuoteInfo'),
         },
         headings = { enable = false },
-        horizontal_rules = {},
+        horizontal_rules = {
+          enable = true
+        },
         list_items = {
           enable = true,
           indent_size = 2,
@@ -108,30 +111,30 @@ return {
       },
 
       markdown_inline = {
-        inline_codes = {
-          -- enable = true,
-          checkboxes = {
-            enable = true,
-
-            checked = { text = '󰗠', hl = 'MarkviewCheckboxChecked', scope_hl = 'MarkviewCheckboxChecked' },
-            unchecked = { text = '󰄰', hl = 'MarkviewCheckboxUnchecked', scope_hl = 'MarkviewCheckboxUnchecked' },
-
-            -- none of theese overwrites works rn for whatever reason
-            ['/'] = { text = '󱎖', hl = 'MarkviewCheckboxHalf' },
-            ['-'] = { text = '󰍶', hl = 'MarkviewCheckboxCancelled', scope_hl = 'MarkviewCheckboxStriked' },
-            ['?'] = { text = '󰋗', hl = 'MarkviewCheckboxPending' },
-            ['!'] = { text = '󰀦', hl = 'MarkviewBlockQuoteWarn' },
-            ['*'] = { text = '󰓎', hl = 'MarkviewCheckboxStar' },
-            -- ['b'] = { text = '󰃀', hl = 'MarkviewCheckboxProgress' },
-            ['info'] = { text = '󰰄', hl = 'MarkviewBlockQuoteInfo' },
-            ['tu'] = { text = '', hl = 'MarkviewBlockQuoteSuccess' },
-            ['td'] = { text = '', hl = 'MarkviewBlockQuoteFail' },
-            ['gem'] = { text = '', hl = 'MarkviewBlockQuoteGem' },
-            ['u'] = { text = '󰔵', hl = 'MarkviewBlockQuoteSuccess' },
-            ['d'] = { text = '󰔳', hl = 'MarkviewBlockQuoteFail' },
-          },
+        checkboxes = {
+          enable = true,
+          checked = { text = '󰗠', hl = 'MarkviewCheckboxChecked', scope_hl = 'MarkviewCheckboxChecked' },
+          unchecked = { text = '󰄰', hl = 'MarkviewCheckboxUnchecked', scope_hl = 'MarkviewCheckboxUnchecked' },
+          ['-'] = { text = '󰍶', hl = 'MarkviewCheckboxCancelled', scope_hl = 'MarkviewCheckboxCancelled' },
+          ['/'] = { text = '󱎖', hl = 'MarkviewCheckboxHalf', scope_hl = 'MarkviewCheckboxHalf' },
+          ['?'] = { text = '󰋗', hl = 'MarkviewCheckboxPending', scope_hl = 'MarkviewCheckboxPending' },
+          ['!'] = { text = '󰀦', hl = 'MarkviewBlockQuoteWarn', scope_hl = 'MarkviewBlockQuoteWarn' },
+          ['*'] = { text = '󰓎', hl = 'MarkviewCheckboxStar', scope_hl = 'MarkviewCheckboxStar' },
         },
-        hyperlinks = { enable = true },
+
+        inline_codes = {
+          enable = true,
+        },
+
+        hyperlinks = {
+          enable = true,
+
+          ['notion%.so'] = {
+            icon = " ",
+            hl = "MarkviewPalette6Fg"
+          }
+
+        },
         internal_links = { enable = true },
         escapes = { enable = true },
         footnotes = {},
