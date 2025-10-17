@@ -27,6 +27,52 @@
     "messages_copy": "<leader>y",
     "app_exit": "ctrl+c,<leader>q"
   },
+  "provider": {
+    "anthropic": {
+      "models": {
+        "Claude Sonnet 4.5 (reasoning)": {
+          "id": "claude-sonnet-4-5-20250929",
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budgetTokens": 16000,
+            },
+          },
+        },
+        "Claude Haiku 4.5 (reasoning)": {
+          "id": "claude-haiku-4-5-20251001",
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budgetTokens": 12000,
+            },
+          },
+        },
+      },
+    },
+    "opencode": {
+      "models": {
+        "Claude Sonnet 4.5 (reasoning)": {
+          "id": "claude-sonnet-4-5",
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budget_tokens": 16000,
+            },
+          },
+        },
+        "Claude Haiku 4.5 (reasoning)": {
+          "id": "claude-haiku-4-5",
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budget_tokens": 12000,
+            },
+          },
+        },
+      },
+    },
+  },
   "mcp": {
     "context7": {
       "type": "local",
@@ -86,6 +132,12 @@
       "fd *": "allow",
       "rg *": "allow",
     }
+  },
+  "tools": {
+    "context7": false,
+    "tavily-mcp": false,
+    "firecrawl": false,
+    "coingecko_mcp": false
   },
   "layout": "stretch",
   "autoshare": false,

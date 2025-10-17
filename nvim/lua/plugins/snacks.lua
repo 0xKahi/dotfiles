@@ -339,6 +339,10 @@ return {
       },
     },
 
+    -- image = {
+    --   enabled = true,
+    -- },
+
     styles = {
       notification = {
         border = 'rounded',

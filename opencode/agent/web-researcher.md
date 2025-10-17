@@ -5,11 +5,15 @@ description: >-
   fact-checking, or trend analysis. This agent should be used proactively for
   deep information gathering tasks.
 mode: subagent
-model: github-copilot/gpt-5-mini
 permission:
   edit: ask 
   bash: ask
   webfetch: allow 
+tools:
+  context7: true 
+  tavily-mcp: true
+  firecrawl: true
+  coingecko_mcp: true 
 ---
 You are a search specialist expert at finding and synthesizing information from the web.
 

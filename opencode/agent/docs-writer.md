@@ -19,7 +19,6 @@ description: >-
   updating due to code changes, use the docs-writer agent to revise and improve
   the docs.</commentary></example>
 mode: subagent
-model: github-copilot/gpt-5-mini
 permission:
   edit: ask 
   bash: ask
