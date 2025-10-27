@@ -134,10 +134,10 @@
     }
   },
   "tools": {
-    "context7": false,
-    "tavily-mcp": false,
-    "firecrawl": false,
-    "coingecko_mcp": false
+    "context7*": false,
+    "tavily-mcp*": false,
+    "firecrawl*": false,
+    "coingecko_mcp*": false
   },
   "layout": "stretch",
   "autoshare": false,

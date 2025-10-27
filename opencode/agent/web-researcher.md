@@ -10,10 +10,10 @@ permission:
   bash: ask
   webfetch: allow 
 tools:
-  context7: true 
-  tavily-mcp: true
-  firecrawl: true
-  coingecko_mcp: true 
+  context7*: true 
+  tavily-mcp*: true
+  firecrawl*: true
+  coingecko_mcp*: true 
 ---
 You are a search specialist expert at finding and synthesizing information from the web.
 
