@@ -63,7 +63,7 @@ zi() {
 }
 # ================ Lazy load zoxide end ========================
 
-# yz: shell wrapper for yazi that allows chaing directory if needed
+# yz: shell wrapper for yazi that allows changing directory if needed
 # - `q`: to quit yazi and change directory
 # - `Q`: to quit yazi without changing directory
 function yz() {
