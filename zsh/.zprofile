@@ -29,7 +29,7 @@ if [ -f "/Users/kahi/miniforge3/etc/profile.d/mamba.sh" ]; then
 fi
 # ================ Setup Conda end  ========================
 
-# ================ Setup Gcloud SDK ====-=-====================
+# ================ Setup Gcloud SDK ===========================
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/kahi/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kahi/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 # The next line enables shell command completion for gcloud.
