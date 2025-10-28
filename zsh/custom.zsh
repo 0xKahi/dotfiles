@@ -23,7 +23,7 @@ autoload -Uz add-zsh-hook
 eval "$(starship init zsh)"
 
 # load fzf
-eval "$(fzf --zsh)" 
+eval "$(fzf --zsh)"
 # load fzf theme and keybindings
 [ -f "$HOME/.config/zsh/configs/fzf-config.zsh" ] && source "$HOME/.config/zsh/configs/fzf-config.zsh"
 
