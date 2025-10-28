@@ -1,5 +1,5 @@
 # auto completion
-setopt prompt_subst # prompt subsitution
+setopt prompt_subst # prompt substitution
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case-insensitive completion
 
 ## auto completion
