@@ -14,7 +14,7 @@ stow .
 
 ### symlinks script
 
-this script is mainly for symlinking `.zshrc`/`.zshenv` config files to symlink is defined in [symlink conf](./symlinks_config.conf)
+this script is mainly for symlinking `.zshrc`/`.zshenv`/`.zprofile` config files to symlink is defined in [symlink conf](./symlinks_config.conf)
 stow only symlinks files to `~/.config` but zsh config is required in the home directory
 
 #### Install
