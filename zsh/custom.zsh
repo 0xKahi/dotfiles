@@ -6,7 +6,16 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case-insensitive comple
 fpath=(${HOME}/.docker/completions $fpath) # for docker completions
 autoload bashcompinit && bashcompinit # for bash in zsh
 autoload -Uz compinit
-compinit
+
+# Only regenerate compdump (.zcompdump) once per hour (speeds up shell startup)
+# if the file exists and is < 1hr old run (fast mode) etc compinit -C, else run full compinit
+if [[ -n ~/.zcompdump(#qN.mh-1) ]]; then
+  compinit -C # skips compdump and compaudit
+  # compinit -i # skips compdump only 
+  # compinit # skips none use this when you want to regenerate .zcompdump
+else
+  compinit
+fi
 
 # Load hook management utility (used by lazy loading functions below)
 # Use hook-based lazy loading (with add-zsh-hook) for tools that:
