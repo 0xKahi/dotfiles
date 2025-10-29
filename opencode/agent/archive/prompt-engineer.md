@@ -2,7 +2,7 @@
 name: prompt-engineer
 description: Optimizes prompts for LLMs and AI systems. Use when building AI features, improving agent performance, or crafting system prompts. Expert in prompt patterns and techniques.
 mode: subagent
-model: anthropic/claude-sonnet-4-5-20250929
+model: anthropic/claude-sonnet-4-5
 disable: true
 permission:
   edit: ask 

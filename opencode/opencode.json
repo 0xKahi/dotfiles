@@ -31,7 +31,7 @@
     "anthropic": {
       "models": {
         "Claude Sonnet 4.5 (reasoning)": {
-          "id": "claude-sonnet-4-5-20250929",
+          "id": "claude-sonnet-4-5",
           "options": {
             "thinking": {
               "type": "enabled",
@@ -40,7 +40,7 @@
           },
         },
         "Claude Haiku 4.5 (reasoning)": {
-          "id": "claude-haiku-4-5-20251001",
+          "id": "claude-haiku-4-5",
           "options": {
             "thinking": {
               "type": "enabled",
