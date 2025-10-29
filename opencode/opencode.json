@@ -90,7 +90,20 @@
         "-y",
         "tavily-mcp"
       ],
-      "enabled": true
+      "enabled": false
+    },
+    "perplexity-mcp": {
+      "type": "local",
+      "command": [
+        "bunx",
+        "-y",
+        "perplexity-mcp"
+      ],
+      "enabled": true,
+      "environment": {
+        "PERPLEXITY_API_KEY": "{env:PERPLEXITY_API_KEY}",
+        "PERPLEXITY_TIMEOUT_MS": "600000"
+      }
     },
     "firecrawl": {
       "type": "local",
@@ -137,7 +150,8 @@
     "context7*": false,
     "tavily-mcp*": false,
     "firecrawl*": false,
-    "coingecko_mcp*": false
+    "coingecko_mcp*": false,
+    "perplexity-mcp*": false
   },
   "layout": "stretch",
   "autoshare": false,
