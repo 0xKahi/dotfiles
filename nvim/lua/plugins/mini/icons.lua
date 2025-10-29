@@ -32,7 +32,7 @@ return {
         test = { hl = 'TestFolderIcon' },
         ['.opencode'] = { glyph = '󱁿', hl = 'OpenCodeFolderIcon' },
         ['.nvim'] = { glyph = ' ', hl = 'NvimWorkspaceFolderIcon' },
-        -- shared = { glyph = '󰉒 ', hl = 'SharedFolderIcon' },
+        shared = { glyph = '󰉒 ', hl = 'SharedFolderIcon' },
       },
     })
   end,
