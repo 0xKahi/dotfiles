@@ -2,6 +2,10 @@
 
 ## Initial Setup
 
+> [!HINT]
+> if using mac install dependencies using `brew` before running the setup
+> refer to [Brew Setup](./brew/README.md) for more details
+
 setup requires 2 main steps 
 1. uses `stow` to symlink all config files to `~/.config` directory  
 2. uses a custom `symlink` script to symlink files like `.zshrc` to the home directory

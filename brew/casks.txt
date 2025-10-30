@@ -1,0 +1,9 @@
+docker
+docker-desktop
+font-jetbrains-mono
+font-symbols-only-nerd-font
+leader-key
+ngrok
+session-manager-plugin
+wezterm
+zed
