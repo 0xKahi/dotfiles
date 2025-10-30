@@ -120,6 +120,10 @@
     "coingecko_mcp": {
       "type": "remote",
       "url": "https://mcp.api.coingecko.com/sse",
+    },
+    "gh_grep": {
+      "type": "remote",
+      "url": "https://mcp.grep.app"
     }
   },
   "lsp": {
@@ -151,7 +155,8 @@
     "tavily-mcp*": false,
     "firecrawl*": false,
     "coingecko_mcp*": false,
-    "perplexity-mcp*": false
+    "perplexity-mcp*": false,
+    "gh-grep*": false
   },
   "layout": "stretch",
   "autoshare": false,
