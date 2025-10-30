@@ -2,7 +2,7 @@
 
 ## Initial Setup
 
-> [!HINT]
+> [!TIP]
 > if using mac install dependencies using `brew` before running the setup
 > refer to [Brew Setup](./brew/README.md) for more details
 
