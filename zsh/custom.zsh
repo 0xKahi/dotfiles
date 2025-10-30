@@ -15,6 +15,7 @@ if [[ -n ~/.zcompdump(#qN.mh-1) ]]; then
   # compinit # skips none use this when you want to regenerate .zcompdump
 else
   compinit
+  printf "\e[105;30mDEBUG\e[0m .zcompdump regenerated \e[33m[%s]\e[0m\n" "$(date '+%H:%M:%S')"
 fi
 
 # Load hook management utility (used by lazy loading functions below)
@@ -48,7 +49,7 @@ _lazy_atuin() {
 
 # Register the lazy loader to run before the first prompt appears
 add-zsh-hook precmd _lazy_atuin
-# ================ Lazy load atuin end ========================
+# ====================== end ===============================
 
 # ================ Lazy load zoxide ========================
 # - defers initialization until first use of z/zi/zoxide commands
@@ -70,8 +71,9 @@ zi() {
   eval "$(zoxide init zsh)"           # Initialize zoxide
   zi "$@"                             # Execute the real zi command (interactive picker)
 }
-# ================ Lazy load zoxide end ========================
+# ====================== end ===============================
 
+# ================ yazi shell wrapper ======================
 # yz: shell wrapper for yazi that allows changing directory if needed
 # - `q`: to quit yazi and change directory
 # - `Q`: to quit yazi without changing directory
@@ -82,10 +84,15 @@ function yz() {
   [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
   rm -f -- "$tmp"
 }
+# ====================== end ===============================
+
+# zsh menu style
+[ -f "$HOME/.config/zsh/configs/zsh-menu-style.zsh" ] && source "$HOME/.config/zsh/configs/zsh-menu-style.zsh"
 
 # set up zsh syntax highlighting
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 
 # enable vi mode
 [ -f "$HOME/.config/zsh/configs/vi-mode.zsh" ] && source "$HOME/.config/zsh/configs/vi-mode.zsh"
