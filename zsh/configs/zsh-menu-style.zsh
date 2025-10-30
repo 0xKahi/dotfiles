@@ -1,3 +1,6 @@
+# Load complist module to enable menuselect keymap
+zmodload zsh/complist
+
 # reference: https://zsh.sourceforge.io/Guide/zshguide06.html
 ZLS_COLORS="no=00:fi=00:di=01;34:ln=01;36:\
 pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:\
@@ -9,8 +12,6 @@ or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:\
 *.mpg=01;37:*.avi=01;37:*.gl=01;37:*.dl=01;37:\
 lc=\e[:rm=m:tc=00:sp=00:ma=07:hi=01;33:du=00"
 
-# Load complist module to enable menuselect keymap
-zmodload zsh/complist
 
 # Vi keybindings for menu selection
 bindkey -M menuselect 'h' vi-backward-char
@@ -38,3 +39,4 @@ zstyle ':completion:*' list-colors \
 
 # Highlight the selected item 
 zstyle ':completion:*' menu select=long-list
+zstyle ':completion:*' menu select
