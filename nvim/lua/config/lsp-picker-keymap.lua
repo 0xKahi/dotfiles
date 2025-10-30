@@ -16,6 +16,27 @@ function M.setup_snacks_lsp_keymaps(bufnr)
       layout = 'basic',
     })
   end, { buffer = bufnr, desc = '[G]o to [R]eferences' })
+
+  vim.keymap.set('n', 'gt', function()
+    Snacks.picker.lsp_type_definitions({
+      layout = 'basic',
+      auto_confirm = false,
+    })
+  end, { buffer = bufnr, desc = '[G]o to [T]ype definitions' })
+
+  vim.keymap.set('n', 'gci', function()
+    Snacks.picker.lsp_incoming_calls({
+      layout = 'basic',
+      auto_confirm = false,
+    })
+  end, { buffer = bufnr, desc = '[G]o to [C]alls [I]ncoming' })
+
+  vim.keymap.set('n', 'gco', function()
+    Snacks.picker.lsp_outgoing_calls({
+      layout = 'basic',
+      auto_confirm = false,
+    })
+  end, { buffer = bufnr, desc = '[G]o to [C]alls [O]utgoing' })
 end
 
 function M.setup_telescope_lsp_keymaps(bufnr)
