@@ -156,7 +156,7 @@
     "firecrawl*": false,
     "coingecko_mcp*": false,
     "perplexity-mcp*": false,
-    "gh-grep*": false
+    "gh_grep*": false
   },
   "layout": "stretch",
   "autoshare": false,
