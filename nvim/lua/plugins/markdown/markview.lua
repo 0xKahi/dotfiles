@@ -98,6 +98,7 @@ return {
           marker_dot = {
             add_padding = true,
             conceal_on_checkboxes = true,
+            text = '',
           },
 
           marker_parenthesis = {
