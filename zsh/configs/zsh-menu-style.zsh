@@ -22,6 +22,9 @@ bindkey -M menuselect 'l' vi-forward-char
 # Enable menu selection (use arrow keys to navigate completions)
 zstyle ':completion:*' group-name ''
 
+# case-insensitive completion
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
 # Format for completion groups and descriptions
 zstyle ':completion:*:descriptions' format '%F{cyan}-- %d --%f'
 zstyle ':completion:*:messages' format '%F{magenta}-- %d --%f'

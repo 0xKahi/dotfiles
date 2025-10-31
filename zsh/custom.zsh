@@ -1,7 +1,3 @@
-# auto completion
-setopt prompt_subst # prompt substitution
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # case-insensitive completion
-
 ## auto completion
 fpath=(${HOME}/.docker/completions $fpath) # for docker completions
 autoload bashcompinit && bashcompinit # for bash in zsh
