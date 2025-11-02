@@ -36,7 +36,8 @@
     "lightYellow": "#8c6c3e",
     "lightGreen": "#587539",
     "lightCyan": "#007197",
-    "lightPurple": "#9854f1"
+    "lightPurple": "#9854f1",
+    "system": "none"
   },
   "theme": {
     "primary": {
@@ -67,12 +68,18 @@
       "dark": "darkStep9",
       "light": "lightStep9"
     },
-    "text": "none",
+    "text": {
+      "dark": "system",
+      "light": "system"
+    },
     "textMuted": {
       "dark": "darkStep11",
       "light": "lightStep11"
     },
-    "background": "none",
+    "background": {
+      "dark": "system",
+      "light": "system"
+    },
     "backgroundPanel": {
       "dark": "darkStep2",
       "light": "lightStep2"
