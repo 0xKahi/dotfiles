@@ -23,10 +23,14 @@ return {
     opts = {
       preview = {
         enable = true,
+        enable_hybrid_mode = true,
+        linewise_hybrid_mode = false,
+        raw_previews = nil,
         filetypes = { 'markdown', 'Avante', 'AvanteInput', 'codecompanion' },
         ignore_buftypes = {},
         buf_ignore = { 'nofile' },
         debounce = 50,
+        modes = { "n", "no", "c" },
         hybrid_modes = { 'n' },
         icon_provider = 'mini'
       },
@@ -125,6 +129,8 @@ return {
 
         inline_codes = {
           enable = true,
+          padding_left = "",
+          padding_right = ""
         },
 
         hyperlinks = {
