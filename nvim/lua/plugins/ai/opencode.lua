@@ -1,5 +1,6 @@
 return {
   'NickvanDyke/opencode.nvim',
+  commit = '08bf7763fe1f363a70c6a84f6bbb82fe111da8b5', -- commit hash before v1.0.0 release
   dependencies = { 'folke/snacks.nvim' },
   keys = {
     {
