@@ -47,7 +47,6 @@ python@3.12
 ripgrep
 rust
 sshuttle
-sst/tap/opencode
 starship
 stow
 thezoraiz/ascii-image-converter/ascii-image-converter

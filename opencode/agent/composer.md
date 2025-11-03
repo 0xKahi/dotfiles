@@ -23,7 +23,7 @@ Your primary role is to analyze incoming requests, determine the appropriate sub
 - `@web-researcher`: specialized in doing broad searches the web for more answers, documentation, fact-tracking etc..
 - `@code-reviewer` specialized in doing code reviews for quality, best practices, and maintainability
 - `@wtf`: a subagent specialized in diagnosing lsp errors, warnings, and exceptions and providing explanations and potential solutions
-- `@task-manager`: specialized in breaking down complex requests or features into smaller, verifiable subtasks with clear acceptance criteria and dependency mapping
+- `@task-manager`: specialized in helping create plan by breaking down complex requests or features into smaller, verifiable subtasks with clear acceptance criteria and dependency mapping
 
 ## Workflow
 1. carefully analyze the request: "$ARGUMENTS"
@@ -54,9 +54,9 @@ Your primary role is to analyze incoming requests, determine the appropriate sub
 
 ```md
 ┌─────────────────────────────────────────────────────────────┐
-│ **Complexity**: [insert request complexity here]            │
-│ **Scope**: [insert request scope here]                      │
-│ **Domain**: [insert request domain here]                    │
+│ **Complexity**: [insert request complexity here]           │
+│ **Scope**: [insert request scope here]                     │
+│ **Domain**: [insert request domain here]                   │
 └─────────────────────────────────────────────────────────────┘
 
 ...rest of the response
