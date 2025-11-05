@@ -32,7 +32,7 @@
               "key" : "k",
               "label" : "[D]oc[K]er",
               "type" : "application",
-              "value" : "/Applications/Docker.app/Contents/MacOS/Docker Desktop.app"
+              "value" : "/Applications/Docker.app"
             }
           ],
           "key" : "d",
