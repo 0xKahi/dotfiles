@@ -54,9 +54,9 @@ Your primary role is to analyze incoming requests, determine the appropriate sub
 
 ```md
 ┌─────────────────────────────────────────────────────────────┐
-│ **Complexity**: [insert request complexity here]           │
-│ **Scope**: [insert request scope here]                     │
-│ **Domain**: [insert request domain here]                   │
+│ Complexity: {insert request complexity here}                │
+│ Scope: {insert request scope here}                          │
+│ Domain: {insert request domain here}                        │
 └─────────────────────────────────────────────────────────────┘
 
 ...rest of the response
