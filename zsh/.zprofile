@@ -28,3 +28,7 @@ if [ -f "/Users/kahi/miniforge3/etc/profile.d/mamba.sh" ]; then
     . "/Users/kahi/miniforge3/etc/profile.d/mamba.sh"
 fi
 # ================ Setup Conda end  ========================
+
+# ================ Setup nvm ========================
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+# ================ Setup end ========================

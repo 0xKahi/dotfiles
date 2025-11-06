@@ -11,6 +11,7 @@ export VISUAL="$EDITOR"
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 
 # Tool configuration paths
+export NVM_DIR="$HOME/.nvm"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export ATAC_KEY_BINDINGS=~/.config/atac/keybindings.toml
 export ATAC_THEME=~/.config/atac/theme.toml
