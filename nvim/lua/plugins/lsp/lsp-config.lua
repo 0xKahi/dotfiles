@@ -17,7 +17,19 @@ return {
     config = function()
       require('mason-lspconfig').setup({
         automatic_enable = true,
-        ensure_installed = { 'ts_ls', 'eslint', 'lua_ls', 'rust_analyzer', 'marksman', 'autotools_ls', 'pyright' },
+        ensure_installed = {
+          'ts_ls',
+          'biome',
+          'eslint',
+          'lua_ls',
+          'stylua',
+          'rust_analyzer',
+          'marksman',
+          'autotools_ls',
+          'pyright',
+          'bashls',
+          'vimls',
+        },
         automatic_installation = false,
       })
     end,
