@@ -28,6 +28,7 @@ local function set_nvim_core(highlights, colors)
   highlights['TabLine'] = { fg = cyberpunk.lsp.comments, bg = '' }
   highlights['CursorLine'] = { bg = '' }
   highlights['CursorLineNr'] = { bold = true, fg = cyberpunk.core.green }
+  highlights['HighlightYank'] = { bg = cyberpunk.core.highlight }
 
   highlights['LineNr'] = { fg = cyberpunk.core.light_black }
   highlights['LineNrAbove'] = { fg = cyberpunk.core.light_black }
