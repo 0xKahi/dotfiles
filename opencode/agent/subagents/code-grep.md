@@ -1,8 +1,7 @@
 ---
 name: code-grep 
 description: >-
-  Use this agent when you need search up code snippets, or code examples 
-  to gain more context on how to implement certain functionality or features.
+  an agent equipped with tools to search and retrieve code examples from github repositories to assist with coding related questions and tasks 
 mode: subagent
 permission:
   edit: ask 
