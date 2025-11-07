@@ -165,7 +165,7 @@ return {
 
       preset = {
         pick = nil,
-        header = require('utils.misc').random_selector(require('config.cyberpunk.ascii-art')),
+        header = require('utils.misc').random_selector(require('config.cyberpunk.dashboard.ascii-art')),
       },
       sections = {
         { section = 'header' },
