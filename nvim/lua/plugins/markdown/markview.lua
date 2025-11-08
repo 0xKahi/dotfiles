@@ -15,7 +15,7 @@ return {
   {
     'OXY2DEV/markview.nvim',
     -- lazy = false, -- Recommended
-    ft = { 'markdown', 'Avante', 'codecompanion' }, -- If you decide to lazy-load anyway
+    ft = { 'markdown', 'markdown.gh', 'Avante', 'codecompanion' }, -- If you decide to lazy-load anyway
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
       'echasnovski/mini.icons',
@@ -26,13 +26,13 @@ return {
         enable_hybrid_mode = true,
         linewise_hybrid_mode = false,
         raw_previews = nil,
-        filetypes = { 'markdown', 'Avante', 'AvanteInput', 'codecompanion' },
+        filetypes = { 'markdown', 'markdown.gh', 'Avante', 'codecompanion' },
         ignore_buftypes = {},
         buf_ignore = { 'nofile' },
         debounce = 50,
-        modes = { "n", "no", "c" },
+        modes = { 'n', 'no', 'c' },
         hybrid_modes = { 'n' },
-        icon_provider = 'mini'
+        icon_provider = 'mini',
       },
       max_length = 99999,
 
@@ -69,7 +69,7 @@ return {
         },
         headings = { enable = false },
         horizontal_rules = {
-          enable = true
+          enable = true,
         },
         list_items = {
           enable = true,
@@ -129,18 +129,17 @@ return {
 
         inline_codes = {
           enable = true,
-          padding_left = "",
-          padding_right = ""
+          padding_left = '',
+          padding_right = '',
         },
 
         hyperlinks = {
           enable = true,
 
           ['notion%.so'] = {
-            icon = " ",
-            hl = "MarkviewPalette6Fg"
-          }
-
+            icon = ' ',
+            hl = 'MarkviewPalette6Fg',
+          },
         },
         internal_links = { enable = true },
         escapes = { enable = true },
