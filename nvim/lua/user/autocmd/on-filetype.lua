@@ -20,24 +20,38 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
---------- others --------
+------ for markdown ------
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'markdown',
+  callback = function()
+    vim.opt_local.conceallevel = 2
+  end,
+})
 
+------ for config files ------
+vim.api.nvim_create_autocmd('BufRead', {
+  group = vim.api.nvim_create_augroup('ConfigFiles', { clear = true }),
+  pattern = { 'config' },
+  callback = function()
+    vim.bo.filetype = 'dosini'
+  end,
+})
+
+vim.api.nvim_create_autocmd('BufRead', {
+  group = vim.api.nvim_create_augroup('EnvFiles', { clear = true }),
+  pattern = { '.env', '.env.*' },
+  callback = function()
+    vim.bo.filetype = 'sh'
+  end,
+})
+
+--------- no auto continue cmments --------
 vim.api.nvim_create_autocmd('FileType', {
   callback = function()
     -- disable insert comment header on new line
     vim.opt.formatoptions:remove({ 'c', 'r', 'o' })
   end,
 })
-
------- for markdown ------
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = 'markdown',
-  callback = function()
-    vim.opt_local.conceallevel = 2
-    -- vim.opt_local.concealcursor = 'c'
-  end,
-})
-
 ------ for RESTY PLUGIN ------
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {
