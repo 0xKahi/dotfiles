@@ -154,6 +154,14 @@ return {
       { desc = '[F]ind [N]otification', silent = false, noremap = true },
       mode = { 'n' },
     },
+    {
+      '<leader>pr',
+      function()
+        Snacks.picker.gh_pr()
+      end,
+      { desc = '[P]ull [R]equest', silent = false, noremap = true },
+      mode = { 'n' },
+    },
   },
 
   opts = {
@@ -336,6 +344,46 @@ return {
       --- buffer local variables
       b = {
         completion = true, -- disable blink completions in input
+      },
+    },
+
+    gh = {
+      --- Keymaps for GitHub buffers
+      keys = {
+        select = { '<cr>', 'gh_actions', desc = 'Select Action' },
+        -- edit = { 'i', 'gh_edit', desc = 'Edit' },
+        -- comment = { 'a', 'gh_comment', desc = 'Add Comment' },
+        -- close = { 'c', 'gh_close', desc = 'Close' },
+        -- reopen = { 'o', 'gh_reopen', desc = 'Reopen' },
+      },
+      wo = {
+        breakindent = true,
+        wrap = true,
+        showbreak = '',
+        linebreak = true,
+        number = true,
+        relativenumber = true,
+        foldexpr = 'v:lua.vim.treesitter.foldexpr()',
+        foldmethod = 'expr',
+        concealcursor = 'n',
+        conceallevel = 2,
+        list = true,
+        -- winhighlight = Snacks.util.winhl({
+        --   Normal = 'SnacksGhNormal',
+        --   NormalFloat = 'SnacksGhNormalFloat',
+        --   FloatBorder = 'SnacksGhBorder',
+        --   FloatTitle = 'SnacksGhTitle',
+        --   FloatFooter = 'SnacksGhFooter',
+        -- }),
+      },
+      ---@type vim.bo|{}
+      bo = {},
+      diff = {
+        min = 4, -- minimum number of lines changed to show diff
+        wrap = 80, -- wrap diff lines at this length
+      },
+      scratch = {
+        height = 15, -- height of scratch window
       },
     },
 
