@@ -1,3 +1,5 @@
+local selectors = require('config.selectors')
+
 -- neotree
 return {
   'nvim-neo-tree/neo-tree.nvim',
@@ -165,6 +167,13 @@ return {
       },
       nesting_rules = {},
       filesystem = {
+        commands = {
+          change_git_base = function()
+            selectors.git_ref(function(ref)
+              vim.cmd('Neotree ' .. ref)
+            end)
+          end,
+        },
         filtered_items = {
           visible = false,
           hide_dotfiles = false,
@@ -181,12 +190,24 @@ return {
         window = {
           mappings = {
             -- Add your filesystem-specific mappings here
+            ['B'] = 'change_git_base',
           },
         },
       },
       git_status = {
+        commands = {
+          change_git_base = function()
+            selectors.git_ref(function(ref)
+              vim.cmd('Neotree git_status git_base=' .. ref)
+            end)
+          end,
+        },
         window = {
           position = 'left',
+          mappings = {
+            -- Add your filesystem-specific mappings here
+            ['B'] = 'change_git_base',
+          },
         },
       },
       buffers = {

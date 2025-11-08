@@ -40,6 +40,17 @@ return {
             ':Gitsigns stage_hunk<cr>',
             { desc = '[S]tage [H]unk', silent = true, noremap = true }
           )
+          vim.keymap.set(
+            'n',
+            '<leader>dt',
+            function()
+              local selectors = require('config.selectors')
+              selectors.git_ref(function(ref)
+                vim.cmd('Gitsigns diffthis ' .. ref)
+              end)
+            end,
+            { desc = '[D]iff [T]his', silent = true, noremap = true }
+          )
 
           vim.keymap.set('n', ']c', function()
             if vim.wo.diff then
