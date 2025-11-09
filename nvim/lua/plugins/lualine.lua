@@ -14,7 +14,21 @@ return {
     },
     sections = {
       lualine_a = { 'mode' },
-      lualine_b = { 'branch', 'diff', 'diagnostics' },
+      lualine_b = {
+        'branch',
+        {
+          'git_base',
+          fmt = function()
+            local git_base = Global:get('git_base')
+            if git_base == nil or git_base == 'HEAD' then
+              return nil
+            end
+            return ' ' .. git_base
+          end,
+        },
+        'diff',
+        'diagnostics',
+      },
       lualine_c = {
         -- {
         --   'buffers',

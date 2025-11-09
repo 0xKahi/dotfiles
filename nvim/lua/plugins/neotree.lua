@@ -1,5 +1,3 @@
-local selectors = require('config.selectors')
-
 -- neotree
 return {
   'nvim-neo-tree/neo-tree.nvim',
@@ -12,10 +10,28 @@ return {
     -- 'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
   },
   keys = {
-    { '<leader>oe', ':Neot reveal<CR>', desc = '[O]pen [E]xplorer', noremap = true, silent = true },
+    {
+      '<leader>oe',
+      function()
+        local git_base = Global:get('git_base') or 'HEAD'
+        vim.cmd('Neotree git_base=' .. git_base .. ' reveal')
+      end,
+      desc = '[O]pen [E]xplorer',
+      noremap = true,
+      silent = true,
+    },
     { '<leader>ds', ':Neot document_symbols<CR>', desc = '[D]ocument [S]ymbols', noremap = true, silent = true },
     { '<leader>ce', ':Neot close<CR>', desc = '[C]lose [E]xplorer', noremap = true, silent = true },
-    { '<leader>og', ':Neot git_status reveal<CR>', desc = '[O]pen [G]itStatus', noremap = true, silent = true },
+    {
+      '<leader>og',
+      function()
+        local git_base = Global:get('git_base') or 'HEAD'
+        vim.cmd('Neotree git_status git_base=' .. git_base .. ' reveal')
+      end,
+      desc = '[O]pen [G]itStatus',
+      noremap = true,
+      silent = true,
+    },
   },
   opts = {},
   config = function()
@@ -167,13 +183,13 @@ return {
       },
       nesting_rules = {},
       filesystem = {
-        commands = {
-          change_git_base = function()
-            selectors.git_ref(function(ref)
-              vim.cmd('Neotree ' .. ref)
-            end)
-          end,
-        },
+        -- commands = {
+        --   change_git_base = function()
+        --     selectors.git_ref(function(ref)
+        --       vim.cmd('Neotree ' .. ref)
+        --     end)
+        --   end,
+        -- },
         filtered_items = {
           visible = false,
           hide_dotfiles = false,
@@ -190,24 +206,24 @@ return {
         window = {
           mappings = {
             -- Add your filesystem-specific mappings here
-            ['B'] = 'change_git_base',
+            -- ['B'] = 'change_git_base',
           },
         },
       },
       git_status = {
-        commands = {
-          change_git_base = function()
-            selectors.git_ref(function(ref)
-              vim.cmd('Neotree git_status git_base=' .. ref)
-            end)
-          end,
-        },
+        -- commands = {
+        --   change_git_base = function()
+        --     selectors.git_ref(function(ref)
+        --       vim.cmd('Neotree git_status git_base=' .. ref)
+        --     end)
+        --   end,
+        -- },
         window = {
           position = 'left',
-          mappings = {
-            -- Add your filesystem-specific mappings here
-            ['B'] = 'change_git_base',
-          },
+          -- mappings = {
+          --   -- Add your filesystem-specific mappings here
+          --   ['B'] = 'change_git_base',
+          -- },
         },
       },
       buffers = {

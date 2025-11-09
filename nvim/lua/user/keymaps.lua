@@ -90,14 +90,17 @@ vim.keymap.set({ 'n', 'v' }, '<leader>fm', function()
 end, { desc = '[F]or[M]at file' })
 
 ----------------------------------------
--------------- plugins -----------------
+-------------- personal ----------------
 ----------------------------------------
 
--- Conform (Formatter)
--- vim.keymap.set({ 'n', 'v' }, '<leader>fm', function()
---   require('conform').format({
---     lsp_fallback = true,
---     async = false,
---     timeout_ms = 500,
---   })
--- end, { desc = '[F]or[M]at file or range (in visual mode)' })
+vim.keymap.set('n', '<leader>cb', function()
+  local selectors = require('config.selectors')
+  selectors.git_ref(function(ref)
+    Global:set('git_base', ref)
+    vim.cmd('Gitsigns change_base ' .. ref)
+  end)
+end, { desc = '[C]hange [B]ase', silent = true, noremap = true })
+
+-- vim.keymap.set('n', '<leader>pg', function()
+--   print(Global:get('git_base'))
+-- end, { desc = '[P]rint [G]lobal', silent = true, noremap = true })

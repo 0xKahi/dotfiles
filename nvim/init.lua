@@ -3,6 +3,7 @@
 _G.vim = vim
 
 require('user.options')
+require('user.globals')
 require('user.lazy')
 require('user.colorscheme')
 require('user.keymaps')

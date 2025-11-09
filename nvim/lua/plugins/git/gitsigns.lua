@@ -43,12 +43,7 @@ return {
           vim.keymap.set(
             'n',
             '<leader>dt',
-            function()
-              local selectors = require('config.selectors')
-              selectors.git_ref(function(ref)
-                vim.cmd('Gitsigns diffthis ' .. ref)
-              end)
-            end,
+            ':Gitsigns diffthis<cr>',
             { desc = '[D]iff [T]his', silent = true, noremap = true }
           )
 
