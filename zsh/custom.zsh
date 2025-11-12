@@ -82,6 +82,9 @@ function yz() {
 }
 # ====================== end ===============================
 
+# Enable experimental models for opencode CLI
+export OPENCODE_ENABLE_EXPERIMENTAL_MODELS=true
+
 # zsh menu style
 [ -f "$HOME/.config/zsh/configs/zsh-menu-style.zsh" ] && source "$HOME/.config/zsh/configs/zsh-menu-style.zsh"
 

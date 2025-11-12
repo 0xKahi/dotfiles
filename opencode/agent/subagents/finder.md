@@ -1,5 +1,6 @@
 ---
 name: finder 
+temperature: 0.1
 description: >-
   use this agent when you need to find content, files, references,  in the code in the codebase
 mode: subagent

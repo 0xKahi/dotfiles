@@ -1,5 +1,6 @@
 ---
 name: wtf
+temperature: 0.1
 description: an expert code debugger and diagnostic specialist subagent for explaing lsp errors, in a simple and clear way and providing solutions
 mode: subagent
 tools:

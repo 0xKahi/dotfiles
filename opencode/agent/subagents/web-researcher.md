@@ -1,5 +1,6 @@
 ---
 name: web-researcher 
+temperature: 0.1
 description: >-
   Use this agent when you need comprehensive web research, competitive analysis,
   fact-checking, or trend analysis. This agent should be used proactively for

@@ -1,5 +1,6 @@
 ---
 name: code-reviewer
+temperature: 0.1
 description: >-
   Use this agent when you need to review code for quality, security, and
   maintainability issues. This includes reviewing newly written functions,

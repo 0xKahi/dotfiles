@@ -3,6 +3,7 @@ name: code-grep
 description: >-
   an agent equipped with tools to search and retrieve code examples from github repositories to assist with coding related questions and tasks 
 mode: subagent
+temperature: 0.1
 permission:
   edit: ask 
   bash: ask
