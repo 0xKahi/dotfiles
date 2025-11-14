@@ -32,7 +32,7 @@ return {
           hidden = false,
           unloaded = true,
           current = true,
-          layout = 'bottom',
+          layout = 'bottom_round',
           sort_lastused = true,
           win = {
             input = {
@@ -252,7 +252,24 @@ return {
       },
 
       layouts = {
-
+        basic = {
+          reverse = true,
+          cycle = true,
+          layout = {
+            box = 'horizontal',
+            width = 0.8,
+            min_width = 120,
+            height = 0.8,
+            {
+              box = 'vertical',
+              border = 'rounded',
+              title = '{title}',
+              { win = 'list', border = 'none' },
+              { win = 'input', title = 'Input   {live} {flags}', title_pos = 'left', height = 1, border = 'top' },
+            },
+            { win = 'preview', title = '{preview}', border = 'rounded', width = 0.5 },
+          },
+        },
         bottom = {
           cycle = true,
           layout = {
@@ -273,22 +290,22 @@ return {
             },
           },
         },
-        basic = {
-          reverse = true,
-          cycle = true,
+        bottom_round = {
           layout = {
-            box = 'horizontal',
-            width = 0.8,
-            min_width = 120,
-            height = 0.8,
+            box = 'vertical',
+            backdrop = false,
+            row = -1,
+            width = 0,
+            height = 0.3,
+            border = 'none',
+            title = ' {title} {live} {flags}',
+            title_pos = 'left',
             {
-              box = 'vertical',
-              border = 'rounded',
-              title = '{title}',
-              { win = 'list', border = 'none' },
-              { win = 'input', title = 'Input   {live} {flags}', title_pos = 'left', height = 1, border = 'top' },
+              box = 'horizontal',
+              { win = 'list', border = 'rounded', title = '{title}' },
+              { win = 'preview', title = '{preview}', width = 0.6, border = 'rounded' },
             },
-            { win = 'preview', title = '{preview}', border = 'rounded', width = 0.5 },
+            { win = 'input', height = 1, border = 'top' },
           },
         },
       },

@@ -8,7 +8,7 @@ function M.setup_snacks_lsp_keymaps(bufnr)
   end, { buffer = bufnr, desc = '[G]o to [D]efinition' })
 
   vim.keymap.set('n', 'gp', function()
-    Snacks.picker.lsp_definitions({ auto_confirm = false, layout = 'bottom' })
+    Snacks.picker.lsp_definitions({ auto_confirm = false, layout = 'bottom_round' })
   end, { buffer = bufnr, desc = '[G]o to [P]review definition' })
 
   vim.keymap.set('n', 'gr', function()
