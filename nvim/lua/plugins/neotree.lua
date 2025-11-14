@@ -13,8 +13,12 @@ return {
     {
       '<leader>oe',
       function()
-        local git_base = Global:get('git_base') or 'HEAD'
-        vim.cmd('Neotree git_base=' .. git_base .. ' reveal')
+        local git_base = Global:get('git_base')
+        if git_base == nil then
+          vim.cmd('Neotree reveal')
+        else
+          vim.cmd('Neotree git_base=' .. git_base .. ' reveal')
+        end
       end,
       desc = '[O]pen [E]xplorer',
       noremap = true,
