@@ -107,6 +107,9 @@ local function set_arrow_plugin(highlights)
   highlights['ArrowCurrentFile'] = { fg = cyberpunk.core.blue }
   highlights['ArrowAction'] = { fg = cyberpunk.core.cyan }
   highlights['ArrowDeleteMode'] = { fg = cyberpunk.core.red }
+  highlights['ArrowSplitMode'] = { fg = cyberpunk.core.magenta }
+  highlights['ArrowDirBorder'] = { fg = cyberpunk.core.neon_blue }
+  highlights['ArrowFileBorder'] = { fg = cyberpunk.core.neon_blue }
 end
 
 local function set_grugfar_plugin(highlights)

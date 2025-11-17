@@ -5,6 +5,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'help',
     'qf',
     'gitsigns-blame',
+    'neo-tree-popup',
   },
   callback = function()
     vim.keymap.set('n', 'q', ':q<CR>', { buffer = true, noremap = true, silent = true, desc = '[Q]uit [2]' })
