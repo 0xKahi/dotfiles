@@ -1,5 +1,6 @@
 {
   "animation.nvim": { "branch": "main", "commit": "fb77091ab72ec9971aee0562e7081182527aaa6a" },
+  "arrow.nvim": { "branch": "master", "commit": "ba05f6e823e7909afb72d199856363951d2069f1" },
   "blink.cmp": { "branch": "main", "commit": "b19413d214068f316c78978b08264ed1c41830ec" },
   "blink.compat": { "branch": "main", "commit": "1454f14a8d855a578ceeba77c62538fa1459a67c" },
   "bloat.nvim": { "branch": "master", "commit": "f90bef655ac40fecbaae53e10db1cf7894d090b1" },
