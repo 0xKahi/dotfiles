@@ -1,8 +1,8 @@
 # ================ Setup Gcloud SDK ===========================
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/kahi/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kahi/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/kahi/Downloads/apps/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kahi/Downloads/apps/google-cloud-sdk/path.zsh.inc'; fi
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/kahi/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kahi/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/kahi/Downloads/apps/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kahi/Downloads/apps/google-cloud-sdk/completion.zsh.inc'; fi
 # ================ Setup Gcloud SDK end ========================
 
 # ================ Setup JoJo command ===========================
@@ -12,4 +12,8 @@ if [ -f '/Users/kahi/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/
 
 # ================ Setup nvm completion ===========================
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+# ======================= end ====================================
+
+# ================ Setup pnpm completion ===========================
+[ -s "$HOME/.config/pnpm/completion-for-pnpm.zsh" ] && \. "$HOME/.config/pnpm/completion-for-pnpm.zsh"  # This loads pnpm bash_completion
 # ======================= end ====================================
