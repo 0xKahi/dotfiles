@@ -167,6 +167,43 @@ return {
 
       workspace.lsp_config('css_variables', {})
 
+      workspace.lsp_config('pylsp', {
+        settings = {
+          pylsp = {
+            configurationSources = { 'flake8' },
+            plugins = {
+              flake8 = {
+                enabled = true,
+                indentSize = 2,
+                maxLineLength = 150,
+                ignore = { 'E302', 'E501', 'W293' },
+              },
+              pycodestyle = { enabled = false },
+              pyflakes = { enabled = false },
+              pylint = { enabled = false },
+              mccabe = { enabled = false },
+            },
+          },
+        },
+      })
+
+      vim.lsp.enable('sourcekit')
+      workspace.lsp_config('sourcekit', {
+        capabilities = {
+          workspace = {
+            didChangeWatchedFiles = {
+              dynamicRegistration = true,
+            },
+          },
+          textDocument = {
+            diagnostic = {
+              dynamicRegistration = true,
+              relatedDocumentSupport = true,
+            },
+          },
+        },
+      })
+
       vim.api.nvim_create_autocmd('LspAttach', {
         desc = 'LSP actions',
         callback = function(event)

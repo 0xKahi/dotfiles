@@ -13,6 +13,7 @@ M.formatter_priority = {
   css = { 'biome', 'prettier' },
   json = { 'biome', 'prettier' },
   lua = { 'stylua' },
+  python = { 'pylsp' },
 }
 
 ---@param bufnr? integer

@@ -39,6 +39,7 @@ return {
           'terraform',
           'hcl',
           'rust',
+          'swift',
         },
 
         ignore_install = {},
