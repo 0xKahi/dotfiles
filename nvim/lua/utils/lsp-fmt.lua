@@ -26,7 +26,7 @@ function M.get_active_clients(bufnr)
   ---@type ClientEntry[]
 
   for _, client in ipairs(clients) do
-    local supports_formatting = client.supports_method('textDocument/formatting')
+    local supports_formatting = client.server_capabilities.documentFormattingProvider ~= nil
     if supports_formatting then
       table.insert(format_clients, client)
     end

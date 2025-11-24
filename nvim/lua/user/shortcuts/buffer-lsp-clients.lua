@@ -6,7 +6,7 @@ local commands = {
       local client_data = {}
 
       for _, client in ipairs(clients) do
-        local supports_formatting = client.supports_method('textDocument/formatting')
+        local supports_formatting = client.server_capabilities.documentFormattingProvider ~= nil
         client_data[client.name] = supports_formatting
       end
 
@@ -24,7 +24,7 @@ local commands = {
       local client_names = {}
 
       for _, client in ipairs(clients) do
-        local supports_formatting = client.supports_method('textDocument/formatting')
+        local supports_formatting = client.server_capabilities.documentFormattingProvider ~= nil
         if supports_formatting then
           table.insert(client_names, client.name)
         end
