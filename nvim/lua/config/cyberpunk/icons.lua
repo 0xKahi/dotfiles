@@ -8,6 +8,7 @@ M.git_status = {
   untracked = '󱔢',
   ignored = '',
   -- unstaged = '[-S]',
+  unstaged = '',
   staged = '',
   conflict = ' ',
   unmerged = ' ',
