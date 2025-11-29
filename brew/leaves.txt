@@ -10,7 +10,6 @@ deno
 eza
 fastfetch
 fd
-ffmpeg
 ffmpegthumbnailer
 foreman
 fzf
@@ -45,7 +44,6 @@ postgresql@14
 python@3.11
 python@3.12
 ripgrep
-rust
 sshuttle
 starship
 stow

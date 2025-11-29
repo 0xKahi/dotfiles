@@ -1,8 +1,8 @@
-docker
 docker-desktop
 font-jetbrains-mono
 font-symbols-only-nerd-font
 leader-key
+miniforge
 ngrok
 session-manager-plugin
 wezterm
