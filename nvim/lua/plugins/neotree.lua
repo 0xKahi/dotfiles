@@ -37,222 +37,282 @@ return {
       silent = true,
     },
   },
-  opts = {},
-  config = function()
-    require('neo-tree').setup({
-      close_if_last_window = false,
-      popup_border_style = 'rounded',
-      enable_git_status = true,
-      enable_diagnostics = true,
-      open_files_do_not_replace_types = { 'terminal', 'trouble', 'qf' },
-      sort_case_insensitive = false,
-      sort_function = nil,
-      sources = {
-        'filesystem',
-        'buffers',
-        'git_status',
-        'document_symbols',
-      },
+  opts = {
+    close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+    popup_border_style = 'rounded',
+    enable_git_status = true,
+    enable_diagnostics = true,
+    open_files_do_not_replace_types = { 'terminal', 'trouble', 'qf' },
+    sort_case_insensitive = false,
+    sort_function = nil,
+    auto_clean_after_session_restore = false, -- Automatically clean up broken neo-tree buffers saved in sessions
+    clipboard = {
+      sync = 'none', -- or "global"/"universal" to share a clipboard for each/all Neovim instance(s), respectively
+    },
+    default_source = 'filesystem', -- you can choose a specific source `last` here which indicates the last used source
+    enable_modified_markers = true, -- Show markers for files with unsaved changes.
+    enable_opened_markers = true, -- Enable tracking of opened files. Required for `components.name.highlight_opened_files`
+    enable_refresh_on_write = true, -- Refresh the tree when a file is written. Only used if `use_libuv_file_watcher` is false.
+    enable_cursor_hijack = false, -- If enabled neotree will keep the cursor on the first letter of the filename when moving in the tree.
+    git_status_async = true,
+    -- These options are for people with VERY large git repos
+    git_status_async_options = {
+      batch_size = 1000, -- how many lines of git status results to process at a time
+      batch_delay = 10, -- delay in ms between batches. Spreads out the workload to let other processes run.
+      max_lines = 10000, -- How many lines of git status results to process. Anything after this will be dropped.
+      -- Anything before this will be used. The last items to be processed are the untracked files.
+    },
+    hide_root_node = false, -- Hide the root node.
 
-      default_component_configs = {
-        container = {
-          enable_character_fade = true,
-        },
-        indent = {
-          indent_size = 1.5,
-          padding = 0,
-          with_markers = true,
-          indent_marker = '│',
-          last_indent_marker = '└',
-          highlight = 'NeoTreeIndentMarker',
-          with_expanders = nil,
-          expander_collapsed = '',
-          expander_expanded = '',
-          expander_highlight = 'NeoTreeExpander',
-        },
-        modified = {
-          -- symbol = '[+]',
-          highlight = 'NeoTreeModified',
-        },
-        name = {
-          trailing_slash = false,
-          use_git_status_colors = true,
-          highlight = 'NeoTreeFileName',
-        },
-        git_status = {
-          symbols = require('config.cyberpunk.icons').git_status,
-        },
-        icon = {
-          provider = function(icon, node) -- setup a custom icon provider
-            local text, hl
-            local mini_icons = require('mini.icons')
-            if node.type == 'file' then -- if it's a file, set the text/hl
-              text, hl = mini_icons.get('file', node.name)
-            elseif node.type == 'directory' then -- get directory icons
-              text, hl = mini_icons.get('directory', node.name)
-              -- only set the icon text if it is not expanded
-              if node:is_expanded() then
-                text = nil
-              end
-            end
+    sources = {
+      'filesystem',
+      'buffers',
+      'git_status',
+      'document_symbols',
+    },
 
-            -- set the icon text/highlight only if it exists
-            if text then
-              icon.text = text
-            end
-            if hl then
-              icon.highlight = hl
-            end
-          end,
-          -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
-          -- then these will never be used.
-          default = '*',
-          highlight = 'NeoTreeFileIcon',
-        },
-        file_size = {
-          enabled = false,
-          required_width = 64,
-        },
-        type = {
-          enabled = true,
-          required_width = 122,
-        },
-        last_modified = {
-          enabled = true,
-          required_width = 88,
-        },
-        created = {
-          enabled = false,
-          required_width = 110,
-        },
-        symlink_target = {
-          enabled = false,
-        },
+    default_component_configs = {
+      container = {
+        enable_character_fade = true,
       },
-      source_selector = {
-        winbar = true, -- toggle to show selector on winbar
-        statusline = false, -- toggle to show selector on statusline
-        show_scrolled_off_parent_node = false, -- this will replace the tabs with the parent path
-        -- of the top visible node when scrolled down.
-        sources = {
-          { source = 'filesystem' },
-          { source = 'git_status' },
-          { source = 'buffers' },
-        },
-        content_layout = 'start', -- only with `tabs_layout` = "equal", "focus"
-        --                start  : |/ 󰓩 bufname     \/...
-        --                end    : |/     󰓩 bufname \/...
-        --                center : |/   󰓩 bufname   \/...
-        tabs_layout = 'equal', -- start, end, center, equal, focus
-        --             start  : |/  a  \/  b  \/  c  \            |
-        --             end    : |            /  a  \/  b  \/  c  \|
-        --             center : |      /  a  \/  b  \/  c  \      |
-        --             equal  : |/    a    \/    b    \/    c    \|
-        --             active : |/  focused tab    \/  b  \/  c  \|
-        truncation_character = '…', -- character to use when truncating the tab label
-        tabs_min_width = nil, -- nil | int: if int padding is added based on `content_layout`
-        tabs_max_width = nil, -- this will truncate text even if `text_trunc_to_fit = false`
-        padding = 0, -- can be int or table
-        -- padding = { left = 2, right = 0 },
-        -- separator = "▕", -- can be string or table, see below
-        separator = { left = '▏', right = '▕' },
-        -- separator = { left = "/", right = "\\", override = nil },     -- |/  a  \/  b  \/  c  \...
-        -- separator = { left = "/", right = "\\", override = "right" }, -- |/  a  \  b  \  c  \...
-        -- separator = { left = "/", right = "\\", override = "left" },  -- |/  a  /  b  /  c  /...
-        -- separator = { left = "/", right = "\\", override = "active" },-- |/  a  / b:active \  c  \...
-        -- separator = "|",                                              -- ||  a  |  b  |  c  |...
-        separator_active = nil, -- set separators around the active tab. nil falls back to `source_selector.separator`
-        show_separator_on_edge = false,
-        --                       true  : |/    a    \/    b    \/    c    \|
-        --                       false : |     a    \/    b    \/    c     |
-        highlight_tab = 'NeoTreeTabInactive',
-        highlight_tab_active = 'NeoTreeTabActive',
-        highlight_background = 'NeoTreeTabInactive',
-        highlight_separator = 'NeoTreeTabSeparatorInactive',
-        highlight_separator_active = 'NeoTreeTabSeparatorActive',
+      indent = {
+        indent_size = 1.5,
+        padding = 0,
+        with_markers = true,
+        indent_marker = '│',
+        last_indent_marker = '└',
+        highlight = 'NeoTreeIndentMarker',
+        with_expanders = nil,
+        expander_collapsed = '',
+        expander_expanded = '',
+        expander_highlight = 'NeoTreeExpander',
       },
-
-      commands = {},
-      window = {
-        position = 'left',
-        width = 40,
-        mapping_options = {
-          noremap = true,
-          nowait = true,
-        },
-        mappings = {
-          ['<C-s>'] = 'open_split',
-          ['<C-v>'] = 'open_vsplit',
-        },
+      modified = {
+        -- symbol = '[+]',
+        highlight = 'NeoTreeModified',
       },
-      nesting_rules = {},
-      filesystem = {
-        -- commands = {
-        --   change_git_base = function()
-        --     selectors.git_ref(function(ref)
-        --       vim.cmd('Neotree ' .. ref)
-        --     end)
-        --   end,
-        -- },
-        filtered_items = {
-          visible = false,
-          hide_dotfiles = false,
-          hide_gitignored = true,
-          hide_hidden = true,
-        },
-        follow_current_file = {
-          enabled = false,
-          leave_dirs_open = false,
-        },
-        group_empty_dirs = false,
-        hijack_netrw_behavior = 'open_default',
-        use_libuv_file_watcher = false,
-        window = {
-          mappings = {
-            -- Add your filesystem-specific mappings here
-            -- ['B'] = 'change_git_base',
-          },
-        },
+      name = {
+        trailing_slash = false,
+        use_git_status_colors = true,
+        highlight = 'NeoTreeFileName',
       },
       git_status = {
-        -- commands = {
-        --   change_git_base = function()
-        --     selectors.git_ref(function(ref)
-        --       vim.cmd('Neotree git_status git_base=' .. ref)
-        --     end)
-        --   end,
-        -- },
-        window = {
-          position = 'left',
-          -- mappings = {
-          --   -- Add your filesystem-specific mappings here
-          --   ['B'] = 'change_git_base',
-          -- },
-        },
+        symbols = require('config.cyberpunk.icons').git_status,
       },
-      buffers = {
-        follow_current_file = {
-          enabled = true,
-          leave_dirs_open = false,
-        },
-        group_empty_dirs = true,
-        show_unloaded = true,
-        window = {
-          mappings = {
-            -- Add your buffers-specific mappings here
+      icon = {
+        folder_closed = '',
+        folder_open = '',
+        folder_empty = '󰉖',
+        folder_empty_open = '󰷏',
+        provider = function(icon, node, state) -- setup a custom icon provider
+          local text, hl
+          local mini_icons = require('mini.icons')
+          if node.type == 'file' then -- if it's a file, set the text/hl
+            text, hl = mini_icons.get('file', node.name)
+          elseif node.type == 'directory' then -- get directory icons
+            text, hl = mini_icons.get('directory', node.name)
+            -- only set the icon text if it is not expanded
+            if node:is_expanded() then
+              text = icon.text
+            end
+          end
+
+          -- set the icon text/highlight only if it exists
+          if text then
+            icon.text = text
+          end
+          if hl then
+            icon.highlight = hl
+          end
+        end,
+        -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
+        -- then these will never be used.
+        default = '*',
+        highlight = 'NeoTreeFileIcon',
+        use_filtered_colors = true,
+      },
+      file_size = {
+        enabled = false,
+        required_width = 64,
+      },
+      type = {
+        enabled = true,
+        required_width = 122,
+      },
+      last_modified = {
+        enabled = true,
+        required_width = 88,
+        format = '%Y-%m-%d %I:%M %p',
+      },
+      created = {
+        enabled = false,
+        required_width = 110,
+        format = '%Y-%m-%d %I:%M %p',
+      },
+      symlink_target = {
+        enabled = false,
+      },
+    },
+    renderers = {
+      directory = {
+        { 'indent' },
+        { 'icon' },
+        { 'current_filter' },
+        {
+          'container',
+          content = {
+            { 'name', zindex = 10 },
+            {
+              'symlink_target',
+              zindex = 10,
+              highlight = 'NeoTreeSymbolicLinkTarget',
+            },
+            { 'clipboard', zindex = 10 },
+            { 'diagnostics', errors_only = true, zindex = 20, align = 'right', hide_when_expanded = true },
+            { 'git_status', zindex = 10, align = 'right', hide_when_expanded = true },
+            { 'file_size', zindex = 10, align = 'right' },
+            { 'type', zindex = 10, align = 'right' },
+            { 'last_modified', zindex = 10, align = 'right' },
+            { 'created', zindex = 10, align = 'right' },
           },
         },
       },
-      event_handlers = {
+      unknown = {
+        { 'indent' },
+        { 'icon' },
+        { 'current_filter' },
         {
-          event = 'neo_tree_buffer_enter',
-          handler = function(arg)
-            vim.cmd([[
-              setlocal relativenumber
-            ]])
-          end,
+          'container',
+          content = {
+            { 'name', zindex = 10 },
+            -- { 'type', zindex = 10, align = 'right' },
+          },
         },
       },
-    })
-  end,
+    },
+    source_selector = {
+      winbar = true, -- toggle to show selector on winbar
+      statusline = false, -- toggle to show selector on statusline
+      show_scrolled_off_parent_node = false, -- this will replace the tabs with the parent path
+      -- of the top visible node when scrolled down.
+      sources = {
+        { source = 'filesystem' },
+        { source = 'git_status' },
+        { source = 'buffers' },
+      },
+      content_layout = 'start', -- only with `tabs_layout` = "equal", "focus"
+      --                start  : |/ 󰓩 bufname     \/...
+      --                end    : |/     󰓩 bufname \/...
+      --                center : |/   󰓩 bufname   \/...
+      tabs_layout = 'equal', -- start, end, center, equal, focus
+      --             start  : |/  a  \/  b  \/  c  \            |
+      --             end    : |            /  a  \/  b  \/  c  \|
+      --             center : |      /  a  \/  b  \/  c  \      |
+      --             equal  : |/    a    \/    b    \/    c    \|
+      --             active : |/  focused tab    \/  b  \/  c  \|
+      truncation_character = '…', -- character to use when truncating the tab label
+      tabs_min_width = nil, -- nil | int: if int padding is added based on `content_layout`
+      tabs_max_width = nil, -- this will truncate text even if `text_trunc_to_fit = false`
+      padding = 0, -- can be int or table
+      -- padding = { left = 2, right = 0 },
+      -- separator = "▕", -- can be string or table, see below
+      separator = { left = '▏', right = '▕' },
+      -- separator = { left = "/", right = "\\", override = nil },     -- |/  a  \/  b  \/  c  \...
+      -- separator = { left = "/", right = "\\", override = "right" }, -- |/  a  \  b  \  c  \...
+      -- separator = { left = "/", right = "\\", override = "left" },  -- |/  a  /  b  /  c  /...
+      -- separator = { left = "/", right = "\\", override = "active" },-- |/  a  / b:active \  c  \...
+      -- separator = "|",                                              -- ||  a  |  b  |  c  |...
+      separator_active = nil, -- set separators around the active tab. nil falls back to `source_selector.separator`
+      show_separator_on_edge = false,
+      --                       true  : |/    a    \/    b    \/    c    \|
+      --                       false : |     a    \/    b    \/    c     |
+      highlight_tab = 'NeoTreeTabInactive',
+      highlight_tab_active = 'NeoTreeTabActive',
+      highlight_background = 'NeoTreeTabInactive',
+      highlight_separator = 'NeoTreeTabSeparatorInactive',
+      highlight_separator_active = 'NeoTreeTabSeparatorActive',
+    },
+
+    commands = {},
+    window = {
+      position = 'left',
+      width = 40,
+      mapping_options = {
+        noremap = true,
+        nowait = true,
+      },
+      mappings = {
+        ['<C-s>'] = 'open_split',
+        ['<C-v>'] = 'open_vsplit',
+      },
+    },
+    nesting_rules = {},
+    filesystem = {
+      -- commands = {
+      --   change_git_base = function()
+      --     selectors.git_ref(function(ref)
+      --       vim.cmd('Neotree ' .. ref)
+      --     end)
+      --   end,
+      -- },
+      filtered_items = {
+        visible = false,
+        hide_dotfiles = false,
+        hide_gitignored = true,
+        hide_hidden = true,
+      },
+      follow_current_file = {
+        enabled = false,
+        leave_dirs_open = false,
+      },
+      group_empty_dirs = false,
+      hijack_netrw_behavior = 'open_default',
+      use_libuv_file_watcher = false,
+      window = {
+        mappings = {
+          -- Add your filesystem-specific mappings here
+          -- ['B'] = 'change_git_base',
+        },
+      },
+    },
+    git_status = {
+      -- commands = {
+      --   change_git_base = function()
+      --     selectors.git_ref(function(ref)
+      --       vim.cmd('Neotree git_status git_base=' .. ref)
+      --     end)
+      --   end,
+      -- },
+      window = {
+        position = 'left',
+        -- mappings = {
+        --   -- Add your filesystem-specific mappings here
+        --   ['B'] = 'change_git_base',
+        -- },
+      },
+    },
+    buffers = {
+      follow_current_file = {
+        enabled = true,
+        leave_dirs_open = false,
+      },
+      group_empty_dirs = true,
+      show_unloaded = true,
+      window = {
+        mappings = {
+          -- Add your buffers-specific mappings here
+        },
+      },
+    },
+    event_handlers = {
+      {
+        event = 'neo_tree_buffer_enter',
+        handler = function(arg)
+          vim.cmd([[
+              setlocal relativenumber
+            ]])
+        end,
+      },
+    },
+  },
 }

@@ -69,8 +69,8 @@
       "light": "lightStep9"
     },
     "text": {
-      "dark": "system",
-      "light": "system"
+      "dark": "darkStep12",
+      "light": "lightStep12"
     },
     "textMuted": {
       "dark": "darkStep11",
