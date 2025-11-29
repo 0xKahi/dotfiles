@@ -17,3 +17,7 @@ if [ -f '/Users/kahi/Downloads/apps/google-cloud-sdk/completion.zsh.inc' ]; then
 # ================ Setup pnpm completion ===========================
 [ -s "$HOME/.config/pnpm/completion-for-pnpm.zsh" ] && \. "$HOME/.config/pnpm/completion-for-pnpm.zsh"  # This loads pnpm bash_completion
 # ======================= end ====================================
+
+# ================ Setup pnpm completion g-plane ===========================
+[ -s "$HOME/Desktop/code/editor_extras/zsh_plugins/pnpm-shell-completion_aarch64-apple-darwin/pnpm-shell-completion.plugin.zsh" ] && \. "$HOME/Desktop/code/editor_extras/zsh_plugins/pnpm-shell-completion_aarch64-apple-darwin/pnpm-shell-completion.plugin.zsh"
+# ======================= end ====================================
