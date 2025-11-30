@@ -82,6 +82,12 @@ function yz() {
 }
 # ====================== end ===============================
 
+# for aerospace
+function ff() {
+  local window_id=$(aerospace list-windows --all | fzf | awk '{print $1}')
+  [[ -n "$window_id" ]] && aerospace focus --window-id "$window_id"
+}
+
 # Enable experimental models for opencode CLI
 export OPENCODE_ENABLE_EXPERIMENTAL_MODELS=true
 

@@ -1,159 +1,178 @@
 {
-  "actions" : [
+  "actions": [
     {
-      "actions" : [
+      "actions": [
         {
-          "key" : "t",
-          "label" : "[T]erminal",
-          "type" : "application",
-          "value" : "/Applications/Ghostty.app"
+          "key": "t",
+          "label": "[T]erminal",
+          "type": "application",
+          "value": "/Applications/Ghostty.app"
         },
         {
-          "key" : "b",
-          "label" : "[B]rowser (Brave)",
-          "type" : "application",
-          "value" : "/Applications/Brave Browser.app"
+          "key": "b",
+          "label": "[B]rowser (Brave)",
+          "type": "application",
+          "value": "/Applications/Brave Browser.app"
         },
         {
-          "actions" : [
+          "actions": [
             {
-              "key" : "c",
-              "label" : "[D]is[C]ord",
-              "type" : "application",
-              "value" : "/Applications/Discord.app"
+              "key": "c",
+              "label": "[D]is[C]ord",
+              "type": "application",
+              "value": "/Applications/Discord.app"
             },
             {
-              "key" : "g",
-              "label" : "[D]ata [G]rip",
-              "type" : "application",
-              "value" : "/Applications/DataGrip.app"
+              "key": "g",
+              "label": "[D]ata [G]rip",
+              "type": "application",
+              "value": "/Applications/DataGrip.app"
             },
             {
-              "key" : "k",
-              "label" : "[D]oc[K]er",
-              "type" : "application",
-              "value" : "/Applications/Docker.app"
+              "key": "k",
+              "label": "[D]oc[K]er",
+              "type": "application",
+              "value": "/Applications/Docker.app"
             }
           ],
-          "key" : "d",
-          "label" : "[D]apps",
-          "type" : "group"
+          "key": "d",
+          "label": "[D]apps",
+          "type": "group"
         },
         {
-          "key" : "a",
-          "label" : "[A]ctivity Monitor",
-          "type" : "application",
-          "value" : "/System/Applications/Utilities/Activity Monitor.app"
+          "key": "a",
+          "label": "[A]ctivity Monitor",
+          "type": "application",
+          "value": "/System/Applications/Utilities/Activity Monitor.app"
         },
         {
-          "key" : "s",
-          "label" : "[S]urfShark",
-          "type" : "application",
-          "value" : "/Applications/Surfshark.app"
+          "key": "s",
+          "label": "[S]urfShark",
+          "type": "application",
+          "value": "/Applications/Surfshark.app"
         }
       ],
-      "key" : "o",
-      "label" : "[O]pen",
-      "type" : "group"
+      "key": "o",
+      "label": "[O]pen",
+      "type": "group"
     },
     {
-      "actions" : [
+      "actions": [
         {
-          "key" : "b",
-          "type" : "application",
-          "value" : "/Applications/Brave Browser.app"
+          "key": "b",
+          "type": "application",
+          "value": "/Applications/Brave Browser.app"
         },
         {
-          "key" : "s",
-          "type" : "application",
-          "value" : "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+          "key": "s",
+          "type": "application",
+          "value": "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
         },
         {
-          "key" : "c",
-          "type" : "application",
-          "value" : "/Applications/Comet.app"
+          "key": "c",
+          "type": "application",
+          "value": "/Applications/Comet.app"
         }
       ],
-      "key" : "b",
-      "label" : "[B]rowser",
-      "type" : "group"
+      "key": "b",
+      "label": "[B]rowser",
+      "type": "group"
     },
     {
-      "actions" : [
+      "actions": [
         {
-          "actions" : [
+          "actions": [
             {
-              "key" : "b",
-              "label" : "[B]E repo",
-              "type" : "url",
-              "value" : "https://github.com/shuffle-labs/shufflecom-api"
+              "key": "b",
+              "label": "[B]E repo",
+              "type": "url",
+              "value": "https://github.com/shuffle-labs/shufflecom-api"
             },
             {
-              "key" : "f",
-              "label" : "[F]E repo",
-              "type" : "url",
-              "value" : "https://github.com/shuffle-labs/shufflecom-interface"
+              "key": "f",
+              "label": "[F]E repo",
+              "type": "url",
+              "value": "https://github.com/shuffle-labs/shufflecom-interface"
             },
             {
-              "key" : "a",
-              "label" : "[A]dmin repo",
-              "type" : "url",
-              "value" : "https://github.com/shuffle-labs/shufflecom-admin-interface"
+              "key": "a",
+              "label": "[A]dmin repo",
+              "type": "url",
+              "value": "https://github.com/shuffle-labs/shufflecom-admin-interface"
             },
             {
-              "key" : "d",
-              "label" : "[D]ev Ops repo",
-              "type" : "url",
-              "value" : "https://github.com/shuffle-labs/terraform-aws"
+              "key": "d",
+              "label": "[D]ev Ops repo",
+              "type": "url",
+              "value": "https://github.com/shuffle-labs/terraform-aws"
             }
           ],
-          "key" : "g",
-          "label" : "[G]it",
-          "type" : "group"
+          "key": "g",
+          "label": "[G]it",
+          "type": "group"
         },
         {
-          "actions" : [
+          "actions": [
             {
-              "key" : "f",
-              "label" : "[F]eatures",
-              "type" : "url",
-              "value" : "https://www.notion.so/shufflecom/3e980f1dbc9448d5b72e57efd237fb11"
+              "key": "f",
+              "label": "[F]eatures",
+              "type": "url",
+              "value": "https://www.notion.so/shufflecom/3e980f1dbc9448d5b72e57efd237fb11"
             },
             {
-              "key" : "d",
-              "label" : "[D]ocs",
-              "type" : "url",
-              "value" : "https://www.notion.so/shufflecom/Documentation-0873652436b249018e8f6967feaa7572"
+              "key": "d",
+              "label": "[D]ocs",
+              "type": "url",
+              "value": "https://www.notion.so/shufflecom/Documentation-0873652436b249018e8f6967feaa7572"
             }
           ],
-          "key" : "n",
-          "label" : "[N]otion",
-          "type" : "group"
+          "key": "n",
+          "label": "[N]otion",
+          "type": "group"
         }
       ],
-      "key" : "s",
-      "label" : "[S]huffle",
-      "type" : "group"
+      "key": "s",
+      "label": "[S]huffle",
+      "type": "group"
     },
     {
-      "actions" : [
+      "actions": [
         {
-          "key" : "t",
-          "label" : "[T]elegram",
-          "type" : "application",
-          "value" : "/Applications/Telegram.app"
+          "key": "t",
+          "label": "[T]elegram",
+          "type": "application",
+          "value": "/Applications/Telegram.app"
         },
         {
-          "key" : "f",
-          "label" : "[F]acetime",
-          "type" : "application",
-          "value" : "/System/Applications/FaceTime.app"
+          "key": "f",
+          "label": "[F]acetime",
+          "type": "application",
+          "value": "/System/Applications/FaceTime.app"
         }
       ],
-      "key" : "c",
-      "label" : "[C]hat",
-      "type" : "group"
+      "key": "c",
+      "label": "[C]hat",
+      "type": "group"
+    },
+    {
+      "actions": [
+        {
+          "key": "m",
+          "type": "command",
+          "label": "[M]onitor switch",
+          "value": "/opt/homebrew/bin/aerospace focus-monitor --wrap-around next"
+        },
+        {
+          "key": "f",
+          "type": "command",
+          "label": "[F]ull screen toggle",
+          "value": "/opt/homebrew/bin/aerospace fullscreen"
+        }
+      ],
+      "key": "a",
+      "label": "[A]erospace",
+      "type": "group"
     }
   ],
-  "type" : "group"
+  "type": "group"
 }
