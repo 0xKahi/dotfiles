@@ -1,13 +1,14 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "cyberpunk-theme",
-  // "theme": "system",
   "keybinds": {
     "leader": "ctrl+o",
     // "app_help": "<leader>?",
     // "tool_details": "<leader>d",
     // "project_init": "<leader>i",
-    "session_share": "<leader>s",
+    "session_share": "none",
+    "sidebar_toggle": "<leader>b",
+    "status_view": "<leader>s",
     "editor_open": "<leader>e",
     "session_new": "<leader>n",
     "session_list": "<leader>l",
@@ -26,11 +27,23 @@
     "messages_first": "ctrl+g",
     "messages_last": "ctrl+alt+g",
     "messages_copy": "<leader>y",
+    "messages_undo": "<leader>u",
+    "messages_redo": "<leader>r",
     "app_exit": "ctrl+c,<leader>q"
   },
+  "username": "kahi",
+  "layout": "stretch",
+  "share": "manual",
+  "autoupdate": "notify",
   "tui": {
     "diff_style": "auto"
   },
+  "enabled_providers": [
+    "anthropic",
+    "opencode",
+    "github-copilot"
+  ],
+  "small_model": "github-copilot/claude-haiku-4.5",
   "provider": {
     "anthropic": {
       "models": {
@@ -75,6 +88,14 @@
           }
         }
       }
+    }
+  },
+  "agent": {
+    "general": {
+      "disable": false
+    },
+    "explore": {
+      "disable": false
     }
   },
   "mcp": {
@@ -125,6 +146,11 @@
       "type": "remote",
       "url": "https://mcp.api.coingecko.com/sse"
     },
+    "exa": {
+      "type": "remote",
+      "url": "https://mcp.exa.ai/mcp",
+      "enabled": true
+    },
     "gh_grep": {
       "type": "remote",
       "url": "https://mcp.grep.app",
@@ -153,7 +179,8 @@
       "find *": "allow",
       "fd *": "allow",
       "rg *": "allow"
-    }
+    },
+    "external_directory": "ask"
   },
   "tools": {
     "context7*": false,
@@ -161,9 +188,11 @@
     "firecrawl*": false,
     "coingecko_mcp*": false,
     "perplexity-mcp*": false,
-    "gh_grep*": false
+    "gh_grep*": false,
+    "exa*": false
   },
-  "layout": "stretch",
-  "autoshare": false,
-  "autoupdate": true
+  "experimental": {
+    "chatMaxRetries": 2,
+    "batch_tool": true
+  }
 }

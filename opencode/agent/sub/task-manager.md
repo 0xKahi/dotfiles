@@ -1,7 +1,7 @@
 ---
 name: task-manager
 description: "Breaks down complex features/request into small, verifiable subtasks"
-mode: all 
+mode: subagent 
 temperature: 0.1
 tools:
   read: true
