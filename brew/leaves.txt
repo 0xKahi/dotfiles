@@ -10,6 +10,7 @@ deno
 eza
 fastfetch
 fd
+felixkratz/formulae/borders
 ffmpegthumbnailer
 foreman
 fzf
