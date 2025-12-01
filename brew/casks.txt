@@ -1,4 +1,4 @@
-aerospace
+nikitabobko/tap/aerospace
 docker-desktop
 font-jetbrains-mono
 font-symbols-only-nerd-font
