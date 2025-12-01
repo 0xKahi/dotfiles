@@ -12,6 +12,7 @@ window-decoration = auto
 window-padding-x = 3 
 window-padding-y = 2,0
 window-padding-balance = true 
+window-inherit-working-directory = true
 
 # mac-only
 #window-colorspace = display-p3 
@@ -29,6 +30,7 @@ quick-terminal-size = 35%
 quick-terminal-position = right 
 quick-terminal-animation-duration = 0.08
 quick-terminal-autohide = false
+quick-terminal-screen = mouse
 
 keybind = super+i=inspector:toggle
 keybind = super+r=reload_config
