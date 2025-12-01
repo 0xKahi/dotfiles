@@ -11,6 +11,7 @@ eza
 fastfetch
 fd
 felixkratz/formulae/borders
+felixkratz/formulae/sketchybar
 ffmpegthumbnailer
 foreman
 fzf
