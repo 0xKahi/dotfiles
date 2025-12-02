@@ -8,10 +8,14 @@ config-version = 2
 # You can use it to add commands that run after AeroSpace startup.
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-  # JankyBorders has a built-in detection of already running process,
-  # so it won't be run twice on AeroSpace restart
-  'exec-and-forget borders active_color=0xFF72F6B2 inactive_color=0xCC444a73 style=rounded width=5.0'
+  'exec-and-forget borders active_color=0xFF72F6B2 inactive_color=0xCC444a73 style=rounded width=5.0',
+  # 'exec-and-forget sketchybar'
 ]
+
+# Notify Sketchybar about workspace change
+# exec-on-workspace-change = ['/bin/bash', '-c',
+#     'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+# ]
 
 # Start AeroSpace at login
 start-at-login = true 
@@ -75,6 +79,7 @@ on-mode-changed = []
     outer.left =       10 
     outer.bottom =     10 
     outer.top =        10 
+    # outer.top =        40 
     outer.right =      10 
 
 # 'main' binding mode declaration
@@ -202,6 +207,15 @@ on-mode-changed = []
     q = ['mode main']
     esc = ['mode main']
 
+[mode.resize.binding]
+    h = 'resize width -50'
+    j = 'resize height +50'
+    k = 'resize height -50'
+    l = 'resize width +50'
+    q = ['mode main']
+    enter = 'mode main'
+    esc = 'mode main'
+
 # [workspace-to-monitor-force-assignment]
 #     1 = ['']                            # Monitor sequence number from left to right. 1-based indexing
 #     2 = 'main'                       # Main monitor
@@ -229,6 +243,7 @@ on-mode-changed = []
     if.app-id = 'com.apple.Safari'
     run = 'move-node-to-workspace B' # mnemonics B - Browser
 [[on-window-detected]]
+    if.app-id = 'ai.perplexity.comet'
     run = 'move-node-to-workspace B' # mnemonics B - Browser
 
 [[on-window-detected]]

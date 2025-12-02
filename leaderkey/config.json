@@ -167,6 +167,12 @@
           "type": "command",
           "label": "[F]ull screen toggle",
           "value": "/opt/homebrew/bin/aerospace fullscreen"
+        },
+        {
+          "key": "r",
+          "type": "command",
+          "label": "[R]esize mode",
+          "value": "/opt/homebrew/bin/aerospace mode resize"
         }
       ],
       "key": "a",
