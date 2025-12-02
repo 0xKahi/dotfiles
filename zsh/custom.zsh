@@ -33,6 +33,11 @@ eval "$(fzf --zsh)"
 # load fzf theme and keybindings
 [ -f "$HOME/.config/zsh/configs/fzf-config.zsh" ] && source "$HOME/.config/zsh/configs/fzf-config.zsh"
 
+# ================ Setup ghosstty shell interagtion ===========================
+if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
+    builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/zsh/ghostty-integration"
+fi
+# =============================== end =========================================
 
 # ================ Lazy load atuin ========================
 # - defers initialization until before first prompt

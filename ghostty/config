@@ -22,8 +22,10 @@ background-blur-radius = 20
 background-opacity = 0.85
 
 mouse-hide-while-typing = true
-
 macos-option-as-alt = true 
+
+shell-integration = detect
+shell-integration-features = cursor,ssh-env,ssh-terminfo 
 
 #quick-terminal-screen = macos-menu-bar
 quick-terminal-size = 35%
