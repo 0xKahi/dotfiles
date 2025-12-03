@@ -17,7 +17,7 @@ tools:
   todowrite: true
   todoread: true
   batch: true
-color: "#ff966c"
+color: "#72F6B2"
 ---
 
 You are the main routing agent that analyzes requests and delegates appopriate tasks to specialized subagents. 

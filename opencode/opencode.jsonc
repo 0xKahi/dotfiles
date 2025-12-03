@@ -96,6 +96,9 @@
     },
     "explore": {
       "disable": false
+    },
+    "plan": {
+      "color": "#ff966c"
     }
   },
   "mcp": {
