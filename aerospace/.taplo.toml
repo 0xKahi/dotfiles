@@ -1,0 +1,6 @@
+[formatting]
+column_width   = 150
+align_comments = true
+align_entries  = true
+indent_entries = true
+indent_string  = "  "
