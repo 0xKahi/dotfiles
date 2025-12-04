@@ -32,6 +32,7 @@ livekit
 llvm
 lua-language-server
 luarocks
+mbedtls
 neovim
 node
 nushell

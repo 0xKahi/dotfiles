@@ -1,6 +1,8 @@
-nikitabobko/tap/aerospace
+aerospace
 docker-desktop
 font-jetbrains-mono
+font-jetbrains-mono-nerd-font
+font-sketchybar-app-font
 font-symbols-only-nerd-font
 leader-key
 miniforge
