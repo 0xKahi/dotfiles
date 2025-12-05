@@ -4,3 +4,4 @@
 ```sh
 chmod +x sketchybar/items/*.sh sketchybar/plugins/*.sh sketchybar/*.sh sketchybar/sketchybarrc
 ```
+
