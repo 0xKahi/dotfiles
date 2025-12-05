@@ -16,7 +16,12 @@ update_icons() {
 
   # Check if workspace has any windows
   WINDOWS=$(aerospace list-windows --workspace "$SID" --format "%{app-name}")
-  
+
+  BORDER_WIDTH=0
+  BACKGROUND_COLOR=$BAR_COLOR
+  BORDER_COLOR=$BAR_COLOR
+  extra_animate=()
+
   # Determine drawing state
   # Show workspace if: it has windows OR it's the currently focused workspace
   local SHOULD_DRAW="on"
@@ -27,34 +32,65 @@ update_icons() {
   # Always update the label (create_label now checks if workspace is focused)
   create_icons "$SID"
 
+  # Determine if this workspace should animate
+  # Only animate if PREV_AEROSPACE_WORKSPACE is set (workspace change event)
+  # and this workspace is involved in the transition
+  local SHOULD_ANIMATE=false
+  
   if [[ "$CURRENT_SID" == "$SID" ]]; then
-    # Focused workspace - highlight the workspace number and label
-    ICON_COLOR=$HIGHLIGHT
-    LABEL_COLOR=$HIGHLIGHT
-    BACKGROUND_COLOR=$BAR_COLOR
-
-    ## For hihlighted background
-    # ICON_COLOR="$(getcolor trueblack)"
-    # LABEL_COLOR="$(getcolor trueblack)"
-    # BACKGROUND_COLOR=$HIGHLIGHT
+    # This is the newly focused workspace
+    ICON_COLOR_VALUE=$HIGHLIGHT
+    LABEL_COLOR_VALUE=$HIGHLIGHT
+    BORDER_COLOR_VALUE=$HIGHLIGHT
+    BORDER_WIDTH_VALUE=1
+    # Only animate if we know the previous workspace
+    if [[ -n "$PREV_AEROSPACE_WORKSPACE" ]]; then
+      SHOULD_ANIMATE=true
+      extra_animate=(
+        y_offset=3
+        y_offset=0
+      )
+    fi
+  elif [[ -n "$PREV_AEROSPACE_WORKSPACE" ]] && [[ "$PREV_AEROSPACE_WORKSPACE" == "$SID" ]]; then
+    # This was the previously focused workspace (now unfocused)
+    ICON_COLOR_VALUE=$ICON_COLOR
+    LABEL_COLOR_VALUE=$LABEL_COLOR
+    BORDER_COLOR_VALUE=$BORDER_COLOR
+    BORDER_WIDTH_VALUE=$BORDER_WIDTH
+    SHOULD_ANIMATE=true
   else
-    # Unfocused workspace - normal colors
-    ICON_COLOR=$ICON_COLOR
-    LABEL_COLOR=$LABEL_COLOR
-    # BACKGROUND_COLOR="$(getcolor white 10)" # transaparent
-    BACKGROUND_COLOR=$BAR_COLOR
+    # This workspace is not involved in the transition
+    ICON_COLOR_VALUE=$ICON_COLOR
+    LABEL_COLOR_VALUE=$LABEL_COLOR
+    BORDER_COLOR_VALUE=$BORDER_COLOR
+    BORDER_WIDTH_VALUE=$BORDER_WIDTH
+    SHOULD_ANIMATE=false
   fi
   
-  # echo $CURRENT_SID ">" $CURRENT_LABEL ">" $PADDING_LABEL
-
-  sketchybar --animate tanh 10                                    \
-             --set space.$SID icon.color=$ICON_COLOR              \
-                              label.color=$LABEL_COLOR            \
-                              background.corner_radius=15         \
-                              icon.padding_left=$PADDINGS         \
-                              background.color=$BACKGROUND_COLOR   \
-                              icon.padding_right=$PADDINGS          \
-                              drawing=$SHOULD_DRAW
+  # Apply changes with or without animation
+  if [[ "$SHOULD_ANIMATE" == true ]]; then
+    sketchybar --animate tanh 10                                                 \
+               --set space.$SID icon.color=$ICON_COLOR_VALUE                     \
+                                label.color=$LABEL_COLOR_VALUE                   \
+                                background.border_color=$BORDER_COLOR_VALUE      \
+                                background.border_width=$BORDER_WIDTH_VALUE      \
+                                background.corner_radius=15                      \
+                                icon.padding_left=$PADDINGS                      \
+                                background.color=$BACKGROUND_COLOR               \
+                                icon.padding_right=$PADDINGS                     \
+                                "${extra_animate[@]}"                            \
+                                drawing=$SHOULD_DRAW
+  else
+    sketchybar --set space.$SID icon.color=$ICON_COLOR_VALUE                     \
+                                label.color=$LABEL_COLOR_VALUE                   \
+                                background.border_color=$BORDER_COLOR_VALUE      \
+                                background.border_width=$BORDER_WIDTH_VALUE      \
+                                background.corner_radius=15                      \
+                                icon.padding_left=$PADDINGS                      \
+                                background.color=$BACKGROUND_COLOR               \
+                                icon.padding_right=$PADDINGS                     \
+                                drawing=$SHOULD_DRAW
+  fi
 }
 
 
