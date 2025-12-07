@@ -7,12 +7,16 @@ permission:
   edit: ask 
   bash: ask
   webfetch: deny 
+  doom_loop: ask
+  external_directory: ask
 tools:
   write: true 
   edit: true 
   bash: true 
   read: true
   grep: true
+  glob: true
+  list: true
   patch: true
   todowrite: true
   todoread: true

@@ -3,9 +3,6 @@
   "theme": "cyberpunk-theme",
   "keybinds": {
     "leader": "ctrl+o",
-    // "app_help": "<leader>?",
-    // "tool_details": "<leader>d",
-    // "project_init": "<leader>i",
     "session_share": "none",
     "sidebar_toggle": "<leader>b",
     "status_view": "<leader>s",
@@ -92,10 +89,10 @@
   },
   "agent": {
     "general": {
-      "disable": false
+      "mode": "subagent"
     },
     "explore": {
-      "disable": false
+      "mode": "subagent"
     },
     "plan": {
       "color": "#ff966c"
@@ -183,6 +180,7 @@
       "fd *": "allow",
       "rg *": "allow"
     },
+    "doom_loop": "ask",
     "external_directory": "ask"
   },
   "tools": {
