@@ -30,10 +30,5 @@ case ":$PATH:" in
 esac
 
 # bun
-export PATH="/Users/kahi/.bun/bin:$PATH"
-
-# conda (fallback PATH only - full init in .zprofile)
-# if [ -f "/Users/kahi/miniforge3/bin/conda" ]; then
-#   export PATH="/Users/kahi/miniforge3/bin:$PATH"
-# fi
-
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

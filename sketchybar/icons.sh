@@ -107,6 +107,8 @@ export ICON_RAM=󰘚
 export ICON_DISK=󰋊 # disk utility
 export ICON_CPU=
 export ICON_CONTROLCENTER=􀜊
+export ICON_PASSWORDS=
+export ICON_MIRROR=󱞟
 
 # My apps
 export ICON_DISCORD= # Discord

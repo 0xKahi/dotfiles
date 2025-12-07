@@ -120,8 +120,11 @@ case "$1" in
 "Screenshot" | "Preview")
 	RESULT=$ICON_PREVIEW
 	;;
-"1Password")
-	RESULT=$ICON_PASSKEY
+"Passwords")
+	RESULT=$ICON_PASSWORDS
+	;;
+"iPhone Mirroring")
+	RESULT=$ICON_MIRROR
 	;;
 "NordVPN")
 	RESULT=$ICON_VPN
