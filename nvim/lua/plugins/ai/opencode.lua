@@ -6,7 +6,7 @@ return {
     {
       '<leader>oc',
       function()
-        require('opencode').ask('', { submit = false })
+        require('opencode').ask('', { ask = true })
       end,
       desc = '[O]pen [C]ode ask',
       mode = 'n',
@@ -14,16 +14,22 @@ return {
     {
       '<leader>oc',
       function()
-        require('opencode').ask('@this', { submit = false })
+        require('opencode').ask('@this', { ask = true })
       end,
       desc = '[O]pen [C]ode ask selection',
       mode = 'v',
     },
   },
-  opts = {
-    auto_fallback_to_enbedded = false,
-  },
   config = function()
-    require('config.opencode.notifications').setup()
+    ---@type opencode.Opts
+    vim.g.opencode_opts = {
+      provider = {
+        enabled = 'tmux',
+        tmux = {},
+      },
+    }
+
+    -- Required for `opts.events.reload`.
+    vim.o.autoread = true
   end,
 }
