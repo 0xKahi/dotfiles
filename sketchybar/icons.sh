@@ -144,3 +144,4 @@ export ICON_BRAIN=
 export ICON_STRESS=󰠠
 export ICON_DND_OFF=􀆹
 export ICON_DND_ON=􀆺
+export ICON_SURFSHARK=󱙴

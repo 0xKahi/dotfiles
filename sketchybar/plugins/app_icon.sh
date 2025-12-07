@@ -198,6 +198,9 @@ case "$1" in
 "DataGrip")
 	RESULT=$ICON_DATAGRIP
 	;;
+"Surfshark")
+	RESULT=$ICON_SURFSHARK
+	;;
 *)
 	RESULT=$ICON_APP
 	;;
