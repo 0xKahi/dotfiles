@@ -38,7 +38,11 @@
   "enabled_providers": [
     "anthropic",
     "opencode",
-    "github-copilot"
+    "github-copilot",
+    "google"
+  ],
+  "plugin": [
+    "opencode-gemini-auth"
   ],
   "small_model": "github-copilot/claude-haiku-4.5",
   "provider": {
