@@ -11,6 +11,8 @@
     "session_list": "<leader>l",
     "session_interrupt": "esc",
     "session_compact": "<leader>c",
+    "session_child_cycle": "<leader>]",
+    "session_child_cycle_reverse": "<leader>[",
     "model_list": "<leader>m",
     "theme_list": "<leader>t",
     "input_clear": "ctrl+c",
