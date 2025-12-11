@@ -62,12 +62,17 @@ export ICON_APP=󰣆 # fallback app
 export ICON_DOCUMENTS=󰧮 # powerpoint
 export ICON_REFRESH=
 
+export ICON_GIT=󰊢 # lazygit
+export ICON_GITHUB=󰊤
+export ICON_PR_PENDING=
+export ICON_PR_FAIL=
+export ICON_PR_PASS=
+
 export ICON_PACKAGE=󰏗 # brew
 export ICON_DEV=󰅨 # nvim, xcode, vscode
 export ICON_VSCODIUM= # nvim, xcode, vscode
 export ICON_FILE=󰉋 # ranger, finder
 export ICON_FINDER=󰀶
-export ICON_GIT=󰊢 # lazygit
 export ICON_TODO= # taskwarrior, taskwarrior-tui, reminders, onenote
 export ICON_SCREENSAVOR=󱄄 # unimatrix, pipe.sh
 export ICON_WEATHER=󰖕 # weather
