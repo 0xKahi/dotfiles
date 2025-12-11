@@ -25,6 +25,12 @@ autoload -Uz add-zsh-hook
 
 #source $ZSH/oh-my-zsh.sh
 
+# ================ Setup ghosstty shell interagtion ===========================
+if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
+    builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/zsh/ghostty-integration"
+fi
+# =============================== end =========================================
+
 # load starship prompt
 eval "$(starship init zsh)"
 

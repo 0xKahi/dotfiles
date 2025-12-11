@@ -12,12 +12,6 @@ setopt INC_APPEND_HISTORY
 setopt extended_glob
 setopt prompt_subst # prompt substitution
 
-# ================ Setup ghosstty shell interagtion ===========================
-if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
-    builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/zsh/ghostty-integration"
-fi
-# =============================== end =========================================
-
 [ -f "$HOME/.config/zsh/custom.zsh" ] && source "$HOME/.config/zsh/custom.zsh"
 
 [ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
