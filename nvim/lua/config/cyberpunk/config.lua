@@ -198,7 +198,7 @@ local function set_markview_plugin(highlights)
 
   --- Code Blocks
   highlights['MarkviewCode'] = { bg = cyberpunk.core.dark_bg }
-  highlights['MarkviewInlineCode'] = { bg = cyberpunk.core.dark_bg }
+  highlights['MarkviewInlineCode'] = { bg = cyberpunk.core.dark_bg, fg = cyberpunk.core.neon_blue }
   highlights['MarkviewBlockCode'] = { bg = cyberpunk.core.dark_bg }
 
   --- Block Quotes
