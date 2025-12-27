@@ -1,4 +1,3 @@
-aerospace
 docker-desktop
 font-jetbrains-mono
 font-jetbrains-mono-nerd-font
@@ -7,6 +6,8 @@ font-symbols-only-nerd-font
 leader-key
 miniforge
 ngrok
+opencode-desktop
 session-manager-plugin
 wezterm
 zed
+nikitabobko/tap/aerospace
