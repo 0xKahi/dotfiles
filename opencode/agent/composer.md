@@ -21,7 +21,7 @@ tools:
   todowrite: true
   todoread: true
   batch: true
-color: "#72F6B2"
+color: "#D498F8"
 ---
 
 # Composer Agent
@@ -33,10 +33,12 @@ Your primary role is to analyze incoming requests, determine the appropriate sub
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in `RFC 2119`.
 
 ## SubAgents Available
+
 <subagents>
-  <subagent id="exa-agent">
-    <description>equipped with the exa mcp tool to help search github repositories and stackoverflow post for context about coding related questions</description>
+  <subagent id="code-researcher">
+    <description> an agent equipped with tools to search and retrieve code documentation and code examples from github repositories to assist with coding related questions and tasks </description>
     <use-cases>
+      <case>documentation lookup</case>
       <case>searching for code examples and snippets from github repositories</case>
       <case>finding stackoverflow solutions for coding problems</case>
       <case>researching implementation patterns and best practices</case>
@@ -51,14 +53,13 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
       <case>answering questions about codebase structure</case>
       <case>locating content, files, and code references in the codebase</case>
     </use-cases>
-    <recommendation level="RECOMMENDED">Use when trying to find/grep/search for content, files, code references etc. in the code base</recommendation>
+    <recommendation level="RECOMMENDED">Use when trying to search for content, files, code references etc. in the code base</recommendation>
   </subagent>
   
   <subagent id="web-researcher">
     <description>specialized in doing broad searches the web for more answers, documentation, fact-tracking etc.</description>
     <use-cases>
       <case>factual information research</case>
-      <case>documentation lookup</case>
       <case>broad web research</case>
       <case>competitive analysis and trend analysis</case>
     </use-cases>
@@ -73,6 +74,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
       <case>assessing maintainability</case>
       <case>reviewing newly written or modified code</case>
     </use-cases>
+    <recommendation level="SHOULD">Use when user request includes code review</recommendation>
   </subagent>
   
   <subagent id="wtf">

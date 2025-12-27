@@ -43,6 +43,7 @@
   "tui": {
     "diff_style": "auto"
   },
+  "default_agent": "plan",
   "enabled_providers": [
     "anthropic",
     "opencode",
@@ -105,9 +106,6 @@
     },
     "explore": {
       "mode": "subagent"
-    },
-    "plan": {
-      "color": "#ff966c"
     }
   },
   "mcp": {
@@ -167,6 +165,14 @@
       "type": "remote",
       "url": "https://mcp.grep.app",
       "enabled": false
+    },
+    "mgrep_mcp": {
+      "type": "local",
+      "command": [
+        "mgrep",
+        "mcp"
+      ],
+      "enabled": true
     }
   },
   "lsp": {
@@ -193,9 +199,13 @@
       "rg *": "allow"
     },
     "doom_loop": "ask",
-    "external_directory": "ask"
+    "external_directory": "ask",
+    "skill": {
+      "*": "allow"
+    }
   },
   "tools": {
+    "lsp": true,
     "context7*": false,
     "tavily-mcp*": false,
     "firecrawl*": false,
