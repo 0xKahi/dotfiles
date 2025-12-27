@@ -96,6 +96,7 @@ function ff() {
 
 # Enable experimental models for opencode CLI
 export OPENCODE_ENABLE_EXPERIMENTAL_MODELS=true
+export OPENCODE_EXPERIMENTAL=true
 
 # zsh menu style
 [ -f "$HOME/.config/zsh/configs/zsh-menu-style.zsh" ] && source "$HOME/.config/zsh/configs/zsh-menu-style.zsh"
