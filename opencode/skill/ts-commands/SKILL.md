@@ -9,7 +9,7 @@ description: >-
   (4) Determining the correct command syntax for running development scripts
 ---
 
-# TypeScript/JavaScript Project Commands
+# Ts Commands 
 
 Analyze TypeScript/JavaScript projects to determine the correct commands for running scripts, managing dependencies, and working with workspaces.
 

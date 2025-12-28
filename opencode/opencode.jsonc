@@ -36,6 +36,9 @@
     "messages_redo": "<leader>r",
     "app_exit": "ctrl+c,<leader>q"
   },
+  "instructions": [
+    "~/.config/opencode/INSTRUCTIONS.md"
+  ],
   "username": "kahi",
   "layout": "stretch",
   "share": "manual",
@@ -134,7 +137,7 @@
         "-y",
         "perplexity-mcp"
       ],
-      "enabled": true,
+      "enabled": false,
       "environment": {
         "PERPLEXITY_API_KEY": "{env:PERPLEXITY_API_KEY}",
         "PERPLEXITY_TIMEOUT_MS": "600000"
@@ -154,7 +157,8 @@
     },
     "coingecko_mcp": {
       "type": "remote",
-      "url": "https://mcp.api.coingecko.com/sse"
+      "url": "https://mcp.api.coingecko.com/sse",
+      "enabled": true
     },
     "exa": {
       "type": "remote",
@@ -165,14 +169,6 @@
       "type": "remote",
       "url": "https://mcp.grep.app",
       "enabled": false
-    },
-    "mgrep_mcp": {
-      "type": "local",
-      "command": [
-        "mgrep",
-        "mcp"
-      ],
-      "enabled": true
     }
   },
   "lsp": {
@@ -201,11 +197,13 @@
     "doom_loop": "ask",
     "external_directory": "ask",
     "skill": {
+      "skill-creator": "ask",
       "*": "allow"
     }
   },
   "tools": {
     "lsp": true,
+    "skill": true,
     "context7*": false,
     "tavily-mcp*": false,
     "firecrawl*": false,

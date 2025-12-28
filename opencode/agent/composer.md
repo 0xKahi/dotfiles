@@ -22,6 +22,7 @@ tools:
   todoread: true
   batch: true
 color: "#D498F8"
+disable: true 
 ---
 
 # Composer Agent
