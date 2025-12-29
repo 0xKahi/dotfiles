@@ -33,15 +33,15 @@ source "$ITEM_DIR/diskmonitor.sh"
 
 source "$ITEM_DIR/spacer.sh" 2 right
 
-source "$ITEM_DIR/weather.sh" right
-# source "$ITEM_DIR/cpu.sh" right
+# source "$ITEM_DIR/weather.sh" right
+source "$ITEM_DIR/github_prs.sh" right
 
 source "$ITEM_DIR/spacer.sh" 4 right
 
 # Brackets '/space\..*/'
 sketchybar --add bracket left.side '/space\..*/'                                                 \
                                                                                                  \
-           --add bracket notifications weather aqi reminders messages mail brew                  \
+           --add bracket notifications github_prs                                                \
            --set notifications "${bracket_defaults[@]}"                                          \
                                                                                                  \
            --add bracket status_icons diskmonitor volume_icon volume wifi datetime battery \
