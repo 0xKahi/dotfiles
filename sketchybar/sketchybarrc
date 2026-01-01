@@ -41,7 +41,7 @@ source "$ITEM_DIR/spacer.sh" 4 right
 # Brackets '/space\..*/'
 sketchybar --add bracket left.side '/space\..*/'                                                 \
                                                                                                  \
-           --add bracket notifications github_prs                                                \
+           --add bracket notifications                                                           \
            --set notifications "${bracket_defaults[@]}"                                          \
                                                                                                  \
            --add bracket status_icons diskmonitor volume_icon volume wifi datetime battery \

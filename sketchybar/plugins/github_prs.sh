@@ -33,7 +33,11 @@ fetch_prs() {
   touch "$LOCK_FILE"
   
   # Show loading state
-  sketchybar --set "$NAME" label="..."
+  sketchybar --set github_prs label="..." label.drawing=on
+  # Hide status items during loading
+  sketchybar --set github_prs.failed drawing=off \
+             --set github_prs.passed drawing=off \
+             --set github_prs.pending drawing=off
   
   # Fetch PR data with 30 second timeout using perl
   PR_DATA=$(perl -e 'alarm 30; exec @ARGV' /Users/kahi/Desktop/code/jojo/jojo-scripts/jojo get pr --filter "shuffle-labs,cadillac-studios" 2>&1)
@@ -88,16 +92,56 @@ calculate_counts() {
   PENDING_COUNT=$(echo "$CACHE_CONTENT" | jq '[.[] | select(.checks_status == "pending")] | length' 2>/dev/null || echo 0)
 }
 
+render_status_items() {
+  # Set failed item
+  if [ $FAIL_COUNT -gt 0 ]; then
+    sketchybar --set github_prs.failed \
+      icon=$ICON_PR_FAIL \
+      icon.color=$(getcolor red) \
+      label="$FAIL_COUNT" \
+      drawing=on
+  else
+    sketchybar --set github_prs.failed drawing=off
+  fi
+  
+  # Set passed item
+  if [ $PASS_COUNT -gt 0 ]; then
+    sketchybar --set github_prs.passed \
+      icon=$ICON_PR_PASS \
+      icon.color=$(getcolor green) \
+      label="$PASS_COUNT" \
+      drawing=on
+  else
+    sketchybar --set github_prs.passed drawing=off
+  fi
+  
+  # Set pending item
+  if [ $PENDING_COUNT -gt 0 ]; then
+    sketchybar --set github_prs.pending \
+      icon=$ICON_PR_PENDING \
+      icon.color=$(getcolor yellow) \
+      label="$PENDING_COUNT" \
+      drawing=on
+  else
+    sketchybar --set github_prs.pending drawing=off
+  fi
+}
+
 render_bar_item() {
   DRAWING=$([ "$(cat /tmp/sketchybar_sender 2>/dev/null)" == "focus_on" ] && echo "off" || echo "on")
   
   # Check for no WiFi
   if ! check_wifi; then
-    sketchybar --set "$NAME" \
+    sketchybar --set github_prs \
       icon=$ICON_WIFI_OFF \
       icon.color=$(getcolor red) \
-      label="" \
+      label="none" \
+      label.drawing=on \
       drawing=$DRAWING
+    # Hide status items
+    sketchybar --set github_prs.failed drawing=off \
+               --set github_prs.passed drawing=off \
+               --set github_prs.pending drawing=off
     return
   fi
   
@@ -105,12 +149,17 @@ render_bar_item() {
   if [ -f "$CACHE_FILE" ]; then
     CACHE_CONTENT=$(cat "$CACHE_FILE")
     if [[ "$CACHE_CONTENT" == "error_"* ]]; then
-      sketchybar --set "$NAME" \
+      sketchybar --set github_prs \
         icon=$ICON_GITHUB \
         icon.color=$ICON_COLOR \
         label="error" \
         label.color=$(getcolor red) \
+        label.drawing=on \
         drawing=$DRAWING
+      # Hide status items
+      sketchybar --set github_prs.failed drawing=off \
+                 --set github_prs.passed drawing=off \
+                 --set github_prs.pending drawing=off
       return
     fi
   fi
@@ -118,27 +167,30 @@ render_bar_item() {
   # Calculate counts
   calculate_counts
   
-  # Build label with only non-zero counts
-  LABEL=""
+  # Check if all counts are zero
+  TOTAL_COUNT=$((FAIL_COUNT + PASS_COUNT + PENDING_COUNT))
   
-  if [ $FAIL_COUNT -gt 0 ]; then
-    LABEL="${LABEL}${FAIL_COUNT} $ICON_PR_FAIL "
+  # Render main GitHub icon
+  if [ $TOTAL_COUNT -eq 0 ]; then
+    sketchybar --set github_prs \
+      icon=$ICON_GITHUB \
+      icon.color=$ICON_COLOR \
+      label="none" \
+      label.drawing=on \
+      drawing=$DRAWING
+    # Hide status items
+    sketchybar --set github_prs.failed drawing=off \
+               --set github_prs.passed drawing=off \
+               --set github_prs.pending drawing=off
+  else
+    sketchybar --set github_prs \
+      icon=$ICON_GITHUB \
+      icon.color=$ICON_COLOR \
+      label.drawing=off \
+      drawing=$DRAWING
+    # Render status items
+    render_status_items
   fi
-  
-  if [ $PASS_COUNT -gt 0 ]; then
-    LABEL="${LABEL}${PASS_COUNT} $ICON_PR_PASS "
-  fi
-  
-  if [ $PENDING_COUNT -gt 0 ]; then
-    LABEL="${LABEL}${PENDING_COUNT} $ICON_PR_PENDING "
-  fi
-  
-  # Render with rich text to allow colored icons
-  sketchybar --set "$NAME" \
-    icon=$ICON_GITHUB \
-    icon.color=$ICON_COLOR \
-    label="$LABEL" \
-    drawing=$DRAWING
 }
 
 render_popup() {
