@@ -11,7 +11,7 @@ if [[ -n ~/.zcompdump(#qN.mh-1) ]]; then
   # compinit # skips none use this when you want to regenerate .zcompdump
 else
   compinit
-  printf "\e[105;30mDEBUG\e[0m .zcompdump regenerated \e[33m[%s]\e[0m\n" "$(date '+%H:%M:%S')"
+  # printf "\e[105;30mDEBUG\e[0m .zcompdump regenerated \e[33m[%s]\e[0m\n" "$(date '+%H:%M:%S')"
 fi
 
 # Load hook management utility (used by lazy loading functions below)
