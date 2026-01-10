@@ -6,6 +6,7 @@ source "$CONFIG_DIR/globalstyles.sh"
 CACHE_FILE="/tmp/sketchybar_github_prs.json"
 LOCK_FILE="/tmp/sketchybar_github_prs.lock"
 POPUP_OFF="sketchybar --set github_prs popup.drawing=off"
+GH_SCRIPT="$SKETCHY_SCRIPT_DIR/gh-pr.sh"
 
 check_wifi() {
   CURRENT_WIFI="$(ipconfig getsummary en0)"
@@ -40,7 +41,8 @@ fetch_prs() {
              --set github_prs.pending drawing=off
   
   # Fetch PR data with 30 second timeout using perl
-  PR_DATA=$(perl -e 'alarm 30; exec @ARGV' /Users/kahi/Desktop/code/jojo/jojo-scripts/jojo get pr --filter "shuffle-labs,cadillac-studios" 2>&1)
+  # PR_DATA=$(perl -e 'alarm 30; exec @ARGV' "$GH_SCRIPT" --filter "shuffle-labs,cadillac-studios" 2>&1)
+  PR_DATA=$(perl -e 'alarm 30; exec @ARGV' /Users/kahi/dotfiles/sketchybar/scripts/gh-pr.sh --filter "shuffle-labs,cadillac-studios" 2>&1)
   EXIT_CODE=$?
   
   # Remove lock file

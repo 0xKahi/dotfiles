@@ -2,6 +2,7 @@
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 ITEM_DIR="$CONFIG_DIR/items"
+SKETCHY_SCRIPT_DIR="$CONFIG_DIR/scripts"
 
 # Load global styles, colors and icons
 source "$CONFIG_DIR/globalstyles.sh"

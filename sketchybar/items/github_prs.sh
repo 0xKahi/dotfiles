@@ -46,7 +46,7 @@ github_prs=(
   popup.align=left
   update_freq=600
   updates=on
-  script="/Users/kahi/dotfiles/sketchybar/plugins/github_prs.sh"
+  script="$PLUGIN_DIR/github_prs.sh"
   --subscribe github_prs mouse.clicked
                          mouse.exited
                          mouse.exited.global

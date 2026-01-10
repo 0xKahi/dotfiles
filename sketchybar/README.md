@@ -2,7 +2,7 @@
 
 ## Approve new plugins
 ```sh
-chmod +x sketchybar/items/*.sh sketchybar/plugins/*.sh sketchybar/*.sh sketchybar/sketchybarrc
+chmod +x sketchybar/items/*.sh sketchybar/plugins/*.sh sketchybar/scripts/*.sh sketchybar/*.sh sketchybar/sketchybarrc
 ```
 
 
