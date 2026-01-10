@@ -10,9 +10,8 @@ permission:
   webfetch: allow 
   skill:
     web-search: deny 
-tools:
-  exa*: true 
-  context7*: true 
+  exa*: allow
+  context7*: allow
 ---
 
 you are a Code Example Grabber Agent specialized in searching and retrieving code examples using the `exa` tool

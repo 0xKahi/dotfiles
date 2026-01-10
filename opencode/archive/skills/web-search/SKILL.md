@@ -79,7 +79,7 @@ ELSE
 ### Step 3: Delegate to Subagent
 Invoke the selected subagent with:
 - Clear, specific instructions on what information to find
-- Context from the user's original request
+ Context from the user's original request
 - Expected format or depth of results
 - Any constraints (date ranges, specific sources, etc.)
 

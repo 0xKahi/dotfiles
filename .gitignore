@@ -7,3 +7,4 @@ zsh/secrets.zsh
 .opencode/
 OpenCode.md
 opencode/**/secret-*
+antigravity-accounts.json

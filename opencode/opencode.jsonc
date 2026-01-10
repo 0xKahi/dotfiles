@@ -54,7 +54,7 @@
     "google"
   ],
   "plugin": [
-    "opencode-gemini-auth"
+    "opencode-antigravity-auth@beta"
   ],
   "small_model": "github-copilot/claude-haiku-4.5",
   "provider": {
@@ -80,24 +80,96 @@
         }
       }
     },
-    "opencode": {
+    "google": {
       "models": {
-        "Claude Sonnet 4.5 (reasoning)": {
-          "id": "claude-sonnet-4-5",
-          "options": {
-            "thinking": {
-              "type": "enabled",
-              "budget_tokens": 16000
+        "antigravity-gemini-3-pro": {
+          "name": "Gemini 3 Pro (Antigravity)",
+          "limit": {
+            "context": 1048576,
+            "output": 65535
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "variants": {
+            "low": {
+              "thinkingLevel": "low"
+            },
+            "high": {
+              "thinkingLevel": "high"
             }
           }
         },
-        "Claude Haiku 4.5 (reasoning)": {
-          "id": "claude-haiku-4-5",
-          "options": {
-            "thinking": {
-              "type": "enabled",
-              "budget_tokens": 12000
+        "antigravity-gemini-3-flash": {
+          "name": "Gemini 3 Flash (Antigravity)",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          },
+          "variants": {
+            "minimal": {
+              "thinkingLevel": "minimal"
+            },
+            "low": {
+              "thinkingLevel": "low"
+            },
+            "medium": {
+              "thinkingLevel": "medium"
+            },
+            "high": {
+              "thinkingLevel": "high"
             }
+          }
+        },
+        "gemini-3-flash-preview": {
+          "name": "Gemini 3 Flash Preview (Gemini CLI)",
+          "limit": {
+            "context": 1048576,
+            "output": 65536
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
+          }
+        },
+        "gemini-3-pro-preview": {
+          "name": "Gemini 3 Pro Preview (Gemini CLI)",
+          "limit": {
+            "context": 1048576,
+            "output": 65535
+          },
+          "modalities": {
+            "input": [
+              "text",
+              "image",
+              "pdf"
+            ],
+            "output": [
+              "text"
+            ]
           }
         }
       }
@@ -109,6 +181,12 @@
     },
     "explore": {
       "mode": "subagent"
+    },
+    "plan": {
+      "color": "#72F6B2"
+    },
+    "build": {
+      "color": "#55BBF9"
     }
   },
   "mcp": {
@@ -163,12 +241,12 @@
     "exa": {
       "type": "remote",
       "url": "https://mcp.exa.ai/mcp",
-      "enabled": true
+      "enabled": false
     },
-    "gh_grep": {
+    "grep_app": {
       "type": "remote",
       "url": "https://mcp.grep.app",
-      "enabled": false
+      "enabled": true
     }
   },
   "lsp": {
@@ -183,34 +261,43 @@
     }
   },
   "permission": {
+    "write": "ask",
     "edit": "ask",
-    "bash": {
-      "*": "ask",
-      "git status *": "allow",
-      "git diff *": "allow",
-      "git log *": "allow",
-      "ls": "allow",
-      "find *": "allow",
-      "fd *": "allow",
-      "rg *": "allow"
-    },
+    "read": "allow",
+    "list": "allow",
+    "grep": "allow",
+    "glob": "allow",
+    "task": "allow",
+    "question": "allow",
+    "todoread": "allow",
+    "todowrite": "allow",
     "doom_loop": "ask",
     "external_directory": "ask",
+    "bash": {
+      "*": "ask",
+      "git status*": "allow",
+      "git diff*": "allow",
+      "git log*": "allow",
+      "ls": "allow",
+      "find*": "allow",
+      "fd*": "allow",
+      "rg*": "allow"
+    },
     "skill": {
       "skill-creator": "ask",
       "*": "allow"
-    }
-  },
-  "tools": {
-    "lsp": true,
-    "skill": true,
-    "context7*": false,
-    "tavily-mcp*": false,
-    "firecrawl*": false,
-    "coingecko_mcp*": false,
-    "perplexity-mcp*": false,
-    "gh_grep*": false,
-    "exa*": false
+    },
+    "lsp": "allow",
+    "webfetch": "deny",
+    "websearch": "deny",
+    "codesearch": "deny",
+    "context7*": "deny",
+    "tavily-mcp*": "deny",
+    "firecrawl*": "deny",
+    "coingecko_mcp*": "deny",
+    "perplexity-mcp*": "deny",
+    "grep_app*": "deny",
+    "exa*": "deny"
   },
   "experimental": {
     "chatMaxRetries": 2,
