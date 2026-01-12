@@ -27,7 +27,6 @@ permission:
   codesearch: allow
   context7*: allow
   grep_app*: allow
-  exa*: allow
   skill:
     exploration: deny 
 hidden: true
