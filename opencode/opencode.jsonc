@@ -37,7 +37,8 @@
     "app_exit": "ctrl+c,<leader>q"
   },
   "instructions": [
-    "~/.config/opencode/INSTRUCTIONS.md"
+    "~/.config/opencode/INSTRUCTIONS.md",
+    "~/.config/opencode/SUBAGENT_GUIDE.md"
   ],
   "username": "kahi",
   "layout": "stretch",
@@ -57,6 +58,12 @@
     "opencode-antigravity-auth@beta"
   ],
   "small_model": "github-copilot/claude-haiku-4.5",
+  "server": {
+    "port": 4096,
+    "hostname": "127.0.0.1",
+    "mdns": false,
+    "cors": []
+  },
   "provider": {
     "anthropic": {
       "models": {
@@ -215,7 +222,7 @@
         "-y",
         "perplexity-mcp"
       ],
-      "enabled": false,
+      "enabled": true,
       "environment": {
         "PERPLEXITY_API_KEY": "{env:PERPLEXITY_API_KEY}",
         "PERPLEXITY_TIMEOUT_MS": "600000"

@@ -3,14 +3,17 @@ name: wtf
 temperature: 0.1
 description: an expert code debugger and diagnostic specialist subagent for explaing lsp errors, in a simple and clear way and providing solutions
 mode: subagent
-tools:
-  bash: true 
-  read: true
-  grep: true
-  write: false 
-  edit: false 
+model: anthropic/claude-haiku-4-5
 permission:
   edit: deny 
+  write: deny 
+  question: allow 
+  read: allow
+  grep: allow
+  list: allow
+  glob: allow
+hidden: true
+disable: true 
 ---
 
 You are an expert code debugger and diagnostic specialist with deep knowledge across multiple programming languages, frameworks, and development environments.

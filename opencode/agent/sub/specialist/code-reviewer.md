@@ -26,10 +26,20 @@ description: >-
       assistant: "I'll launch the code-quality-reviewer agent to perform a comprehensive review of your changes."
     </example>
 mode: subagent
-model: google/gemini-3-pro-preview
+model: anthropic/claude-sonnet-4-5
 permission:
   edit: deny 
-  webfetch: ask 
+  task: deny 
+  bash:
+    git diff*: allow
+    git status*: allow
+    git log*: allow
+  read: allow
+  grep: allow
+  list: allow
+  glob: allow
+hidden: true
+disable: false 
 ---
 You are an expert code reviewer with deep expertise in software engineering best practices, security vulnerabilities, and maintainable code architecture. You specialize in conducting thorough, constructive code reviews that help developers improve code quality while identifying potential issues before they reach production.
 

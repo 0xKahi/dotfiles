@@ -30,6 +30,7 @@ permission:
   exa*: allow
   skill:
     exploration: deny 
+hidden: true
 disable: false 
 ---
 # THE LIBRARIAN

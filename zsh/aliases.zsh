@@ -30,3 +30,6 @@ alias love="/Applications/love.app/Contents/MacOS/love"
 
 # for tmux
 alias tmux-attach="tmux a -t"
+
+#for randomized opencode port
+alias oc="opencode --port $(shuf -i 4096-65000 -n 1)"
