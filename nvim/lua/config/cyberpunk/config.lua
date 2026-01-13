@@ -248,6 +248,8 @@ local function set_icon_highlights(highlights)
   highlights['NestJsControllerIcon'] = { fg = '#75B4FF' }
   highlights['NestJsProcessorIcon'] = { fg = '#95C9F8' }
   highlights['E2ESpecIcon'] = { fg = '#3582de' }
+
+  highlights['MiniIconDarkPurple'] = { fg = '#886CFF' }
 end
 
 ----------------------------------------

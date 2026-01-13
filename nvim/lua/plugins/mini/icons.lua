@@ -34,6 +34,7 @@ return {
         ['.nvim'] = { glyph = ' ', hl = 'NvimWorkspaceFolderIcon' },
         shared = { glyph = '󰉒 ', hl = 'SharedFolderIcon' },
         development = { glyph = '󱧼', hl = 'MiniIconsYellow' },
+        production = { glyph = '󱧰', hl = 'MiniIconDarkPurple' },
       },
     })
   end,
