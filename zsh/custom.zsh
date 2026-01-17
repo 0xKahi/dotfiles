@@ -40,6 +40,12 @@ eval "$(fzf --zsh)"
 [ -f "$HOME/.config/zsh/configs/fzf-config.zsh" ] && source "$HOME/.config/zsh/configs/fzf-config.zsh"
 
 
+# =========== Open buffer line in editor ===================
+autoload -Uz edit-command-line 
+zle -N edit-command-line
+bindkey '^xe' edit-command-line  # Ctrl+x then e to open command line
+# ====================== end ===============================
+
 # ================ Lazy load atuin ========================
 # - defers initialization until before first prompt
 # - This improves shell startup time by ~30-80ms
