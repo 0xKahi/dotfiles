@@ -26,6 +26,7 @@ return {
           'markdown',
           'markdown_inline',
           'latex',
+          'typst',
           'bash',
           'regex',
           'python',
