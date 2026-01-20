@@ -11,7 +11,7 @@ return {
       workspaces = {
         {
           name = 'jojo',
-          path = '~/Desktop/code/jojo/obsidian',
+          path = '~/Library/Mobile Documents/iCloud~md~obsidian/Documents/jojo-vault/',
         },
       },
 
@@ -57,6 +57,10 @@ return {
         --   -- Insert a tag at the current location.
         --   insert_tag = '<C-l>',
         -- },
+      },
+
+      footer = {
+        enabled = true,
       },
 
       -- Optional, sort search results by "path", "modified", "accessed", or "created".
