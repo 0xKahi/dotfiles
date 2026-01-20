@@ -9,7 +9,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 1. carefully analyze the request
 2. determine the request characteristis:   
   - Complexity (simple/medium/complex)
-  - Scope (feature/bugfix/research/refactor/explanation/general)
+  - Scope (feature/bugfix/research/explore/refactor/explanation/general)
   - Domain (frontend/backend/devops/documentation/generic) 
 3. after determining the request characteristics always include its summary at the start of your response in the format below:
 
