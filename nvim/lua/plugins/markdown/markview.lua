@@ -66,6 +66,7 @@ return {
           ['success'] = create_callout('success', ' ', 'MarkviewBlockQuoteSuccess'),
           ['fail'] = create_callout('fail', ' ', 'MarkviewBlockQuoteFail'),
           ['info'] = create_callout('info', '󰋽 ', 'MarkviewBlockQuoteInfo'),
+          ['map'] = create_callout('map', '', 'MarkviewBlockQuoteMap'),
         },
         headings = { enable = false },
         horizontal_rules = {
@@ -138,6 +139,34 @@ return {
 
           ['notion%.so'] = {
             icon = ' ',
+            hl = 'MarkviewPalette6Fg',
+          },
+          ['discord%.com'] = {
+            icon = ' ',
+            hl = 'MarkviewPalette6Fg',
+          },
+          ['google%.com/document'] = {
+            icon = ' ',
+            hl = 'MarkviewPalette6Fg',
+          },
+          ['google%.com/spreadsheets'] = {
+            icon = '󱎏 ',
+            hl = 'MarkviewPalette6Fg',
+          },
+          ['maps.app.goo.gl'] = {
+            icon = ' ',
+            hl = 'MarkviewPalette6Fg',
+          },
+          ['airbnb.com*'] = {
+            icon = ' ',
+            hl = 'MarkviewPalette6Fg',
+          },
+          ['booking.com'] = {
+            icon = ' ',
+            hl = 'MarkviewPalette6Fg',
+          },
+          ['stayz.com*'] = {
+            icon = ' ',
             hl = 'MarkviewPalette6Fg',
           },
         },

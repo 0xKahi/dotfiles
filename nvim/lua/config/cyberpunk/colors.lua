@@ -63,6 +63,7 @@ M.markview = {
   fail = '#fb464c',
   important = '#ff3838',
   info = '#6F94FF',
+  map = '#8089ff',
   pending = '#f2ca8e',
 }
 
