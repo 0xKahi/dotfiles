@@ -213,6 +213,9 @@ local function set_markview_plugin(highlights)
   highlights['MarkviewBlockQuoteImportant'] = { fg = cyberpunk.markview.important }
   highlights['MarkviewBlockQuoteInfo'] = { fg = cyberpunk.markview.info }
   highlights['MarkviewBlockQuoteMap'] = { fg = cyberpunk.markview.map }
+  highlights['MarkviewBlockQuotePrice'] = { fg = cyberpunk.markview.price }
+  highlights['MarkviewBlockQuoteMore'] = { fg = cyberpunk.markview.more }
+  highlights['MarkviewBlockQuoteGlob'] = { fg = cyberpunk.markview.glob }
   highlights['MarkviewBlockQuoteDefault'] = { fg = cyberpunk.core.bright_magenta }
 
   --- List Items

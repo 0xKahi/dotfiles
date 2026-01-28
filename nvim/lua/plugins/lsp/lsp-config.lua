@@ -135,6 +135,17 @@ return {
             },
           },
         },
+        root_markers = {
+          '.stylua.toml',
+          'stylua.toml',
+          '.emmyrc.json',
+          '.luarc.json',
+          '.luarc.jsonc',
+          '.luacheckrc',
+          'selene.toml',
+          'selene.yml',
+          '.git',
+        },
       })
 
       vim.lsp.config('terraformls', {
@@ -202,6 +213,10 @@ return {
             },
           },
         },
+      })
+
+      workspace.lsp_config('marksman', {
+        filetypes = { 'markdown', 'markdown.mdx' },
       })
 
       vim.api.nvim_create_autocmd('LspAttach', {

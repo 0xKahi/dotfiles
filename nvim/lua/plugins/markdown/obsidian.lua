@@ -29,8 +29,8 @@ return {
 
       templates = {
         folder = 'jojo/templates',
-        date_format = '%d-%m-%Y',
-        time_format = '%H:%M',
+        date_format = '%Y-%m-%d',
+        time_format = '%Hh:%Mm',
         -- A map for custom variables, the key should be the variable and the value a function
         substitutions = {},
       },
@@ -112,6 +112,9 @@ return {
           ObsidianHighlightText = { bg = '#75662e' },
           ObsidianIgnored = { bold = true, fg = '#EF8FA4' },
         },
+      },
+      comment = {
+        enabled = true,
       },
     },
   },

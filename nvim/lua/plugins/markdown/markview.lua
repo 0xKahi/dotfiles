@@ -67,6 +67,9 @@ return {
           ['fail'] = create_callout('fail', ' ', 'MarkviewBlockQuoteFail'),
           ['info'] = create_callout('info', '󰋽 ', 'MarkviewBlockQuoteInfo'),
           ['map'] = create_callout('map', '', 'MarkviewBlockQuoteMap'),
+          ['price'] = create_callout('price', '', 'MarkviewBlockQuotePrice'),
+          ['more'] = create_callout('more', '󰮍 ', 'MarkviewBlockQuoteMore'),
+          ['signpost'] = create_callout('signpost', ' ', 'MarkviewBlockQuoteGlob'),
         },
         headings = { enable = false },
         horizontal_rules = {

@@ -60,10 +60,13 @@ M.markview = {
   dev = '#e0e0e0',
   warn = '#e9973f',
   success = '#56f586',
+  price = '#90e684',
   fail = '#fb464c',
   important = '#ff3838',
   info = '#6F94FF',
   map = '#8089ff',
+  more = '#8abcf4',
+  glob = '#89dceb',
   pending = '#f2ca8e',
 }
 
