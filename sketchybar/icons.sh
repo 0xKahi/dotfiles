@@ -114,6 +114,7 @@ export ICON_CPU=
 export ICON_CONTROLCENTER=􀜊
 export ICON_PASSWORDS=
 export ICON_MIRROR=󱞟
+export ICON_NOTES=󱓧
 
 # My apps
 export ICON_DISCORD= # Discord

@@ -201,6 +201,9 @@ case "$1" in
 "Surfshark")
 	RESULT=$ICON_SURFSHARK
 	;;
+"Obsidian")
+	RESULT=$ICON_NOTES
+	;;
 *)
 	RESULT=$ICON_APP
 	;;

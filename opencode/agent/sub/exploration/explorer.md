@@ -7,7 +7,7 @@ description: >-
   Specify thoroughness: "quick" for basic, "medium" for moderate, "very
   thorough" for comprehensive analysis.
 mode: subagent
-model: google/antigravity-gemini-3-flash
+model: anthropic/claude-haiku-4-5
 permission:
   edit: deny 
   write: deny 
