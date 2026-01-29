@@ -285,10 +285,11 @@ return {
       -- },
       window = {
         position = 'left',
-        -- mappings = {
-        --   -- Add your filesystem-specific mappings here
-        --   ['B'] = 'change_git_base',
-        -- },
+        mappings = {
+          -- Add your filesystem-specific mappings here
+          -- ['B'] = 'change_git_base',
+          ['gg'] = false,
+        },
       },
     },
     buffers = {
