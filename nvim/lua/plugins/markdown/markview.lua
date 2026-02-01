@@ -148,6 +148,10 @@ return {
             icon = ' ',
             hl = 'MarkviewPalette6Fg',
           },
+          ['figma%.com'] = {
+            icon = ' ',
+            hl = 'MarkviewPalette6Fg',
+          },
           ['google%.com/document'] = {
             icon = ' ',
             hl = 'MarkviewPalette6Fg',
