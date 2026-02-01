@@ -26,7 +26,7 @@ description: >-
       assistant: "I'll launch the code-quality-reviewer agent to perform a comprehensive review of your changes."
     </example>
 mode: subagent
-model: anthropic/claude-sonnet-4-5
+model: openai/gpt-5.2-codex
 permission:
   edit: deny 
   task: deny 
