@@ -280,6 +280,7 @@ local function set_lsp_highlights(highlights)
   highlights['@tag.builtin.tsx'] = { fg = cyberpunk.lsp.html_tag }
   highlights['@tag.html'] = { fg = cyberpunk.lsp.html_tag }
   set_highlight(highlights, {
+    '@lsp.typemod.class.defaultLibrary.javascript',
     '@lsp.typemod.class.defaultLibrary.typescript',
     '@lsp.typemod.class.defaultLibrary.typescriptreact',
   }, { fg = cyberpunk.lsp.class })
