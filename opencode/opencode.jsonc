@@ -521,7 +521,12 @@
       "ls": "allow",
       "find*": "allow",
       "fd*": "allow",
-      "rg*": "allow"
+      "rg*": "allow",
+      "but status*": "allow",
+      "but show*": "allow",
+      "but diff*": "allow",
+      "but branch show*": "allow",
+      "but branch list*": "allow"
     },
     "skill": {
       "skill-creator": "ask",
@@ -540,7 +545,6 @@
     "exa*": "deny"
   },
   "experimental": {
-    "chatMaxRetries": 2,
     "batch_tool": true
   }
 }
