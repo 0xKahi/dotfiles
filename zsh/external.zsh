@@ -1,8 +1,8 @@
 # ================ Setup Gcloud SDK ===========================
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/kahi/Downloads/apps/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kahi/Downloads/apps/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/Downloads/apps/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/Downloads/apps/google-cloud-sdk/path.zsh.inc"; fi
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/kahi/Downloads/apps/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kahi/Downloads/apps/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/Downloads/apps/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/Downloads/apps/google-cloud-sdk/completion.zsh.inc"; fi
 # ================ Setup Gcloud SDK end ========================
 
 # ================ Setup JoJo command ===========================

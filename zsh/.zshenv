@@ -4,7 +4,12 @@ export LC_ALL="en_US.UTF-8" # Overrides all other locale settings
 export LC_CTYPE="en_US.UTF-8" # Controls character classification and case conversion
 
 # Editor configuration
-export EDITOR='/opt/homebrew/bin/nvim'
+if [ -x /opt/homebrew/bin/nvim ]; then
+  export EDITOR='/opt/homebrew/bin/nvim'
+else
+  export EDITOR='nvim'
+fi
+
 export VISUAL="$EDITOR"
 
 # Cargo environment
@@ -20,10 +25,10 @@ export LG_CONFIG_FILE="$HOME/.config/lazygit/lazygit-config.yml"
 # PATH additions
 # pipx
 # Created by `pipx` on 2025-05-30 19:55:17
-export PATH="/Users/kahi/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # pnpm
-export PNPM_HOME="/Users/kahi/Library/pnpm"
+export PNPM_HOME="$HOME/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;

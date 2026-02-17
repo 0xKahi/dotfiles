@@ -6,9 +6,6 @@ alias lt="eza --tree --level=2 --long --icons --git"
 alias lg="lazygit"
 alias ldg="lazydocker"
 
-# vim
-alias nvim="/opt/homebrew/bin/nvim"
-
 # git
 alias gcom="git commit -m"
 
