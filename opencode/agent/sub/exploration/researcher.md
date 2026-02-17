@@ -6,7 +6,7 @@ description: >-
   fact-checking, or trend analysis. This agent should be used proactively for
   deep information gathering tasks.
 mode: subagent
-model: anthropic/claude-haiku-4-5
+model: opencode/minimax-m2.5 
 permission:
   edit: deny 
   bash: deny 

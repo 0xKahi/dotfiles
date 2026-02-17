@@ -7,7 +7,7 @@ description: >-
   Specify thoroughness: "quick" for basic, "medium" for moderate, "very
   thorough" for comprehensive analysis.
 mode: subagent
-model: anthropic/claude-haiku-4-5
+model: opencode/minimax-m2.5 
 permission:
   edit: deny 
   write: deny 

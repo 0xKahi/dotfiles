@@ -8,7 +8,7 @@ description: >-
   when users ask to look up code in remote repositories, explain library
   internals, or find usage examples in open source
 mode: subagent
-model: google/antigravity-gemini-3-flash
+model: opencode/minimax-m2.5 
 permission:
   edit: ask 
   write: ask

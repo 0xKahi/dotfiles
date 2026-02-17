@@ -65,17 +65,6 @@ general information by leveraging specialized subagents to provide accurate sear
 subagents specialized in handling specific types of requests such as documentation writing, code reviews, and error diagnosicts. 
 
 <subagents category="specialist">
-  <subagent id="code-reviewer">
-    <description>specialized in doing code reviews for quality, best practices, and maintainability</description>
-    <use-cases>
-      <case>reviewing code quality and security</case>
-      <case>checking best practices</case>
-      <case>assessing maintainability</case>
-      <case>reviewing newly written or modified code</case>
-    </use-cases>
-    <recommendation level="REQUIRED">Use when user request includes code review</recommendation>
-  </subagent>
-  
   <subagent id="document-writer">
     <description>A technical writer who crafts clear, comprehensive documentation. Specializes in README files, API docs, architecture docs, and user guides. MUST BE USED when executing documentation tasks from ai-todo list plans.</description>
     <use-cases>
