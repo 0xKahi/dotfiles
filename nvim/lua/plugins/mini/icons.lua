@@ -1,3 +1,14 @@
+---@param names string[]
+---@param opts { glyph: string, hl?: string }
+---@return table<string, { glyph: string, hl?: string }>
+local function group_icons(names, opts)
+  local result = {}
+  for _, name in ipairs(names) do
+    result[name] = { glyph = opts.glyph, hl = opts.hl }
+  end
+  return result
+end
+
 return {
   'nvim-mini/mini.icons',
   opts = {},
@@ -26,16 +37,31 @@ return {
       default = {
         directory = { hl = 'DefaultFolderIcon' },
       },
-      directory = {
-        apps = { glyph = '󱋣 ', hl = 'AppFolderIcon' },
-        libs = { glyph = '󰣞 ', hl = 'LibraryFolderIcon' },
-        test = { hl = 'TestFolderIcon' },
-        ['.opencode'] = { glyph = '󱁿', hl = 'OpenCodeFolderIcon' },
-        ['.nvim'] = { glyph = ' ', hl = 'NvimWorkspaceFolderIcon' },
-        shared = { glyph = '󰉒 ', hl = 'SharedFolderIcon' },
-        development = { glyph = '󱧼', hl = 'MiniIconsYellow' },
-        production = { glyph = '󱧰', hl = 'MiniIconDarkPurple' },
-      },
+      -- directory = {
+      --   apps = { glyph = '󱋣 ', hl = 'AppFolderIcon' },
+      --   libs = { glyph = '󰣞 ', hl = 'LibraryFolderIcon' },
+      --   test = { hl = 'TestFolderIcon' },
+      --   ['.opencode'] = { glyph = '󱁿', hl = 'OpenCodeFolderIcon' },
+      --   ['.nvim'] = { glyph = ' ', hl = 'NvimWorkspaceFolderIcon' },
+      --   shared = { glyph = '󰉒 ', hl = 'SharedFolderIcon' },
+      --   development = { glyph = '󱧼', hl = 'MiniIconsYellow' },
+      --   dev = { glyph = '󱧼', hl = 'MiniIconsYellow' },
+      --   production = { glyph = '󱧰', hl = 'MiniIconDarkPurple' },
+      --   prod = { glyph = '󱧰', hl = 'MiniIconDarkPurple' },
+      -- },
+      directory = vim.tbl_extend(
+        'force',
+        {
+          apps = { glyph = '󱋣 ', hl = 'AppFolderIcon' },
+          libs = { glyph = '󰣞 ', hl = 'LibraryFolderIcon' },
+          test = { hl = 'TestFolderIcon' },
+          ['.opencode'] = { glyph = '󱁿', hl = 'OpenCodeFolderIcon' },
+          ['.nvim'] = { glyph = ' ', hl = 'NvimWorkspaceFolderIcon' },
+          shared = { glyph = '󰉒 ', hl = 'SharedFolderIcon' },
+        },
+        group_icons({ 'dev', 'development' }, { glyph = '󱧼', hl = 'MiniIconsYellow' }),
+        group_icons({ 'prod', 'production' }, { glyph = '󱧰', hl = 'MiniIconDarkPurple' })
+      ),
     })
   end,
 }

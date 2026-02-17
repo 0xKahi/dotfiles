@@ -160,6 +160,10 @@ return {
             icon = '󱎏 ',
             hl = 'MarkviewPalette6Fg',
           },
+          ['mail.google%.com'] = {
+            icon = ' ',
+            hl = 'MarkviewPalette6Fg',
+          },
           ['maps.app.goo.gl'] = {
             icon = ' ',
             hl = 'MarkviewPalette6Fg',
