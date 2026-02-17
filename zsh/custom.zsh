@@ -42,6 +42,8 @@ eval "$(fzf --zsh)"
 
 # =========== git butler ===================
 eval "$(but completions zsh)"
+
+bb() { but --status-after "$@"; }
 # ============== end ========================
 
 # =========== Open buffer line in editor ===================
