@@ -113,12 +113,18 @@ export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
 # zsh menu style
 [ -f "$HOME/.config/zsh/configs/zsh-menu-style.zsh" ] && source "$HOME/.config/zsh/configs/zsh-menu-style.zsh"
 
-# set up zsh syntax highlighting
-if [ -x /opt/homebrew/bin/brew ]; then
-  source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
+# set up zsh syntax highlighting for mac
+[ -f "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && source "/opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+[ -f "/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && source "/opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
+# set up zsh syntax highlighting for linux 
+[ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+[ -f "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+# if [ -x /opt/homebrew/bin/brew ]; then
+#   source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# fi
 
 # enable vi mode
 [ -f "$HOME/.config/zsh/configs/vi-mode.zsh" ] && source "$HOME/.config/zsh/configs/vi-mode.zsh"
