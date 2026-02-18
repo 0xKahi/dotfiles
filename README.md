@@ -52,6 +52,12 @@ requires stow to be run first to create the `.config/git-config` directory
 git config --global core.excludesfile ~/.config/git-config/.gitignore_global
 ```
 
+## Linux Setup
+
+```bash
+chmod +x ./scripts/linux/setup.sh
+```
+
 ## Misc
 
 ### Custom Theme
