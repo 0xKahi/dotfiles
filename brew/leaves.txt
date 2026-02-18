@@ -32,7 +32,6 @@ livekit
 llvm
 lua-language-server
 luarocks
-mbedtls
 neovim
 node
 nushell
@@ -46,6 +45,7 @@ poppler
 postgresql@14
 python@3.11
 python@3.12
+resvg
 ripgrep
 sshuttle
 starship
