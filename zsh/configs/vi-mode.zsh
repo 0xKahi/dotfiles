@@ -24,7 +24,11 @@ echo -ne '\e[5 q' # Use beam shape cursor on startup
 # Yank to the system clipboard
 function vi-yank-xclip {
   zle vi-yank
-  echo "$CUTBUFFER" | pbcopy -i
+  if command -v pbcopy &>/dev/null; then
+    echo "$CUTBUFFER" | pbcopy
+  elif command -v wl-copy &>/dev/null; then
+    echo "$CUTBUFFER" | wl-copy
+  fi
 }
 
 zle -N vi-yank-xclip
