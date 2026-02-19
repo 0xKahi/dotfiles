@@ -15,7 +15,7 @@
 # ================ Setup Miniforge end  ========================
 
 # ================ Setup nvm ========================
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # ================ Setup end ========================
 
 # Added by swiftly
