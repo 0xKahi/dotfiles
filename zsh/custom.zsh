@@ -41,7 +41,7 @@ eval "$(fzf --zsh)"
 
 
 # =========== git butler ===================
-eval "$(but completions zsh)"
+command -v but &>/dev/null && eval "$(but completions zsh)"
 
 bb() { but --status-after "$@"; }
 # ============== end ========================
