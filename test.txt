@@ -1,11 +1,22 @@
-NAME          SIZE FSTYPE    MOUNTPOINT
-zram0           0B ext2
-nvme0n1     953.9G
-├─nvme0n1p1   260M vfat
-├─nvme0n1p2    16M
-├─nvme0n1p3 269.9G BitLocker
-├─nvme0n1p4   917M ntfs
-├─nvme0n1p5    28G ntfs
-├─nvme0n1p6   260M vfat
-├─nvme0n1p7   512M vfat      /boot
-└─nvme0n1p8   654G btrfs     /home
+NAME      FSTYPE FSVER LABEL             UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
+zram0     ext2   1.0   zram0             5de92187-fcc4-429b-ad01-44f3bb35168a
+nvme0n1
+├─nvme0n1p1
+│         vfat   FAT32 SYSTEM            0AB7-4903
+├─nvme0n1p2
+│
+├─nvme0n1p3
+│         BitLoc 2     KAHI OS 29/1/2026 0d5b071b-e99f-44ea-b7ac-4efa5616a423
+├─nvme0n1p4
+│         ntfs                           5CE08BCDE08BAC38
+├─nvme0n1p5
+│         ntfs         RESTORE           A214B2D414B2AB25
+├─nvme0n1p6
+│         vfat   FAT32 MYASUS            54B2-E465
+├─nvme0n1p7
+│         vfat   FAT32                   B652-F8D6                             331.3M    35% /boot
+└─nvme0n1p8
+          btrfs        archRoot          06fa46cc-5ca9-45c1-a5f5-9f14d4e819ba  645.8G     1% /home
+                                                                                             /var/log
+                                                                                             /.snapshots
+                                                                                             /
