@@ -1,0 +1,11 @@
+NAME          SIZE FSTYPE    MOUNTPOINT
+zram0           0B ext2
+nvme0n1     953.9G
+├─nvme0n1p1   260M vfat
+├─nvme0n1p2    16M
+├─nvme0n1p3 269.9G BitLocker
+├─nvme0n1p4   917M ntfs
+├─nvme0n1p5    28G ntfs
+├─nvme0n1p6   260M vfat
+├─nvme0n1p7   512M vfat      /boot
+└─nvme0n1p8   654G btrfs     /home
