@@ -7,11 +7,15 @@ description: >-
   describes visual content. Use when you need analyzed/extracted data rather
   than literal file contents.
 mode: subagent
-model: google/gemini-3-flash-preview
+model: opencode/gemini-3-flash
 permission:
   edit: deny 
   task: deny 
-  bash: deny
+  bash: ask 
+  read: allow
+  lsp: allow
+  question: allow
+  grep: allow
 hidden: true
 disable: false 
 ---
