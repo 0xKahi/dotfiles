@@ -60,8 +60,8 @@ syntect_theme = ""
 # : Tabs {{{
 
 [tabs]
-active = { bg = "blue", bold = true }
-inactive = { fg = "blue", bg = "gray" }
+active = { bg = "green", fg = "#1b1d2b", bold = true }
+inactive = { fg = "lightgreen", bg = "#444a73" }
 
 # Separator
 sep_inner = { open = "", close = "" }
