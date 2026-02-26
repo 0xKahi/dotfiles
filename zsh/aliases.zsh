@@ -30,3 +30,5 @@ alias tmux-attach="tmux a -t"
 
 #for randomized opencode port
 alias oc="opencode --port $((RANDOM % 60905 + 4096))"
+
+alias pve="pvetui"

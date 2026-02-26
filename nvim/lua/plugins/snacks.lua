@@ -1,3 +1,5 @@
+local utils = require('utils.misc')
+
 return {
   'folke/snacks.nvim',
   lazy = false,
@@ -48,16 +50,29 @@ return {
     {
       '<C-p>',
       function()
-        Snacks.picker.git_files({
-          finder = 'git_files',
-          show_empty = true,
-          format = 'file',
-          untracked = true,
-          submodules = false,
-          layout = 'basic',
-        })
+        if utils.is_git_repo() then
+          Snacks.picker.git_files({
+            finder = 'git_files',
+            show_empty = true,
+            format = 'file',
+            untracked = true,
+            submodules = false,
+            layout = 'basic',
+          })
+        else
+          Snacks.picker.files({
+            finder = 'files',
+            format = 'file',
+            show_empty = true,
+            hidden = false,
+            ignored = false,
+            follow = false,
+            supports_live = true,
+            layout = 'basic',
+          })
+        end
       end,
-      { desc = 'find files in git', noremap = true },
+      { desc = 'find files filter hidden', noremap = true },
     },
     {
       '<leader>ff',

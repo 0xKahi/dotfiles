@@ -119,4 +119,9 @@ function M.execute_cmd(cmd)
   end
 end
 
+function M.is_git_repo()
+  local ok, _ = M.execute_cmd('git rev-parse --is-inside-work-tree 2>/dev/null')
+  return ok
+end
+
 return M
