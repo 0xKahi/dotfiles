@@ -140,9 +140,9 @@ separator_style = { fg = "magenta" }
 border = { fg = "yellow" }
 title = { fg = "red" }
 body = {}
-list = {}
-btn_yes = { bg = "lightgreen", reversed = true }
-btn_no = { bg = "lightred", reversed = true }
+list = { fg = "#00FF9C" }
+btn_yes = { bg = "lightgreen", fg = "#1b1d2b" }
+btn_no = { bg = "lightred", fg = "#1b1d2b" }
 btn_labels = ["  [Y]es  ", "  (N)o  "]
 
 # : }}}
