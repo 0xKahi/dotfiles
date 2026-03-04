@@ -22,11 +22,28 @@ return {
     },
   },
   config = function()
-    ---@type opencode.Opts
+    -- -- Patch process detection to filter out nil-port processes (fixes v5.0.0 regression)
+    -- local process = require('opencode.cli.process')
+    -- local orig_get = process.get
+    -- process.get = function()
+    --   local procs = orig_get()
+    --   return vim.tbl_filter(function(p)
+    --     return p.port
+    --   end, procs)
+    -- end
+
+    local tmux = require('config.opencode.tmux').new({})
     vim.g.opencode_opts = {
-      provider = {
-        enabled = 'tmux',
-        tmux = {},
+      server = {
+        start = function()
+          tmux:start('opencode --port')
+        end,
+        stop = function()
+          tmux:stop()
+        end,
+        toggle = function()
+          tmux:toggle('opencode --port')
+        end,
       },
     }
 
