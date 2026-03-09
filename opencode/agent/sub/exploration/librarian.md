@@ -8,7 +8,7 @@ description: >-
   when users ask to look up code in remote repositories, explain library
   internals, or find usage examples in open source
 mode: subagent
-model: opencode/minimax-m2.5 
+model: opencode/kimi-k2.5
 permission:
   edit: ask 
   write: ask

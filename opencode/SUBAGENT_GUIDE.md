@@ -26,6 +26,7 @@ general information by leveraging specialized subagents to provide accurate sear
       <condition>Known file location</condition>
     </avoid-when>
     <recommendation level="RECOMMENDED">Use when trying to search for content, files, code references etc. in the code base</recommendation>
+    <execution level="RECOMMENDED">execute this agent in as a backgroud task using the `delegate` tool</execution>
   </subagent>
   
   <subagent id="librarian">
@@ -58,6 +59,7 @@ general information by leveraging specialized subagents to provide accurate sear
       <case>Fact-checking and verification</case>
     </use-cases>
     <recommendation level="SHOULD">Use when unsure about questions that require factual information, documentation, or broad research</recommendation>
+    <execution level="SHOULD">execute this agent in as a backgroud task using the `delegate` tool</execution>
   </subagent>
 </subagents>
 
@@ -72,6 +74,17 @@ subagents specialized in handling specific types of requests such as documentati
       <case>updating README docs</case>
     </use-cases>
     <recommendation level="SHOULD">use when creating or updating documentation</recommendation>
+  </subagent>
+  <subagent id="code-reviewer">
+    <description>specialized in doing code reviews for quality, best practices, and maintainability</description>
+    <use-cases>
+      <case>reviewing code quality and security</case>
+      <case>checking best practices</case>
+      <case>assessing maintainability</case>
+      <case>reviewing newly written or modified code</case>
+    </use-cases>
+    <recommendation level="REQUIRED">Use when user request includes code review</recommendation>
+    <execution level="SHOULD">execute this agent in as a backgroud task using the `delegate` tool</execution>
   </subagent>
 </subagents>
 

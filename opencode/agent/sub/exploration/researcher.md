@@ -6,16 +6,17 @@ description: >-
   fact-checking, or trend analysis. This agent should be used proactively for
   deep information gathering tasks.
 mode: subagent
-model: opencode/minimax-m2.5 
+model: opencode/kimi-k2.5 
 permission:
   edit: deny 
   bash: deny 
   task: deny
   webfetch: allow 
   websearch: allow
-  firecrawl*: ask 
+  firecrawl*: allow 
   coingecko_mcp*: allow 
   tavily-mcp*: allow 
+  write: deny
   skill:
     exploration: deny 
 hidden: true 
@@ -31,6 +32,7 @@ You are a search specialist expert at finding and synthesizing information from 
 | **Average Search** | `websearch*` | 2 |
 | **Intermediate Search** | `tavily-mcp*` | 3|
 | **Deep Search** | `firecrawl*` | 4 |
+| **Crypto Search** | `coingecko_mcp*` | all |
 
 
 ## RULES 
