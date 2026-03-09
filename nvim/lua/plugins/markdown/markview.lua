@@ -23,7 +23,6 @@ return {
     opts = {
       preview = {
         enable = true,
-        enable_hybrid_mode = true,
         linewise_hybrid_mode = false,
         raw_previews = nil,
         filetypes = { 'markdown', 'markdown.gh', 'Avante', 'codecompanion' },
@@ -236,6 +235,129 @@ return {
         },
         texts = {
           enable = true,
+        },
+      },
+      yaml = {
+        enable = true,
+        properties = {
+          enable = true,
+
+          data_types = {
+            ['text'] = {
+              text = '󰗊 ',
+              hl = 'MarkviewIcon4',
+            },
+            ['list'] = {
+              text = '󰝖 ',
+              hl = 'MarkviewIcon5',
+            },
+            ['number'] = {
+              text = ' ',
+              hl = 'MarkviewIcon6',
+            },
+            ['checkbox'] = {
+              ---@diagnostic disable
+              text = function(_, item)
+                return item.value == 'true' and '󰄲 ' or '󰄱 '
+              end,
+              ---@diagnostic enable
+              hl = 'MarkviewIcon6',
+            },
+            ['date'] = {
+              text = '󰃭 ',
+              hl = 'MarkviewIcon2',
+            },
+            ['date_&_time'] = {
+              text = '󰥔 ',
+              hl = 'MarkviewIcon3',
+            },
+          },
+
+          default = {
+            use_types = true,
+
+            border_top = nil,
+            border_middle = '│',
+            border_bottom = '╰',
+
+            border_hl = nil,
+          },
+
+          ['^tags$'] = {
+            use_types = false,
+
+            text = '󰓹 ',
+            hl = 'MarkviewIconKeywordPurple',
+          },
+          ['^categories$'] = {
+            use_types = false,
+
+            text = '󱡠 ',
+            hl = 'MarkviewIconDefault',
+          },
+          ['^aliases$'] = {
+            match_string = '^aliases$',
+            use_types = false,
+
+            text = '󱞫 ',
+            hl = 'MarkviewIconPink',
+          },
+          ['^ticket$'] = {
+            use_types = false,
+            match_string = '^ticket$',
+
+            text = ' ',
+            hl = 'MarkviewIconDefault',
+          },
+          ['^type$'] = {
+            match_string = '^type$',
+            use_types = false,
+
+            text = ' ',
+            hl = 'MarkviewIconKeywordRed',
+          },
+          ['^id$'] = {
+            match_string = '^id$',
+            use_types = false,
+
+            text = ' ',
+            hl = 'MarkviewIconPink',
+          },
+          ['^date_created$'] = {
+            match_string = '^date_created$',
+            use_types = false,
+
+            text = '󰃳 ',
+            hl = 'MarkviewIconDefault',
+          },
+          ['^orgs$'] = {
+            match_string = '^orgs$',
+            use_types = false,
+
+            text = ' ',
+            hl = 'MarkviewIconDefault',
+          },
+          ['^completed$'] = {
+            match_string = '^completed$',
+            use_types = false,
+
+            text = '󰦕 ',
+            hl = 'MarkviewIconDefault',
+          },
+          ['^permalink$'] = {
+            match_string = '^permalink$',
+            use_types = false,
+
+            text = ' ',
+            hl = 'MarkviewIcon2',
+          },
+          ['^description$'] = {
+            match_string = '^description$',
+            use_types = false,
+
+            text = '󰋼 ',
+            hl = 'MarkviewIcon0',
+          },
         },
       },
     },

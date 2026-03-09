@@ -231,6 +231,12 @@ local function set_markview_plugin(highlights)
   highlights['MarkviewCheckboxHalf'] = { fg = cyberpunk.markview.pending }
   highlights['MarkviewBlockQuoteWarn'] = { fg = cyberpunk.markview.warn }
   highlights['MarkviewCheckboxStar'] = { fg = cyberpunk.core.bright_yellow }
+
+  -- icons
+  highlights['MarkviewIconKeywordRed'] = { fg = cyberpunk.lsp.keyword_red }
+  highlights['MarkviewIconKeywordPurple'] = { fg = cyberpunk.lsp.keyword_purple }
+  highlights['MarkviewIconPink'] = { fg = '#fca7ea' }
+  highlights['MarkviewIconDefault'] = { fg = cyberpunk.lsp.interface }
 end
 
 ----------------------------------------
