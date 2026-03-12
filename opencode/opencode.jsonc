@@ -1,13 +1,12 @@
 {
 	"$schema": "https://opencode.ai/config.json",
-	"instructions": ["~/.config/opencode/INSTRUCTIONS.md", "~/.config/opencode/SUBAGENT_GUIDE.md"],
 	"username": "kahi",
 	"layout": "stretch",
 	"share": "manual",
 	"autoupdate": "notify",
 	"default_agent": "plan",
 	"enabled_providers": ["anthropic", "opencode", "github-copilot", "openai", "google"],
-	"plugin": ["opencode-antigravity-auth@latest", "opencode-openai-codex-auth", "@tarquinen/opencode-dcp@latest"],
+	"plugin": ["opencode-antigravity-auth@latest", "opencode-openai-codex-auth"],
 	"small_model": "opencode/gpt-5-nano",
 	"server": {
 		"port": 4096,

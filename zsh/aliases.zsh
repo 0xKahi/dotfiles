@@ -29,6 +29,8 @@ alias love="/Applications/love.app/Contents/MacOS/love"
 alias tmux-attach="tmux a -t"
 
 #for randomized opencode port
-alias oc="opencode --port $((RANDOM % 60905 + 4096))"
+# alias oc="opencode --port $((RANDOM % 60905 + 4096))"
+alias oc="ocp run default"
+alias omo="ocp run omo"
 
 alias pve="pvetui"
