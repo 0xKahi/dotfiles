@@ -1,7 +1,13 @@
 {
 	"$schema": "https://opencode.ai/config.json",
-	"instructions": ["~/.config/opencode/INSTRUCTIONS.md", "~/.config/opencode/SUBAGENT_GUIDE.md"],
-	"plugin": ["opencode-antigravity-auth@latest", "opencode-openai-codex-auth", "@tarquinen/opencode-dcp@latest"],
+	"instructions": [
+		"~/.config/ocp/default/INSTRUCTIONS.md",
+		"~/.config/ocp/default/SUBAGENT_GUIDE.md"
+	],
+	"plugin": [
+		"opencode-antigravity-auth@latest",
+		"opencode-openai-codex-auth",
+		"@tarquinen/opencode-dcp@latest"
+	],
 	"small_model": "opencode/gpt-5-nano"
 }
-
