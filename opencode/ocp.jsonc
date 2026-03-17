@@ -1,10 +1,10 @@
 {
   "profiles": {
-    "default": {
-      "path": "/Users/kahi/dotfiles/ocp/default"
-    },
     "omo": {
       "path": "/Users/kahi/dotfiles/ocp/omo"
+    },
+    "default": {
+      "path": "/Users/kahi/dotfiles/ocp/default"
     }
   },
   "randomPort": true
