@@ -371,12 +371,7 @@
 			"ls": "allow",
 			"find*": "allow",
 			"fd*": "allow",
-			"rg*": "allow",
-			"but status*": "allow",
-			"but show*": "allow",
-			"but diff*": "allow",
-			"but branch show*": "allow",
-			"but branch list*": "allow"
+			"rg*": "allow"
 		},
 		"skill": {
 			"skill-creator": "ask",

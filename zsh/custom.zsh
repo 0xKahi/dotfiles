@@ -40,12 +40,6 @@ eval "$(fzf --zsh)"
 [ -f "$HOME/.config/zsh/configs/fzf-config.zsh" ] && source "$HOME/.config/zsh/configs/fzf-config.zsh"
 
 
-# =========== git butler ===================
-command -v but &>/dev/null && eval "$(but completions zsh)"
-
-bb() { but --status-after "$@"; }
-# ============== end ========================
-
 # =========== Open buffer line in editor ===================
 autoload -Uz edit-command-line 
 zle -N edit-command-line

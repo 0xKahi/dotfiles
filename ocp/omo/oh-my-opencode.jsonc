@@ -1,8 +1,9 @@
 {
 	"$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
 	"agents": {
-		// Main orchestrator: Claude Opus or Kimi K2.5 work best
+		// Core Agents
 		"sisyphus": {
+			// Main orchestrator: Claude Opus or Kimi K2.5 work best
 			"model": "opencode/kimi-k2.5",
 			"ultrawork": {
 				"model": "opencode/glm-5",
@@ -19,27 +20,45 @@
 				"task": "allow"
 			}
 		},
-		// Research agents: cheap fast models are fine
+		"oracle": {
+			// Architecture consultation: GPT-5.4 or Claude Opus
+			"model": "openai/gpt-5.4",
+			"variant": "high"
+		},
 		"librarian": {
+			// Research agents: cheap fast models are fine
 			"model": "opencode/minimax-m2.5"
 		},
 		"explore": {
 			"model": "opencode/gpt-5-nano"
 		},
-		// Architecture consultation: GPT-5.4 or Claude Opus
-		"oracle": {
-			"model": "openai/gpt-5.4",
-			"variant": "high"
+		"multimodal-looker": {
+			"model": "openai/gpt-5.3-codex",
+			"fallback_models": [
+				"google/gemini-flash"
+			]
 		},
-		// Prometheus inherits sisyphus model; just add prompt guidance
+		// Planning Agents
 		"prometheus": {
+			//inherits sisyphus model; just add prompt guidance
+			"model": "opencode/glm-5",
 			"prompt_append": "Leverage deep & quick agents heavily, always in parallel."
 		},
 		"metis": {
-			"model": "anthropic/claude-sonnet-4-6"
+			// plan consultant
+			"model": "anthropic/claude-sonnet-4-6",
+			"fallback_models": [
+				"opencode/glm-5",
+				"opencode/kimi-k2.5"
+			]
 		},
 		"momus": {
-			"model": "opencode/glm-5"
+			// plan reviewer
+			"model": "openai/gpt-5.4",
+			"fallback_models": [
+				"opencode/glm-5",
+				"opencode/kimi-k2.5"
+			]
 		}
 	},
 	"categories": {
@@ -49,11 +68,18 @@
 		},
 		// unspecified-low — moderate tasks
 		"unspecified-low": {
-			"model": "anthropic/claude-sonnet-4-6"
+			"model": "anthropic/claude-sonnet-4-6",
+			"fallback_models": [
+				"opencode/kimi-k2.5",
+				"openai/gpt-5.3-codex"
+			]
 		},
 		// unspecified-high — complex work
 		"unspecified-high": {
-			"model": "anthropic/claude-sonnet-4-6"
+			"model": "anthropic/claude-sonnet-4-6",
+			"fallback_models": [
+				"openai/gpt-5.3-codex"
+			]
 		},
 		// writing — docs/prose
 		"writing": {

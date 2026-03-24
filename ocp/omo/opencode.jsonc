@@ -4,7 +4,7 @@
 	"layout": "stretch",
 	"share": "manual",
 	"autoupdate": "notify",
-	"default_agent": "plan",
+	"default_agent": "sisyphus",
 	"enabled_providers": [
 		"anthropic",
 		"opencode",
