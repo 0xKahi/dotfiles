@@ -13,7 +13,6 @@
 	],
 	"plugin": [
 		"opencode-antigravity-auth@latest",
-		"opencode-openai-codex-auth",
 		"oh-my-opencode@latest"
 	],
 	"small_model": "opencode/gpt-5-nano"

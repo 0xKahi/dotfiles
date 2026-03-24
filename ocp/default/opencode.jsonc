@@ -6,7 +6,6 @@
 	],
 	"plugin": [
 		"opencode-antigravity-auth@latest",
-		"opencode-openai-codex-auth",
 		"@tarquinen/opencode-dcp@latest"
 	],
 	"small_model": "opencode/gpt-5-nano"
