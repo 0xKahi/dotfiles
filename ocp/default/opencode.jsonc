@@ -6,7 +6,22 @@
 	],
 	"plugin": [
 		"opencode-antigravity-auth@latest",
+		"opencode-claude-auth",
 		"@tarquinen/opencode-dcp@latest"
 	],
-	"small_model": "opencode/gpt-5-nano"
+	"small_model": "opencode/gpt-5-nano",
+	"agent": {
+		"general": {
+			"mode": "subagent"
+		},
+		"explore": {
+			"mode": "subagent"
+		},
+		"plan": {
+			"color": "#72F6B2"
+		},
+		"build": {
+			"color": "#55BBF9"
+		}
+	}
 }

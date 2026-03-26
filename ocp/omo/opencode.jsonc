@@ -5,14 +5,9 @@
 	"share": "manual",
 	"autoupdate": "notify",
 	"default_agent": "sisyphus",
-	"enabled_providers": [
-		"anthropic",
-		"opencode",
-		"openai",
-		"google"
-	],
 	"plugin": [
 		"opencode-antigravity-auth@latest",
+		"opencode-claude-auth",
 		"oh-my-opencode@latest"
 	],
 	"small_model": "opencode/gpt-5-nano"
