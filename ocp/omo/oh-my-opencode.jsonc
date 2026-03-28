@@ -1,13 +1,16 @@
 {
 	"$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
+	"new_task_system_enabled": true,
+	"model_fallback": true,
 	"agents": {
 		// Core Agents
 		"sisyphus": {
 			// Main orchestrator: Claude Opus or Kimi K2.5 work best
 			"model": "opencode/kimi-k2.5",
 			"ultrawork": {
-				"model": "opencode/glm-5",
-				"variant": "max"
+				// "model": "openrouter/z-ai/glm-5-turbo"
+				// "variant": "max"
+				"model": "anthropic/claude-opus-4-6"
 			},
 			"permission": {
 				"task": "allow"
@@ -33,8 +36,9 @@
 			]
 		},
 		"explore": {
-			"model": "openrouter/minimax/minimax-m2.7",
+			"model": "openrouter/x-ai/grok-code-fast-1",
 			"fallback_models": [
+				"openrouter/minimax/minimax-m2.7",
 				"opencode/gpt-5-nano"
 			]
 		},
@@ -48,7 +52,7 @@
 		// Planning Agents
 		"prometheus": {
 			//inherits sisyphus model; just add prompt guidance
-			"model": "opencode/glm-5",
+			"model": "anthropic/claude-opus-4-6",
 			"prompt_append": "Leverage deep & quick agents heavily, always in parallel.",
 			"fallback_models": [
 				"openai/gpt-5.4"
@@ -79,10 +83,10 @@
 				"openai/gpt-5.4",
 				"opencode/glm-5",
 				"opencode/kimi-k2.5"
-			]
+			],
+			"color": "#ED7892"
 		},
 		"sisyphus-junior": {
-			// category executer
 			"model": "anthropic/claude-sonnet-4-6",
 			"fallback_models": [
 				"opencode/kimi-k2.5",
@@ -93,6 +97,7 @@
 	"categories": {
 		// visual-engineering — Gemini dominates visual tasks
 		"visual-engineering": {
+			"description": "Frontend, UI/UX, design, animation",
 			"model": "google/gemini-3.1-pro-preview",
 			"variant": "high",
 			"fallback_models": [
@@ -101,6 +106,7 @@
 			]
 		},
 		"ultrabrain": {
+			"description": "Deep logical reasoning, complex architecture",
 			"model": "openai/gpt-5.3-codex",
 			"variant": "xhigh",
 			"fallback_models": [
@@ -108,6 +114,7 @@
 			]
 		},
 		"deep": {
+			"description": "Autonomous problem-solving, thorough research",
 			"model": "openai/gpt-5.3-codex",
 			"variant": "medium",
 			"fallback_models": [
@@ -115,35 +122,37 @@
 			]
 		},
 		"artistry": {
+			"description": "Creative/unconventional approaches",
 			"model": "google/gemini-3.1-pro-preview",
 			"variant": "high"
 		},
 		// quick — trivial tasks
 		"quick": {
+			"description": "Trivial tasks, typo fixes, single-file changes",
 			"model": "openrouter/minimax/minimax-m2.7",
 			"fallback_models": [
 				"openai/gpt-5.4-mini",
 				"opencode/gpt-5-nano"
 			]
 		},
-		// unspecified-low — moderate tasks
 		"unspecified-low": {
+			"description": "General tasks, low effort",
 			"model": "anthropic/claude-sonnet-4-6",
 			"fallback_models": [
 				"opencode/kimi-k2.5",
 				"openai/gpt-5.3-codex"
 			]
 		},
-		// unspecified-high — complex work
 		"unspecified-high": {
+			"description": "General tasks, high effort",
 			"model": "openai/gpt-5.4",
 			"fallback_models": [
 				"opencode/glm-5",
 				"openai/gpt-5.3-codex"
 			]
 		},
-		// writing — docs/prose
 		"writing": {
+			"description": "Documentation, prose, technical writing",
 			"model": "google/gemini-3-flash-preview"
 		},
 		// Custom category for git operations
@@ -170,6 +179,19 @@
 			"opencode/kimi-k2.5": 5
 		}
 	},
+	"runtime_fallback": {
+		"enabled": true,
+		"retry_on_errors": [
+			400,
+			429,
+			503,
+			529
+		],
+		"max_fallback_attempts": 3,
+		"cooldown_seconds": 60,
+		"timeout_seconds": 30,
+		"notify_on_fallback": true
+	},
 	"sisyphus_agent": {
 		"disabled": false,
 		"default_builder_enabled": false,
@@ -180,6 +202,11 @@
 		"aggressive_truncation": true,
 		"task_system": true
 	},
+	"ralph_loop": {
+		"enabled": true,
+		"default_strategy": "continue",
+		"default_max_iterations": 100
+	},
 	"tmux": {
 		"enabled": true,
 		"layout": "main-vertical",
@@ -189,5 +216,16 @@
 	},
 	"browser_automation_engine": {
 		"provider": "agent-browser"
+	},
+	"websearch": {
+		"provider": "exa"
+	},
+	"notification": {
+		"force_enable": true
+	},
+	"git_master": {
+		"commit_footer": false,
+		"include_co_authored_by": true,
+		"git_env_prefix": "GIT_MASTER=1"
 	}
 }
