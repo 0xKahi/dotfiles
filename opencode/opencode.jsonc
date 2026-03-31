@@ -4,7 +4,6 @@
 	"layout": "stretch",
 	"share": "manual",
 	"autoupdate": "notify",
-	"default_agent": "plan",
 	"enabled_providers": ["opencode", "openrouter", "openai", "google", "anthropic"],
 	"plugin": ["opencode-antigravity-auth@latest", "opencode-claude-auth"],
 	"small_model": "opencode/gpt-5-nano",
@@ -213,12 +212,15 @@
 			"git status*": "allow",
 			"git diff*": "allow",
 			"git log*": "allow",
+			"git show*": "allow",
 			"ls*": "allow",
 			"find*": "allow",
 			"fd*": "allow",
 			"rg*": "allow",
 			"grep*": "allow",
-			"cat*": "allow"
+			"cat*": "allow",
+			"head*": "allow",
+			"tail*": "allow"
 		},
 		"skill": {
 			"skill-creator": "ask",

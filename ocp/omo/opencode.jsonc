@@ -8,7 +8,7 @@
 	"plugin": [
 		"opencode-antigravity-auth@latest",
 		"opencode-claude-auth",
-		"oh-my-opencode@latest"
+		"oh-my-openagent"
 	],
 	"small_model": "opencode/gpt-5-nano"
 }
