@@ -2,6 +2,7 @@
 return {
   'nvim-neo-tree/neo-tree.nvim',
   branch = 'v3.x',
+  -- tag = '3.38.0',
   dependencies = {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
@@ -63,6 +64,10 @@ return {
       -- Anything before this will be used. The last items to be processed are the untracked files.
     },
     hide_root_node = false, -- Hide the root node.
+    -- git_status_scope_to_path = true, -- Scope git status to the displayed path instead of the entire worktree root.
+    -- Improves performance in monorepos where the worktree root is far above the
+    -- directory being browsed. When enabled, `git status` receives a `-- <path>`
+    -- pathspec limiting it to the current neo-tree root directory.
 
     sources = {
       'filesystem',

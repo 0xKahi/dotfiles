@@ -53,12 +53,6 @@ vim.opt.clipboard:append('unnamedplus')
 
 vim.opt.conceallevel = 0
 
-vim.opt.diffopt:append('vertical') -- Always use vertical splits
-vim.opt.diffopt:append('filler') -- Show filler lines to keep alignment
-vim.opt.diffopt:append('iwhite') -- Ignore whitespace changes
-vim.opt.diffopt:append('context:5') -- Show 5 lines of context around changes
-vim.opt.diffopt:append('closeoff') -- Close diff mode when only one window remains
-vim.opt.diffopt:append('linematch:60') -- Align similar lines within 60 line range when comparing
-
+vim.opt.diffopt = 'internal,indent-heuristic,filler,closeoff,linematch:60,iwhite,context:4,vertical,inline:char'
 -- Highlight settings
 vim.cmd('highlight Visual cterm=NONE gui=NONE guibg=#311b92')
