@@ -1,0 +1,225 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-openagent/dev/assets/oh-my-opencode.schema.json",
+  "new_task_system_enabled": true,
+  "model_fallback": true,
+  "agents": {
+    "sisyphus": {
+      "model": "opencode/kimi-k2.5",
+      "ultrawork": {
+        "model": "anthropic/claude-opus-4-6"
+      },
+      "permission": {
+        "task": "allow"
+      }
+    },
+    "hephaestus": {
+      "model": "openai/gpt-5.4",
+      "variant": "medium",
+      "permission": {
+        "edit": "allow",
+        "task": "allow"
+      }
+    },
+    "oracle": {
+      "model": "openai/gpt-5.4",
+      "variant": "high"
+    },
+    "librarian": {
+      "model": "openrouter/minimax/minimax-m2.7",
+      "fallback_models": [
+        "google/gemini-3-flash-preview"
+      ]
+    },
+    "explore": {
+      "model": "openrouter/x-ai/grok-code-fast-1",
+      "fallback_models": [
+        "openrouter/minimax/minimax-m2.7",
+        "opencode/gpt-5-nano"
+      ]
+    },
+    "multimodal-looker": {
+      "model": "openai/gpt-5.4",
+      "fallback_models": [
+        "google/gemini-3-flash-preview",
+        "opencode/kimi-k2.5"
+      ]
+    },
+    "prometheus": {
+      "model": "anthropic/claude-opus-4-6",
+      "prompt_append": "Leverage deep & quick agents heavily, always in parallel.",
+      "fallback_models": [
+        "openai/gpt-5.4"
+      ]
+    },
+    "metis": {
+      "model": "anthropic/claude-opus-4-6",
+      "fallback_models": [
+        "openai/gpt-5.4",
+        "anthropic/claude-sonnet-4-6",
+        "opencode/glm-5",
+        "opencode/kimi-k2.5"
+      ]
+    },
+    "momus": {
+      "model": "openai/gpt-5.4",
+      "variant": "xhigh",
+      "fallback_models": [
+        "opencode/glm-5",
+        "opencode/kimi-k2.5"
+      ]
+    },
+    "atlas": {
+      "model": "anthropic/claude-sonnet-4-6",
+      "variant": "medium",
+      "fallback_models": [
+        "openai/gpt-5.4",
+        "opencode/glm-5",
+        "opencode/kimi-k2.5"
+      ],
+      "color": "#ED7892"
+    },
+    "sisyphus-junior": {
+      "model": "anthropic/claude-sonnet-4-6",
+      "fallback_models": [
+        "opencode/kimi-k2.5",
+        "openai/gpt-5.4"
+      ]
+    }
+  },
+  "categories": {
+    "visual-engineering": {
+      "description": "Frontend, UI/UX, design, animation",
+      "model": "google/gemini-3.1-pro-preview",
+      "variant": "high",
+      "fallback_models": [
+        "google/antigravity-gemini-3.1-pro",
+        "opencode/glm-5"
+      ]
+    },
+    "ultrabrain": {
+      "description": "Deep logical reasoning, complex architecture",
+      "model": "openai/gpt-5.4",
+      "variant": "xhigh",
+      "fallback_models": [
+        "google/gemini-3.1-pro-preview"
+      ]
+    },
+    "deep": {
+      "description": "Autonomous problem-solving, thorough research",
+      "model": "openai/gpt-5.4",
+      "variant": "medium",
+      "fallback_models": [
+        "google/gemini-3.1-pro-preview"
+      ]
+    },
+    "artistry": {
+      "description": "Creative/unconventional approaches",
+      "model": "google/gemini-3.1-pro-preview",
+      "variant": "high"
+    },
+    "quick": {
+      "description": "Trivial tasks, typo fixes, single-file changes",
+      "model": "openrouter/minimax/minimax-m2.7",
+      "fallback_models": [
+        "openai/gpt-5.4-mini",
+        "opencode/gpt-5-nano"
+      ]
+    },
+    "unspecified-low": {
+      "description": "General tasks, low effort",
+      "model": "anthropic/claude-sonnet-4-6",
+      "fallback_models": [
+        "opencode/kimi-k2.5",
+        "openai/gpt-5.3-codex"
+      ]
+    },
+    "unspecified-high": {
+      "description": "General tasks, high effort",
+      "model": "openai/gpt-5.4",
+      "fallback_models": [
+        "opencode/glm-5",
+        "openai/gpt-5.3-codex"
+      ]
+    },
+    "writing": {
+      "description": "Documentation, prose, technical writing",
+      "model": "google/gemini-3-flash-preview"
+    },
+    "git": {
+      "model": "opencode/gpt-5-nano",
+      "description": "All git operations",
+      "prompt_append": "Focus on atomic commits, clear messages, and safe operations."
+    }
+  },
+  "background_task": {
+    "defaultConcurrency": 5,
+    "providerConcurrency": {
+      "anthropic": 3,
+      "openai": 3,
+      "google": 3,
+      "opencode": 10,
+      "openrouter": 10
+    },
+    "modelConcurrency": {
+      "anthropic/claude-opus-4-6": 2,
+      "opencode/gpt-5-nano": 20,
+      "opencode/minimax-m2.5": 20,
+      "opencode/kimi-k2.5": 5
+    }
+  },
+  "runtime_fallback": {
+    "enabled": true,
+    "retry_on_errors": [
+      400,
+      429,
+      503,
+      529
+    ],
+    "max_fallback_attempts": 3,
+    "cooldown_seconds": 60,
+    "timeout_seconds": 30,
+    "notify_on_fallback": true
+  },
+  "sisyphus_agent": {
+    "disabled": false,
+    "default_builder_enabled": false,
+    "planner_enabled": true,
+    "replace_plan": true
+  },
+  "experimental": {
+    "aggressive_truncation": true,
+    "task_system": true
+  },
+  "ralph_loop": {
+    "enabled": true,
+    "default_strategy": "continue",
+    "default_max_iterations": 100
+  },
+  "tmux": {
+    "enabled": true,
+    "layout": "main-vertical",
+    "main_pane_size": 60,
+    "main_pane_min_width": 120,
+    "agent_pane_min_width": 40,
+    "isolation": "window"
+  },
+  "browser_automation_engine": {
+    "provider": "agent-browser"
+  },
+  "websearch": {
+    "provider": "exa"
+  },
+  "notification": {
+    "force_enable": true
+  },
+  "git_master": {
+    "commit_footer": false,
+    "include_co_authored_by": true,
+    "git_env_prefix": "GIT_MASTER=1"
+  },
+  "_migrations": [
+    "model-version:openai/gpt-5.3-codex->openai/gpt-5.4",
+    "model-version:openai/gpt-5.3-codex->openai/gpt-5.4",
+    "model-version:openai/gpt-5.3-codex->openai/gpt-5.4"
+  ]
+}

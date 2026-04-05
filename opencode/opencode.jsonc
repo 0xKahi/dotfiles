@@ -206,7 +206,10 @@
 		"todoread": "allow",
 		"todowrite": "allow",
 		"doom_loop": "ask",
-		"external_directory": "ask",
+		"external_directory": {
+			"*": "ask",
+			"/tmp/*": "allow"
+		},
 		"bash": {
 			"*": "ask",
 			"git status*": "allow",
