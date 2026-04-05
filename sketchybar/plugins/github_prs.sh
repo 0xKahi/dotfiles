@@ -30,8 +30,9 @@ fetch_prs() {
     return 1
   fi
   
-  # Create lock file
+  # Create lock file and ensure it's always removed on exit
   touch "$LOCK_FILE"
+  trap 'rm -f "$LOCK_FILE"' RETURN
   
   # Show loading state
   sketchybar --set github_prs label="..." label.drawing=on
@@ -44,9 +45,6 @@ fetch_prs() {
   # PR_DATA=$(perl -e 'alarm 30; exec @ARGV' "$GH_SCRIPT" --filter "shuffle-labs,cadillac-studios" 2>&1)
   PR_DATA=$(perl -e 'alarm 30; exec @ARGV' /Users/kahi/dotfiles/sketchybar/scripts/gh-pr.sh --filter "shuffle-labs,cadillac-studios" 2>&1)
   EXIT_CODE=$?
-  
-  # Remove lock file
-  rm -f "$LOCK_FILE"
   
   # Check for timeout (exit code 142 = SIGALRM)
   if [ $EXIT_CODE -eq 142 ] || [ $EXIT_CODE -eq 124 ]; then
@@ -210,28 +208,15 @@ render_popup() {
   # Cleanup old items first
   cleanup_old_pr_items
   
-  # Get PR count
   PR_COUNT=$(echo "$CACHE_CONTENT" | jq 'length' 2>/dev/null || echo 0)
   
   if [ $PR_COUNT -eq 0 ]; then
     return
   fi
   
-  # Build array of sketchybar commands
   args=()
   
-  # Iterate through PRs and create items
-  for i in $(seq 0 $(($PR_COUNT - 1))); do
-    PR=$(echo "$CACHE_CONTENT" | jq ".[$i]")
-    
-    PR_NUMBER=$(echo "$PR" | jq -r '.pr_number')
-    BRANCH=$(echo "$PR" | jq -r '.branch')
-    PR_URL=$(echo "$PR" | jq -r '.pr_url')
-    CHECKS_STATUS=$(echo "$PR" | jq -r '.checks_status')
-    SUCCESSFUL_CHECKS=$(echo "$PR" | jq -r '.successful_checks')
-    TOTAL_CHECKS=$(echo "$PR" | jq -r '.total_checks')
-    
-    # Determine icon and color based on status
+  while IFS=$'\t' read -r PR_NUMBER BRANCH PR_URL CHECKS_STATUS SUCCESSFUL_CHECKS TOTAL_CHECKS; do
     case "$CHECKS_STATUS" in
       "failing")
         PR_ICON=$ICON_PR_FAIL
@@ -251,10 +236,8 @@ render_popup() {
         ;;
     esac
     
-    # Build label
     PR_LABEL="${SUCCESSFUL_CHECKS}/${TOTAL_CHECKS} ${BRANCH}"
     
-    # Add item to popup
     args+=(
       --add item "github_prs.pr_${PR_NUMBER}" popup.github_prs
       --set "github_prs.pr_${PR_NUMBER}"
@@ -264,18 +247,14 @@ render_popup() {
         label="$PR_LABEL"
         click_script="open '${PR_URL}'; $POPUP_OFF"
     )
-  done
+  done < <(echo "$CACHE_CONTENT" | jq -r '.[] | [.pr_number, .branch, .pr_url, .checks_status, .successful_checks, .total_checks] | @tsv')
   
-  # Execute all commands at once
   if [ ${#args[@]} -gt 0 ]; then
     sketchybar "${args[@]}" >/dev/null
   fi
 }
 
 update() {
-  # Reset update frequency if it was set to 1 for manual refresh
-  sketchybar --set "$NAME" update_freq=600
-  
   fetch_prs
   render_bar_item
   render_popup
@@ -286,14 +265,10 @@ popup() {
 }
 
 case "$SENDER" in
-"routine" | "forced")
+"routine" | "forced" | "refresh")
   update
   ;;
 "mouse.clicked")
   popup toggle
-  ;;
-"refresh")
-  # Manual refresh triggered
-  update
   ;;
 esac
