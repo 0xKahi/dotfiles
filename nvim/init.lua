@@ -1,9 +1,10 @@
 -- luacheck: globals vim
 -- stylua: ignore
 _G.vim = vim
+vim.uv = vim.uv or vim.loop
 
+require('user.jojo')
 require('user.options')
-require('user.globals')
 require('user.lazy')
 require('user.colorscheme')
 require('user.keymaps')

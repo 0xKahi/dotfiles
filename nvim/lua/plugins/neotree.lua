@@ -14,7 +14,7 @@ return {
     {
       '<leader>oe',
       function()
-        local git_base = Global:get('git_base')
+        local git_base = JoJo.store:get('git_base')
         if git_base == nil then
           vim.cmd('Neotree reveal')
         else
@@ -30,7 +30,7 @@ return {
     {
       '<leader>og',
       function()
-        local git_base = Global:get('git_base') or 'HEAD'
+        local git_base = JoJo.store:get('git_base') or 'HEAD'
         vim.cmd('Neotree git_status git_base=' .. git_base .. ' reveal')
       end,
       desc = '[O]pen [G]itStatus',
