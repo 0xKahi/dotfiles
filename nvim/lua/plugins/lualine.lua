@@ -19,7 +19,7 @@ return {
         {
           'git_base',
           fmt = function()
-            local git_base = Global:get('git_base')
+            local git_base = JoJo.store:get('git_base')
             if git_base == nil or git_base == 'HEAD' then
               return nil
             end

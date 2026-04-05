@@ -8,8 +8,7 @@ return {
     --   require('nvim-treesitter.install').update({ with_sync = true })
     -- end,
     build = ':TSUpdate',
-    event = { 'BufEnter' },
-    opts_extend = { 'ensure_installed' },
+    lazy = false,
     opts = {
       ensure_installed = {
         'javascript',
@@ -45,14 +44,11 @@ return {
 
       ignore_install = {},
 
-      auto_install = false,
-
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = false,
-
       -- Automatically install missing parsers when entering buffer
       -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-      --auto_install = true,
+      auto_install = false,
 
       highlight = {
         enable = true,
@@ -64,6 +60,26 @@ return {
         additional_vim_regex_highlighting = false,
       },
       autopairs = { enable = true },
+      indent = { enable = true },
     },
+    config = function(_, opts)
+      local TS = require('nvim-treesitter')
+
+      TS.setup(opts)
+
+      JoJo.treesitter.installed.refresh()
+
+      local not_installed = vim
+        .iter(opts.ensure_installed)
+        :filter(function(parser)
+          return not JoJo.treesitter.installed.have(parser)
+        end)
+        :totable()
+
+      if #not_installed > 0 then
+        TS.install(not_installed)
+        JoJo.treesitter.installed.refresh()
+      end
+    end,
   },
 }

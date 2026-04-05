@@ -70,3 +70,13 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.api.nvim_set_option_value('formatprg', 'jq', { scope = 'local' })
   end,
 })
+
+--- treesitter on filetype ---
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = JoJo.treesitter.installed.get(),
+  callback = function(ev)
+    if JoJo.treesitter.query.have(ev.match, 'highlights') then
+      vim.treesitter.start(ev.buf)
+    end
+  end,
+})
