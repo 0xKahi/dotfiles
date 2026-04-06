@@ -24,7 +24,7 @@ return {
             'NvimTree',
             'neo-tree',
             'undotree',
-            'gundo',
+            'nvim-undotree',
             'oil',
             'trouble',
             'telescope',

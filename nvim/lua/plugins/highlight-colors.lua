@@ -1,6 +1,6 @@
 return {
   -- '0xKahi/nvim-highlight-colors',
-  'nvim-highlight-colors',
+  'brenoprata10/nvim-highlight-colors',
   event = { 'BufReadPre', 'BufNewFile' },
   opts = {
     ---Render style

@@ -6,6 +6,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'qf',
     'gitsigns-blame',
     'neo-tree-popup',
+    'nvim-undotree',
   },
   callback = function()
     vim.keymap.set('n', 'q', ':q<CR>', { buffer = true, noremap = true, silent = true, desc = '[Q]uit [2]' })
@@ -73,9 +74,9 @@ vim.api.nvim_create_autocmd('FileType', {
 
 --- treesitter on filetype ---
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = JoJo.treesitter.installed.get(),
+  pattern = vim.tbl_extend('force', JoJo.treesitter.installed.get(), { 'typescriptreact', 'javascriptreact' }),
   callback = function(ev)
-    if JoJo.treesitter.query.have(ev.match, 'highlights') then
+    if JoJo.treesitter.query.have(vim.treesitter.language.get_lang(ev.match), 'highlights') then
       vim.treesitter.start(ev.buf)
     end
   end,
