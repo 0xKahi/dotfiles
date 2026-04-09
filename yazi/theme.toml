@@ -34,7 +34,7 @@ find_keyword = { fg = "yellow", bold = true, italic = true, underline = true }
 find_position = { fg = "magenta", bg = "reset", bold = true, italic = true }
 
 # Symlink
-symlink_target = { italic = true, fg = "lightcyan" }
+symlink_target = { fg = "lightcyan" }
 
 # Marker
 marker_copied = { fg = "lightgreen", bg = "lightgreen" }
