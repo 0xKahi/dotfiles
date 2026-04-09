@@ -16,6 +16,7 @@ ffmpegthumbnailer
 foreman
 fzf
 gh
+git
 git-delta
 gitleaks
 go
@@ -23,6 +24,7 @@ graphviz
 gum
 hashicorp/tap/terraform
 httpie
+imagemagick
 jq
 julien-cpsn/atac/atac
 lazydocker
@@ -50,9 +52,12 @@ ripgrep
 sshuttle
 starship
 stow
+television
 thezoraiz/ascii-image-converter/ascii-image-converter
 tmux
+tokentopapp/tap/tokentop
 tree-sitter-cli
+tree-sitter@0.25
 unar
 yazi
 zellij

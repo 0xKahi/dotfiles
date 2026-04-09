@@ -10,4 +10,5 @@ opencode-desktop
 session-manager-plugin
 wezterm
 zed
+devnullvoid/pvetui/pvetui
 nikitabobko/tap/aerospace
