@@ -32,6 +32,7 @@ return {
             'Avante',
             'AvanteSelectedFiles',
             'AvanteInput',
+            'codediff-explorer',
           },
         },
         animation = {
