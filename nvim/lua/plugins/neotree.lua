@@ -252,6 +252,10 @@ return {
       },
     },
     nesting_rules = {},
+    -- check gitignore status for files/directories when searching.
+    -- setting this to false will speed up searches, but gitignored
+    -- items won't be marked if they are visible.
+    check_gitignore_in_search = true,
     filesystem = {
       -- commands = {
       --   change_git_base = function()
@@ -317,6 +321,20 @@ return {
           vim.cmd([[
               setlocal relativenumber
             ]])
+        end,
+      },
+      {
+        -- v3.39.0 added --ignored=traditional and --untracked-files=normal to every git status
+        -- call, which is noticeably slower in repos with large ignored dirs (node_modules, etc.).
+        -- Strip --ignored=* entirely; neo-tree only uses it to show ignored files in the tree,
+        -- which we don't display anyway (hide_gitignored = true).
+        event = 'before_git_status',
+        handler = function(args)
+          for i = #args.status_args, 1, -1 do
+            if args.status_args[i]:find('^--ignored=', 1, false) then
+              table.remove(args.status_args, i)
+            end
+          end
         end,
       },
     },
