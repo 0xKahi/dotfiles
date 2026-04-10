@@ -330,9 +330,11 @@ return {
         -- which we don't display anyway (hide_gitignored = true).
         event = 'before_git_status',
         handler = function(args)
-          for i = #args.status_args, 1, -1 do
-            if args.status_args[i]:find('^--ignored=', 1, false) then
-              table.remove(args.status_args, i)
+          if vim.tbl_contains(args.status_args, '--untracked-files=all') then
+            for i = #args.status_args, 1, -1 do
+              if args.status_args[i]:find('^--ignored=', 1, false) then
+                table.remove(args.status_args, i)
+              end
             end
           end
         end,

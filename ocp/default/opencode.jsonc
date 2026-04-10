@@ -6,7 +6,7 @@
 	],
 	"plugin": [
 		"opencode-antigravity-auth@latest",
-		"opencode-claude-auth",
+		"opencode-claude-auth@latest",
 		"@tarquinen/opencode-dcp@latest"
 	],
 	"small_model": "opencode/gpt-5-nano",

@@ -5,7 +5,7 @@
 	"share": "manual",
 	"autoupdate": "notify",
 	"enabled_providers": ["opencode", "openrouter", "openai", "google", "anthropic"],
-	"plugin": ["opencode-antigravity-auth@latest", "opencode-claude-auth"],
+	"plugin": ["opencode-antigravity-auth@latest", "opencode-claude-auth@latest"],
 	"small_model": "opencode/gpt-5-nano",
 	"server": {
 		"port": 4096,
@@ -216,14 +216,19 @@
 			"git diff*": "allow",
 			"git log*": "allow",
 			"git show*": "allow",
+			"gh repo clone*": "allow",
+			"gh repo view*": "allow",
 			"ls*": "allow",
 			"find*": "allow",
 			"fd*": "allow",
 			"rg*": "allow",
 			"grep*": "allow",
+			"sort*": "allow",
+			"sed*": "allow",
 			"cat*": "allow",
 			"head*": "allow",
-			"tail*": "allow"
+			"tail*": "allow",
+			"comm*": "allow"
 		},
 		"skill": {
 			"skill-creator": "ask",

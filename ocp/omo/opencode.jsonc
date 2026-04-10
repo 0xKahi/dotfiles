@@ -7,8 +7,8 @@
 	"default_agent": "sisyphus",
 	"plugin": [
 		"opencode-antigravity-auth@latest",
-		"opencode-claude-auth",
-		"oh-my-openagent"
+		"opencode-claude-auth@latest",
+		"oh-my-openagent@latest"
 	],
 	"small_model": "opencode/gpt-5-nano"
 }
