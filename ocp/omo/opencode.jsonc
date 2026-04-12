@@ -6,7 +6,6 @@
 	"autoupdate": "notify",
 	"default_agent": "sisyphus",
 	"plugin": [
-		"opencode-antigravity-auth@latest",
 		"opencode-claude-auth@latest",
 		"oh-my-openagent@latest"
 	],

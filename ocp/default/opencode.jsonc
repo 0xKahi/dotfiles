@@ -5,7 +5,6 @@
 		"~/.config/ocp/default/SUBAGENT_GUIDE.md"
 	],
 	"plugin": [
-		"opencode-antigravity-auth@latest",
 		"opencode-claude-auth@latest",
 		"@tarquinen/opencode-dcp@latest"
 	],
