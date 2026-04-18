@@ -100,6 +100,9 @@ function ff() {
   [[ -n "$window_id" ]] && aerospace focus --window-id "$window_id"
 }
 
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
 # Enable experimental models for opencode CLI
 export OPENCODE_ENABLE_EXPERIMENTAL_MODELS=true
 export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
