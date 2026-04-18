@@ -12,11 +12,22 @@ M.validate_start = function(bufnr, on_dir, root_markers)
   end
 end
 
--- Currently not ideal find a better way
--- custom function to check local lsp configs in a `.nvim` folder with settings.json or settings.jsonc
--- if the file contains `{ "lsp": { "<client_name>": { "ignore": true } } }`, the LSP client will not start
--- this allows per-project disabling of LSP clients
+---@param bufnr integer
+---@param root_markers? string[]
+M.has_disabled_root_markers = function(bufnr, root_markers)
+  local filename = vim.api.nvim_buf_get_name(bufnr)
+  local root = vim.fs.find(root_markers, {
+    path = vim.fs.dirname(filename),
+    upward = true,
+  })[1]
 
+  return root ~= nil
+end
+
+--- Currently not ideal find a better way
+--- custom function to check local lsp configs in a `.nvim` folder with settings.json or settings.jsonc
+--- if the file contains `{ "lsp": { "<client_name>": { "ignore": true } } }`, the LSP client will not start
+--- this allows per-project disabling of LSP clients
 ---@param client_name string
 ---@param bufnr integer
 M.check_lsp_ignore = function(client_name, bufnr)
@@ -55,8 +66,12 @@ M.check_lsp_ignore = function(client_name, bufnr)
   return true
 end
 
+---@class WorkspaceLspConfig : vim.lsp.Config
+--- Optional field to avoid enabling lsp client if certain root markers are found, useful for monorepos or projects with multiple configs
+---@field avoid_root_markers? string[]
+
 ---@param client_name string
----@param config vim.lsp.Config
+---@param config WorkspaceLspConfig
 M.lsp_config = function(client_name, config)
   local default_config = vim.lsp.config[client_name]
 
@@ -68,6 +83,15 @@ M.lsp_config = function(client_name, config)
     root_dir = function(bufnr, on_dir)
       local enabled = M.check_lsp_ignore(client_name, bufnr)
       if enabled then
+        if config.avoid_root_markers ~= nil and M.has_disabled_root_markers(bufnr, config.avoid_root_markers) then
+          JoJo.utils.debug_table({
+            tbl = { lsp = { [client_name] = { ignore = true } } },
+            title = 'LSP Disabled by Root Marker',
+            header = 'disabled root marker found consider adding this to .nvim/settings.jsonc',
+          })
+          return
+        end
+
         -- if defined own root_markers use validate_start by default
         if root_dir and not config.root_markers then
           root_dir(bufnr, on_dir)

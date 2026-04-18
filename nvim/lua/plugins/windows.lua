@@ -36,7 +36,7 @@ return {
           },
         },
         animation = {
-          -- enable = true,
+          enable = true,
           -- duration = 300,
           -- fps = 30,
           -- easing = 'in_out_sine',

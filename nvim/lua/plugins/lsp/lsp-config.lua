@@ -27,6 +27,8 @@ return {
           'marksman',
           'autotools_ls',
           'pyright',
+          'pylsp',
+          'ruff',
           'bashls',
           'vimls',
         },
@@ -101,19 +103,19 @@ return {
           validate_start(bufnr, on_dir, { 'deno.json', 'deno.jsonc' })
         end,
       })
+      workspace.lsp_config('denols', {
+        root_markers = { 'deno.json', 'deno.jsonc' },
+        single_file_support = false,
+      })
 
       -- ESLint config
       workspace.lsp_config('eslint', {
-        root_dir = function(bufnr, on_dir)
-          validate_start(bufnr, on_dir, { 'eslint.config.js', 'eslint.config.mjs' })
-        end,
+        root_markers = { 'eslint.config.js', 'eslint.config.mjs' },
       })
 
       -- Biome config
       workspace.lsp_config('biome', {
-        root_dir = function(bufnr, on_dir)
-          validate_start(bufnr, on_dir, { 'biome.json', 'biome.jsonc' })
-        end,
+        root_markers = { 'biome.json', 'biome.jsonc' },
       })
 
       -- Lua config
@@ -178,7 +180,9 @@ return {
 
       workspace.lsp_config('css_variables', {})
 
+      -- Python config
       workspace.lsp_config('pylsp', {
+        avoid_root_markers = { 'ruff.toml' },
         settings = {
           pylsp = {
             configurationSources = { 'flake8' },
@@ -198,7 +202,26 @@ return {
         },
       })
 
-      vim.lsp.enable('sourcekit')
+      workspace.lsp_config('pyright', {
+        settings = {
+          pyright = {
+            -- Using Ruff's import organizer
+            disableOrganizeImports = true,
+          },
+          python = {
+            analysis = {
+              -- Ignore all files for analysis to exclusively use Ruff for linting
+              ignore = { '*' },
+            },
+          },
+        },
+      })
+
+      workspace.lsp_config('ruff', {
+        root_markers = { 'ruff.toml' },
+      })
+
+      -- vim.lsp.enable('sourcekit')
       workspace.lsp_config('sourcekit', {
         capabilities = {
           workspace = {
