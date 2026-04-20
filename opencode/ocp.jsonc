@@ -1,4 +1,8 @@
 {
+	"$schema": "https://raw.githubusercontent.com/0xKahi/ocp/main/assets/ocp.schema.json",
+	"startup": {
+		"randomPort": true
+	},
 	"profiles": {
 		"omo": {
 			"path": "$HOME/.config/ocp/omo"
@@ -6,6 +10,5 @@
 		"default": {
 			"path": "$HOME/.config/ocp/default"
 		}
-	},
-	"randomPort": true
+	}
 }

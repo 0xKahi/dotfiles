@@ -21,6 +21,7 @@ export LG_CONFIG_FILE="$HOME/.config/lazygit/lazygit-config.yml"
 # PATH additions
 # pipx
 # Created by `pipx` on 2025-05-30 19:55:17
+# used by uv as well
 export PATH="$HOME/.local/bin:$PATH"
 
 # pnpm
@@ -33,3 +34,6 @@ esac
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+## custom python venv executables
+export UVENV="$HOME/.uv-venv"

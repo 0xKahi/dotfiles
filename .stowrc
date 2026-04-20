@@ -6,3 +6,4 @@
 --ignore=ref
 --ignore=assets
 --ignore=brew
+--ignore=.sisyphus

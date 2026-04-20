@@ -123,17 +123,17 @@
 			"skill-creator": "ask",
 			"*": "allow"
 		},
-		"lsp": "allow",
-		"webfetch": "deny",
-		"websearch": "deny",
-		"codesearch": "deny",
-		"context7*": "deny",
-		"tavily-mcp*": "deny",
-		"firecrawl*": "deny",
-		"coingecko_mcp*": "deny",
-		"perplexity-mcp*": "deny",
-		"grep_app*": "deny",
-		"exa*": "deny"
+		"lsp": "allow"
+		// "webfetch": "deny",
+		// "websearch": "deny",
+		// "codesearch": "deny",
+		// "context7*": "deny",
+		// "tavily-mcp*": "deny",
+		// "firecrawl*": "deny",
+		// "coingecko_mcp*": "deny",
+		// "perplexity-mcp*": "deny",
+		// "grep_app*": "deny",
+		// "exa*": "deny"
 	},
 	"experimental": {
 		"batch_tool": true
