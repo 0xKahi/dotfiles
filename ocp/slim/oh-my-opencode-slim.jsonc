@@ -1,0 +1,78 @@
+{
+	"$schema": "https://unpkg.com/oh-my-opencode-slim@latest/oh-my-opencode-slim.schema.json",
+	"preset": "default",
+	"presets": {
+		"default": {
+			"orchestrator": {
+				"model": "anthropic/claude-opus-4-6",
+				"variant": "max",
+				"skills": [
+					"*"
+				],
+				"mcps": [
+					"*",
+					"websearch"
+				]
+			},
+			"oracle": {
+				"model": "openai/gpt-5.4",
+				"variant": "high",
+				"skills": [],
+				"mcps": []
+			},
+			"librarian": {
+				"model": "openrouter/minimax/minimax-m2.7",
+				"variant": "low",
+				"skills": [],
+				"mcps": [
+					"websearch",
+					"context7",
+					"grep_app"
+				]
+			},
+			"explorer": {
+				"model": "openrouter/x-ai/grok-code-fast-1",
+				"variant": "low",
+				"skills": [],
+				"mcps": []
+			},
+			"designer": {
+				"model": "github-copilot/gemini-3.1-pro-preview",
+				"skills": [
+					"agent-browser"
+				],
+				"mcps": []
+			},
+			"fixer": {
+				"model": "opencode/kimi-k2.6",
+				"variant": "low",
+				"skills": [],
+				"mcps": []
+			}
+		}
+	},
+	"multiplexer": {
+		"type": "auto",
+		"layout": "main-vertical",
+		"main_pane_size": 60
+	},
+	"council": {
+		"master": {
+			"model": "anthropic/claude-opus-4-6",
+			"vairiant": "max"
+		},
+		"presets": {
+			"default": {
+				"alpha": {
+					"model": "openai/gpt-5.4"
+				},
+				"beta": {
+					"model": "github-copilot/gemini-3.1-pro-preview"
+				},
+				"gamma": {
+					"model": "opencode/kimi-k2.6"
+				}
+			}
+		}
+	}
+}

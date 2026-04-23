@@ -9,6 +9,10 @@
 		},
 		"default": {
 			"path": "$HOME/.config/ocp/default"
+		},
+		"slim": {
+			"path": "$HOME/.config/ocp/slim"
 		}
 	}
 }
+
