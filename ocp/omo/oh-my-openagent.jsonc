@@ -15,18 +15,18 @@
       }
     },
     "prometheus": {
-      "model": "anthropic/claude-opus-4-6",
+      "model": "anthropic/claude-opus-4-7",
       "variant": "max",
       "prompt_append": "Leverage deep & quick agents heavily, always in parallel.",
       "fallback_models": [
-        "openai/gpt-5.4"
+        "openai/gpt-5.5"
       ]
     },
     "metis": {
-      "model": "anthropic/claude-opus-4-6",
+      "model": "anthropic/claude-opus-4-7",
       "variant": "max",
       "fallback_models": [
-        "openai/gpt-5.4",
+        "openai/gpt-5.5",
         "anthropic/claude-sonnet-4-6",
         "opencode/glm-5.1",
         "opencode/kimi-k2.6"
@@ -34,12 +34,10 @@
     },
     "atlas": {
       "model": "anthropic/claude-sonnet-4-6",
-      // "model": "opencode/kimi-k2.6",
       "variant": "medium",
       "fallback_models": [
-        // "anthropic/claude-sonnet-4-6",
         "opencode/kimi-k2.6",
-        "openai/gpt-5.4",
+        "openai/gpt-5.5",
         "opencode/glm-5.1"
       ],
       "color": "#ED7892",
@@ -48,7 +46,7 @@
       }
     },
     "hephaestus": {
-      "model": "openai/gpt-5.4",
+      "model": "openai/gpt-5.5",
       "variant": "medium",
       "permission": {
         "edit": "allow",
@@ -56,11 +54,11 @@
       }
     },
     "oracle": {
-      "model": "openai/gpt-5.4",
+      "model": "openai/gpt-5.5",
       "variant": "high"
     },
     "momus": {
-      "model": "openai/gpt-5.4",
+      "model": "openai/gpt-5.5",
       "variant": "xhigh",
       "fallback_models": [
         "opencode/glm-5.1",
@@ -80,7 +78,7 @@
       ]
     },
     "multimodal-looker": {
-      "model": "openai/gpt-5.4",
+      "model": "openai/gpt-5.5",
       "variant": "medium",
       "fallback_models": [
         "github-copilot/gemini-3-flash-preview",
@@ -91,7 +89,7 @@
       "model": "opencode/kimi-k2.6",
       "fallback_models": [
         "anthropic/claude-sonnet-4-6",
-        "openai/gpt-5.4"
+        "openai/gpt-5.5"
       ]
     }
   },
@@ -106,7 +104,7 @@
     },
     "ultrabrain": {
       "description": "Deep logical reasoning, complex architecture",
-      "model": "openai/gpt-5.4",
+      "model": "openai/gpt-5.5",
       "variant": "xhigh",
       "fallback_models": [
         "github-copilot/gemini-3.1-pro-preview"
@@ -114,7 +112,7 @@
     },
     "deep": {
       "description": "Autonomous problem-solving, thorough research",
-      "model": "openai/gpt-5.4",
+      "model": "openai/gpt-5.5",
       "variant": "medium",
       "fallback_models": [
         "github-copilot/gemini-3.1-pro-preview"
@@ -135,10 +133,10 @@
     },
     "unspecified-high": {
       "description": "General tasks, high effort",
-      "model": "anthropic/claude-opus-4-6",
+      "model": "anthropic/claude-opus-4-7",
       "variant": "max",
       "fallback_models": [
-        "openai/gpt-5.4",
+        "openai/gpt-5.5",
         "opencode/glm-5.1",
         "openai/gpt-5.3-codex"
       ]
@@ -147,7 +145,7 @@
       "description": "General tasks, low effort",
       "model": "anthropic/claude-sonnet-4-6",
       "fallback_models": [
-        "openai/gpt-5.4",
+        "openai/gpt-5.5",
         "opencode/kimi-k2.6"
       ]
     },
