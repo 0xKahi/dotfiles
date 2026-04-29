@@ -14,3 +14,9 @@ Now, you can move windows by holding ctrl + cmd and dragging any part of the win
 brew tap FelixKratz/formulae
 brew install borders
 ```
+
+## Grab App ID
+
+```sh
+osascript -e 'id of app "App"' | pbcopy
+```
