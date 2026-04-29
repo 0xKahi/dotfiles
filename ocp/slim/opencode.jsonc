@@ -14,5 +14,11 @@
 		"orchestrator": {
 			"color": "#D498F8"
 		},
+		"explore": {
+			"disable": true
+		},
+		"general": {
+			"disable": true
+		}
 	}
 }
