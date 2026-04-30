@@ -5,9 +5,9 @@
   "hashline_edit": false,
   "agents": {
     "sisyphus": {
-      "model": "opencode/kimi-k2.6",
+      "model": "opencode-go/kimi-k2.6",
       "ultrawork": {
-        "model": "anthropic/claude-opus-4-6",
+        "model": "anthropic/claude-opus-4-7",
         "variant": "max"
       },
       "permission": {
@@ -28,17 +28,17 @@
       "fallback_models": [
         "openai/gpt-5.5",
         "anthropic/claude-sonnet-4-6",
-        "opencode/glm-5.1",
-        "opencode/kimi-k2.6"
+        "opencode-go/glm-5.1",
+        "opencode-go/kimi-k2.6"
       ]
     },
     "atlas": {
       "model": "anthropic/claude-sonnet-4-6",
       "variant": "medium",
       "fallback_models": [
-        "opencode/kimi-k2.6",
+        "opencode-go/kimi-k2.6",
         "openai/gpt-5.5",
-        "opencode/glm-5.1"
+        "opencode-go/glm-5.1"
       ],
       "color": "#ED7892",
       "permission": {
@@ -61,12 +61,12 @@
       "model": "openai/gpt-5.5",
       "variant": "xhigh",
       "fallback_models": [
-        "opencode/glm-5.1",
-        "opencode/kimi-k2.6"
+        "opencode-go/glm-5.1",
+        "opencode-go/kimi-k2.6"
       ]
     },
     "librarian": {
-      "model": "openrouter/minimax/minimax-m2.7",
+      "model": "opencode-go/minimax-m2.7",
       "fallback_models": [
         "github-copilot/gemini-3-flash-preview"
       ]
@@ -74,7 +74,7 @@
     "explore": {
       "model": "openai/gpt-5.4-mini-fast",
       "fallback_models": [
-        "openrouter/minimax/minimax-m2.7"
+        "opencode-go/minimax-m2.7"
       ]
     },
     "multimodal-looker": {
@@ -82,11 +82,11 @@
       "variant": "medium",
       "fallback_models": [
         "github-copilot/gemini-3-flash-preview",
-        "opencode/kimi-k2.6"
+        "opencode-go/kimi-k2.6"
       ]
     },
     "sisyphus-junior": {
-      "model": "opencode/kimi-k2.6",
+      "model": "opencode-go/kimi-k2.6",
       "fallback_models": [
         "anthropic/claude-sonnet-4-6",
         "openai/gpt-5.5"
@@ -99,7 +99,7 @@
       "model": "github-copilot/gemini-3.1-pro-preview",
       "variant": "high",
       "fallback_models": [
-        "opencode/glm-5.1"
+        "opencode-go/glm-5.1"
       ]
     },
     "ultrabrain": {
@@ -125,7 +125,7 @@
     },
     "quick": {
       "description": "Trivial tasks, typo fixes, single-file changes",
-      "model": "openrouter/minimax/minimax-m2.7",
+      "model": "opencode-go/minimax-m2.7",
       "fallback_models": [
         "openai/gpt-5.4-mini",
         "opencode/gpt-5-nano"
@@ -136,9 +136,11 @@
       "model": "anthropic/claude-opus-4-7",
       "variant": "max",
       "fallback_models": [
-        "openai/gpt-5.5",
-        "opencode/glm-5.1",
-        "openai/gpt-5.3-codex"
+        {
+          "model": "openai/gpt-5.5",
+          "variant": "xhigh"
+        },
+        "opencode-go/glm-5.1"
       ]
     },
     "unspecified-low": {
@@ -146,15 +148,15 @@
       "model": "anthropic/claude-sonnet-4-6",
       "fallback_models": [
         "openai/gpt-5.5",
-        "opencode/kimi-k2.6"
+        "opencode-go/kimi-k2.6"
       ]
     },
     "writing": {
       "description": "Documentation, prose, technical writing",
-      "model": "github-copilot/gemini-3-flash-preview"
+      "model": "opencode-go/kimi-k2.6"
     },
     "git": {
-      "model": "opencode/gpt-5-nano",
+      "model": "opencode-go/minimax-m2.7",
       "description": "All git operations",
       "prompt_append": "Focus on atomic commits, clear messages, and safe operations."
     }
@@ -166,14 +168,13 @@
       "openai": 4,
       "google": 3,
       "github-copilot": 3,
-      "opencode": 10,
-      "openrouter": 10
+      "opencode": 5,
+      "opencode-go": 5,
+      "openrouter": 5
     },
     "modelConcurrency": {
-      "anthropic/claude-opus-4-6": 2,
+      "anthropic/claude-opus-4-7": 3,
       "opencode/gpt-5-nano": 20,
-      "opencode/minimax-m2.5": 20,
-      "opencode/kimi-k2.6": 3,
       "openai/gpt-5.4-mini-fast": 4
     }
   },
