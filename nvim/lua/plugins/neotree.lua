@@ -155,7 +155,7 @@ return {
         format = '%Y-%m-%d %I:%M %p',
       },
       symlink_target = {
-        enabled = false,
+        enabled = true,
       },
     },
     renderers = {
