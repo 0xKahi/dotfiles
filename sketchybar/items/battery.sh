@@ -11,8 +11,15 @@ battery=(
   updates=when_shown                                           
 )
 
+sketchybar --add event power_mode_change
+
 sketchybar                                 \
   --add item battery right                 \
   --set battery "${battery[@]}"            \
   --subscribe battery power_source_change  \
+                      power_mode_change    \
                       mouse.clicked
+
+# Launch background watcher for low power mode changes
+"$PLUGIN_DIR/lowpower_watcher.sh" >/dev/null 2>&1 &
+disown

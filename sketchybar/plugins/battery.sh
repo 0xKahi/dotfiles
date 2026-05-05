@@ -6,6 +6,7 @@ TMP="/tmp/drawing_state.txt"
 render_item() {
   PERCENTAGE=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
   CHARGING=$(pmset -g batt | grep 'AC Power')
+  LOW_POWER=$(pmset -g | grep -Eo 'powermode[[:space:]]+1')
   COLOR=$ICON_COLOR
   local DRAWING=$(get_label_state)
 
@@ -40,6 +41,10 @@ render_item() {
     COLOR=$(getcolor green)
   fi
 
+  if [[ $LOW_POWER != "" ]]; then
+    COLOR=0xffffcc00
+  fi
+
   sketchybar --set $NAME icon=$ICON icon.color=$COLOR label=$PERCENTAGE% label.color=$LABEL_COLOR label.drawing=$DRAWING
 }
 
@@ -70,7 +75,7 @@ case "$SENDER" in
 "mouse.clicked")
   label_toggle
   ;;
-"routine" | "forced" | "power_source_change")
+"routine" | "forced" | "power_source_change" | "power_mode_change")
   render_item
   ;;
 esac
