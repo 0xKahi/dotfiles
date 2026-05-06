@@ -3,7 +3,7 @@ alias l="eza -l --icons --git -a"
 alias lt="eza --tree --level=2 --long --icons --git"
 
 # lazy
-alias lg="lazygit"
+# alias lg="lazygit"
 alias ldg="lazydocker"
 
 # git

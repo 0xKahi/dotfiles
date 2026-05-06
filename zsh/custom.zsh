@@ -81,6 +81,18 @@ zi() {
 }
 # ====================== end ===============================
 
+
+# ================ Lazy git ========================
+lg() {
+  export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+  lazygit "$@"
+  if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+      cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+      rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+  fi
+}
+# ====================== end ===============================
+
 # ================ yazi shell wrapper ======================
 # yz: shell wrapper for yazi that allows changing directory if needed
 # - `q`: to quit yazi and change directory
