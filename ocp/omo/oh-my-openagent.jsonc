@@ -5,7 +5,7 @@
   "hashline_edit": false,
   "agents": {
     "sisyphus": {
-      "model": "opencode-go/kimi-k2.6",
+      "model": "anthropic/claude-opus-4-7",
       "thinking": {
         "type": "enabled"
       },

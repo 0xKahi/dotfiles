@@ -21,12 +21,20 @@ gui:
   showBottomLine: true
   commandLogSize: 8
   splitDiff: auto
+  animateExplosion: true
   theme:
     selectedLineBgColor:
       - "#311b92"
+
+notARepository: prompt
+
 git:
   # localBranchSortOrder: recency
   pagers:
     - colorArg: always
       pager: delta --dark --paging=never
       useConfig: false
+
+keybinding:
+  worktrees:
+    viewWorktreeOptions: w
