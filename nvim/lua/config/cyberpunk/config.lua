@@ -192,6 +192,21 @@ local function set_mcphub_plugin(highlights)
   set_highlight(highlights, { 'MCPHubInfo', 'MCPHubCode' }, { fg = cyberpunk.core.bright_magenta })
 end
 
+local function set_wayfinder_plugin(highlights)
+  highlights['WayfinderSelection'] = { bg = cyberpunk.core.highlight }
+
+  highlights['WayfinderSelectionPath'] = { bg = cyberpunk.core.highlight, fg = cyberpunk.core.bright_cyan }
+  highlights['WayfinderSelectionMuted'] = { bg = cyberpunk.core.highlight, fg = '#636DA6' }
+  highlights['WayfinderSelectionAccent'] = { fg = cyberpunk.core.green }
+  highlights['WayfinderFacetActive'] = { fg = cyberpunk.core.green }
+  highlights['WayfinderPath'] = { fg = cyberpunk.core.bright_cyan }
+  highlights['WayfinderBorder'] = { fg = cyberpunk.core.neon_green }
+
+  highlights['WayfinderSelectionLabel'] = { fg = cyberpunk.core.bright_magenta }
+  highlights['WayfinderBadgeText'] = { fg = cyberpunk.core.cyan }
+  highlights['WayfinderLabelSoft'] = { fg = cyberpunk.core.cyan }
+end
+
 local function set_markview_plugin(highlights)
   --- Palattes
   highlights['MarkviewPalette6Fg'] = { fg = cyberpunk.lsp.operator }
@@ -356,6 +371,7 @@ function M.apply_highlight(highlights, colors)
   set_avante_plugin(highlights)
   set_mcphub_plugin(highlights)
   set_markview_plugin(highlights)
+  set_wayfinder_plugin(highlights)
 
   set_icon_highlights(highlights)
   set_lsp_highlights(highlights)

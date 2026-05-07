@@ -77,7 +77,8 @@ vim.api.nvim_create_autocmd('FileType', {
   -- pattern = vim.tbl_extend('force', JoJo.treesitter.installed.get(), { 'typescriptreact', 'javascriptreact' }),
   pattern = '*',
   callback = function(ev)
-    if JoJo.treesitter.query.have(vim.treesitter.language.get_lang(ev.match), 'highlights') then
+    local lang = vim.treesitter.language.get_lang(ev.match)
+    if lang and JoJo.treesitter.query.have(lang, 'highlights') then
       vim.treesitter.start(ev.buf)
     end
   end,

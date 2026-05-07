@@ -49,9 +49,12 @@ end
 ---@class user.jojo.treesitter.query
 M.query = {}
 
----@param lang string
+---@param lang string?
 ---@param query string
 function M.query.have(lang, query)
+  if not lang then
+    return false
+  end
   local key = lang .. ':' .. query
   if M._cache.queries[key] == nil then
     M._cache.queries[key] = vim.treesitter.query.get(lang, query) ~= nil
