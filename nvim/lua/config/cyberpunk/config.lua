@@ -205,6 +205,8 @@ local function set_wayfinder_plugin(highlights)
   highlights['WayfinderSelectionLabel'] = { fg = cyberpunk.core.bright_magenta }
   highlights['WayfinderBadgeText'] = { fg = cyberpunk.core.cyan }
   highlights['WayfinderLabelSoft'] = { fg = cyberpunk.core.cyan }
+  highlights['WayfinderPreviewTarget'] = { bg = cyberpunk.core.highlight2 }
+  highlights['WayfinderCount'] = { fg = cyberpunk.core.bright_yellow }
 end
 
 local function set_markview_plugin(highlights)
