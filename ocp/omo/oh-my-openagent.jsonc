@@ -5,7 +5,7 @@
   "hashline_edit": false,
   "agents": {
     "sisyphus": {
-      "model": "anthropic/claude-opus-4-7",
+      "model": "opencode-go/kimi-k2.6",
       "thinking": {
         "type": "enabled"
       },
@@ -225,6 +225,18 @@
     "main_pane_min_width": 120,
     "agent_pane_min_width": 40,
     "isolation": "window"
+  },
+  "team_mode": {
+    "enabled": true,
+    "max_parallel_members": 4,
+    "max_members": 8,
+    "max_member_turns": 500,
+    "max_messages_per_run": 10000,
+    "max_wall_clock_minutes": 120,
+    "message_payload_max_bytes": 32768,
+    "recipient_unread_max_bytes": 262144,
+    "mailbox_poll_interval_ms": 3000,
+    "tmux_visualization": true
   },
   "browser_automation_engine": {
     "provider": "agent-browser"

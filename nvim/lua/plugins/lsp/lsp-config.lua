@@ -63,24 +63,12 @@ return {
     },
     config = function(_, opts)
       -- Common setup function for all LSP servers
-      local on_attach = function(client, bufnr)
+      local on_attach = function(_, bufnr)
         -- Load your keymaps
         require('config.lsp-picker-keymap').setup_snacks_lsp_keymaps(bufnr)
       end
 
       local workspace = require('config.workspace')
-
-      local validate_start = function(bufnr, on_dir, root_markers)
-        local filename = vim.api.nvim_buf_get_name(bufnr)
-        local root = vim.fs.find(root_markers, {
-          path = vim.fs.dirname(filename),
-          upward = true,
-        })[1]
-
-        if root then
-          on_dir(vim.fs.dirname(root))
-        end
-      end
 
       -- Define default config
       vim.lsp.config('*', {
@@ -88,21 +76,11 @@ return {
       })
 
       -- TypeScript config
-      vim.lsp.config('ts_ls', {
+      workspace.lsp_config('ts_ls', {
         root_markers = { 'package.json' },
-        root_dir = function(bufnr, on_dir)
-          validate_start(bufnr, on_dir, { 'package.json' })
-        end,
         single_file_support = false,
       })
 
-      -- Deno config
-      vim.lsp.config('denols', {
-        root_markers = { 'deno.json', 'deno.jsonc' },
-        root_dir = function(bufnr, on_dir)
-          validate_start(bufnr, on_dir, { 'deno.json', 'deno.jsonc' })
-        end,
-      })
       workspace.lsp_config('denols', {
         root_markers = { 'deno.json', 'deno.jsonc' },
         single_file_support = false,
@@ -150,7 +128,7 @@ return {
         },
       })
 
-      vim.lsp.config('terraformls', {
+      workspace.lsp_config('graphql', {
         filetypes = { 'terraform-vars', 'terraform', 'tf' },
         settings = {
           terraformls = {
@@ -221,7 +199,6 @@ return {
         root_markers = { 'ruff.toml' },
       })
 
-      -- vim.lsp.enable('sourcekit')
       workspace.lsp_config('sourcekit', {
         capabilities = {
           workspace = {
