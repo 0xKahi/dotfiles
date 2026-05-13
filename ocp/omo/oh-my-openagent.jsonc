@@ -216,7 +216,7 @@
   "ralph_loop": {
     "enabled": true,
     "default_strategy": "continue",
-    "default_max_iterations": 100
+    "default_max_iterations": 10
   },
   "tmux": {
     "enabled": true,
@@ -224,7 +224,7 @@
     "main_pane_size": 60,
     "main_pane_min_width": 120,
     "agent_pane_min_width": 40,
-    "isolation": "window"
+    "isolation": "session"
   },
   "team_mode": {
     "enabled": true,

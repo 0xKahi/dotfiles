@@ -45,14 +45,12 @@
 		"dialog.select.page_down": "pagedown",
 		"dialog.select.home": "home",
 		"dialog.select.end": "end",
-		"dialog.select.submit": "return",
+		"dialog.select.submit": "enter",
 		"dialog.mcp.toggle": "space",
 		"prompt.autocomplete.prev": ["up", "ctrl+p", "ctrl+k"],
 		"prompt.autocomplete.next": ["down", "ctrl+n", "ctrl+j"],
 		"prompt.autocomplete.hide": "escape",
-		"prompt.autocomplete.select": "return",
 		"prompt.autocomplete.complete": "tab"
 	},
 	"diff_style": "auto"
 }
-
