@@ -12,10 +12,6 @@
 		},
 		"slim": {
 			"path": "$HOME/.config/ocp/slim"
-		},
-		"omov3": {
-			"path": "$HOME/.config/ocp/omov3"
 		}
 	}
 }
-
