@@ -1,20 +1,21 @@
 {
-  "$schema": "https://raw.githubusercontent.com/0xKahi/ocp/main/assets/ocp.schema.json",
-  "startup": {
-    "randomPort": true
-  },
-  "profiles": {
-    "omo": {
-      "path": "$HOME/.config/ocp/omo"
-    },
-    "default": {
-      "path": "$HOME/.config/ocp/default"
-    },
-    "slim": {
-      "path": "$HOME/.config/ocp/slim"
-    },
-    "omo-old": {
-      "path": "/Users/kahi/dotfiles/ocp/omo-old"
-    }
-  }
+	"$schema": "https://raw.githubusercontent.com/0xKahi/ocp/main/assets/ocp.schema.json",
+	"startup": {
+		"randomPort": true
+	},
+	"profiles": {
+		"omo": {
+			"path": "$HOME/.config/ocp/omo"
+		},
+		"default": {
+			"path": "$HOME/.config/ocp/default"
+		},
+		"slim": {
+			"path": "$HOME/.config/ocp/slim"
+		},
+		"omov3": {
+			"path": "$HOME/.config/ocp/omov3"
+		}
+	}
 }
+
