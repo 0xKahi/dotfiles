@@ -7,7 +7,7 @@ return {
     },
     keys = {
       {
-        '<leader>dv',
+        '<leader>cd',
         function()
           local git_base = JoJo.store:get('git_base')
           if git_base == nil or git_base == 'HEAD' then
@@ -16,10 +16,10 @@ return {
             vim.cmd('CodeDiff ' .. git_base)
           end
         end,
-        desc = '[D]iff [V]iew',
+        desc = '[C]ode [D]iff',
       },
       {
-        '<leader>df',
+        '<leader>cD',
         function()
           local git_base = JoJo.store:get('git_base')
           if git_base == nil then
@@ -28,7 +28,7 @@ return {
             vim.cmd('CodeDiff file ' .. git_base .. ' --inline')
           end
         end,
-        desc = '[D]iff [F]ile (current buffer)',
+        desc = '[C]ode [D]iff (current buffer)',
       },
     },
     opts = {
