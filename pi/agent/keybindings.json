@@ -1,0 +1,12 @@
+{
+  "tui.editor.cursorUp": [
+    "up"
+  ],
+  "tui.editor.cursorDown": [
+    "down"
+  ],
+  "tui.editor.pageUp": "ctrl+u",
+  "tui.editor.pageDown": "ctrl+d",
+  "app.editor.external": "ctrl+e",
+  "app.thinking.cycle": "ctrl+t"
+}
