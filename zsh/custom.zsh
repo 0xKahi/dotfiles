@@ -120,6 +120,9 @@ export OPENCODE_ENABLE_EXPERIMENTAL_MODELS=true
 export OPENCODE_EXPERIMENTAL_LSP_TOOL=true
 export OPENCODE_ENABLE_EXA=true
 
+# Set JOJO worktree directory
+export JOJO_WORKTREE_DIR=".worktree"
+
 # zsh menu style
 [ -f "$HOME/.config/zsh/configs/zsh-menu-style.zsh" ] && source "$HOME/.config/zsh/configs/zsh-menu-style.zsh"
 
