@@ -4,15 +4,19 @@
   "layout": "stretch",
   "share": "manual",
   "autoupdate": "notify",
-  "enabled_providers": ["opencode", "opencode-go", "openrouter", "openai", "google", "anthropic", "github-copilot"],
-  "plugin": ["opencode-claude-auth@latest"],
+  "enabled_providers": [
+    "opencode",
+    "opencode-go",
+    "openrouter",
+    "openai",
+    "google",
+    "anthropic",
+    "github-copilot"
+  ],
+  "plugin": [
+    "opencode-claude-auth@latest"
+  ],
   "small_model": "opencode/gpt-5-nano",
-  "server": {
-    "port": 4096,
-    "hostname": "127.0.0.1",
-    "mdns": false,
-    "cors": []
-  },
   "provider": {
     "openai": {
       "options": {
