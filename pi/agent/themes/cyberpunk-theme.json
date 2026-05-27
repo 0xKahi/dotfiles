@@ -71,7 +71,7 @@
     "mdCodeBlockBorder": "#00FF9C",
     "mdQuote": "#c8d3f5",
     "mdQuoteBorder": "#8089ff",
-    "mdHr": "",
+    "mdHr": "#82aaff",
     "mdListBullet": "darkStep9",
     "toolDiffAdded": "#74F2BF",
     "toolDiffRemoved": "#EF8FA4",
