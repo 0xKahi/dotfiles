@@ -7,6 +7,23 @@
   ],
   "tui.editor.pageUp": "ctrl+u",
   "tui.editor.pageDown": "ctrl+d",
+  "tui.select.up": [
+    "ctrl+p",
+    "up"
+  ],
+  "tui.select.down": [
+    "ctrl+n",
+    "down"
+  ],
+  "tui.select.confirm": "enter",
+  "tui.input.newLine": [
+    "shift+enter",
+    "ctrl+j"
+  ],
+  "tui.input.submit": "enter",
   "app.editor.external": "ctrl+e",
-  "app.thinking.cycle": "ctrl+t"
+  "app.thinking.cycle": "ctrl+t",
+  "app.model.select": "ctrl+m",
+  "app.model.cycleForward": "",
+  "app.model.cycleBackward": ""
 }

@@ -51,7 +51,7 @@
     "muted": "darkStep11",
     "dim": "darkStep8",
     "text": "darkStep12",
-    "thinkingText": "darkStep11",
+    "thinkingText": "#545e8a",
     "selectedBg": "#311b92",
     "userMessageBg": "",
     "userMessageText": "#c8d3f5",
