@@ -23,7 +23,6 @@
   "tui.input.submit": "enter",
   "app.editor.external": "ctrl+e",
   "app.thinking.cycle": "ctrl+t",
-  "app.model.select": "ctrl+m",
   "app.model.cycleForward": "",
   "app.model.cycleBackward": ""
 }
