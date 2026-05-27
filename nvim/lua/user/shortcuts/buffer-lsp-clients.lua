@@ -1,4 +1,3 @@
-local utils = require('utils.misc')
 local commands = {
   all = {
     func = function()
@@ -10,7 +9,7 @@ local commands = {
         client_data[client.name] = supports_formatting
       end
 
-      utils.debug_table({
+      JoJo.utils.debug_table({
         tbl = client_data,
         title = 'BufferLspInfo',
         header = 'Current Buffer LSP Clients',
@@ -30,7 +29,7 @@ local commands = {
         end
       end
 
-      utils.debug_table({
+      JoJo.utils.debug_table({
         tbl = client_names,
         title = 'BufferLspInfo',
         header = 'Current Buffer Formatting LSP Clients',

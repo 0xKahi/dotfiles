@@ -19,28 +19,6 @@ function M.random_selector(tbl)
   return tbl[key]
 end
 
--- for printing tables
----@class DebugTableOpts
----@field tbl table
----@field header? string optional header for the table
----@field title? string optional title for notification
----@field timeout? integer optional timeout for notification
-
----@param opts DebugTableOpts the options for debugging the table
-function M.debug_table(opts)
-  -- Convert the table to a string using vim.inspect
-  local table_str = vim.inspect(opts.tbl)
-  -- Add a header if one was provided
-  if opts.header then
-    table_str = opts.header .. ':\n' .. table_str
-  end
-  -- Show the table contents as a notification
-  vim.notify(table_str, vim.log.levels.DEBUG, {
-    title = opts.title or 'Debug Table',
-    timeout = opts.timeout or 1000,
-  })
-end
-
 ---@class StartInINormaModeOpts
 ---@field generic? fun() function to run on other modes without any specific mode functions
 ---@field normal? fun() function to run on normal mode
@@ -88,14 +66,6 @@ function M.get_word_under_cursor()
     local selectedText = vim.fn.expand('<cword>')
     return { selectedText = selectedText }
   end
-end
-
-function M.copy_to_clipboard(text)
-  -- Use the system clipboard register
-  vim.fn.setreg('+', text)
-  vim.notify('Copied to clipboard: ' .. text, vim.log.levels.INFO, {
-    title = 'custom-keymap',
-  })
 end
 
 function M.filter_out(tbl, property)

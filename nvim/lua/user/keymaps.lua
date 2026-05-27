@@ -31,7 +31,7 @@ end, { noremap = true, silent = true, desc = '[S]earch and [R]eplace' })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>sR', function()
   local cursorWord = require('utils.misc').get_word_under_cursor()
-  require('utils.misc').copy_to_clipboard(cursorWord.selectedText)
+  JoJo.utils.copy_to_clipboard(cursorWord.selectedText)
   -- Escape special characters and
   -- Set command line with search pattern, ready for user input
   local escaped_text = vim.fn.escape(cursorWord.selectedText, '/\\')
@@ -68,6 +68,26 @@ vim.keymap.set({ 'n', 'v' }, '<leader>fs', function()
     end
   end)
 end, { noremap = true, silent = true, desc = '[F]ormat [S]tring' })
+
+vim.keymap.set({ 'n', 'v' }, '<leader>yp', function()
+  local filePath = vim.api.nvim_buf_get_name(0)
+  local cursorPos = JoJo.utils.get_cursor_position()
+
+  local function format_pos(pos)
+    if pos.col == 0 then
+      return 'L' .. pos.lnum
+    end
+    return 'L' .. pos.lnum .. ':C' .. pos.col
+  end
+
+  local result = filePath
+  if cursorPos then
+    result = result .. ':' .. format_pos(cursorPos.formatted.startPos) .. '-' .. format_pos(cursorPos.formatted.endPos)
+  end
+
+  JoJo.utils.copy_to_clipboard(result)
+  JoJo.utils.back_to_normal_mode() -- exit visual mode if in it
+end, { noremap = true, silent = true, desc = '[Y]ank [P]ath' })
 
 ----------------------------------------
 ------------- diagnostic ---------------
