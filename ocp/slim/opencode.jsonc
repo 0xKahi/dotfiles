@@ -14,10 +14,19 @@
 		"orchestrator": {
 			"color": "#D498F8"
 		},
+		"council": {
+			"color": "#4fd6be"
+		},
 		"explore": {
 			"disable": true
 		},
 		"general": {
+			"disable": true
+		},
+		"plan": {
+			"disable": true
+		},
+		"build": {
 			"disable": true
 		}
 	}
