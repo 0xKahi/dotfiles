@@ -70,6 +70,17 @@ function M.get_cursor_position()
   end
 end
 
+---@class FilePath
+---@field full string full file path
+---@field relative string relative file path
+
+---@return FilePath a table containing the full and relative file paths of the current buffer
+function M.get_file_path()
+  local full = vim.api.nvim_buf_get_name(0)
+  local relative = vim.fn.expand('%:.')
+  return { full = full, relative = relative }
+end
+
 function M.copy_to_clipboard(text)
   -- Use the system clipboard register
   vim.fn.setreg('+', text)

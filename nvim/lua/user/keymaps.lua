@@ -70,22 +70,43 @@ vim.keymap.set({ 'n', 'v' }, '<leader>fs', function()
 end, { noremap = true, silent = true, desc = '[F]ormat [S]tring' })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>yp', function()
-  local filePath = vim.api.nvim_buf_get_name(0)
+  local paths = JoJo.utils.get_file_path()
+  local formattedRelative = '@' .. paths.relative
+
+  local pathList = {
+    formattedRelative,
+    paths.full,
+  }
+
   local cursorPos = JoJo.utils.get_cursor_position()
 
-  local function format_pos(pos)
-    if pos.col == 0 then
-      return 'L' .. pos.lnum
+  vim.ui.select(pathList, {
+    prompt = 'Choose Path Format',
+  }, function(pathChoice)
+    if pathChoice == nil then
+      print('No choice made.')
+      return
     end
-    return 'L' .. pos.lnum .. ':C' .. pos.col
-  end
 
-  local result = filePath
-  if cursorPos then
-    result = result .. ':' .. format_pos(cursorPos.formatted.startPos) .. '-' .. format_pos(cursorPos.formatted.endPos)
-  end
+    local function format_pos(pos)
+      if pos.col == 0 then
+        return 'L' .. pos.lnum
+      end
+      return 'L' .. pos.lnum .. ':C' .. pos.col
+    end
 
-  JoJo.utils.copy_to_clipboard(result)
+    local result = pathChoice
+    if cursorPos then
+      result = result
+        .. ':'
+        .. format_pos(cursorPos.formatted.startPos)
+        .. '-'
+        .. format_pos(cursorPos.formatted.endPos)
+    end
+
+    JoJo.utils.copy_to_clipboard(result)
+  end)
+
   JoJo.utils.back_to_normal_mode() -- exit visual mode if in it
 end, { noremap = true, silent = true, desc = '[Y]ank [P]ath' })
 
