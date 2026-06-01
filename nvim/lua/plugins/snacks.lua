@@ -193,7 +193,21 @@ return {
       sections = {
         { section = 'header' },
         { title = 'Recent Files', padding = 1 },
-        { section = 'recent_files', padding = 1, limit = 9, cwd = true },
+        {
+          section = 'recent_files',
+          padding = 1,
+          limit = 9,
+          cwd = true,
+          filter = function(file)
+            local cwd = vim.fn.getcwd()
+            local rel = file
+            if file:sub(1, #cwd + 1) == cwd .. '/' then
+              rel = file:sub(#cwd + 2)
+            end
+            -- hide worktrees stored at <repo>/.worktree, but keep files when cwd is inside one
+            return not rel:match('^%.worktree/')
+          end,
+        },
         { section = 'startup' },
       },
     },
