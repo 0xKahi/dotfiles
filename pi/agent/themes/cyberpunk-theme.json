@@ -42,9 +42,9 @@
   },
   "colors": {
     "accent": "#72F6B2",
-    "border": "darkStep7",
-    "borderAccent": "darkStep8",
-    "borderMuted": "darkStep6",
+    "border": "#00FF9C",
+    "borderAccent": "#3d5afe",
+    "borderMuted": "#41a6b5",
     "success": "darkGreen",
     "error": "darkRed",
     "warning": "darkOrange",
