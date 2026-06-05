@@ -1,9 +1,9 @@
 {
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.5",
+  "defaultProvider": "opencode-go",
+  "defaultModel": "minimax-m3",
   "defaultThinkingLevel": "high",
   "theme": "cyberpunk-theme",
-  "lastChangelogVersion": "0.78.0",
+  "lastChangelogVersion": "0.78.1",
   "hideThinkingBlock": false,
   "showHardwareCursor": true,
   "retry": {

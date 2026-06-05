@@ -10,21 +10,20 @@
     },
     {
       "provider": "opencode-go",
+      "modelId": "minimax-m3"
+    },
+    {
+      "provider": "opencode-go",
       "modelId": "kimi-k2.6"
     },
     {
       "provider": "opencode-go",
       "modelId": "glm-5.1"
-    },
-    {
-      "provider": "opencode-go",
-      "modelId": "minimax-m2.7"
     }
   ],
   "provider_filter": [
     "openai-codex",
     "anthropic",
-    "opencode-go",
-    "openrouter"
+    "opencode-go"
   ]
 }
