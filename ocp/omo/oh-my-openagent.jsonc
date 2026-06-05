@@ -75,7 +75,7 @@
       ]
     },
     "librarian": {
-      "model": "opencode-go/minimax-m2.7",
+      "model": "opencode-go/minimax-m3",
       "fallback_models": [
         "github-copilot/gemini-3-flash-preview"
       ]
@@ -83,7 +83,7 @@
     "explore": {
       "model": "openai/gpt-5.4-mini-fast",
       "fallback_models": [
-        "opencode-go/minimax-m2.7"
+        "opencode-go/minimax-m3"
       ]
     },
     "multimodal-looker": {
@@ -134,7 +134,7 @@
     },
     "quick": {
       "description": "Trivial tasks, typo fixes, single-file changes",
-      "model": "opencode-go/minimax-m2.7",
+      "model": "opencode-go/minimax-m3",
       "fallback_models": [
         "openai/gpt-5.4-mini",
         "opencode/gpt-5-nano"
@@ -168,7 +168,7 @@
       "model": "opencode-go/kimi-k2.6"
     },
     "git": {
-      "model": "opencode-go/minimax-m2.7",
+      "model": "opencode-go/minimax-m3",
       "description": "All git operations",
       "prompt_append": "Focus on atomic commits, clear messages, and safe operations."
     }

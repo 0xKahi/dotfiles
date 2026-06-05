@@ -28,7 +28,7 @@
 				"mcps": []
 			},
 			"librarian": {
-				"model": "opencode-go/minimax-m2.7",
+				"model": "opencode-go/minimax-m3",
 				"variant": "low",
 				"skills": [],
 				"mcps": [
@@ -83,6 +83,9 @@
 				},
 				"delta": {
 					"model": "opencode-go/kimi-k2.6"
+				},
+				"gama": {
+					"model": "opencode-go/minimax-m3"
 				}
 			}
 		}
