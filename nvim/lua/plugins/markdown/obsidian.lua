@@ -19,12 +19,9 @@ return {
 
       -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
       completion = {
-        -- Set to false to disable completion.
-        nvim_cmp = false,
-        blink = false,
-        -- Trigger completion at 2 chars.
         min_chars = 2,
-        create_new = false,
+        match_case = true,
+        create_new = true,
       },
 
       templates = {
