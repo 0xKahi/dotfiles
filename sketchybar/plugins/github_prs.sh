@@ -43,7 +43,7 @@ fetch_prs() {
   
   # Fetch PR data with 30 second timeout using perl
   # PR_DATA=$(perl -e 'alarm 30; exec @ARGV' "$GH_SCRIPT" --filter "shuffle-labs,cadillac-studios" 2>&1)
-  PR_DATA=$(perl -e 'alarm 30; exec @ARGV' /Users/kahi/dotfiles/sketchybar/scripts/gh-pr.sh --filter "shuffle-labs,cadillac-studios" 2>&1)
+  PR_DATA=$(perl -e 'alarm 30; exec @ARGV' /Users/kahi/dotfiles/sketchybar/scripts/gh-pr.sh --filter "shuffle-labs,cadillac-studios,0xKahi" 2>&1)
   EXIT_CODE=$?
   
   # Check for timeout (exit code 142 = SIGALRM)
