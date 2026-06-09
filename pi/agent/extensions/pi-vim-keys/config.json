@@ -1,0 +1,24 @@
+{
+  "$schema": "https://raw.githubusercontent.com/0xKahi/pi-vim-keys/main/assets/config.schema.json",
+  "colors": {
+    "normal": "#55BBF9",
+    "insert": "#72F6B2",
+    "visual": "#D498F8",
+    "visualLine": "#D498F8"
+  },
+  "normalModeRemap": {
+    "type": "sequence",
+    "firstKey": "k",
+    "secondKey": "j"
+  },
+  "keybinds": {
+    "<leader>q": "app.exit",
+    "<leader>e": "app.editor.external",
+    "<leader>p": "app.clipboard.pasteImage",
+    "<leader>l": "app.session.resume",
+    "<leader>n": "app.session.new",
+    "<leader>g": "app.session.tree",
+    "<leader>m": "pi.vimKeys.event:pi-model-select",
+    "ctrl+t": "app.thinking.cycle"
+  }
+}

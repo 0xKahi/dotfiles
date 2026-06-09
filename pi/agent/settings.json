@@ -1,9 +1,9 @@
 {
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.5",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-4-8",
   "defaultThinkingLevel": "high",
   "theme": "cyberpunk-theme",
-  "lastChangelogVersion": "0.78.1",
+  "lastChangelogVersion": "0.79.0",
   "hideThinkingBlock": false,
   "showHardwareCursor": true,
   "retry": {
@@ -17,6 +17,7 @@
     }
   },
   "packages": [
-    "npm:@0xkahi/pi-model-select"
+    "npm:@0xkahi/pi-model-select",
+    "npm:@0xkahi/pi-vim-keys"
   ]
 }
