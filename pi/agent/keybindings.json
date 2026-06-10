@@ -41,5 +41,14 @@
   "app.exit": "ctrl+q",
   "app.model.cycleForward": "",
   "app.model.cycleBackward": "",
-  "app.tools.expand": "ctrl+o"
+  "app.tools.expand": "ctrl+o",
+  "app.tree.foldOrUp": [
+    "ctrl+left",
+    "ctrl+h"
+  ],
+  "app.tree.unfoldOrDown": [
+    "ctrl+right",
+    "ctrl+l"
+  ],
+  "app.tree.filter.labeledOnly": "ctrl+shift+l"
 }

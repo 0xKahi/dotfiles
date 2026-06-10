@@ -17,7 +17,7 @@
     "<leader>p": "app.clipboard.pasteImage",
     "<leader>l": "app.session.resume",
     "<leader>n": "app.session.new",
-    "<leader>g": "app.session.tree",
+    "<leader>t": "app.session.tree",
     "<leader>m": "pi.vimKeys.event:pi-model-select",
     "ctrl+t": "app.thinking.cycle"
   }
