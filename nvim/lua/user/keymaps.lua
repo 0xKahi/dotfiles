@@ -71,11 +71,13 @@ end, { noremap = true, silent = true, desc = '[F]ormat [S]tring' })
 
 vim.keymap.set({ 'n', 'v' }, '<leader>yp', function()
   local paths = JoJo.utils.get_file_path()
+  local relativePath = './' .. paths.relative
   local formattedRelative = '@' .. paths.relative
 
   local pathList = {
-    formattedRelative,
     paths.full,
+    relativePath,
+    formattedRelative,
   }
 
   local cursorPos = JoJo.utils.get_cursor_position()
