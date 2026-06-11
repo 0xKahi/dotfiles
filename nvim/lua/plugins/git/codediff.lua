@@ -73,6 +73,8 @@ return {
         jump_to_first_change = true, -- Auto-scroll to first change when opening a diff: false to stay at same line
         highlight_priority = 100, -- Priority for line-level diff highlights (increase to override LSP highlights)
         compute_moves = false, -- Detect moved code blocks (opt-in, matches VSCode experimental.showMoves)
+        compact_context_lines = 3, -- Number of context lines around hunks in compact mode
+        compact_sync_folds = true, -- Sync fold open/close across panes (mirrors Vim diff mode behavior)
       },
 
       -- Explorer panel configuration
@@ -130,6 +132,7 @@ return {
           show_help = 'g?', -- Show floating window with available keymaps
           align_move = 'gm', -- Temporarily align moved code blocks across panes
           toggle_layout = 't', -- Toggle between side-by-side and inline layout
+          toggle_compact = 'gc', -- Toggle compact mode (fold unchanged regions)
         },
         explorer = {
           select = '<CR>', -- Open diff for selected file
