@@ -50,5 +50,7 @@
     "ctrl+right",
     "ctrl+l"
   ],
-  "app.tree.filter.labeledOnly": "ctrl+shift+l"
+  "app.tree.filter.labeledOnly": "ctrl+shift+l",
+  "app.session.togglePath": "ctrl+shift+p",
+  "app.session.toggleNameFilter": "ctrl+shift+n"
 }
