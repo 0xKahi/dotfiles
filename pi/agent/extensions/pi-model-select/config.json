@@ -1,4 +1,6 @@
 {
+  "$schema": "https://raw.githubusercontent.com/0xKahi/pi-model-select/main/config.schema.json",
+  "layout": "inline",
   "favourite": [
     {
       "provider": "openai-codex",
