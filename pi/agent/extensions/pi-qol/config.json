@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/0xKahi/pi-qol/main/assets/config.schema.json",
+  "auto_session_name": {
+    "enabled": true,
+    "model": {
+      "provider": "opencode",
+      "modelId": "gpt-5-nano",
+      "reasoning": "low"
+    }
+  }
+}

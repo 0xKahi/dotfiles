@@ -1,9 +1,9 @@
 {
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.5",
-  "defaultThinkingLevel": "low",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-4-8",
+  "defaultThinkingLevel": "medium",
   "theme": "cyberpunk-theme",
-  "lastChangelogVersion": "0.79.3",
+  "lastChangelogVersion": "0.79.4",
   "hideThinkingBlock": false,
   "showHardwareCursor": true,
   "enableSkillCommands": true,
@@ -20,6 +20,7 @@
   "packages": [
     "npm:@0xkahi/pi-model-select",
     "npm:@0xkahi/pi-vim-keys",
-    "npm:@gotgenes/pi-anthropic-auth"
+    "npm:@gotgenes/pi-anthropic-auth",
+    "npm:@0xkahi/pi-qol"
   ]
 }
