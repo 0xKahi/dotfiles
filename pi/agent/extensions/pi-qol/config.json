@@ -7,5 +7,45 @@
       "modelId": "gpt-5-nano",
       "reasoning": "low"
     }
+  },
+  "model_select": {
+    "enabled": true,
+    "layout": "inline",
+    "favourite": [
+      {
+        "provider": "openai-codex",
+        "modelId": "gpt-5.5"
+      },
+      {
+        "provider": "anthropic",
+        "modelId": "claude-opus-4-8"
+      },
+      {
+        "provider": "anthropic",
+        "modelId": "claude-fable-5"
+      },
+      {
+        "provider": "opencode-go",
+        "modelId": "minimax-m3"
+      },
+      {
+        "provider": "opencode-go",
+        "modelId": "kimi-k2.6"
+      },
+      {
+        "provider": "opencode-go",
+        "modelId": "glm-5.1"
+      },
+      {
+        "provider": "opencode-go",
+        "modelId": "deepseek-v4-pro"
+      }
+    ],
+    "provider_filter": [
+      "openai-codex",
+      "anthropic",
+      "opencode-go",
+      "opencode"
+    ]
   }
 }

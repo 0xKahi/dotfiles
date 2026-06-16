@@ -19,7 +19,7 @@
     "<leader>n": "app.session.new",
     "<leader>t": "app.session.tree",
     "<leader>of": "app.session.fork",
-    "<leader>m": "pi.vimKeys.event:pi-model-select",
+    "<leader>m": "pi.vimKeys.event:pi-qol.model_select",
     "ctrl+t": "app.thinking.cycle"
   }
 }
