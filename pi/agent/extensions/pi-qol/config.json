@@ -21,8 +21,12 @@
         "modelId": "claude-opus-4-8"
       },
       {
-        "provider": "anthropic",
-        "modelId": "claude-fable-5"
+        "provider": "opencode-go",
+        "modelId": "kimi-k2.6"
+      },
+      {
+        "provider": "opencode-go",
+        "modelId": "kimi-k2.7-code"
       },
       {
         "provider": "opencode-go",
@@ -30,11 +34,7 @@
       },
       {
         "provider": "opencode-go",
-        "modelId": "kimi-k2.6"
-      },
-      {
-        "provider": "opencode-go",
-        "modelId": "glm-5.1"
+        "modelId": "glm-5.2"
       },
       {
         "provider": "opencode-go",
@@ -47,5 +47,12 @@
       "opencode-go",
       "opencode"
     ]
+  },
+  "custom_footer": {
+    "enabled": true,
+    "colors": {
+      "directory": "#82aaff",
+      "modelName": "#c8d3f5"
+    }
   }
 }
