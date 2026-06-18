@@ -1,0 +1,60 @@
+theme = "custom"               # graphite, midnight, paper, ember, catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha, zenburn, custom
+mode = "auto"                  # auto, split, stack
+vcs = "git"                    # git, jj, sl
+watch = false
+exclude_untracked = false
+line_numbers = true
+wrap_lines = false
+agent_notes = true
+transparent_background = false
+
+[custom_theme]
+base = "midnight"            # graphite, midnight, paper, ember, catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha, zenburn
+label = "CyberpunkTheme"
+accent = "#72F6B2"
+accentMuted = "#2d3f76"
+panel = "#1e2030"
+panelAlt = "#13243a"
+border = "#00FF9C"
+text = "#c8d3f5"
+muted = "#828bb8"
+addedBg = "#20303b"
+removedBg = "#37222c"
+movedAddedBg = "#20303b"
+movedRemovedBg = "#37222c"
+contextBg = "#312954"
+addedContentBg = "#20303b"
+removedContentBg = "#37222c"
+contextContentBg = "#828bb8"
+addedSignColor = "#74F2BF"
+removedSignColor = "#EF8FA4"
+lineNumberBg = "#261d45"
+lineNumberFg = "#636da6"
+selectedHunk = "#82aaff"
+badgeAdded = "#B8DB87"
+badgeRemoved = "#E26A75"
+badgeNeutral = "#89a5d3"
+fileNew = "#B8DB87"
+fileDeleted = "#E26A75"
+fileRenamed = "#DDAFF8"
+fileModified = "#DDAFF8"
+fileUntracked = "#74F2BF"
+noteBorder = "#ff966c"
+noteTitleText = "#c8d3f5"
+noteBackground = "#261d45"
+
+
+[custom_theme.syntax]
+default = "#c8d3f5"
+keyword = "#c099ff"
+string = "#a4d6ff"
+comment = "#636da6"
+number = "#E5D97D"
+function = "#82aaff"
+method = "#82aaff"
+property = "#4fd6be"
+variable = "#c8d3f5"
+constant = "#c8d3f5"
+type = "#ffe96c"
+class = "#B4BAF8"
+punctuation = "#89DDFF"
