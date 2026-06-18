@@ -53,6 +53,9 @@
     "colors": {
       "directory": "#82aaff",
       "modelName": "#c8d3f5"
+    },
+    "icons": {
+      "directory": " "
     }
   }
 }

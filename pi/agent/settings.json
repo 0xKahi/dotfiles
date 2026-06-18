@@ -1,9 +1,9 @@
 {
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-5.5",
-  "defaultThinkingLevel": "medium",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-4-8",
+  "defaultThinkingLevel": "high",
   "theme": "cyberpunk-theme",
-  "lastChangelogVersion": "0.79.6",
+  "lastChangelogVersion": "0.79.7",
   "hideThinkingBlock": false,
   "showHardwareCursor": true,
   "enableSkillCommands": true,
