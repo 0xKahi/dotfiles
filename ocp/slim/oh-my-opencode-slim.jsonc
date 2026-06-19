@@ -51,7 +51,7 @@
 				"mcps": []
 			},
 			"fixer": {
-				"model": "opencode-go/kimi-k2.6",
+				"model": "opencode-go/kimi-k2.7-code",
 				"variant": "low",
 				"skills": [],
 				"mcps": []

@@ -45,7 +45,7 @@
     "muted": "darkStep8",
     "dim": "darkStep9",
     "text": "fg",
-    "thinkingText": "#545e8a",
+    "thinkingText": "darkStep9",
     "selectedBg": "#311b92",
     "userMessageBg": "darkStep3",
     "userMessageText": "fg",
