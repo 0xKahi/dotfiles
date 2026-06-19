@@ -8,6 +8,14 @@ if [ -f "$HOME/Downloads/apps/google-cloud-sdk/completion.zsh.inc" ]; then . "$H
 # ================ Setup JoJo command ===========================
 # Load custom JoJo scripts and commands and completions
 [ -f "$HOME/Desktop/code/jojo/jojo-scripts/entrypoint.zsh" ] && source "$HOME/Desktop/code/jojo/jojo-scripts/entrypoint.zsh"
+
+## load custom jojo script
+wt() {
+  local dir
+  dir="$(bun run "$(jojo get buildPath)/pick-worktree.js")" || return
+  [ -n "$dir" ] && cd "$dir"
+}
+
 # ======================= end ====================================
 
 # ================ Setup nvm completion ===========================
