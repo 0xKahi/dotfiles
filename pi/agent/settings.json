@@ -1,6 +1,6 @@
 {
-  "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-4-8",
+  "defaultProvider": "opencode-go",
+  "defaultModel": "minimax-m3",
   "defaultThinkingLevel": "medium",
   "theme": "cyberpunk-theme",
   "lastChangelogVersion": "0.79.8",

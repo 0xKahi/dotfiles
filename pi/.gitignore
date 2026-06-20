@@ -1,2 +1,4 @@
+agent/sessions
+agent/tmp
 auth.json
 trust.json

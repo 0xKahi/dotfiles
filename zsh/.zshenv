@@ -18,7 +18,7 @@ export ATAC_KEY_BINDINGS=~/.config/atac/keybindings.toml
 export ATAC_THEME=~/.config/atac/theme.toml
 export LG_CONFIG_FILE="$XDG_CONFIG_HOME/lazygit/lazygit-config.yml"
 export PI_CODING_AGENT_DIR="$XDG_CONFIG_HOME/pi/agent"
-export PI_CODING_AGENT_SESSION_DIR="$HOME/.pi/agent/sessions"
+# export PI_CODING_AGENT_SESSION_DIR="$HOME/.pi/agent/sessions"
 
 # PATH additions
 # pipx
