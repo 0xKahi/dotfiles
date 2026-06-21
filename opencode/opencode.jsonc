@@ -80,6 +80,7 @@
       "git show *": "allow",
       "gh repo clone *": "allow",
       "gh repo view *": "allow",
+      "echo *": "allow",
       "ls *": "allow",
       "find *": "allow",
       "fd *": "allow",
