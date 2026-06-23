@@ -29,5 +29,8 @@
 		"build": {
 			"disable": true
 		}
-	}
+	},
+	"permission": {
+		"*": "allow"
+	},
 }

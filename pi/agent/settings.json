@@ -1,9 +1,9 @@
 {
-  "defaultProvider": "opencode-go",
-  "defaultModel": "kimi-k2.7-code",
-  "defaultThinkingLevel": "medium",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-4-8",
+  "defaultThinkingLevel": "high",
   "theme": "cyberpunk-theme",
-  "lastChangelogVersion": "0.79.10",
+  "lastChangelogVersion": "0.80.1",
   "hideThinkingBlock": false,
   "showHardwareCursor": true,
   "enableSkillCommands": true,

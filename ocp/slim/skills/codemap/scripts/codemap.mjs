@@ -64,7 +64,7 @@ export function loadGitignore(root) {
   return readFileSync(gitignorePath, 'utf8')
     .split('\n')
     .map((line) => line.trim())
-    .filter((line) => line && !line.startsWith('#'));
+    .filter((line) => line && !line.startsWith('#') && line !== '/');
 }
 
 function walkFiles(root) {
