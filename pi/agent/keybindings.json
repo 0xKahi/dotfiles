@@ -24,10 +24,12 @@
   "tui.editor.undo": "ctrl+shift+u",
   "tui.select.up": [
     "ctrl+p",
+    "ctrl+k",
     "up"
   ],
   "tui.select.down": [
     "ctrl+n",
+    "ctrl+j",
     "down"
   ],
   "tui.select.confirm": "enter",

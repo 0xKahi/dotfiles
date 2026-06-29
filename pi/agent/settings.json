@@ -1,9 +1,9 @@
 {
-  "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-4-8",
-  "defaultThinkingLevel": "high",
+  "defaultProvider": "opencode-go",
+  "defaultModel": "minimax-m3",
+  "defaultThinkingLevel": "medium",
   "theme": "cyberpunk-theme",
-  "lastChangelogVersion": "0.80.1",
+  "lastChangelogVersion": "0.80.2",
   "hideThinkingBlock": false,
   "showHardwareCursor": true,
   "enableSkillCommands": true,
@@ -21,5 +21,8 @@
     "npm:@0xkahi/pi-vim-keys",
     "npm:@gotgenes/pi-anthropic-auth",
     "npm:@0xkahi/pi-qol"
+  ],
+  "skills": [
+    "~/.jojo/skills/global"
   ]
 }

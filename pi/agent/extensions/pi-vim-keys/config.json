@@ -20,6 +20,7 @@
     "<leader>t": "app.session.tree",
     "<leader>of": "app.session.fork",
     "<leader>m": "pi.vimKeys.event:pi-qol.model_select",
-    "ctrl+t": "app.thinking.cycle"
+    "ctrl+t": "app.thinking.cycle",
+    "ctrl+o": "app.tools.expand"
   }
 }
