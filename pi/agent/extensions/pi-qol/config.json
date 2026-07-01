@@ -21,6 +21,10 @@
         "modelId": "claude-opus-4-8"
       },
       {
+        "provider": "anthropic",
+        "modelId": "claude-sonnet-5"
+      },
+      {
         "provider": "opencode-go",
         "modelId": "kimi-k2.6"
       },
@@ -39,6 +43,10 @@
       {
         "provider": "opencode-go",
         "modelId": "deepseek-v4-pro"
+      },
+      {
+        "provider": "opencode-go",
+        "modelId": "deepseek-v4-flash"
       }
     ],
     "provider_filter": [
