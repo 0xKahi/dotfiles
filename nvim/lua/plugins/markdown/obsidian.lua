@@ -13,6 +13,10 @@ return {
           name = 'jojo',
           path = '~/Library/Mobile Documents/iCloud~md~obsidian/Documents/jojo-vault/',
         },
+        -- {
+        --   name = 'llm-wiki',
+        --   path = '/Desktop/code/jojo/llm-wiki',
+        -- },
       },
 
       legacy_commands = false,
@@ -26,8 +30,10 @@ return {
 
       templates = {
         folder = 'jojo/templates',
-        date_format = '%Y-%m-%d',
-        time_format = '%Hh:%Mm',
+        -- date_format = '%Y-%m-%d',
+        -- time_format = '%Hh:%Mm',
+        date_format = 'YYYY-MM-DD',
+        time_format = 'hh:mm',
         -- A map for custom variables, the key should be the variable and the value a function
         substitutions = {},
       },
