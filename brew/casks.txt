@@ -3,6 +3,7 @@ font-jetbrains-mono
 font-jetbrains-mono-nerd-font
 font-sketchybar-app-font
 font-symbols-only-nerd-font
+keycastr
 leader-key
 miniforge
 ngrok
