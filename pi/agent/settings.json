@@ -3,7 +3,7 @@
   "defaultModel": "claude-fable-5",
   "defaultThinkingLevel": "medium",
   "theme": "cyberpunk-theme",
-  "lastChangelogVersion": "0.80.3",
+  "lastChangelogVersion": "0.80.6",
   "hideThinkingBlock": false,
   "showHardwareCursor": true,
   "enableSkillCommands": true,
