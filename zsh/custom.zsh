@@ -1,5 +1,6 @@
 ## auto completion
 fpath=(${HOME}/.docker/completions $fpath) # for docker completions
+fpath=(${HOME}/.zsh/completions $fpath) # for openspec
 autoload bashcompinit && bashcompinit # for bash in zsh
 autoload -Uz compinit
 
