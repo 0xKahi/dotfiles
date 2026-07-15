@@ -2,8 +2,8 @@
   "$schema": "https://raw.githubusercontent.com/0xKahi/pi-arsenal/main/assets/config.schema.json",
   "tmux_popup": {
     "enabled": true,
-    "width": 50,
-    "height": 50,
+    "width": 70,
+    "height": 70,
     "fileCommand": "nvim"
   }
 }
