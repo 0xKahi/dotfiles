@@ -11,46 +11,67 @@
   "model_select": {
     "enabled": true,
     "layout": "inline",
+    "groups": [ " ", " ", " ", " "],
     "favourite": [
       {
         "provider": "openai-codex",
-        "modelId": "gpt-5.6-sol"
+        "modelId": "gpt-5.6-sol",
+        "groups": [" "]
       },
       {
         "provider": "openai-codex",
-        "modelId": "gpt-5.6-terra"
+        "modelId": "gpt-5.6-terra",
+        "groups": [" "]
       },
       {
         "provider": "openai-codex",
-        "modelId": "gpt-5.6-luna"
+        "modelId": "gpt-5.6-luna",
+        "groups": [" "]
       },
       {
         "provider": "anthropic",
-        "modelId": "claude-fable-5"
+        "modelId": "claude-opus-4-6",
+        "groups": [" "]
       },
       {
         "provider": "anthropic",
-        "modelId": "claude-opus-4-8"
+        "modelId": "claude-fable-5",
+        "groups": [" ", " "]
+      },
+      {
+        "provider": "anthropic",
+        "modelId": "claude-opus-4-8",
+        "groups": [" "]
       },
       {
         "provider": "opencode-go",
-        "modelId": "kimi-k2.7-code"
+        "modelId": "kimi-k3",
+        "groups": [" "]
       },
       {
         "provider": "opencode-go",
-        "modelId": "minimax-m3"
+        "modelId": "kimi-k2.7-code",
+        "groups": [" "]
       },
       {
         "provider": "opencode-go",
-        "modelId": "glm-5.2"
+        "modelId": "minimax-m3",
+        "groups": [" "]
       },
       {
         "provider": "opencode-go",
-        "modelId": "deepseek-v4-pro"
+        "modelId": "glm-5.2",
+        "groups": [" "]
       },
       {
         "provider": "opencode-go",
-        "modelId": "deepseek-v4-flash"
+        "modelId": "deepseek-v4-pro",
+        "groups": [" "]
+      },
+      {
+        "provider": "opencode-go",
+        "modelId": "deepseek-v4-flash",
+        "groups": [" "]
       }
     ],
     "provider_filter": [
@@ -58,7 +79,11 @@
       "anthropic",
       "opencode-go",
       "opencode"
-    ]
+    ],
+    "hide_tabs": {
+      "search": true
+    },
+    "favourite_label": " "
   },
   "custom_footer": {
     "enabled": true,

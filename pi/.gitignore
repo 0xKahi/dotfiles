@@ -2,3 +2,4 @@ agent/sessions
 agent/tmp
 auth.json
 trust.json
+agent/models-store.json
