@@ -34,3 +34,5 @@ alias oc="ocp run default"
 alias omo="ocp run omo"
 
 alias pve="pvetui"
+
+alias llw="llm-wiki"
