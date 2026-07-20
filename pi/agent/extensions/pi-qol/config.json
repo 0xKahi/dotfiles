@@ -30,18 +30,28 @@
       },
       {
         "provider": "anthropic",
-        "modelId": "claude-opus-4-6",
-        "groups": [" "]
-      },
-      {
-        "provider": "anthropic",
         "modelId": "claude-fable-5",
-        "groups": [" ", " "]
+        "groups": [" "]
       },
       {
         "provider": "anthropic",
         "modelId": "claude-opus-4-8",
         "groups": [" "]
+      },
+      {
+        "provider": "anthropic",
+        "modelId": "claude-sonnet-4-6",
+        "groups": [" "]
+      },
+      {
+        "provider": "anthropic",
+        "modelId": "claude-opus-4-6",
+        "groups": [" "]
+      },
+      {
+        "provider": "opencode",
+        "modelId": "gpt-5.2",
+        "groups": [" "]
       },
       {
         "provider": "opencode-go",
@@ -51,6 +61,11 @@
       {
         "provider": "opencode-go",
         "modelId": "kimi-k2.7-code",
+        "groups": [" "]
+      },
+      {
+        "provider": "opencode-go",
+        "modelId": "kimi-k2.6",
         "groups": [" "]
       },
       {
