@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-17T23:00:40.816Z",
+  "updatedAt": "2026-07-19T22:34:35.969Z",
   "skills": {
     "simplify": {
       "status": "customized",
@@ -9,7 +9,7 @@
       "lastManagedHash": "",
       "lastSeenHash": "61361b7d3bb63154d622cb5c6ab32aa727180aae738307e7f1b434690ec66210",
       "stagedPath": "/Users/kahi/.config/ocp/slim/.oh-my-opencode-slim/skill-updates/2.2.3/simplify",
-      "updatedAt": "2026-07-17T23:00:40.810Z"
+      "updatedAt": "2026-07-19T22:34:35.967Z"
     },
     "codemap": {
       "status": "customized",
@@ -18,7 +18,7 @@
       "lastManagedHash": "",
       "lastSeenHash": "4c6e26cecc20a2c5b002a33b4833632ae16619514f81d94a57254b8a233570eb",
       "stagedPath": "/Users/kahi/.config/ocp/slim/.oh-my-opencode-slim/skill-updates/2.2.3/codemap",
-      "updatedAt": "2026-07-17T23:00:40.812Z"
+      "updatedAt": "2026-07-19T22:34:35.967Z"
     },
     "clonedeps": {
       "status": "customized",
@@ -27,24 +27,24 @@
       "lastManagedHash": "",
       "lastSeenHash": "85dfe902610ec00ec8c3ff2d0f7b5210ff86b870d27a9684d91aac522c5732fc",
       "stagedPath": "/Users/kahi/.config/ocp/slim/.oh-my-opencode-slim/skill-updates/2.2.3/clonedeps",
-      "updatedAt": "2026-07-17T23:00:40.813Z"
+      "updatedAt": "2026-07-19T22:34:35.968Z"
     },
     "deepwork": {
       "status": "customized",
-      "packageVersion": "2.2.3",
-      "sourceHash": "f0d8ea37af3f20a6accde9d5ff1ff46bd8334df95a89221201f69be6fb5223b8",
+      "packageVersion": "2.2.4",
+      "sourceHash": "e7d16f590aac24593d93b03337cf351a74ff39389488b51479a8a51959453c1a",
       "lastManagedHash": "",
       "lastSeenHash": "2306f537ec38b7b73265b42c996044bc06ce2a1da976fad75885b63039226b28",
-      "stagedPath": "/Users/kahi/.config/ocp/slim/.oh-my-opencode-slim/skill-updates/2.2.3/deepwork",
-      "updatedAt": "2026-07-17T23:00:40.814Z"
+      "stagedPath": "/Users/kahi/.config/ocp/slim/.oh-my-opencode-slim/skill-updates/2.2.4/deepwork",
+      "updatedAt": "2026-07-19T22:34:35.968Z"
     },
     "verification-planning": {
       "status": "managed",
-      "packageVersion": "2.2.3",
+      "packageVersion": "2.2.4",
       "sourceHash": "f59c06476d484287418b595a6ff2fc809eeffb1ea020d253481084e0862066c3",
       "lastManagedHash": "f59c06476d484287418b595a6ff2fc809eeffb1ea020d253481084e0862066c3",
       "lastSeenHash": "f59c06476d484287418b595a6ff2fc809eeffb1ea020d253481084e0862066c3",
-      "updatedAt": "2026-07-17T23:00:40.815Z"
+      "updatedAt": "2026-07-19T22:34:35.968Z"
     },
     "reflect": {
       "status": "customized",
@@ -53,7 +53,7 @@
       "lastManagedHash": "",
       "lastSeenHash": "d6549f0261c224c300c1b2285221172cd2e44204e777dd74d4dc604766adf4b1",
       "stagedPath": "/Users/kahi/.config/ocp/slim/.oh-my-opencode-slim/skill-updates/2.2.3/reflect",
-      "updatedAt": "2026-07-17T23:00:40.816Z"
+      "updatedAt": "2026-07-19T22:34:35.968Z"
     },
     "oh-my-opencode-slim": {
       "status": "customized",
@@ -62,7 +62,7 @@
       "lastManagedHash": "",
       "lastSeenHash": "756ef3c8ed9309f2b534cc27fadc21d89b3419a7bcf4c8869c31e9ad3a1912ad",
       "stagedPath": "/Users/kahi/.config/ocp/slim/.oh-my-opencode-slim/skill-updates/2.2.3/oh-my-opencode-slim",
-      "updatedAt": "2026-07-17T23:00:40.816Z"
+      "updatedAt": "2026-07-19T22:34:35.969Z"
     },
     "worktrees": {
       "status": "customized",
@@ -71,7 +71,7 @@
       "lastManagedHash": "",
       "lastSeenHash": "565f3d29c33fdd7d74a5c7ec4f3107b918281cbf82d20ba103baae056bbc063c",
       "stagedPath": "/Users/kahi/.config/ocp/slim/.oh-my-opencode-slim/skill-updates/2.2.3/worktrees",
-      "updatedAt": "2026-07-17T23:00:40.816Z"
+      "updatedAt": "2026-07-19T22:34:35.969Z"
     }
   }
 }
