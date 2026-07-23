@@ -7,7 +7,7 @@ return {
   require('plugins.lsp.helpers.lazydev'),
   require('plugins.lsp.helpers.ts-comments'),
   require('plugins.lsp.helpers.ts-autotag'),
-  -- some file type stuff
+  -- some filetype stuff
   {
     vim.filetype.add({
       extension = {

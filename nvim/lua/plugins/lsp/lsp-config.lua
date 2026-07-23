@@ -72,6 +72,7 @@ return {
 
       -- Define default config
       vim.lsp.config('*', {
+        capabilities = { textDocument = { semanticTokens = { multilineTokenSupport = true } } },
         on_attach = on_attach,
       })
 
@@ -219,13 +220,51 @@ return {
         filetypes = { 'markdown', 'markdown.mdx' },
       })
 
+      workspace.lsp_config('harper_ls', {
+        filetypes = {
+          'asciidoc',
+          'gitcommit',
+          'html',
+          'markdown',
+          'toml',
+          'typst',
+          'text',
+        },
+        settings = {
+          ['harper-ls'] = {
+            linters = {
+              SpellCheck = true,
+              SpelledNumbers = false,
+              AnA = true,
+              SentenceCapitalization = true,
+              UnclosedQuotes = true,
+              WrongApostrophe = false,
+              LongSentences = true,
+              RepeatedWords = true,
+              Spaces = true,
+              CorrectNumberSuffix = true,
+              SplitWords = false,
+            },
+            codeActions = {
+              ForceStable = true,
+            },
+            markdown = {
+              IgnoreLinkTitle = true,
+            },
+            diagnosticSeverity = 'information',
+            dialect = 'British',
+            excludePatterns = {},
+          },
+        },
+      })
+
       vim.api.nvim_create_autocmd('LspAttach', {
         desc = 'LSP actions',
         callback = function(event)
           local conf = { buffer = event.buf }
           vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', conf)
           vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', conf)
-          vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', conf)
+          vim.keymap.set({ 'n', 'v' }, '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', conf)
         end,
       })
     end,
