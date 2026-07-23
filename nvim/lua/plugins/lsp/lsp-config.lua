@@ -221,6 +221,7 @@ return {
       })
 
       workspace.lsp_config('harper_ls', {
+        disable = true,
         filetypes = {
           'asciidoc',
           'gitcommit',
@@ -241,9 +242,7 @@ return {
               UnclosedQuotes = true,
               WrongApostrophe = false,
               LongSentences = true,
-              RepeatedWords = true,
-              Spaces = true,
-              CorrectNumberSuffix = true,
+              OrthographicConsistency = false,
               SplitWords = false,
               ExpandStandardInputAndOutput = false,
               UseTitleCase = false,

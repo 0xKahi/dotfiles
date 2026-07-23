@@ -1,1 +1,10 @@
+LLW
+OKF
+cli
 frontmatter
+kbs
+knowledgebases
+knowlegebases
+md
+obsidian
+stderr

@@ -69,6 +69,7 @@ end
 ---@class WorkspaceLspConfig : vim.lsp.Config
 --- Optional field to avoid enabling lsp client if certain root markers are found, useful for monorepos or projects with multiple configs
 ---@field avoid_root_markers? string[]
+---@field disable? boolean
 
 ---@param client_name string
 ---@param config WorkspaceLspConfig
@@ -81,6 +82,15 @@ M.lsp_config = function(client_name, config)
     filetypes = config.filetypes or default_config.filetypes,
     settings = config.settings or default_config.settings,
     root_dir = function(bufnr, on_dir)
+      if config.disable == true then
+        JoJo.utils.debug_table({
+          tbl = { lsp = { [client_name] = { ignore = true } } },
+          title = 'LSP Disabled by Config',
+          header = 'disabled globally',
+        })
+        return
+      end
+
       local enabled = M.check_lsp_ignore(client_name, bufnr)
       if enabled then
         if config.avoid_root_markers ~= nil and M.has_disabled_root_markers(bufnr, config.avoid_root_markers) then
