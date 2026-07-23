@@ -232,6 +232,7 @@ return {
         },
         settings = {
           ['harper-ls'] = {
+            workspaceDictPath = '~/.config/harper-ls/workspace/dictionary.txt',
             linters = {
               SpellCheck = true,
               SpelledNumbers = false,
@@ -244,6 +245,8 @@ return {
               Spaces = true,
               CorrectNumberSuffix = true,
               SplitWords = false,
+              ExpandStandardInputAndOutput = false,
+              UseTitleCase = false,
             },
             codeActions = {
               ForceStable = true,
