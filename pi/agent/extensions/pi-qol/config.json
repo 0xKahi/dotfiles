@@ -80,6 +80,11 @@
       },
       {
         "provider": "opencode-go",
+        "modelId": "grok-4.5",
+        "groups": [" "]
+      },
+      {
+        "provider": "opencode-go",
         "modelId": "deepseek-v4-pro",
         "groups": [" "]
       },
