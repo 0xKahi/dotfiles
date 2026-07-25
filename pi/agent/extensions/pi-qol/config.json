@@ -30,12 +30,12 @@
       },
       {
         "provider": "anthropic",
-        "modelId": "claude-fable-5",
+        "modelId": "claude-opus-5",
         "groups": [" "]
       },
       {
         "provider": "anthropic",
-        "modelId": "claude-opus-4-8",
+        "modelId": "claude-fable-5",
         "groups": [" "]
       },
       {
@@ -61,11 +61,6 @@
       {
         "provider": "opencode-go",
         "modelId": "kimi-k2.7-code",
-        "groups": [" "]
-      },
-      {
-        "provider": "opencode-go",
-        "modelId": "kimi-k2.6",
         "groups": [" "]
       },
       {
