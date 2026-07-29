@@ -223,9 +223,6 @@ return {
       workspace.lsp_config('harper_ls', {
         disable = true,
         filetypes = {
-          'asciidoc',
-          'gitcommit',
-          'html',
           'markdown',
           'toml',
           'typst',
@@ -246,6 +243,7 @@ return {
               SplitWords = false,
               ExpandStandardInputAndOutput = false,
               UseTitleCase = false,
+              UseEllipsisCharacter = false,
             },
             codeActions = {
               ForceStable = true,

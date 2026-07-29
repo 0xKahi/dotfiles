@@ -83,10 +83,9 @@ M.lsp_config = function(client_name, config)
     settings = config.settings or default_config.settings,
     root_dir = function(bufnr, on_dir)
       if config.disable == true then
-        JoJo.utils.debug_table({
-          tbl = { lsp = { [client_name] = { ignore = true } } },
-          title = 'LSP Disabled by Config',
-          header = 'disabled globally',
+        vim.notify(client_name .. ' disabled', vim.log.levels.DEBUG, {
+          title = 'Lsp Global Disabled',
+          timeout = 1000,
         })
         return
       end
