@@ -40,6 +40,11 @@
       },
       {
         "provider": "anthropic",
+        "modelId": "claude-sonnet-5",
+        "groups": [" "]
+      },
+      {
+        "provider": "anthropic",
         "modelId": "claude-sonnet-4-6",
         "groups": [" "]
       },
@@ -82,11 +87,6 @@
         "provider": "opencode-go",
         "modelId": "deepseek-v4-pro",
         "groups": [" "]
-      },
-      {
-        "provider": "opencode-go",
-        "modelId": "deepseek-v4-flash",
-        "groups": [" "]
       }
     ],
     "provider_filter": [
@@ -98,7 +98,8 @@
     "hide_tabs": {
       "search": true
     },
-    "favourite_label": " "
+    "favourite_label": " ",
+    "default_reasoning": "medium"
   },
   "custom_footer": {
     "enabled": true,

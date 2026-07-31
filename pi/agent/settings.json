@@ -1,9 +1,9 @@
 {
-  "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-5",
-  "defaultThinkingLevel": "medium",
+  "defaultProvider": "opencode-go",
+  "defaultModel": "kimi-k3",
+  "defaultThinkingLevel": "max",
   "theme": "cyberpunk-theme",
-  "lastChangelogVersion": "0.82.0",
+  "lastChangelogVersion": "0.83.0",
   "hideThinkingBlock": false,
   "showHardwareCursor": true,
   "enableSkillCommands": true,
