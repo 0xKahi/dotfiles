@@ -65,6 +65,11 @@
       },
       {
         "provider": "opencode-go",
+        "modelId": "deepseek-v4-flash",
+        "groups": [" "]
+      },
+      {
+        "provider": "opencode-go",
         "modelId": "kimi-k2.7-code",
         "groups": [" "]
       },
