@@ -19,7 +19,9 @@
     "<leader>n": "app.session.new",
     "<leader>t": "app.session.tree",
     "<leader>of": "app.session.fork",
+    "<leader>ot": "app.thinking.toggle",
     "<leader>m": "pi.vimKeys.event:pi-qol.model_select",
+    "<leader>oc": "pi.vimKeys.event:pi-qol.context_view",
     "ctrl+t": "app.thinking.cycle",
     "ctrl+o": "app.tools.expand"
   }

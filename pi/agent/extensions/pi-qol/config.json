@@ -118,5 +118,8 @@
     "display": {
       "cache": false
     }
+  },
+  "context_view": {
+    "enabled": true 
   }
 }
