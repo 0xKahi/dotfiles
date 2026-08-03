@@ -1,6 +1,7 @@
 .DS_Store
 tmux/plugins/
 nvim/lua/__secrets.lua
+nvim/lazy-lock.json
 ref/
 zsh/secrets.zsh
 
