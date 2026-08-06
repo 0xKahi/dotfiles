@@ -120,6 +120,7 @@
     }
   },
   "context_view": {
-    "enabled": true 
+    "enabled": true,
+    "layout": "inline"
   }
 }

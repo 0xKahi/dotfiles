@@ -5,5 +5,9 @@
     "width": 70,
     "height": 70,
     "fileCommand": "nvim"
+  },
+  "p2p_hub": {
+    "enabled": true,
+    "layout": "inline"
   }
 }
