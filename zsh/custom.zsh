@@ -113,6 +113,15 @@ function ff() {
   [[ -n "$window_id" ]] && aerospace focus --window-id "$window_id"
 }
 
+# create a branch off main: gcheckMain feat/abc -> git checkout -b feat/abc main
+function gcheckMain() {
+  if [[ -z "$1" ]]; then
+    echo "usage: gcheckMain <branch-name>"
+    return 1
+  fi
+  git checkout -b "$1" main
+}
+
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
@@ -134,11 +143,6 @@ export JOJO_WORKTREE_DIR=".worktree"
 # set up zsh syntax highlighting for linux 
 [ -f "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ] && source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 [ -f "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ] && source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-
-# if [ -x /opt/homebrew/bin/brew ]; then
-#   source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-#   source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# fi
 
 # enable vi mode
 [ -f "$HOME/.config/zsh/configs/vi-mode.zsh" ] && source "$HOME/.config/zsh/configs/vi-mode.zsh"
