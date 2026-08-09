@@ -6,7 +6,7 @@
     "height": 70,
     "fileCommand": "nvim"
   },
-  "p2p_hub": {
+  "p2p_council": {
     "enabled": true,
     "layout": "inline"
   }
