@@ -268,6 +268,7 @@ local function set_icon_highlights(highlights)
   highlights['OpenCodeFolderIcon'] = { fg = '#9d7cd8' }
   highlights['SharedFolderIcon'] = { fg = '#8EEDB0' }
   highlights['NvimWorkspaceFolderIcon'] = { fg = '#508e38' }
+  highlights['ArsenalWorkspaceFolderIcon'] = { fg = '#eb6a6a' }
 
   highlights['NestJsModuleIcon'] = { fg = '#FF757F' }
   highlights['NestJsServiceIcon'] = { fg = '#FFE675' }

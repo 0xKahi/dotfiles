@@ -58,6 +58,7 @@ return {
           ['.opencode'] = { glyph = '󱁿', hl = 'OpenCodeFolderIcon' },
           ['.nvim'] = { glyph = ' ', hl = 'NvimWorkspaceFolderIcon' },
           shared = { glyph = '󰉒 ', hl = 'SharedFolderIcon' },
+          ['.arsenal'] = { glyph = '󱁿', hl = 'ArsenalWorkspaceFolderIcon' },
         },
         group_icons({ 'dev', 'development' }, { glyph = '󱧼', hl = 'MiniIconsYellow' }),
         group_icons({ 'prod', 'production' }, { glyph = '󱧰', hl = 'MiniIconDarkPurple' })
