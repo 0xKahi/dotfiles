@@ -47,6 +47,7 @@
     "text": "fg",
     "thinkingText": "darkStep9",
     "selectedBg": "#311b92",
+    "scrollbarThumb": "brightGreen",
     "userMessageBg": "darkStep3",
     "userMessageText": "fg",
     "customMessageBg": "",
