@@ -122,5 +122,8 @@
   "context_view": {
     "enabled": true,
     "layout": "inline"
+  },
+  "workmux": {
+    "enabled": true
   }
 }

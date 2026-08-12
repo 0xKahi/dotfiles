@@ -1,0 +1,37 @@
+nerdfont: true # Enable nerdfont icons (prompted on first run)
+merge_strategy: rebase # Make workmux merge do rebase by default
+merge_keep: true # Keep worktree, window, and branch after merge by default
+agent: pi
+
+panes:
+  - command: pi # Start the configured agent (e.g., claude)
+    focus: true
+  - split: horizontal # Second pane with default shell
+
+sidebar:
+  # Position: "left" (default) or "top"
+  position: left
+
+  # Left sidebar width: absolute columns or percentage of terminal width
+  width: 40 # absolute columns
+  # width: "15%"  # percentage of terminal width
+
+  # Layout mode for the left sidebar: "compact" or "tiles" (default)
+  layout: tiles
+
+  # Row ordering: "recency" (default, most recent status change first)
+  # or "window" (tmux window order - stable rows that match the window
+  # list, pairs well with the {window_index} template token)
+  sort: recency
+
+  templates:
+    tiles:
+      # - "#[fg=text,bold]{project} #[fg=#444a73]#[bg=#444a73,fg=text]{git_branch}#[fg=#444a73] #[default]{pane_suffix} {fill} {elapsed}"
+      - "#[fg=text,bold]{project} #[default]{pane_suffix} {fill} {elapsed}"
+      - "#[fg=green,nobold]{git_branch} #[default]{fill} {git_stats}"
+      - "#[dim]{session} • {window}({window_index})  #[default]{fill}"
+      - "{pane_title} {fill} {pr_checks}"
+theme:
+  scheme: night-sorbet
+  mode: dark
+  custom:
