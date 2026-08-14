@@ -2,6 +2,7 @@ asciidoctor
 atlantis
 atuin
 awscli
+bash
 bat
 btop
 chafa
@@ -34,6 +35,7 @@ livekit
 llvm
 lua-language-server
 luarocks
+mole
 neovim
 node
 nushell
@@ -47,6 +49,7 @@ poppler
 postgresql@14
 python@3.11
 python@3.12
+raine/workmux/workmux
 resvg
 ripgrep
 sshuttle
