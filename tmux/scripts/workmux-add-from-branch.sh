@@ -7,7 +7,7 @@ if ! git rev-parse --git-dir >/dev/null 2>&1; then
 fi
 
 target_pane=$(tmux display-message -p '#{pane_id}')
-selection=$(git branch --format='%(refname:short)' | fzf --popup 70%,25%)
+selection=$(git branch --format='%(refname:short)' | fzf --popup 20%,25% --prompt="branch> ")
 [ -z "$selection" ] && exit 0
 
 printf -v popup_command 'workmux add %q' "$selection"

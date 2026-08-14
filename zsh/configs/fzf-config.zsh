@@ -1,11 +1,11 @@
 # tokyonight_cyberpunk fzf theme
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+export FZF_DEFAULT_OPTS="\
   --highlight-line \
-  --info=inline-right \
+  --info=default \
   --height=25%\
   --ansi \
   --layout=reverse \
-  --border \
+  --border=sharp \
   --color=bg:-1 \
   --color=bg+:#311b92 \
   --color=border:#00FF9C \
@@ -15,7 +15,7 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --color=header:#D498F8 \
   --color=hl+:#55BBF9 \
   --color=hl:#55BBF9 \
-  --color=info:#545c7e \
+  --color=info:#95C9F8 \
   --color=marker:#fca7ea \
   --color=pointer:#fca7ea \
   --color=prompt:#ED7892 \

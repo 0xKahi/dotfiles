@@ -4,7 +4,7 @@ flag="$2"
 [ -z "$cmd" ] && exit 1
 
 target_pane=$(tmux display-message -p '#{pane_id}')
-selection=$(workmux list | tail -n +2 | fzf --popup 70%,25%)
+selection=$(workmux list | tail -n +2 | fzf --popup 40%,25% --prompt="worktree> ")
 [ -z "$selection" ] && exit 0
 
 branch=$(echo "$selection" | awk '{print $1}')
