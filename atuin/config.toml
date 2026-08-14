@@ -69,10 +69,10 @@ style = "auto"
 
 ## the maximum number of lines the interface should take up
 ## set it to 0 to always go full screen
-inline_height = 20 
+inline_height = 20
 
 ## Invert the UI - put the search bar at the top , Default to `false`
-invert = true 
+invert = true
 
 ## enable or disable showing a preview of the selected command
 ## useful when the command is longer than the terminal width and is cut off
@@ -150,7 +150,7 @@ store_failed = true
 
 ## Defaults to true. If enabled, upon hitting enter Atuin will immediately execute the command. Press tab to return to the shell and edit.
 # This applies for new installs. Old installs will keep the old behaviour unless configured otherwise.
-enter_accept = false 
+enter_accept = false
 
 ## Defaults to "emacs".  This specifies the keymap on the startup of `atuin
 ## search`.  If this is set to "auto", the startup keymap mode in the Atuin
@@ -158,12 +158,12 @@ enter_accept = false
 ## keybinding is defined.  If this is set to "emacs", "vim-insert", or
 ## "vim-normal", the startup keymap mode in the Atuin search is forced to be
 ## the specified one.
-# keymap_mode = "auto"
+keymap_mode = "vim-insert"
 
 ## Cursor style in each keymap mode.  If specified, the cursor style is changed
 ## in entering the cursor shape.  Available values are "default" and
 ## "{blink,steady}-{block,underline,bar}".
-# keymap_cursor = { emacs = "blink-block", vim_insert = "blink-block", vim_normal = "steady-block" }
+keymap_cursor = { emacs = "blink-block", vim_insert = "blink-bar", vim_normal = "blink-block" }
 
 # network_connect_timeout = 5
 # network_timeout = 5
@@ -206,16 +206,7 @@ common_subcommands = [
 # common_prefix = ["sudo"]
 
 ## Set commands that will be completely ignored from stats
-ignored_commands = [
-  "cd",
-  "ls",
-  "nvim",
-  "l",
-  "lg",
-  "lt",
-  "z",
-  "clear"
-]
+ignored_commands = ["cd", "ls", "nvim", "l", "lg", "lt", "z", "clear"]
 
 [keys]
 # Defaults to true. If disabled, using the up/down key won't exit the TUI when scrolled past the first/last entry.
@@ -259,16 +250,10 @@ records = true
 ## The port that should be used for TCP on non unix systems
 # tcp_port = 8889
 
+[tmux]
+enable = true
+
 [theme]
-## Color theme to use for rendering in the terminal.
-## There are some built-in themes, including the base theme ("default"),
-## "autumn" and "marine". You can add your own themes to the "./themes" subdirectory of your
-## Atuin config (or ATUIN_THEME_DIR, if provided) as TOML files whose keys should be one or
-## more of AlertInfo, AlertWarn, AlertError, Annotation, Base, Guidance, Important, and
-## the string values as lowercase entries from this list:
-##    https://ogeon.github.io/docs/palette/master/palette/named/index.html
-## If you provide a custom theme file, it should be  called "NAME.toml" and the theme below
-## should be the stem, i.e. `theme = "NAME"` for your chosen NAME.
 name = "cyberpunk-theme"
 
 ## Whether the theme manager should output normal or extra information to help fix themes.
@@ -279,4 +264,7 @@ name = "cyberpunk-theme"
 ## The list of enabled filter modes, in order of priority.
 ## The "workspace" mode is skipped when not in a workspace or workspaces = false.
 ## Default filter mode can be overridden with the filter_mode setting.
-filters = [ "global", "host", "session", "workspace", "directory" ]
+filters = ["global", "host", "session", "workspace", "directory"]
+
+[ai]
+enabled = true

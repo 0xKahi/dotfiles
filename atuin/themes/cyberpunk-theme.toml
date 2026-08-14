@@ -4,10 +4,12 @@ parent = "default"
 
 [colors]
 AlertInfo = "#72F6B2"
-AlertWarn = "#FDF980"
+AlertWarn = "#ff966c"
 AlertError = '#ED7892'
 Annotation = '#DDAFF8'
 Base = '#c8d3f5'
 Guidance = '#95C9F8'
-Important = '#3d5afe'
-Title = '#00FF9C'
+Important = '#00FF9C'
+Title = '#82aaff'
+Muted = '#828bb8'
+SyntaxComment = '#636da6'
