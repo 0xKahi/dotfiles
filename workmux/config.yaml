@@ -2,11 +2,12 @@ nerdfont: true # Enable nerdfont icons (prompted on first run)
 merge_strategy: rebase # Make workmux merge do rebase by default
 merge_keep: true # Keep worktree, window, and branch after merge by default
 agent: pi
+worktree_dir: ../.{project}__worktrees/
+worktree_naming: basename
+base_branch: main
 
-panes:
-  - command: pi # Start the configured agent (e.g., claude)
-    focus: true
-  - split: horizontal # Second pane with default shell
+post_create:
+  - jojo wt link
 
 sidebar:
   # Position: "left" (default) or "top"
@@ -26,12 +27,18 @@ sidebar:
 
   templates:
     tiles:
-      # - "#[fg=text,bold]{project} #[fg=#444a73]#[bg=#444a73,fg=text]{git_branch}#[fg=#444a73] #[default]{pane_suffix} {fill} {elapsed}"
       - "#[fg=text,bold]{project} #[default]{pane_suffix} {fill} {elapsed}"
       - "#[fg=green,nobold]{git_branch} #[default]{fill} {git_stats}"
       - "#[dim]{session} • {window}({window_index})  #[default]{fill}"
       - "{pane_title} {fill} {pr_checks}"
+
 theme:
   scheme: night-sorbet
   mode: dark
   custom:
+    text: "#c8d3f5"
+    accent: "#72F6B2"
+    header: "#82aaff"
+    warning: "#ffb86c"
+    danger: "#EF8FA4"
+    info: "#5FC8F7"
