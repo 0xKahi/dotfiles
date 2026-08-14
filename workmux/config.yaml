@@ -4,6 +4,7 @@ merge_keep: true # Keep worktree, window, and branch after merge by default
 agent: pi
 worktree_dir: ../.{project}__worktrees/
 worktree_naming: basename
+window_prefix: " "
 base_branch: main
 
 post_create:
