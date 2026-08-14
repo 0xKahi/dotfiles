@@ -33,6 +33,11 @@ sidebar:
       - "#[dim]{session} • {window}({window_index})  #[default]{fill}"
       - "{pane_title} {fill} {pr_checks}"
 
+status_icons:
+  waiting: "💬"
+  done: "✅"
+  sleeping: "💤"
+
 theme:
   scheme: night-sorbet
   mode: dark
