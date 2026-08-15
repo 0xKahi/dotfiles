@@ -59,6 +59,9 @@ $if mode=vi
 #vi mode settings
     set keymap vi-command
 
+    # Disable opening the current line in $VISUAL/$EDITOR.
+    "v": ""
+
     "dd": kill-whole-line
     "diw": "lbdw"
     # change inner word
