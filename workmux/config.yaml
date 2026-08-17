@@ -15,8 +15,11 @@ sidebar:
   position: left
 
   # Left sidebar width: absolute columns or percentage of terminal width
-  width: 40 # absolute columns
-  # width: "15%"  # percentage of terminal width
+  # width: 35 # absolute columns
+  width: 10%
+  height: 3
+  horizontal:
+    item_width: 30
 
   # Layout mode for the left sidebar: "compact" or "tiles" (default)
   layout: tiles
