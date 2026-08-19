@@ -1,7 +1,7 @@
 {
-  "defaultProvider": "opencode-go",
-  "defaultModel": "deepseek-v4-flash",
-  "defaultThinkingLevel": "high",
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.6-sol",
+  "defaultThinkingLevel": "medium",
   "theme": "cyberpunk-theme",
   "lastChangelogVersion": "0.84.2",
   "hideThinkingBlock": false,
@@ -17,6 +17,15 @@
       "maxRetryDelayMs": 60000
     }
   },
+  "defaultTools": [
+    "read",
+    "bash",
+    "edit",
+    "write",
+    "grep",
+    "find",
+    "ls"
+  ],
   "packages": [
     "npm:@0xkahi/pi-vim-keys",
     "npm:@0xkahi/pi-qol",

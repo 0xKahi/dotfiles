@@ -4,8 +4,9 @@ merge_keep: true # Keep worktree, window, and branch after merge by default
 agent: pi
 worktree_dir: ../.{project}__worktrees/
 worktree_naming: basename
-window_prefix: " "
+window_prefix: "󰆧 "
 base_branch: main
+window_placement: rightmost
 
 post_create:
   - jojo wt link
@@ -35,6 +36,11 @@ sidebar:
       - "#[fg=green,nobold]{git_branch} #[default]{fill} {git_stats}"
       - "#[dim]{session} • {window}({window_index})  #[default]{fill}"
       - "{pane_title} {fill} {pr_checks}"
+
+    horizontal:
+      - "#[default]{status_icon} #[fg=text,bold]{project} #[default]{pane_suffix} {fill} {elapsed}"
+      - "#[fg=green,nobold]{git_branch} #[default]{fill} {git_stats}"
+      - "#[default]{pane_title} {fill} {pr_checks}"
 
 status_icons:
   waiting: "💬"
