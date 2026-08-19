@@ -90,6 +90,8 @@ command -v tmux >/dev/null 2>&1 || die 'tmux not found'
 
 q() { printf '%q' "$1"; }
 
+target_pane=$(tmux display-message -p '#{pane_id}')
+
 popup_cmd="TMUX_INPUT_INNER=1"
 popup_cmd+=" TMUX_INPUT_PREFIX=$(q "$prefix")"
 popup_cmd+=" TMUX_INPUT_CMD=$(q "$(printf '%q ' "$@")")"
@@ -104,6 +106,7 @@ fi
 
 tmux display-popup \
   -d '#{pane_current_path}' \
+  -e "TMUX_PANE=$target_pane" \
   -x C -y C \
   -w "$width" -h "$height" \
   -b rounded \
