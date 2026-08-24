@@ -65,7 +65,13 @@ fzf_output=$(
       --prompt='session> ' \
       --header='Select a session or type a new name' \
       --border-label=' Move pane '
-) || exit 0
+)
+fzf_status=$?
+
+# fzf exits with 1 when the query has no match, even though --print-query
+# returns the new session name. Only treat cancellation or an empty query as aborting.
+[[ $fzf_status -eq 0 || $fzf_status -eq 1 ]] || exit 0
+[[ -n $fzf_output ]] || exit 0
 
 query=${fzf_output%%$'\n'*}
 selection=''
@@ -73,12 +79,16 @@ if [[ $fzf_output == *$'\n'* ]]; then
   selection=${fzf_output#*$'\n'}
 fi
 
-if [[ -n $selection ]]; then
+if [[ -n $query && $query != "$selection" ]]; then
+  target_session="$query"
+  if tmux has-session -t "=$target_session" 2>/dev/null; then
+    create_session='0'
+  else
+    create_session='1'
+  fi
+elif [[ -n $selection ]]; then
   target_session="$selection"
   create_session='0'
-elif [[ -n $query ]]; then
-  target_session="$query"
-  create_session='1'
 else
   exit 0
 fi
