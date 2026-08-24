@@ -82,7 +82,7 @@ return {
             add_padding = true,
             conceal_on_checkboxes = true,
 
-            text = '',
+            text = ' ',
             hl = 'MarkviewListItemMinus',
           },
 
@@ -90,7 +90,7 @@ return {
             add_padding = true,
             conceal_on_checkboxes = true,
 
-            text = '',
+            text = ' ',
             hl = 'MarkviewListItemPlus',
           },
 
@@ -98,7 +98,7 @@ return {
             add_padding = true,
             conceal_on_checkboxes = true,
 
-            text = '',
+            text = ' ',
             hl = 'MarkviewListItemStar',
           },
 
