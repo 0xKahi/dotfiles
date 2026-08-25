@@ -433,9 +433,12 @@ return {
       },
     },
 
-    -- image = {
-    --   enabled = true,
-    -- },
+    big_file = {
+      enable = true,
+      notify = true, -- show notification when big file detected
+      size = 1.5 * 1024 * 1024, -- 1.5MB
+      line_length = 1000, -- average line length (useful for minified files)
+    },
 
     styles = {
       notification = {
