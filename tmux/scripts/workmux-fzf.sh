@@ -2,6 +2,8 @@
 
 set -o pipefail
 
+started_at_ms=$(perl -MTime::HiRes=time -e 'printf "%.0f", time() * 1000')
+
 cmd=''
 filter_spec=''
 workmux_args=()
@@ -95,7 +97,10 @@ fi
 [ -z "$choices" ] && exit 0
 
 target_pane=$(tmux display-message -p '#{pane_id}')
-selection=$(printf '%s\n' "$choices" | fzf --popup 70%,25% --delimiter=$'\t' --with-nth=2 --prompt='worktree> ')
+ready_at_ms=$(perl -MTime::HiRes=time -e 'printf "%.0f", time() * 1000')
+elapsed_ms=$((ready_at_ms - started_at_ms))
+selection=$(printf '%s\n' "$choices" | fzf --popup 70%,25% --delimiter=$'\t' --with-nth=2 \
+  --header="loaded in ${elapsed_ms}ms" --prompt='worktree> ')
 [ -z "$selection" ] && exit 0
 
 IFS=$'\t' read -r branch _ <<< "$selection"
