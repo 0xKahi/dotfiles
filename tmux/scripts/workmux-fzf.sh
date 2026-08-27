@@ -6,6 +6,7 @@ started_at_ms=$(perl -MTime::HiRes=time -e 'printf "%.0f", time() * 1000')
 
 cmd=''
 filter_spec=''
+multi_select=false
 workmux_args=()
 
 while [ "$#" -gt 0 ]; do
@@ -19,6 +20,10 @@ while [ "$#" -gt 0 ]; do
       filter_spec="${1#*=}"
       shift
       ;;
+    --multi)
+      multi_select=true
+      shift
+      ;;
     *)
       if [ -z "$cmd" ]; then
         cmd="$1"
@@ -30,7 +35,7 @@ while [ "$#" -gt 0 ]; do
   esac
 done
 
-[ -z "$cmd" ] && { echo 'usage: workmux-fzf.sh COMMAND [ARGS...] [--filter key=value,...]' >&2; exit 1; }
+[ -z "$cmd" ] && { echo 'usage: workmux-fzf.sh COMMAND [ARGS...] [--filter key=value,...] [--multi]' >&2; exit 1; }
 
 filters='{}'
 if [ -n "$filter_spec" ]; then
@@ -99,12 +104,17 @@ fi
 target_pane=$(tmux display-message -p '#{pane_id}')
 ready_at_ms=$(perl -MTime::HiRes=time -e 'printf "%.0f", time() * 1000')
 elapsed_ms=$((ready_at_ms - started_at_ms))
-selection=$(printf '%s\n' "$choices" | fzf --popup 70%,25% --delimiter=$'\t' --with-nth=2 \
+fzf_args=(--popup 70%,25% --delimiter=$'\t' --with-nth=2 \
   --header="loaded in ${elapsed_ms}ms" --prompt='worktree> ')
+$multi_select && fzf_args+=(--multi)
+selection=$(printf '%s\n' "$choices" | fzf "${fzf_args[@]}")
 [ -z "$selection" ] && exit 0
 
-IFS=$'\t' read -r branch _ <<< "$selection"
-args=("$cmd" "$branch" "${workmux_args[@]}")
+branches=()
+while IFS=$'\t' read -r branch _; do
+  branches+=("$branch")
+done <<< "$selection"
+args=("$cmd" "${branches[@]}" "${workmux_args[@]}")
 
 printf -v quoted_args ' %q' "${args[@]}"
 popup_command="workmux$quoted_args"
