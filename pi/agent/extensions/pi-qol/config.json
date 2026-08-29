@@ -65,17 +65,22 @@
       },
       {
         "provider": "opencode-go",
+        "modelId": "glm-5.3-flash",
+        "groups": [" "]
+      },
+      {
+        "provider": "opencode-go",
         "modelId": "deepseek-v4-flash-vision-exp",
         "groups": [" "]
       },
       {
         "provider": "opencode-go",
-        "modelId": "kimi-k2.7-code",
+        "modelId": "qwen3.8-flash",
         "groups": [" "]
       },
       {
         "provider": "opencode-go",
-        "modelId": "minimax-m3",
+        "modelId": "muse-spark-1.2-contributor",
         "groups": [" "]
       },
       {
