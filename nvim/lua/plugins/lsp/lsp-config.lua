@@ -18,7 +18,8 @@ return {
       require('mason-lspconfig').setup({
         automatic_enable = true,
         ensure_installed = {
-          'ts_ls',
+          -- 'ts_ls',
+          'vtsls',
           'biome',
           'eslint',
           'lua_ls',
@@ -77,7 +78,7 @@ return {
       })
 
       -- TypeScript config
-      workspace.lsp_config('ts_ls', {
+      workspace.lsp_config('vtsls', {
         root_markers = { 'package.json' },
         single_file_support = false,
       })
