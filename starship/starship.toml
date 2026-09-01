@@ -1,7 +1,7 @@
 format = '''
 $username $directory $git_branch $git_status$fill$all
 $character'''
-right_format = '' 
+right_format = ''
 palette = "cyberpunk"
 add_newline = false
 command_timeout = 1000
@@ -11,7 +11,7 @@ command_timeout = 1000
 success_symbol = "[](bold green)"
 error_symbol = "[✖](bold red) "
 vimcmd_symbol = "[](bold green) "
-vimcmd_visual_symbol ="[](bold bright-magenta) "
+vimcmd_visual_symbol = "[](bold bright-magenta) "
 
 [directory]
 format = "[in](tky-fg) [$path](bold cyan)"
@@ -50,14 +50,14 @@ format = 'via [🐋 $context](blue bold)'
 
 [aws]
 format = '[$symbol]($style)[(profile: "$profile" )(\(region: $region\) )](tky-fg)'
-disabled = false
+disabled = true
 style = 'bold orange'
 symbol = " "
 
 [gcloud]
 # format = '[$symbol]($style)[$active(\($region\))](tky-fg) '
 format = '[$symbol]($style)[$active](tky-fg) '
-disabled = false 
+disabled = false
 style = 'bold blue'
 symbol = "󱇶 "
 
@@ -66,26 +66,26 @@ symbol = ' '
 style = 'bold green'
 
 [line_break]
-disabled = true 
+disabled = true
 
 [palettes.cyberpunk]
 black = '#444a73'
 red = '#ED7892'
-green ='#72F6B2'
-yellow='#FDF980'
-blue='#55BBF9'
-magenta='#D498F8'
-orange='#ff966c'
-cyan='#95C9F8'
-white='#FEFFFF'
-bright-red='#EF8FA4'
-bright-green='#74F2BF'
-bright-yellow='#FDF796'
-bright-blue='#5FC8F7'
-bright-magenta='#DDAFF8'
-bright-cyan='#A6D4F8'
-bg-col= '#312954'
-bg-col-dark= '#241d47'
-faded-fg='#636da6'
-tky-fg ='#c8d3f5'
+green = '#72F6B2'
+yellow = '#FDF980'
+blue = '#55BBF9'
+magenta = '#D498F8'
+orange = '#ff966c'
+cyan = '#95C9F8'
+white = '#FEFFFF'
+bright-red = '#EF8FA4'
+bright-green = '#74F2BF'
+bright-yellow = '#FDF796'
+bright-blue = '#5FC8F7'
+bright-magenta = '#DDAFF8'
+bright-cyan = '#A6D4F8'
+bg-col = '#312954'
+bg-col-dark = '#241d47'
+faded-fg = '#636da6'
+tky-fg = '#c8d3f5'
 neon-green = '#00FF9C'
