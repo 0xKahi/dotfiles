@@ -18,8 +18,8 @@ return {
       require('mason-lspconfig').setup({
         automatic_enable = true,
         ensure_installed = {
-          -- 'ts_ls',
-          'vtsls',
+          -- 'vtsls',
+          'tsc',
           'biome',
           'eslint',
           'lua_ls',
@@ -78,9 +78,33 @@ return {
       })
 
       -- TypeScript config
-      workspace.lsp_config('vtsls', {
+      workspace.lsp_config('tsc', {
         root_markers = { 'package.json' },
         single_file_support = false,
+        settings = {
+          ['js/ts'] = {
+            implementationsCodeLens = {
+              enabled = true,
+              showOnAllClassMethods = true,
+              showOnInterfaceMethods = true,
+            },
+            referencesCodeLens = {
+              enabled = true,
+              showOnAllFunctions = true,
+            },
+            inlayHints = {
+              parameterNames = {
+                enabled = 'literals',
+                suppressWhenArgumentMatchesName = true,
+              },
+              parameterTypes = { enabled = true },
+              variableTypes = { enabled = true },
+              propertyDeclarationTypes = { enabled = true },
+              functionLikeReturnTypes = { enabled = true },
+              enumMemberValues = { enabled = true },
+            },
+          },
+        },
       })
 
       workspace.lsp_config('denols', {
