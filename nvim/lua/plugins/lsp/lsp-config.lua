@@ -32,6 +32,7 @@ return {
           'ruff',
           'bashls',
           'vimls',
+          'jsonls',
         },
         automatic_installation = false,
       })
@@ -154,7 +155,7 @@ return {
         },
       })
 
-      workspace.lsp_config('graphql', {
+      workspace.lsp_config('terraformls', {
         filetypes = { 'terraform-vars', 'terraform', 'tf' },
         settings = {
           terraformls = {
@@ -281,6 +282,17 @@ return {
             excludePatterns = {},
           },
         },
+      })
+
+      workspace.lsp_config('jsonls', {
+        filetypes = { 'json', 'jsonc' },
+        -- settings = {
+        --   json = {
+        --     keepLines = {
+        --       enable = true,
+        --     },
+        --   },
+        -- },
       })
 
       vim.api.nvim_create_autocmd('LspAttach', {

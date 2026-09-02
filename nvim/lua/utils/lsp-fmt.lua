@@ -80,7 +80,7 @@ function M.lsp_format(bufnr)
   end
 
   if #clients > 0 then
-    vim.notify('Formatting with default', vim.log.levels.INFO)
+    vim.notify('Formatting with: ' .. clients[1].name .. ' (default)', vim.log.levels.INFO)
     vim.lsp.buf.format({ async = false })
     return
   end
