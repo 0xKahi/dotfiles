@@ -24,52 +24,58 @@ M.has_disabled_root_markers = function(bufnr, root_markers)
   return root ~= nil
 end
 
---- Currently not ideal find a better way
---- custom function to check local lsp configs in a `.nvim` folder with settings.json or settings.jsonc
---- if the file contains `{ "lsp": { "<client_name>": { "ignore": true } } }`, the LSP client will not start
---- this allows per-project disabling of LSP clients
+--- Returns the per-project LSP ignore override from `.nvim/settings.jsonc` or `.nvim/settings.json`.
 ---@param client_name string
 ---@param bufnr integer
-M.check_lsp_ignore = function(client_name, bufnr)
+---@return boolean? ignore
+M.get_lsp_ignore_override = function(client_name, bufnr)
   local filename = vim.api.nvim_buf_get_name(bufnr)
-  local config_folder = vim.fs.find({ '.nvim' }, {
+  local config_folder = vim.fs.find('.nvim', {
     path = vim.fs.dirname(filename),
     upward = true,
     type = 'directory',
   })[1]
 
-  -- print(vim.fs.find({'.nvim'}, { path = vim.fs.dirname(vim.api.nvim_buf_get_name(0)), upward = true, type = 'directory' })[1])
+  if not config_folder then
+    return nil
+  end
 
-  if config_folder then
-    local content = vim.fn.readfile(config_folder .. '/settings.jsonc')
-    if #content == 0 then
-      return true
-    end
-
-    local json_str = table.concat(content, '\n')
-    local ok, parsed = pcall(vim.json.decode, json_str)
-    if ok and parsed and parsed.lsp and parsed.lsp[client_name] then
-      if parsed.lsp[client_name].ignore then
-        vim.notify(
-          string.format('[LSP Local Config] settings for %s: %s', client_name, vim.inspect(parsed.lsp[client_name])),
-          vim.log.levels.INFO,
-          {
-            title = 'LSP Disabled',
-            timeout = 3000,
-          }
-        )
-        return false
-      end
+  local settings_file
+  for _, name in ipairs({ 'settings.jsonc', 'settings.json' }) do
+    local candidate = config_folder .. '/' .. name
+    if vim.fn.filereadable(candidate) == 1 then
+      settings_file = candidate
+      break
     end
   end
 
-  return true
+  if not settings_file then
+    return nil
+  end
+
+  local read_ok, content = pcall(vim.fn.readfile, settings_file)
+  if not read_ok or #content == 0 then
+    return nil
+  end
+
+  local decode_ok, settings = pcall(vim.json.decode, table.concat(content, '\n'))
+  if not decode_ok or type(settings) ~= 'table' or type(settings.lsp) ~= 'table' then
+    return nil
+  end
+
+  local client_config = settings.lsp[client_name]
+  if type(client_config) == 'table' and type(client_config.ignore) == 'boolean' then
+    return client_config.ignore
+  end
+
+  return nil
 end
 
 ---@class WorkspaceLspConfig : vim.lsp.Config
 --- Optional field to avoid enabling lsp client if certain root markers are found, useful for monorepos or projects with multiple configs
 ---@field avoid_root_markers? string[]
 ---@field disable? boolean
+---@field ignore? boolean
 
 ---@param client_name string
 ---@param config WorkspaceLspConfig
@@ -90,23 +96,43 @@ M.lsp_config = function(client_name, config)
         return
       end
 
-      local enabled = M.check_lsp_ignore(client_name, bufnr)
-      if enabled then
-        if config.avoid_root_markers ~= nil and M.has_disabled_root_markers(bufnr, config.avoid_root_markers) then
-          JoJo.utils.debug_table({
-            tbl = { lsp = { [client_name] = { ignore = true } } },
-            title = 'LSP Disabled by Root Marker',
-            header = 'disabled root marker found consider adding this to .nvim/settings.jsonc',
-          })
-          return
-        end
+      local local_ignore = M.get_lsp_ignore_override(client_name, bufnr)
+      local should_ignore = local_ignore
 
-        -- if defined own root_markers use validate_start by default
-        if root_dir and not config.root_markers then
-          root_dir(bufnr, on_dir)
-        else
-          M.validate_start(bufnr, on_dir, config.root_markers or default_config.root_markers) -- use this as there is no default root_dir
-        end
+      if should_ignore == nil then
+        should_ignore = config.ignore == true
+      end
+
+      if should_ignore then
+        local source = local_ignore == true and 'local config' or 'Neovim config'
+        vim.notify(string.format('%s ignored by %s', client_name, source), vim.log.levels.INFO, {
+          title = 'LSP Disabled',
+          timeout = 3000,
+        })
+        return
+      end
+
+      if config.ignore == true and local_ignore == false then
+        vim.notify(string.format('%s enabled by local override', client_name), vim.log.levels.INFO, {
+          title = 'LSP Override',
+          timeout = 3000,
+        })
+      end
+
+      if config.avoid_root_markers and M.has_disabled_root_markers(bufnr, config.avoid_root_markers) then
+        JoJo.utils.debug_table({
+          tbl = { lsp = { [client_name] = { ignore = true } } },
+          title = 'LSP Disabled by Root Marker',
+          header = 'Disabled root marker found; consider adding this to .nvim/settings.jsonc',
+        })
+        return
+      end
+
+      -- If custom root markers are defined, use validate_start by default.
+      if root_dir and not config.root_markers then
+        root_dir(bufnr, on_dir)
+      else
+        M.validate_start(bufnr, on_dir, config.root_markers or default_config.root_markers)
       end
     end,
   })

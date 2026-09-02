@@ -108,6 +108,12 @@ return {
         },
       })
 
+      workspace.lsp_config('vtsls', {
+        root_markers = { 'package.json' },
+        single_file_support = false,
+        ignore = true,
+      })
+
       workspace.lsp_config('denols', {
         root_markers = { 'deno.json', 'deno.jsonc' },
         single_file_support = false,
