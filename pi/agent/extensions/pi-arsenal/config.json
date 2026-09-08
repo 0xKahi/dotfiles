@@ -9,5 +9,36 @@
   "p2p_council": {
     "enabled": true,
     "layout": "inline"
+  },
+  "multiverse": {
+    "enabled": true,
+    "defaultAgent": "megamind",
+    "maxConcurrency": 5,
+    "subagents": {
+      "explorer": {
+        "enabled": true,
+        "model": {
+          "provider": "opencode-go",
+          "modelId": "glm-5.3-flash",
+          "reasoning": "high"
+        }
+      },
+      "fixer": {
+        "enabled": true,
+        "model": {
+          "provider": "openai-codex",
+          "modelId": "gpt-5.6-luna",
+          "reasoning": "medium"
+        }
+      },
+      "visualizer": {
+        "enabled": true,
+        "model": {
+          "provider": "anthropic",
+          "modelId": "claude-sonnet-5",
+          "reasoning": "medium"
+        }
+      }
+    }
   }
 }
