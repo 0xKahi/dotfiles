@@ -4,7 +4,8 @@
     "normal": "#55BBF9",
     "insert": "#72F6B2",
     "visual": "#D498F8",
-    "visualLine": "#D498F8"
+    "visualLine": "#D498F8",
+    "replace": "#FDF980"
   },
   "normalModeRemap": {
     "type": "sequence",
