@@ -75,7 +75,7 @@
       },
       {
         "provider": "opencode-go",
-        "modelId": "deepseek-v4-flash-vision-exp",
+        "modelId": "deepseek-v4.1-flash",
         "groups": [" "]
       },
       {
@@ -85,7 +85,7 @@
       },
       {
         "provider": "opencode-go",
-        "modelId": "muse-spark-1.2-contributor",
+        "modelId": "muse-spark-1.3-contributor",
         "groups": [" "]
       },
       {
