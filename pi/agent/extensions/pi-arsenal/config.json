@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/0xKahi/pi-arsenal/main/assets/config.schema.json",
   "tmux_popup": {
-    "enabled": true,
+    "enabled": false,
     "width": 70,
     "height": 70,
     "fileCommand": "nvim"
@@ -46,6 +46,14 @@
           "provider": "opencode-go",
           "modelId": "qwen3.8-flash",
           "reasoning": "medium"
+        }
+      },
+      "wiki-reader": {
+        "enabled": true,
+        "model": {
+          "provider": "opencode-go",
+          "modelId": "glm-5.3-flash",
+          "reasoning": "high"
         }
       }
     }
