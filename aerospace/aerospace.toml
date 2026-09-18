@@ -208,6 +208,10 @@ persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", 
   run       = 'move-node-to-workspace C' # mnemonics C - Chat
 
 [[on-window-detected]]
+  if.app-id = 'com.apple.FaceTime'
+  run       = 'move-node-to-workspace C' # mnemonics C - Chat
+
+[[on-window-detected]]
   if.app-id = 'com.brave.Browser'
   run       = 'move-node-to-workspace 1'
 
@@ -232,13 +236,9 @@ persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", 
   run       = 'move-node-to-workspace D' # mnemonics D - Development
 
 [[on-window-detected]]
+  if.app-id = 'com.apple.FaceTime'
+  run       = 'layout floating'
+
+[[on-window-detected]]
   if.app-name-regex-substring = 'finder'
   run                         = 'layout floating'
-
-[[on-window-detected]]
-  if.app-id = 'com.apple.ActivityMonitor'
-  run       = 'layout floating'
-
-[[on-window-detected]]
-  if.app-id = 'com.electron.dockerdesktop'
-  run       = 'layout floating'
