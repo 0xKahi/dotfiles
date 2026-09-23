@@ -84,8 +84,8 @@
         "groups": [" "]
       },
       {
-        "provider": "opencode-go",
-        "modelId": "muse-spark-1.3-contributor",
+        "provider": "github-copilot",
+        "modelId": "gemini-3.8-flash",
         "groups": [" "]
       },
       {
@@ -95,7 +95,7 @@
       },
       {
         "provider": "opencode-go",
-        "modelId": "deepseek-v4-pro",
+        "modelId": "muse-spark-1.3-contributor",
         "groups": [" "]
       }
     ],
@@ -103,7 +103,8 @@
       "openai-codex",
       "anthropic",
       "opencode-go",
-      "opencode"
+      "opencode",
+      "github-copilot"
     ],
     "hide_tabs": {
       "search": true
