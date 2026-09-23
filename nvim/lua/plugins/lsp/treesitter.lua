@@ -40,6 +40,7 @@ return {
         'hcl',
         'rust',
         'swift',
+        'xml',
       },
 
       ignore_install = {},

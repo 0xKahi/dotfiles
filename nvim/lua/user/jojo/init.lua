@@ -4,11 +4,13 @@
 ---@class jojo.plugins
 ---@field treesitter user.jojo.treesitter
 ---@field utils user.jojo.utils
+---@field image user.jojo.image
 
 ---@class JoJo: jojo.plugins
 JoJo = {
   treesitter = require('user.jojo.treesitter'),
   utils = require('user.jojo.utils'),
+  image = require('user.jojo.image'),
 }
 
 -- setmetatable(M, {

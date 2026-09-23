@@ -433,6 +433,30 @@ return {
       },
     },
 
+    -- Pin the format list so `svg` stays OUT of snacks.image. Neo-tree's preview hook
+    -- (see nvim/lua/plugins/neotree.lua) checks `Snacks.image.supports()` first; by
+    -- declining svg here, our own resvg-based handler gets to render it instead.
+    image = {
+      formats = {
+        'png',
+        'jpg',
+        'jpeg',
+        'gif',
+        'bmp',
+        'webp',
+        'tiff',
+        'heic',
+        'avif',
+        'mp4',
+        'mov',
+        'avi',
+        'mkv',
+        'webm',
+        'pdf',
+        'icns',
+      },
+    },
+
     big_file = {
       enable = true,
       notify = true, -- show notification when big file detected
