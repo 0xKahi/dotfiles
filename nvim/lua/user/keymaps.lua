@@ -117,10 +117,10 @@ end, { noremap = true, silent = true, desc = '[Y]ank [P]ath' })
 ----------------------------------------
 
 -- toggle nvim virtual lines
-vim.keymap.set('n', 'gk', function()
+vim.keymap.set('n', 'dl', function()
   local new_config = not vim.diagnostic.config().virtual_lines
   vim.diagnostic.config({ virtual_lines = new_config })
-end, { desc = 'Toggle diagnostic virtual_lines' })
+end, { desc = 'Toggle [D]iagnostic virtual [L]ines' })
 
 vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 
