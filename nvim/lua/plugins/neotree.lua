@@ -1,4 +1,8 @@
 -- neotree
+
+-- file currently shown in neo-tree's preview; guards against late svg renders
+local svg_preview_src ---@type string?
+
 return {
   'nvim-neo-tree/neo-tree.nvim',
   branch = 'v3.x',
@@ -7,8 +11,6 @@ return {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
     'echasnovski/mini.icons',
-    -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-    -- 'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
   },
   keys = {
     {
@@ -315,6 +317,43 @@ return {
       },
     },
     event_handlers = {
+      {
+        -- Render svg previews as images via resvg (snacks.image leaves svg to our xml query).
+        -- neo-tree copies the file's text into the float *after* this event, so the image is
+        -- placed asynchronously once that's done, replacing the raw xml.
+        event = 'neo_tree_preview_before_render',
+        handler = function(args)
+          local pbuf = args.preview.bufnr
+          local src = vim.api.nvim_buf_get_name(args.bufnr)
+          svg_preview_src = src -- latest preview wins; stale renders check this
+
+          -- drop images from earlier previews (the float buffer is reused)
+          local placement = package.loaded['snacks.image.placement']
+          if placement then
+            placement.clean(pbuf)
+          end
+          -- snacks marks the buffer non-modifiable while an image loads; neo-tree writes the
+          -- next file's lines into it right after this event, so make sure that can succeed
+          vim.bo[pbuf].modifiable = true
+
+          if not src:lower():match('%.svg$') or vim.fn.executable('resvg') ~= 1 then
+            return -- normal text preview
+          end
+
+          JoJo.image.render_svg(src, function(png)
+            if not png or svg_preview_src ~= src or not vim.api.nvim_buf_is_valid(pbuf) then
+              return -- failed, user moved on, or preview closed
+            end
+            placement = require('snacks.image.placement')
+            placement.clean(pbuf)
+            vim.bo[pbuf].modifiable = true
+            vim.api.nvim_buf_set_lines(pbuf, 0, -1, false, {})
+            placement.new(pbuf, png, {})
+            vim.bo[pbuf].modifiable = true
+          end)
+          return { handled = true }
+        end,
+      },
       {
         event = 'neo_tree_buffer_enter',
         handler = function(arg)
