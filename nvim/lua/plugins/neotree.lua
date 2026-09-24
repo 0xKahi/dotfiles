@@ -15,14 +15,7 @@ return {
   keys = {
     {
       '<leader>oe',
-      function()
-        local git_base = JoJo.store:get('git_base')
-        if git_base == nil then
-          vim.cmd('Neotree reveal')
-        else
-          vim.cmd('Neotree git_base=' .. git_base .. ' reveal')
-        end
-      end,
+      ':Neotree reveal<CR>',
       desc = '[O]pen [E]xplorer',
       noremap = true,
       silent = true,
@@ -31,10 +24,7 @@ return {
     { '<leader>ce', ':Neot close<CR>', desc = '[C]lose [E]xplorer', noremap = true, silent = true },
     {
       '<leader>og',
-      function()
-        local git_base = JoJo.store:get('git_base') or 'HEAD'
-        vim.cmd('Neotree git_status git_base=' .. git_base .. ' reveal')
-      end,
+      ':Neotree git_status reveal<CR>',
       desc = '[O]pen [G]itStatus',
       noremap = true,
       silent = true,
@@ -317,6 +307,23 @@ return {
       },
     },
     event_handlers = {
+      {
+        -- Make JoJo.store the single source of truth for the git base. neo-tree only ever indexes
+        -- `state.git_base_by_worktree[worktree_root]`, so a proxy table means every git status call
+        -- (filesystem, git_status, buffers) reads the live value. `:Neotree git_base=<ref>` writes
+        -- through to the store instead of shadowing it.
+        event = 'state_created',
+        handler = function(state)
+          state.git_base_by_worktree = setmetatable({}, {
+            __index = function()
+              return JoJo.store:get('git_base')
+            end,
+            __newindex = function(_, _, ref)
+              JoJo.store:set('git_base', ref)
+            end,
+          })
+        end,
+      },
       {
         -- Render svg previews as images via resvg (snacks.image leaves svg to our xml query).
         -- neo-tree copies the file's text into the float *after* this event, so the image is
