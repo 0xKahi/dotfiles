@@ -1,0 +1,83 @@
+##############################################
+#                                            #
+#          Tokyo Night Cyberpunk Theme       #
+#                                            #
+##############################################
+
+# Port of ./yazi/theme.toml, with ANSI color names resolved against the
+# tokyonight-cyberpunk terminal palette (ghostty/wezterm):
+#   black   #1b1d2b  darkgray #444a73
+#   red     #ED7892  lightred #EF8FA4
+#   green   #72F6B2  lightgreen #74F2BF
+#   yellow  #FDF980  lightyellow #FDF796
+#   blue    #55BBF9  lightblue #5FC8F7
+#   magenta #D498F8  lightmagenta #DDAFF8
+#   cyan    #95C9F8  lightcyan #A6D4F8
+#   gray    #828bb8  white #c8d3f5
+#   accents #00FF9C (neon green) #3d5afe (neon blue) #311b92 (selection) #82aaff (dirs)
+
+# https://superfile.dev/configure/custom-theme/
+
+###############################################################################
+#                           Code Syntax Highlighting                          #
+###############################################################################
+
+code_syntax_highlight = "tokyonight-moon"
+
+###############################################################################
+#                                 Base Colors                                 #
+###############################################################################
+
+#-- Full Screen
+full_screen_fg = "#c8d3f5"
+full_screen_bg = "#312954"
+
+#-- Gradient (yazi mode colors: normal -> select)
+gradient_color = ["#55BBF9", "#D498F8"]
+directory_icon_color = "#82aaff"
+
+#-- File Panel
+file_panel_fg = "#c8d3f5"
+file_panel_bg = "#312954"
+file_panel_border = "#828bb8"
+file_panel_border_active = "#82aaff"
+file_panel_top_directory_icon = "#82aaff"
+file_panel_top_path = "#74F2BF"
+file_panel_item_selected_fg = "#DDAFF8"
+file_panel_item_selected_bg = "#312954"
+
+#-- Footer (yazi spot/tasks)
+footer_fg = "#c8d3f5"
+footer_bg = "#312954"
+footer_border = "#828bb8"
+footer_border_active = "#95C9F8"
+
+#-- Sidebar
+sidebar_fg = "#c8d3f5"
+sidebar_bg = "#312954"
+sidebar_title = "#DDAFF8"
+sidebar_border = "#828bb8"
+sidebar_border_active = "#D498F8"
+sidebar_item_selected_fg = "#72F6B2"
+sidebar_item_selected_bg = "#312954"
+sidebar_divider = "#444a73"
+
+#-- Modals (yazi confirm)
+modal_fg = "#c8d3f5"
+modal_bg = "#312954"
+modal_border_active = "#ff966c"
+modal_cancel_fg = "#1b1d2b"
+modal_cancel_bg = "#EF8FA4"
+modal_confirm_fg = "#1b1d2b"
+modal_confirm_bg = "#74F2BF"
+
+#-- Help Menu (yazi help)
+help_menu_hotkey = "#72F6B2"
+help_menu_title = "#D498F8"
+
+#-- Special
+cursor = "#00FF9C"
+correct = "#72F6B2"
+error = "#ED7892"
+hint = "#95C9F8"
+cancel = "#EF8FA4"
