@@ -2,7 +2,6 @@ return {
   require('plugins.lsp.treesitter'),
   require('plugins.lsp.lsp-config'),
   require('plugins.lsp.completion.blink'),
-  require('plugins.lsp.formatters.conform'),
   require('plugins.lsp.kdl'),
   require('plugins.lsp.helpers.lazydev'),
   require('plugins.lsp.helpers.ts-comments'),
