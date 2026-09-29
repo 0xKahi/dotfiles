@@ -1,6 +1,6 @@
 {
-  "defaultProvider": "openai-codex",
-  "defaultModel": "gpt-6-astra",
+  "defaultProvider": "anthropic",
+  "defaultModel": "claude-opus-5-5",
   "defaultThinkingLevel": "medium",
   "theme": "cyberpunk-theme",
   "lastChangelogVersion": "0.87.1",

@@ -15,7 +15,7 @@
     "defaultAgent": "megamind",
     "maxConcurrency": 5,
     "presets": {
-      "v1": {
+      "opencode": {
         "explorer": {
           "provider": "opencode-go",
           "modelId": "glm-5.3-flash",
@@ -31,6 +31,13 @@
           "modelId": "qwen3.8-flash",
           "reasoning": "medium"
         }
+      },
+      "cheap": {
+        "fixer": {
+          "provider": "openai-codex",
+          "modelId": "gpt-6-luna",
+          "reasoning": "high"
+        }
       }
     },
     "subagents": {
@@ -38,16 +45,16 @@
         "enabled": true,
         "model": {
           "provider": "opencode-go",
-          "modelId": "glm-5.3-flash",
+          "modelId": "deepseek-v4.1-flash",
           "reasoning": "high"
         }
       },
       "fixer": {
         "enabled": true,
         "model": {
-          "provider": "opencode-go",
-          "modelId": "qwen3.8-flash",
-          "reasoning": "high"
+          "provider": "openai-codex",
+          "modelId": "gpt-6-sol",
+          "reasoning": "medium"
         }
       },
       "visualizer": {
