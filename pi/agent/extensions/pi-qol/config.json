@@ -20,7 +20,7 @@
       },
       {
         "provider": "openai-codex",
-        "modelId": "gpt-6-sol",
+        "modelId": "gpt-6.1-sol",
         "groups": [" "]
       },
       {
@@ -45,7 +45,7 @@
       },
       {
         "provider": "anthropic",
-        "modelId": "claude-sonnet-5",
+        "modelId": "claude-sonnet-5-5",
         "groups": [" "]
       },
       {

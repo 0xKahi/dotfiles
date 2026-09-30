@@ -15,28 +15,11 @@
     "defaultAgent": "megamind",
     "maxConcurrency": 5,
     "presets": {
-      "opencode": {
-        "explorer": {
-          "provider": "opencode-go",
-          "modelId": "glm-5.3-flash",
-          "reasoning": "high"
-        },
+      "claude": {
         "fixer": {
-          "provider": "opencode-go",
-          "modelId": "deepseek-v4.1-flash",
-          "reasoning": "high"
-        },
-        "visualizer": {
-          "provider": "opencode-go",
-          "modelId": "qwen3.8-flash",
+          "provider": "anthropic",
+          "modelId": "claude-sonnet-5-5",
           "reasoning": "medium"
-        }
-      },
-      "cheap": {
-        "fixer": {
-          "provider": "openai-codex",
-          "modelId": "gpt-6-luna",
-          "reasoning": "high"
         }
       }
     },
@@ -53,7 +36,7 @@
         "enabled": true,
         "model": {
           "provider": "openai-codex",
-          "modelId": "gpt-6-sol",
+          "modelId": "gpt-6.1-sol",
           "reasoning": "medium"
         }
       },

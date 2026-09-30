@@ -3,7 +3,7 @@
   "defaultModel": "claude-opus-5-5",
   "defaultThinkingLevel": "medium",
   "theme": "cyberpunk-theme",
-  "lastChangelogVersion": "0.87.1",
+  "lastChangelogVersion": "0.99.2",
   "hideThinkingBlock": false,
   "showHardwareCursor": true,
   "enableSkillCommands": true,
@@ -34,5 +34,6 @@
   ],
   "skills": [
     "~/.jojo/skills/global"
-  ]
+  ],
+  "deviceId": "0eb4c082-f8ef-477a-9e09-d3b9f9e45515"
 }
