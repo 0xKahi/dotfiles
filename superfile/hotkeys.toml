@@ -16,7 +16,7 @@
 #-- Basic Actions
 confirm = ['enter', 'right', 'l']
 cd_quit = ['q']
-quit = ['esc']
+quit = ['Q', 'esc']
 
 #-- Navigation
 list_down = ['down', 'j']
@@ -28,9 +28,9 @@ page_up = ['pgup', '']
 close_file_panel = ['w', '']
 create_new_file_panel = ['n', '']
 next_file_panel = ['tab', 'L']
+previous_file_panel = ['shift+tab', 'H']
 open_sort_options_menu = ['o', '']
 pinned_directory = ['P', '']
-previous_file_panel = ['shift+left', 'H']
 split_file_panel = ['N', '']
 toggle_file_preview_panel = ['f', '']
 toggle_reverse_sort = ['R', '']
