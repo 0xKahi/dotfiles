@@ -1,5 +1,6 @@
 agent/sessions
 agent/tmp
 auth.json
+mcp-auth.json
 trust.json
 agent/models-store.json
