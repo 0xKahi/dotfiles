@@ -59,6 +59,11 @@
         "groups": [" "]
       },
       {
+        "provider": "opencode-go",
+        "modelId": "claude-haiku-5-5",
+        "groups": [" "]
+      },
+      {
         "provider": "opencode",
         "modelId": "gpt-5.2",
         "groups": [" "]

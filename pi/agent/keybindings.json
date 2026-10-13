@@ -38,9 +38,6 @@
     "ctrl+j"
   ],
   "tui.input.submit": "enter",
-  "tui.altScreen.halfPageUp": "ctrl+u",
-  "tui.altScreen.halfPageDown": "ctrl+d",
-  "tui.altScreen.search": "ctrl+f",
   "tui.altScreen.searchNext": [
     "ctrl+n",
     "enter"
@@ -67,7 +64,6 @@
   "app.session.togglePath": "ctrl+shift+p",
   "app.session.toggleNamedFilter": "ctrl+shift+n",
   "app.session.delete": [
-    "ctrl+d",
-    "ctrl+x"
+    "ctrl+d"
   ]
 }

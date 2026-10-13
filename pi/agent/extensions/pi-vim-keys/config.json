@@ -26,6 +26,7 @@
     "<leader>op": "pi.vimKeys.event:pi-arsenal.p2p_council",
     "<leader>om": "pi.vimKeys.event:pi-arsenal.multiverse",
     "ctrl+t": "app.thinking.cycle",
-    "ctrl+o": "app.tools.expand"
+    "ctrl+o": "app.tools.expand",
+    "ctrl+w": "pi.vimKeys.altScreenMode"
   }
 }
