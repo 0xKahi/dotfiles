@@ -1,96 +1,59 @@
 #!/bin/bash
+# Move the current pane to another session.
+#   1. pick a session, or type a new name to create one (pane goes into window "0")
+#   2. for an existing session, pick a window (pane joins it as a floating pane)
+#      or type a new name to create a window
 
 set -u
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-SELF="$SCRIPT_DIR/$(basename -- "${BASH_SOURCE[0]}")"
-INPUT_SCRIPT="$SCRIPT_DIR/tmux-input.sh"
-
 fail() {
-  printf 'move-pane-to-session: %s\n' "$*" >&2
+  tmux display-message "move-pane-to-session: $*"
   return 1
 }
 
-move_pane() {
-  local source_pane="$1"
-  local session_name="$2"
-  local create_session="$3"
-  local window_name="$4"
-  local placeholder_window=''
-
-  if ! tmux display-message -p -t "$source_pane" '#{pane_id}' >/dev/null 2>&1; then
-    fail 'source pane no longer exists'
-    return 1
-  fi
-
-  if [[ $create_session == '1' ]]; then
-    placeholder_window=$(tmux new-session -d -P -F '#{window_id}' -s "$session_name") || return 1
-  elif ! tmux has-session -t "$session_name" 2>/dev/null; then
-    fail "session no longer exists: $session_name"
-    return 1
-  fi
-
-  if ! tmux break-pane -d -n "$window_name" -s "$source_pane" -t "$session_name:"; then
-    if [[ -n $placeholder_window ]]; then
-      tmux kill-session -t "$session_name" 2>/dev/null
-    fi
-    return 1
-  fi
-
-  if [[ -n $placeholder_window ]]; then
-    tmux kill-window -t "$placeholder_window"
-  fi
+# Enter copies the highlighted match into the query, then prints the query.
+# Picking a filtered item returns that item; typing a name with no match returns the typed text.
+pick() {
+  local label="$1" prompt="$2"
+  fzf --popup=45%,40% \
+    --bind='enter:replace-query+print-query' \
+    --pointer='▶' \
+    --prompt="$prompt> " \
+    --header='Select an entry or type a new name' \
+    --border-label=" $label "
 }
 
-if [[ ${1-} == '--move' ]]; then
-  if [[ $# -ne 5 ]]; then
-    fail 'missing source pane, session, creation mode, or window name'
-    exit 1
-  fi
-
-  move_pane "$2" "$3" "$4" "$5"
-  exit $?
-fi
-
-[[ -n ${TMUX:-} ]] || { fail 'not running inside tmux'; exit 1; }
+[[ -n ${TMUX:-} ]] || { echo 'move-pane-to-session: not running inside tmux' >&2; exit 1; }
 command -v fzf >/dev/null 2>&1 || { fail 'fzf not found'; exit 1; }
-[[ -x $INPUT_SCRIPT ]] || { fail "$INPUT_SCRIPT is not executable"; exit 1; }
 
 source_pane=$(tmux display-message -p '#{pane_id}') || exit 1
-fzf_output=$(
-  tmux list-sessions -F '#{session_name}' |
-    fzf --popup=45%,40% \
-      --print-query \
-      --bind='enter:accept' \
-      --prompt='session> ' \
-      --header='Select a session or type a new name' \
-      --border-label=' Move pane '
-)
-fzf_status=$?
+source_window=$(tmux display-message -p -t "$source_pane" '#{window_id}') || exit 1
 
-# fzf exits with 1 when the query has no match, even though --print-query
-# returns the new session name. Only treat cancellation or an empty query as aborting.
-[[ $fzf_status -eq 0 || $fzf_status -eq 1 ]] || exit 0
-[[ -n $fzf_output ]] || exit 0
+session=$(tmux list-sessions -F '#{session_name}' | pick 'Move pane' 'session') || exit 0
+[[ -n $session ]] || exit 0
 
-query=${fzf_output%%$'\n'*}
-selection=''
-if [[ $fzf_output == *$'\n'* ]]; then
-  selection=${fzf_output#*$'\n'}
-fi
-
-if [[ -n $query && $query != "$selection" ]]; then
-  target_session="$query"
-  if tmux has-session -t "=$target_session" 2>/dev/null; then
-    create_session='0'
-  else
-    create_session='1'
+if ! tmux has-session -t "=$session" 2>/dev/null; then
+  placeholder_window=$(tmux new-session -d -P -F '#{window_id}' -s "$session") || exit 1
+  if ! tmux break-pane -d -n '0' -s "$source_pane" -t "=$session:"; then
+    tmux kill-session -t "=$session" 2>/dev/null
+    exit 1
   fi
-elif [[ -n $selection ]]; then
-  target_session="$selection"
-  create_session='0'
-else
+  tmux kill-window -t "$placeholder_window"
   exit 0
 fi
 
-"$INPUT_SCRIPT" -l 'window name' -- "$SELF" --move "$source_pane" "$target_session" "$create_session"
+windows=$(tmux list-windows -t "=$session" -F '#{window_name}:#{window_index}') || exit 1
+window=$(printf '%s\n' "$windows" | pick "Move pane to $session" 'window') || exit 0
+[[ -n $window ]] || exit 0
+
+if grep -Fxq -- "$window" <<<"$windows"; then
+  target="=$session:${window##*:}"
+  target_window=$(tmux display-message -p -t "$target" '#{window_id}') || exit 1
+  if [[ $target_window == "$source_window" ]]; then
+    fail 'pane is already in that window'
+    exit 0
+  fi
+  tmux join-pane -d -s "$source_pane" -t "$target" && tmux break-pane -W -d -s "$source_pane"
+else
+  tmux break-pane -d -n "$window" -s "$source_pane" -t "=$session:"
+fi
