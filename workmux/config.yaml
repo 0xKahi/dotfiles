@@ -12,9 +12,15 @@ window_placement: rightmost
 post_create:
   - jojo wt link
 
+panes:
+  - command: jojo wt merge && jojo wt pull --only-install
+    focus: true
+
 sidebar:
   # Position: "left" (default) or "top"
   position: left
+
+  group_by: project
 
   # Left sidebar width: absolute columns or percentage of terminal width
   # width: 35 # absolute columns
