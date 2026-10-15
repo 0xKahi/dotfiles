@@ -5,7 +5,7 @@
 
 set -u
 
-MIN_HEIGHT=4
+MIN_HEIGHT=8
 BOTTOM_GAP=1 # matches the gap tmux leaves when fitting a split floating pane
 
 pane="${2:-$(tmux display -p '#{pane_id}')}"
@@ -14,7 +14,7 @@ read -r floating pane_top window_height < <(tmux display -t "$pane" -p '#{pane_f
 [ "$floating" = "1" ] || exit 0
 
 case "${1:-}" in
-  minimize)
+  collapse)
     tmux resize-pane -t "$pane" -y "$MIN_HEIGHT"
     ;;
   expand)
