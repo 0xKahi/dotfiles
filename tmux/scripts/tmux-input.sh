@@ -28,7 +28,7 @@ set -u
 
 SELF="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)/$(basename -- "${BASH_SOURCE[0]}")"
 
-BORDER='#FFC777'                     # popup border + label colour
+BORDER='#ffc777'                     # popup border + label colour
 
 label=''
 prefix=' '
