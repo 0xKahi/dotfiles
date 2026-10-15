@@ -27,9 +27,19 @@ function M.print_table(tbl)
   M.debug_table({ tbl = tbl })
 end
 
+---@param type? 'visual' | 'line' | 'block'
 ---@return boolean
-function M.in_visual_mode()
-  return vim.fn.mode() == 'v' or vim.fn.mode() == 'V'
+function M.in_visual_mode(type)
+  local visual_modes = {
+    visual = 'v',
+    line = 'V',
+    block = '\22', -- <C-v>
+  }
+  local mode = vim.fn.mode()
+  if type == nil then
+    return mode == visual_modes.visual or mode == visual_modes.line or mode == visual_modes.block
+  end
+  return mode == visual_modes[type]
 end
 
 function M.back_to_normal_mode()

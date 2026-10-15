@@ -81,6 +81,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader>yp', function()
   }
 
   local cursorPos = JoJo.utils.get_cursor_position()
+  local isLineMode = JoJo.utils.in_visual_mode('line')
 
   vim.ui.select(pathList, {
     prompt = 'Choose Path Format',
@@ -91,7 +92,7 @@ vim.keymap.set({ 'n', 'v' }, '<leader>yp', function()
     end
 
     local function format_pos(pos)
-      if pos.col == 0 then
+      if pos.col == 0 or isLineMode then
         return 'L' .. pos.lnum
       end
       return 'L' .. pos.lnum .. ':C' .. pos.col
