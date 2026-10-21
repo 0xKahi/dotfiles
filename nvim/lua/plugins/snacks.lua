@@ -169,14 +169,6 @@ return {
       { desc = '[F]ind [N]otification', silent = false, noremap = true },
       mode = { 'n' },
     },
-    {
-      '<leader>pr',
-      function()
-        Snacks.picker.gh_pr()
-      end,
-      { desc = '[P]ull [R]equest', silent = false, noremap = true },
-      mode = { 'n' },
-    },
   },
 
   opts = {
