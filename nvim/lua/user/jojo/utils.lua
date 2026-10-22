@@ -88,6 +88,15 @@ end
 function M.get_file_path()
   local full = vim.api.nvim_buf_get_name(0)
   local relative = vim.fn.expand('%:.')
+
+  -- file is outside cwd: fall back to path relative to the file's git root
+  if relative == full or vim.startswith(relative, '/') or vim.startswith(relative, '~') then
+    local root = vim.fs.root(full, '.git')
+    if root then
+      relative = full:sub(#root + 2)
+    end
+  end
+
   return { full = full, relative = relative }
 end
 
