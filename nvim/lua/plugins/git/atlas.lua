@@ -1,3 +1,33 @@
+-- Pick a `keymaps.pulls.review` action and replay its configured buffer-local key.
+-- `path` points to a nested table inside `review`, e.g. { 'view' }.
+local function select_review_key(prompt, path, choices)
+  vim.ui.select(choices, { prompt = prompt }, function(choice)
+    if choice == nil then
+      return
+    end
+
+    local keys = require('atlas.config').options.keymaps.pulls.review or {}
+    for _, segment in ipairs(path) do
+      keys = keys[segment] or {}
+    end
+
+    local key = keys[choice]
+    if type(key) == 'table' then
+      key = key[1]
+    end
+    if type(key) ~= 'string' then
+      vim.notify('No keymap configured for ' .. choice, vim.log.levels.WARN)
+      return
+    end
+
+    -- Replay once the picker has closed so the Atlas buffer mapping receives it.
+    key = key:gsub('<[lL]eader>', vim.g.mapleader or '\\')
+    vim.schedule(function()
+      vim.api.nvim_feedkeys(vim.keycode(key), 'm', false)
+    end)
+  end)
+end
+
 return {
   'emrearmagan/atlas.nvim',
   dependencies = {
@@ -8,7 +38,28 @@ return {
     {
       '<leader>pr',
       function()
-        vim.cmd('Atlas pulls')
+        local choices = { 'browse', 'current PR' }
+        vim.ui.select(choices, { prompt = 'Atlas' }, function(choice)
+          if choice == nil then
+            return
+          end
+
+          if choice == 'browse' then
+            vim.cmd('Atlas pulls')
+            return
+          end
+
+          vim.system({ 'gh', 'pr', 'view', '--json', 'url', '-q', '.url' }, { text = true }, function(res)
+            vim.schedule(function()
+              local url = vim.trim(res.stdout or '')
+              if res.code ~= 0 or url == '' then
+                vim.notify('No PR found for current branch: ' .. vim.trim(res.stderr or ''), vim.log.levels.WARN)
+                return
+              end
+              vim.cmd('Atlas review ' .. url)
+            end)
+          end)
+        end)
       end,
       { desc = '[P]ull [R]equest', silent = false, noremap = true },
       mode = { 'n' },
@@ -73,14 +124,14 @@ return {
         lsp = {
           -- Back the new side of the diff with a detached worktree at the PR head so it is made of
           -- real files and your language servers attach to it (AtlasDiff and CodeDiff). Off by default.
-          enabled = false,
+          enabled = true,
           -- Defaults to `stdpath("cache")/atlas/worktrees/<repo>/pr-<id>` (or `<repo>/<sha>` without a PR).
           -- May be an absolute path, or a function receiving
           -- { repo_root, repo_full_name, pr_id, head_sha, default } that returns a path or nil.
           dir = nil,
           -- Directories symlinked from your checkout into the worktree so servers can resolve
           -- dependencies. These are the same directories on disk, not copies.
-          link = {}, -- e.g. { "node_modules", ".venv" }
+          link = { 'node_modules', '.nvim', '.venv' }, -- e.g. { "node_modules", ".venv" }
         },
         explorer = {
           grouped = true, -- Group changed files by directory.
@@ -183,7 +234,7 @@ return {
         open_repository = 'o',
         edit_pr = 'ge',
         review = {
-          show_details = 'K', -- File/commit details.
+          show_details = '<leader>sd', -- File/commit details.
           toggle_file_reviewed = '-',
           approve = '<leader>ga',
           request_changes = '<leader>gr',
@@ -202,8 +253,8 @@ return {
           add_note = '<leader>n',
           view = {
             external_help = 'gA', -- External diff viewer help.
-            toggle_review_panel = 'gR',
-            toggle_detail_panel = 'gD',
+            toggle_review_panel = '<leader>vr', -- Also available via <leader>op menu.
+            toggle_detail_panel = '<leader>vd', -- Also available via <leader>op menu.
             toggle_comments = 'gH',
           },
           explorer = {
@@ -237,6 +288,26 @@ return {
           open = 'gpo',
           merged = 'gpm',
           declined = 'gpd',
+        },
+        custom = {
+          {
+            key = '<leader>oa',
+            desc = '[O]pen [A]ction',
+            callback = function()
+              select_review_key('Atlas review action', {}, { 'show_details', 'add_comment', 'add_suggestion' })
+            end,
+          },
+          {
+            key = '<leader>op',
+            desc = '[O]pen [P]anel',
+            callback = function()
+              select_review_key(
+                'Atlas panel',
+                { 'view' },
+                { 'external_help', 'toggle_review_panel', 'toggle_detail_panel', 'toggle_comments' }
+              )
+            end,
+          },
         },
       },
     },
