@@ -18,7 +18,7 @@ return {
       require('mason-lspconfig').setup({
         automatic_enable = true,
         ensure_installed = {
-          -- 'vtsls',
+          'vtsls',
           'tsc',
           'biome',
           'eslint',
@@ -64,18 +64,11 @@ return {
       },
     },
     config = function(_, opts)
-      -- Common setup function for all LSP servers
-      local on_attach = function(_, bufnr)
-        -- Load your keymaps
-        require('config.lsp-picker-keymap').setup_snacks_lsp_keymaps(bufnr)
-      end
-
       local workspace = require('config.workspace')
 
       -- Define default config
       vim.lsp.config('*', {
         capabilities = { textDocument = { semanticTokens = { multilineTokenSupport = true } } },
-        on_attach = on_attach,
       })
 
       -- TypeScript config
@@ -248,6 +241,46 @@ return {
         },
       })
 
+      workspace.lsp_config('rust_analyzer', {
+        filetypes = { 'rust' },
+        settings = {
+          ['rust-analyzer'] = {
+            diagnostic = {
+              enable = true,
+            },
+            lens = {
+              debug = {
+                enable = true,
+              },
+              enable = true,
+              implementations = {
+                enable = true,
+              },
+              references = {
+                adt = {
+                  enable = true,
+                },
+                enumVariant = {
+                  enable = true,
+                },
+                method = {
+                  enable = true,
+                },
+                trait = {
+                  enable = true,
+                },
+              },
+              run = {
+                enable = true,
+              },
+              updateTest = {
+                enable = true,
+              },
+            },
+          },
+        },
+      })
+
       workspace.lsp_config('marksman', {
         filetypes = { 'markdown', 'markdown.mdx' },
       })
@@ -304,6 +337,8 @@ return {
       vim.api.nvim_create_autocmd('LspAttach', {
         desc = 'LSP actions',
         callback = function(event)
+          require('config.lsp-picker-keymap').setup_snacks_lsp_keymaps(event.buf)
+
           local conf = { buffer = event.buf }
           vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', conf)
           vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', conf)
