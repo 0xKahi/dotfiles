@@ -91,7 +91,7 @@
       },
       {
         "provider": "opencode-go",
-        "modelId": "minimax-m3.1-flash-free",
+        "modelId": "minimax-m3.1-flash",
         "groups": [" "]
       },
       {
