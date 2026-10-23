@@ -1,6 +1,14 @@
 # TMUX setup
 
 
+## Dependencies
+
+we use [pane-mux](https://github.com/0xKahi/pane-mux) to manage tmux panes and windows, so make sure to install it first.
+
+```bash
+cargo install pane-mux --locked
+```
+
 ### tmux catpuccin (manual installation)
 - using specific tag to avoid theme issues currently v2.1.3 
 
