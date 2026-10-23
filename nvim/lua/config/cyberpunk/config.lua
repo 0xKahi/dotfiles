@@ -344,9 +344,12 @@ local function set_lsp_highlights(highlights)
   --- rust
   highlights['@lsp.typemod.method.defaultLibrary.rust'] = { fg = cyberpunk.lsp.func }
   highlights['@lsp.type.macro.rust'] = { fg = cyberpunk.core.orange }
-  highlights['@lsp.typemod.enumMember.library.rust'] = { fg = cyberpunk.lsp.property }
   highlights['@lsp.type.struct.rust'] = { fg = cyberpunk.lsp.class }
-
+  set_highlight(
+    highlights,
+    { '@lsp.typemod.enumMember.library.rust', '@lsp.typemod.enumMember.defaultLibrary.rust' },
+    { fg = cyberpunk.lsp.property }
+  )
   set_highlight(highlights, { '@module.rust', '@lsp.type.namespace.rust' }, { fg = cyberpunk.lsp.weirdbrown })
 end
 
