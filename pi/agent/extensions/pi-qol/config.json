@@ -90,6 +90,11 @@
         "groups": [" "]
       },
       {
+        "provider": "opencode-go",
+        "modelId": "minimax-m3.1-flash-free",
+        "groups": [" "]
+      },
+      {
         "provider": "github-copilot",
         "modelId": "gemini-3.8-flash",
         "groups": [" "]
