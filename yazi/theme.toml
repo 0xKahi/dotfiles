@@ -226,11 +226,11 @@ hovered = { bg = "#2d3f76" }
 # : Help menu {{{
 
 [help]
-on = { fg = "green" }
-run = { fg = "magenta" }
-desc = { fg = "cyan" }
+# on = { fg = "green" }
+# run = { fg = "magenta" }
+# desc = { fg = "cyan" }
 hovered = { reversed = true, bold = true }
-footer = { fg = "black", bg = "white" }
+# footer = { fg = "black", bg = "white" }
 
 # : }}}
 
