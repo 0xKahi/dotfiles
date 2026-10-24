@@ -62,8 +62,8 @@ value = { fg = "white" }
 selected = { reversed = true }
 
 [help]
-border = { fg = "gray" }
-title = { fg = "lightcyan" }
+border = { fg = "blue" }
+title = { fg = "blue" }
 on = { fg = "green" }
 run = { fg = "magenta" }
 desc = { fg = "cyan" }
