@@ -1,3 +1,5 @@
+#:schema https://raw.githubusercontent.com/0xKahi/pane-mux/main/schemas/theme.json
+
 # Adapted from the user's yazi theme: reversed indicators, gray borders,
 # green/blue mode labels, and yellow/red input and confirmation frames.
 [picker]
@@ -17,9 +19,14 @@ preview = { underline = true }
 padding = { open = "\uE0B6", close = "\uE0B4" }
 active = { text = "*", fg = "magenta" }
 
+[marker]
+symbol = "│"
+cut = { fg = "lightred", bg = "lightred" }
+badge_cut = { bg = "red", fg = "black" }
+
 [preview]
 border = { fg = "gray" }
-title = { fg = "lightcyan" }
+title = { fg = "#00FF9C" }
 
 [icons]
 # The spec's session and pane glyphs are empty; use Nerd Font fallbacks.

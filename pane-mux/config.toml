@@ -1,3 +1,16 @@
+#:schema https://raw.githubusercontent.com/0xKahi/pane-mux/main/schemas/config.json
+
 [picker]
 preview_ratio = 75
 preview_position = "bottom"
+
+[switch-session]
+# Exact session names listed last instead of ranked by recency.
+exclude_from_recency = ['scratch']
+
+[floating-pane]
+width = 50
+height = 50
+# tmux pane positions e.g.
+#"top-left", "top-centre", "top-right", "centre-left", "centre", "centre-right", "bottom-left", "bottom-centre", "bottom-right", "top-left-centre", "top-right-centre", "bottom-left-centre", "bottom-right-centre"
+position = "centre"
