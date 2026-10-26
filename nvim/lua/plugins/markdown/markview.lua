@@ -147,6 +147,10 @@ return {
             icon = ' ',
             hl = 'MarkviewPalette6Fg',
           },
+          ['slack%.com'] = {
+            icon = ' ',
+            hl = 'MarkviewPalette6Fg',
+          },
           ['figma%.com'] = {
             icon = ' ',
             hl = 'MarkviewPalette6Fg',
