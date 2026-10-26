@@ -166,10 +166,10 @@ persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", 
   # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
   #s = ['layout sticky tiling', 'mode main']
 
-  alt-shift-h = ['join-with left', 'mode main']
-  alt-shift-j = ['join-with down', 'mode main']
-  alt-shift-k = ['join-with up', 'mode main']
-  alt-shift-l = ['join-with right', 'mode main']
+  alt-h = ['join-with left', 'mode main']
+  alt-j = ['join-with down', 'mode main']
+  alt-k = ['join-with up', 'mode main']
+  alt-l = ['join-with right', 'mode main']
 
 [mode.window.binding]
   h     = ['focus left', 'mode main']
@@ -210,6 +210,10 @@ persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "B", "C", 
 [[on-window-detected]]
   if.app-id = 'com.apple.FaceTime'
   run       = 'move-node-to-workspace C' # mnemonics C - Chat
+
+[[on-window-detected]]
+  if.app-id = 'com.tinyspeck.slackmacgap'
+  run       = 'move-node-to-workspace C'  # mnemonics C - Chat
 
 [[on-window-detected]]
   if.app-id = 'com.brave.Browser'
