@@ -6,7 +6,7 @@ preview_position = "bottom"
 
 [switch-session]
 # Exact session names listed last instead of ranked by recency.
-exclude_from_recency = ['scratch']
+exclude_from_recency = ['scratch', 'pmux']
 
 [floating-pane]
 width = 50
