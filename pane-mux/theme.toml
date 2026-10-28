@@ -5,7 +5,7 @@
 [picker]
 border = { fg = "gray" }
 session = { fg = "#82AAFF" }
-window = { fg = "lightcyan" }
+window = { fg = "lightmagenta" }
 pane = { fg = "white" }
 header = { fg = "lightgreen" }
 find_keyword = { fg = "yellow", bold = true, italic = true, underline = true }
@@ -31,8 +31,10 @@ title = { fg = "#00FF9C" }
 [icons]
 # The spec's session and pane glyphs are empty; use Nerd Font fallbacks.
 session = { text = "", fg = "#82AAFF" }
-window = { text = "󱂬", fg = "lightcyan" }
+window = { text = "󱂬", fg = "lightmagenta" }
 pane = { text = "", fg = "lightgreen" }
+stashed = { text = "󰦤 $count", fg = "lightcyan" }
+copy_mode = { text = "󱣱 ", fg = "lightyellow" }
 
 [mode]
 normal = { bg = "blue", fg = "#1b1d2b", bold = true }
