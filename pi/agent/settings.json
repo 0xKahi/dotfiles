@@ -3,7 +3,7 @@
   "defaultModel": "claude-opus-5-5",
   "defaultThinkingLevel": "medium",
   "theme": "cyberpunk-theme",
-  "lastChangelogVersion": "1.4.0",
+  "lastChangelogVersion": "1.5.0",
   "hideThinkingBlock": false,
   "showHardwareCursor": true,
   "enableSkillCommands": true,
@@ -36,5 +36,9 @@
   "skills": [
     "~/.jojo/skills/global"
   ],
-  "deviceId": "0eb4c082-f8ef-477a-9e09-d3b9f9e45515"
+  "deviceId": "0eb4c082-f8ef-477a-9e09-d3b9f9e45515",
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:@gotgenes/pi-anthropic-auth\",\"scope\":\"user\"}": "3.4.4",
+    "{\"source\":\"../\",\"scope\":\"project\"}": "1.4.0"
+  }
 }
