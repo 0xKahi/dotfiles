@@ -21,7 +21,6 @@ return {
           'vtsls',
           'tsc',
           'biome',
-          'eslint',
           'lua_ls',
           'stylua',
           'rust_analyzer',
@@ -33,6 +32,7 @@ return {
           'bashls',
           'vimls',
           'jsonls',
+          'yamlls',
         },
         automatic_installation = false,
       })
