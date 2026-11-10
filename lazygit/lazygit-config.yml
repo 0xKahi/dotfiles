@@ -1,7 +1,5 @@
 gui:
   nerdFontsVersion: "3"
-  authorColors: {}
-  branchColors: {}
   scrollHeight: 2
   scrollPastBottom: true
   mouseEvents: true
@@ -25,6 +23,8 @@ gui:
   theme:
     selectedLineBgColor:
       - "#311b92"
+    authorColors: {}
+    branchColorPatterns: {}
 notARepository: prompt
 git:
   # localBranchSortOrder: recency
