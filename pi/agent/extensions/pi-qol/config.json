@@ -41,7 +41,7 @@
       },
       {
         "provider": "anthropic",
-        "modelId": "claude-fable-5-1",
+        "modelId": "claude-fable-5-2",
         "groups": [" "]
       },
       {
