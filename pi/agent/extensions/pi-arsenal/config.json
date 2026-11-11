@@ -15,11 +15,11 @@
     "defaultAgent": "megamind",
     "maxConcurrency": 5,
     "presets": {
-      "claude": {
+      "alternative": {
         "fixer": {
-          "provider": "anthropic",
-          "modelId": "claude-sonnet-5-5",
-          "reasoning": "medium"
+          "provider": "opencode-go",
+          "modelId": "deepseek-v4.1-flash",
+          "reasoning": "high"
         }
       }
     },
@@ -28,7 +28,7 @@
         "enabled": true,
         "model": {
           "provider": "opencode-go",
-          "modelId": "deepseek-v4.1-flash",
+          "modelId": "claude-haiku-5-5",
           "reasoning": "high"
         }
       },
@@ -52,7 +52,7 @@
         "enabled": true,
         "model": {
           "provider": "opencode-go",
-          "modelId": "glm-5.3-flash",
+          "modelId": "minimax-m3.1-flash",
           "reasoning": "high"
         }
       }
