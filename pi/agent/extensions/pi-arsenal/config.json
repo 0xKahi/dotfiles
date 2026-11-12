@@ -21,6 +21,13 @@
           "modelId": "deepseek-v4.1-flash",
           "reasoning": "high"
         }
+      },
+      "writer": {
+        "fixer": {
+          "provider": "anthropic",
+          "modelId": "claude-sonnet-4-6",
+          "reasoning": "medium"
+        }
       }
     },
     "subagents": {
@@ -49,7 +56,7 @@
         }
       },
       "wiki-reader": {
-        "enabled": true,
+        "enabled": false,
         "model": {
           "provider": "opencode-go",
           "modelId": "minimax-m3.1-flash",
