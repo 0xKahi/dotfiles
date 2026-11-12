@@ -14,7 +14,7 @@ return {
     },
   },
   opts = {
-    browsers = { 'default', 'arc' },
+    browsers = { 'default', 'dia', 'arc' },
     custom = {
       {
         pattern = 'discord%.com', -- Lua pattern: matches any URL containing "discord.com"
