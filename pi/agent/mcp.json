@@ -4,7 +4,14 @@
       "url": "https://mcp.notion.com/mcp"
     },
     "datadog": {
-      "url": "https://mcp.datadoghq.eu/v1/mcp"
+      "url": "https://mcp.datadoghq.eu/v1/mcp",
+      "enabled": false
+    },
+    "radius": {
+      "url": "https://radius.pi.dev/mcp",
+      "auth": {
+        "provider": "radius"
+      }
     }
   }
 }
