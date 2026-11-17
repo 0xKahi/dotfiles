@@ -51,7 +51,7 @@
         "enabled": true,
         "model": {
           "provider": "opencode-go",
-          "modelId": "qwen3.8-flash",
+          "modelId": "qwen4-max",
           "reasoning": "medium"
         }
       },
