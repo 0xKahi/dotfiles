@@ -15,11 +15,16 @@
     "defaultAgent": "megamind",
     "maxConcurrency": 5,
     "presets": {
-      "alternative": {
+      "codex-megamind": {
+        "megamind": {
+          "provider": "openai-codex",
+          "modelId": "gpt-6.2-astra",
+          "reasoning": "medium"
+        },
         "fixer": {
-          "provider": "opencode-go",
-          "modelId": "deepseek-v4.1-flash",
-          "reasoning": "high"
+          "provider": "anthropic",
+          "modelId": "claude-sonnet-5-5",
+          "reasoning": "medium"
         }
       },
       "writer": {
@@ -27,6 +32,13 @@
           "provider": "anthropic",
           "modelId": "claude-sonnet-4-6",
           "reasoning": "medium"
+        }
+      },
+      "alternative": {
+        "fixer": {
+          "provider": "opencode-go",
+          "modelId": "deepseek-v4.1-flash",
+          "reasoning": "high"
         }
       }
     },
@@ -43,7 +55,7 @@
         "enabled": true,
         "model": {
           "provider": "openai-codex",
-          "modelId": "gpt-6.1-sol",
+          "modelId": "gpt-6.2-sol",
           "reasoning": "medium"
         }
       },

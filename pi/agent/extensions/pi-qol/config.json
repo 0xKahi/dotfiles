@@ -16,12 +16,12 @@
     "favourite": [
       {
         "provider": "openai-codex",
-        "modelId": "gpt-6-astra",
+        "modelId": "gpt-6.2-astra",
         "groups": [" "]
       },
       {
         "provider": "openai-codex",
-        "modelId": "gpt-6.1-sol",
+        "modelId": "gpt-6.2-sol",
         "groups": [" "]
       },
       {
@@ -55,11 +55,6 @@
         "groups": [" "]
       },
       {
-        "provider": "anthropic",
-        "modelId": "claude-opus-4-6",
-        "groups": [" "]
-      },
-      {
         "provider": "opencode-go",
         "modelId": "claude-haiku-5-5",
         "groups": [" "]
@@ -88,6 +83,11 @@
         "provider": "opencode-go",
         "modelId": "qwen3.8-flash",
         "groups": [" "]
+      },
+      {
+        "provider": "opencode-go",
+        "modelId": "gemini-4-argon",
+        "groups": [" "]
       },
       {
         "provider": "opencode-go",
