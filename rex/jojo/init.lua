@@ -3,11 +3,13 @@
 ---@class jojo.rex
 ---@field key jojo.key
 ---@field ui jojo.ui
+---@field utils jojo.utils
 
 ---@class JoJo: jojo.rex
 JoJo = {
   key = require('jojo.key'),
   ui = require('jojo.ui'),
+  utils = require('jojo.utils'),
 }
 
 -- lazily require any other jojo.* module on first access
