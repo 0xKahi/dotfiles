@@ -44,6 +44,34 @@ rex.bind(prefix('j'), 'pane.focus', { direction = 'down' })
 rex.bind(prefix('k'), 'pane.focus', { direction = 'up' })
 rex.bind(prefix('l'), 'pane.focus', { direction = 'right' })
 
-rex.bind(prefix('q'), 'pane.close')
-
 rex.bind(prefix('['), 'pane.copy_mode.enter')
+
+-- Close the pane; if it's the window's last pane close the window, if that's the session's last window
+-- destroy the session (tmux kill-pane cascade)
+rex.bind(prefix('q'), function(ctx)
+  local view = rex.session.view({})
+  local session_id = view.session_id
+
+  for _, window in ipairs(view.windows or {}) do
+    local block_count, has_block = 0, false
+    for _, layer in ipairs(window.layers or {}) do
+      for _, block in ipairs(layer.blocks or {}) do
+        block_count = block_count + 1
+        has_block = has_block or block.block_id == ctx.block_id
+      end
+    end
+
+    if has_block then
+      if block_count > 1 then
+        rex.call('block.close', { session_id = session_id, block_id = ctx.block_id })
+      elseif #view.windows > 1 then
+        rex.session.close_window({ window_id = window.window_id })
+      else
+        rex.call('session.destroy', { session_id = session_id })
+      end
+      return true
+    end
+  end
+
+  return false
+end)
