@@ -4,8 +4,8 @@ local prefix = JoJo.key.prefix
 rex.bind(prefix('ctrl+b'), 'pane.send_key', { key = 'ctrl+b' })
 
 rex.bind(prefix('shift+r'), 'client.config.reload')
-rex.bind(prefix('c'), function()
-  rex.session.new_window({
+rex.bind(prefix('c'), function(ctx)
+  local window = rex.session.new_window({
     layout = rex.layout.block({
       flavor = 'com.superlogical.terminal.shell',
       options = { cwd = os.getenv('HOME') },
@@ -13,7 +13,6 @@ rex.bind(prefix('c'), function()
   })
   return true
 end)
-rex.bind(prefix('c'), 'client.tab.new')
 rex.bind(prefix('r'), 'client.tab.rename')
 rex.bind(prefix('ctrl+r'), 'session.rename')
 
