@@ -5,6 +5,7 @@
 ---@field ui jojo.ui
 ---@field utils jojo.utils
 ---@field float jojo.float
+---@field store jojo.store
 
 ---@class JoJo: jojo.rex
 JoJo = {
@@ -21,6 +22,26 @@ setmetatable(JoJo, {
     return rawget(t, k)
   end,
 })
+
+---@alias JoJoStoreKey "shell_path"
+
+---@class jojo.store
+JoJo.store = {
+  _cache = {
+    shell_path = nil,
+  },
+
+  ---@param prop JoJoStoreKey The state property name
+  get = function(self, prop)
+    return self._cache[prop]
+  end,
+
+  ---@param prop JoJoStoreKey The state property name
+  ---@param value any The value to set
+  set = function(self, prop, value)
+    self._cache[prop] = value
+  end,
+}
 
 _G.JoJo = JoJo
 

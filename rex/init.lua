@@ -4,3 +4,4 @@ _G.rex = rex
 
 require('jojo')
 require('keybinds')
+require('actions')

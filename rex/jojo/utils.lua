@@ -42,4 +42,47 @@ function M.get_cwd(block_id)
   return foreground or shell
 end
 
+--- Folder holding the `rex` CLI. Rex sets REX_BIN_DIR in terminals but not on the server itself.
+M.rex_bin_dir = os.getenv('REX_BIN_DIR')
+  or (
+    os.getenv('HOME')
+    .. '/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS'
+  )
+
+--- PATH as your interactive login shell sees it (.zshenv, .zprofile and .zshrc), plus the `rex` CLI.
+--- The Rex server runs with launchd's bare PATH, so commands from `rex.exec` can't find Homebrew tools
+--- or `rex` without this. Resolved once by starting `$SHELL -lic` and cached in `JoJo.store` under `shell_path`.
+---@param refresh? boolean re-run the shell instead of using the cached value
+---@return string path
+function M.get_shell_path(refresh)
+  local cached = JoJo.store:get('shell_path')
+  if cached ~= nil and not refresh then
+    return cached
+  end
+
+  local fallback = table.concat({ '/opt/homebrew/bin', M.rex_bin_dir, os.getenv('PATH') or '/usr/bin:/bin' }, ':')
+  local marker = '__JOJO_PATH__'
+  -- interactive startup can print escape sequences, so fence PATH between markers
+  local result, err = rex.exec(
+    { os.getenv('SHELL') or '/bin/zsh', '-lic', 'print -r -- "' .. marker .. '${PATH}' .. marker .. '"' },
+    { env = { REX_BIN_DIR = M.rex_bin_dir }, stdin = '', stderr = false, timeout = 5 }
+  )
+
+  local path = result and result.ok and result.stdout:match(marker .. '(.-)' .. marker)
+  if not path or path == '' then
+    rex.log(
+      'warn',
+      'jojo: could not read shell PATH (' .. tostring(err or (result and result.code)) .. '), using fallback'
+    )
+    return fallback
+  end
+
+  if not path:find(M.rex_bin_dir, 1, true) then
+    path = M.rex_bin_dir .. ':' .. path
+  end
+
+  JoJo.store:set('shell_path', path)
+  return path
+end
+
 return M
