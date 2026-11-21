@@ -6,7 +6,7 @@ case "$1" in
 "Ghostty")
 	RESULT=$ICON_GHOSTTY
 	;;
-"Terminal" | "Warp" | "iTerm2")
+"Rex" | "Terminal" | "Warp" | "iTerm2")
   RESULT=$ICON_TERM
 	;;
 "Finder")

@@ -123,6 +123,7 @@ export ICON_COMET=
 export ICON_BRAVE=󰄛
 export ICON_CHROME=󰊯
 export ICON_GHOSTTY=
+export ICON_DRAGON= 
 export ICON_TERM= # fallback terminal app, terminal, warp, iterm2
 export ICON_VSCODE= 
 export ICON_DATAGRIP=

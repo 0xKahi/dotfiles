@@ -40,3 +40,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 ## custom python venv executables
 export UVENV="$HOME/.uv-venv"
 export UV_PYTHON="$UVENV/main/bin/python"
+
+# rex
+if [ -n "$REX_BIN_DIR" ]; then
+    export PATH="$REX_BIN_DIR:$PATH"
+fi
