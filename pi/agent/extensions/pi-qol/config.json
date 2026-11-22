@@ -85,6 +85,11 @@
         "groups": [" "]
       },
       {
+        "provider": "radius",
+        "modelId": "gemini-4-neon",
+        "groups": [" "]
+      },
+      {
         "provider": "opencode-go",
         "modelId": "gemini-4-argon",
         "groups": [" "]
@@ -100,11 +105,6 @@
         "groups": [" "]
       },
       {
-        "provider": "github-copilot",
-        "modelId": "gemini-3.8-flash",
-        "groups": [" "]
-      },
-      {
         "provider": "opencode-go",
         "modelId": "glm-5.3",
         "groups": [" "]
@@ -115,7 +115,8 @@
       "anthropic",
       "opencode-go",
       "opencode",
-      "github-copilot"
+      "github-copilot",
+      "radius"
     ],
     "hide_tabs": {
       "search": true
