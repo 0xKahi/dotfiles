@@ -18,6 +18,16 @@ local function layer_has_block(layer, block_id)
   return false
 end
 
+---@param block_id? string
+---@return string?
+local function short_cwd(block_id)
+  local cwd = block_id and JoJo.utils.get_cwd(block_id)
+  if cwd and home ~= '' and cwd:sub(1, #home) == home then
+    cwd = '~' .. cwd:sub(#home + 1)
+  end
+  return cwd
+end
+
 ---@param layer table
 ---@param is_current boolean
 ---@return table item
@@ -28,18 +38,13 @@ local function layer_to_pick_item(layer, is_current)
   end
 
   local first_block = layer.blocks and layer.blocks[1]
-  local cwd = first_block and JoJo.utils.get_cwd(first_block.block_id)
-  if cwd and home ~= '' and cwd:sub(1, #home) == home then
-    cwd = '~' .. cwd:sub(#home + 1)
-  end
-
   local is_minimized = layer.state == 'minimized'
   local base_title = #titles > 0 and table.concat(titles, ' / ') or 'float'
 
   return {
     id = layer.layer_id,
     title = base_title .. (is_current and ' (current)' or ''),
-    subtitle = cwd,
+    subtitle = short_cwd(first_block and first_block.block_id),
     icon = is_minimized and 'package' or 'terminal',
     detail = is_minimized and 'Maximize' or 'Minimize',
   }
@@ -90,19 +95,7 @@ local function toggle_float(ctx)
     or { layer_id = target.layer_id, state = 'minimized' }
 
   if picked then
-    -- Workaround for Rex macOS bug (#1573463677779181669): closing the rex.ui.pick palette
-    -- restores focus to the pre-palette pane after the action returns, undoing focus changes
-    -- and reopening a just-minimized focused float. Run detached after a short delay so the
-    -- action returns and the palette finishes closing first.
-    rex.exec.start({
-      '/bin/sh',
-      '-c',
-      'sleep 0.15 && "$1" api call -s "$2" session.set_layer_state "$3"',
-      'jojo-toggle-float',
-      JoJo.utils.rex_bin_dir .. '/rex',
-      ctx.session_id,
-      rex.json.encode(payload),
-    }, { detach = true })
+    JoJo.utils.deferred_api_call(ctx.session_id, 'session.set_layer_state', payload)
     return
   end
 
@@ -113,6 +106,71 @@ local function toggle_float(ctx)
   end
 end
 
+---@param ctx table
+local function open_pane(ctx)
+  local view = rex.session.view({})
+  local by_id = {}
+  local items = {}
+
+  for _, window in ipairs(view.windows or {}) do
+    if window.window_id == view.active_window_id then
+      for _, layer in ipairs(window.layers or {}) do
+        local is_floating = layer.kind == 'floating'
+        local is_minimized = is_floating and layer.state == 'minimized'
+        local icon = is_minimized and 'package' or (is_floating and 'terminal' or 'globe')
+        local detail = is_minimized and 'Minimized' or (is_floating and 'Float' or 'Tiled')
+
+        for _, block in ipairs(layer.blocks or {}) do
+          local is_current = block.block_id == ctx.block_id
+          by_id[block.block_id] = {
+            block_id = block.block_id,
+            layer_id = layer.layer_id,
+            is_minimized = is_minimized,
+          }
+          items[#items + 1] = {
+            id = block.block_id,
+            title = JoJo.utils.get_title(block) .. (is_current and ' (current)' or ''),
+            subtitle = short_cwd(block.block_id),
+            icon = icon,
+            detail = detail,
+          }
+        end
+      end
+      break
+    end
+  end
+
+  if #items == 0 then
+    return
+  end
+
+  local block_id = rex.ui.pick({
+    title = 'Open pane',
+    placeholder = 'Filter panes',
+    items = items,
+  })
+  if not block_id then
+    return
+  end
+
+  local chosen = by_id[block_id]
+  if not chosen then
+    return
+  end
+
+  if chosen.is_minimized then
+    JoJo.utils.deferred_api_call(ctx.session_id, 'session.set_layer_state', {
+      layer_id = chosen.layer_id,
+      state = 'normal',
+      focus = true,
+    })
+  else
+    JoJo.utils.deferred_api_call(ctx.session_id, 'session.focus_block', {
+      block_id = chosen.block_id,
+    })
+  end
+end
+
 JoJo.key.create_mode('panemux', {
   exclusive = true,
   once = true,
@@ -120,6 +178,7 @@ JoJo.key.create_mode('panemux', {
   exit = { 'q' },
   setup = function(mode_key, name)
     local panemux_keys = {
+      o = 'open',
       t = 'toggle float',
       n = 'new float',
       r = 'rename pane',
@@ -130,6 +189,11 @@ JoJo.key.create_mode('panemux', {
       title = 'Panemux',
       args = { action = 'string' },
       run = function(ctx, args)
+        if args.action == panemux_keys.o then
+          open_pane(ctx)
+          return
+        end
+
         if args.action == panemux_keys.t then
           toggle_float(ctx)
           return

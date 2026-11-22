@@ -156,4 +156,26 @@ function M.get_shell_path(refresh)
   return path
 end
 
+--- Run a server API call detached after a short delay.
+--- Workaround for Rex macOS bug (#1573463677779181669): closing the rex.ui.pick palette
+--- restores focus to the pre-palette pane after the action returns, undoing focus changes
+--- and reopening a just-minimized focused float.
+---@param session_id string
+---@param method string server API method name, e.g. 'session.focus_block'
+---@param payload table JSON-serializable arguments table
+---@param delay? number seconds to wait before calling, defaults to 0.15
+function M.deferred_api_call(session_id, method, payload, delay)
+  rex.exec.start({
+    '/bin/sh',
+    '-c',
+    'sleep "$1" && "$2" api call -s "$3" "$4" "$5"',
+    'jojo-deferred-api',
+    tostring(delay or 0.15),
+    M.rex_bin_dir .. '/rex',
+    session_id,
+    method,
+    rex.json.encode(payload),
+  }, { detach = true })
+end
+
 return M
