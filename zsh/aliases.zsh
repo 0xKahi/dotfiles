@@ -36,3 +36,8 @@ alias omo="ocp run omo"
 alias pve="pvetui"
 
 alias wm="workmux"
+
+# rex wipes scrollback on `clear` (E3 / ESC[3J); clear only the screen there
+if [[ "$TERM_PROGRAM" == "rex" ]]; then
+  alias clear="tput clear"
+fi
