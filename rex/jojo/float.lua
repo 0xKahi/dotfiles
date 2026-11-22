@@ -131,6 +131,26 @@ end
 ---@class jojo.float.snap_opts
 ---@field block_id? string terminal block used to convert col/row padding into window fractions
 ---@field padding? jojo.float.padding defaults to `M.padding`
+---@field ref_bounds? number[] original bounds before resizing, used to compute accurate cell-to-window fractions
+
+--- Resolve cell-based padding into [pad_x, pad_top, pad_bottom] window fractions.
+---@param bounds number[] [x, y, w, h] fractions of the window
+---@param opts? jojo.float.snap_opts
+---@return number pad_x, number pad_top, number pad_bottom
+function M.get_padding(bounds, opts)
+  opts = opts or {}
+  local padding = opts.padding or {}
+  local cols = padding.cols or M.padding.cols
+  local top = padding.top or M.padding.top
+  local bottom = padding.bottom or M.padding.bottom
+  local w, h = bounds[3], bounds[4]
+
+  local size = JoJo.utils.get_terminal_size(opts.block_id)
+  local pad_x = size and (cols * w / size.columns) or fallback_padding.x
+  local pad_top = size and (top * h / size.rows) or fallback_padding.top
+  local pad_bottom = size and (bottom * h / size.rows) or fallback_padding.bottom
+  return pad_x, pad_top, pad_bottom
+end
 
 --- Compute bounds snapped to an edge or center while keeping size and the other axis.
 ---@param bounds number[] [x, y, w, h] fractions of the window
@@ -139,16 +159,8 @@ end
 ---@return number[] bounds
 function M.snap_bounds(bounds, target, opts)
   opts = opts or {}
-  local padding = opts.padding or {}
-  local cols = padding.cols or M.padding.cols
-  local top = padding.top or M.padding.top
-  local bottom = padding.bottom or M.padding.bottom
   local x, y, w, h = bounds[1], bounds[2], bounds[3], bounds[4]
-
-  local size = JoJo.utils.get_terminal_size(opts.block_id)
-  local pad_x = size and (cols * w / size.columns) or fallback_padding.x
-  local pad_top = size and (top * h / size.rows) or fallback_padding.top
-  local pad_bottom = size and (bottom * h / size.rows) or fallback_padding.bottom
+  local pad_x, pad_top, pad_bottom = M.get_padding(opts.ref_bounds or bounds, opts)
 
   if target == 'left' then
     x = math.min(pad_x, 1 - w)

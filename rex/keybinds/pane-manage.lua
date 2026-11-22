@@ -1,6 +1,3 @@
--- prefix + @
-rex.bind(JoJo.key.prefix('shift+2'), 'pane.float')
-
 local home = os.getenv('HOME') or ''
 
 ---@param layer table
@@ -171,6 +168,107 @@ local function open_pane(ctx)
   end
 end
 
+--- Return a tiled block in the active window to use as a split anchor, or nil if none exists.
+---@return string? block_id
+local function find_tiled_anchor_id()
+  local view = rex.session.view({})
+  for _, window in ipairs(view.windows or {}) do
+    if window.window_id == view.active_window_id then
+      for _, layer in ipairs(window.layers or {}) do
+        if layer.kind == 'tiled' then
+          local first = layer.blocks and layer.blocks[1]
+          if first and first.block_id then
+            return first.block_id
+          end
+        end
+      end
+      break
+    end
+  end
+  return nil
+end
+
+-- prefix + @
+rex.bind(JoJo.key.prefix('shift+2'), 'pane.float')
+
+local float_mode = 'panemux_float'
+JoJo.key.create_mode(float_mode, {
+  exclusive = true,
+  once = true,
+  exit = { 'q' },
+  setup = function(mode_key, name)
+    local action_keys = {
+      h = 'left',
+      l = 'right',
+      t = 'top',
+      b = 'bottom',
+      ['='] = 'equalize',
+      f = 'focus',
+      v = 'tile vsplit',
+      s = 'tile stacked',
+    }
+
+    rex.action({
+      name = name,
+      title = 'Panemux Float',
+      args = { action = 'string' },
+      run = function(ctx, args)
+        local layer = ctx.block_id and JoJo.float.find_layer(ctx.block_id)
+        if not layer then
+          return
+        end
+
+        if args.action == action_keys.v or args.action == action_keys.s then
+          local anchor_id = find_tiled_anchor_id()
+          if anchor_id then
+            rex.session.move_block({
+              block_id = ctx.block_id,
+              anchor_block_id = anchor_id,
+              direction = args.action == action_keys.v and 'horizontal' or 'vertical',
+            })
+          else
+            rex.client.queue('pane.float')
+          end
+          return
+        end
+
+        local snap_opts = { block_id = ctx.block_id, ref_bounds = layer.bounds }
+        local pad_x, pad_top, pad_bottom = JoJo.float.get_padding(layer.bounds, snap_opts)
+        local full_w = math.max(0.1, 1 - 2 * pad_x)
+        local full_h = math.max(0.1, 1 - pad_top - pad_bottom)
+        local x, y = layer.bounds[1], layer.bounds[2]
+
+        local bounds
+        if args.action == action_keys.h then
+          bounds = JoJo.float.snap_bounds({ x, pad_top, 0.4, full_h }, 'left', snap_opts)
+        elseif args.action == action_keys.l then
+          bounds = JoJo.float.snap_bounds({ x, pad_top, 0.4, full_h }, 'right', snap_opts)
+        elseif args.action == action_keys.t then
+          bounds = JoJo.float.snap_bounds({ pad_x, y, full_w, 0.4 }, 'top', snap_opts)
+        elseif args.action == action_keys.b then
+          bounds = JoJo.float.snap_bounds({ pad_x, y, full_w, 0.4 }, 'bottom', snap_opts)
+        elseif args.action == action_keys['='] then
+          bounds = { math.min(x, 0.6), math.min(y, 0.5), 0.4, 0.5 }
+        elseif args.action == action_keys.f then
+          bounds = JoJo.float.snap_bounds({ x, y, 0.8, full_h }, 'center', snap_opts)
+          bounds = JoJo.float.snap_bounds(bounds, 'top', snap_opts)
+        end
+
+        if bounds then
+          rex.session.resize_layer({
+            layer_id = layer.layer_id,
+            bounds = bounds,
+          })
+        end
+      end,
+    })
+
+    for key, action in JoJo.utils.rpairs(action_keys) do
+      rex.bind(mode_key(key), name, { action = action })
+    end
+  end,
+})
+
 JoJo.key.create_mode('panemux', {
   exclusive = true,
   once = true,
@@ -178,6 +276,7 @@ JoJo.key.create_mode('panemux', {
   exit = { 'q' },
   setup = function(mode_key, name)
     local panemux_keys = {
+      a = 'action',
       o = 'open',
       t = 'toggle float',
       n = 'new float',
@@ -189,6 +288,13 @@ JoJo.key.create_mode('panemux', {
       title = 'Panemux',
       args = { action = 'string' },
       run = function(ctx, args)
+        if args.action == panemux_keys.a then
+          if ctx.block_id and JoJo.float.find_layer(ctx.block_id) then
+            rex.client.queue('client.mode.enter', { name = float_mode, once = true })
+          end
+          return
+        end
+
         if args.action == panemux_keys.o then
           open_pane(ctx)
           return
@@ -218,3 +324,5 @@ JoJo.key.create_mode('panemux', {
     end
   end,
 })
+
+rex.bind(JoJo.key.prefix('t'), 'panemux', { action = 'toggle float' })
