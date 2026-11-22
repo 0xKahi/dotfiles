@@ -93,6 +93,34 @@ function M.find_layer(block_id)
   return nil
 end
 
+--- List floating layers in the active window (optionally filtered by state).
+---@param opts? { state?: 'normal'|'minimized' }
+---@return table[] layers
+function M.list_layers(opts)
+  opts = opts or {}
+  local view = rex.session.view({})
+  local layers = {}
+
+  for _, window in ipairs(view.windows or {}) do
+    if window.window_id == view.active_window_id then
+      for _, layer in ipairs(window.layers or {}) do
+        if layer.kind == 'floating' then
+          local is_minimized = layer.state == 'minimized'
+          local matches = opts.state == nil
+            or (opts.state == 'minimized' and is_minimized)
+            or (opts.state == 'normal' and not is_minimized)
+          if matches then
+            layers[#layers + 1] = layer
+          end
+        end
+      end
+      break
+    end
+  end
+
+  return layers
+end
+
 ---@alias jojo.float.snap_target 'left'|'right'|'top'|'bottom'|'center'
 
 ---@class jojo.float.padding

@@ -58,6 +58,29 @@ local function terminal_call(method, block_id)
   return ok and type(res) == 'table' and res or nil
 end
 
+--- Display title for a block: uses `block.label` when explicitly renamed (not `'shell'`),
+--- otherwise falls back to the foreground process name, terminal OSC title, or `'float'`.
+---@param block { block_id: string, label?: string }
+---@return string
+function M.get_title(block)
+  if block.label and block.label ~= '' and block.label ~= 'shell' then
+    return block.label
+  end
+
+  local proc = terminal_call('process', block.block_id)
+  local fg = proc and proc.foreground
+  if fg and fg.name and fg.name ~= '' then
+    return fg.name
+  end
+
+  local title = terminal_call('title', block.block_id)
+  if title and title.title and title.title ~= '' then
+    return title.title
+  end
+
+  return (block.label and block.label ~= '' and block.label) or 'float'
+end
+
 --- Terminal grid and cell pixel dimensions of a terminal block.
 ---@param block_id? string defaults to the current block
 ---@return { columns: number, rows: number, cell_width_px: number, cell_height_px: number }?
