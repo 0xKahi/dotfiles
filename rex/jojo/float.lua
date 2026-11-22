@@ -10,7 +10,7 @@ M.layout = {
 M.padding = {
   cols = 1, -- left/right gap in terminal columns
   top = 0, -- top gap in terminal rows
-  bottom = 1.5, -- bottom gap in terminal rows
+  bottom = 1.3, -- bottom gap in terminal rows
 }
 
 local fallback_padding = { x = 0.005, top = 0, bottom = 0.015 }
