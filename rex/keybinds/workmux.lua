@@ -172,7 +172,7 @@ JoJo.key.create_mode('workmux', {
       end,
     })
 
-    for key, action in pairs(workmux_keys) do
+    for key, action in JoJo.utils.rpairs(workmux_keys) do
       rex.bind(mode_key(key), 'workmux', { action = action })
     end
   end,

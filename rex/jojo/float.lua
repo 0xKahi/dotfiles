@@ -2,10 +2,18 @@
 local M = {}
 
 M.layout = {
-  default = { 0.1, 0.1, 0.8, 0.8 },
+  default = { 0.15, 0.15, 0.7, 0.7 },
   log = { 0.2, 0.35, 0.5, 0.3 },
   popup = { 0.15, 0.375, 0.7, 0.25 }, -- centered 70% x 25%, like tmux `popup -w 70% -h 25%` / `fzf --popup 70%,25%`
 }
+
+M.padding = {
+  cols = 1, -- left/right gap in terminal columns
+  top = 0, -- top gap in terminal rows
+  bottom = 1.5, -- bottom gap in terminal rows
+}
+
+local fallback_padding = { x = 0.005, top = 0, bottom = 0.015 }
 
 ---@class jojo.float.opts
 ---@field command? string[] program and its arguments, e.g. { 'lazygit' }; omit for an interactive shell
@@ -64,6 +72,70 @@ function M.create_log(level, opts)
     block_id = opts.block_id,
     bounds = opts.bounds or M.layout.log,
   })
+end
+
+--- Return the floating layer containing `block_id`, or nil if the block is tiled or not found.
+---@param block_id string
+---@return table?
+function M.find_layer(block_id)
+  local view = rex.session.view({})
+  for _, window in ipairs(view.windows or {}) do
+    for _, layer in ipairs(window.layers or {}) do
+      if layer.kind == 'floating' then
+        for _, block in ipairs(layer.blocks or {}) do
+          if block.block_id == block_id then
+            return layer
+          end
+        end
+      end
+    end
+  end
+  return nil
+end
+
+---@alias jojo.float.snap_target 'left'|'right'|'top'|'bottom'|'center'
+
+---@class jojo.float.padding
+---@field cols? number left/right gap in terminal columns
+---@field top? number top gap in terminal rows
+---@field bottom? number bottom gap in terminal rows
+
+---@class jojo.float.snap_opts
+---@field block_id? string terminal block used to convert col/row padding into window fractions
+---@field padding? jojo.float.padding defaults to `M.padding`
+
+--- Compute bounds snapped to an edge or center while keeping size and the other axis.
+---@param bounds number[] [x, y, w, h] fractions of the window
+---@param target jojo.float.snap_target
+---@param opts? jojo.float.snap_opts
+---@return number[] bounds
+function M.snap_bounds(bounds, target, opts)
+  opts = opts or {}
+  local padding = opts.padding or {}
+  local cols = padding.cols or M.padding.cols
+  local top = padding.top or M.padding.top
+  local bottom = padding.bottom or M.padding.bottom
+  local x, y, w, h = bounds[1], bounds[2], bounds[3], bounds[4]
+
+  local size = JoJo.utils.get_terminal_size(opts.block_id)
+  local pad_x = size and (cols * w / size.columns) or fallback_padding.x
+  local pad_top = size and (top * h / size.rows) or fallback_padding.top
+  local pad_bottom = size and (bottom * h / size.rows) or fallback_padding.bottom
+
+  if target == 'left' then
+    x = math.min(pad_x, 1 - w)
+  elseif target == 'right' then
+    x = math.max(0, 1 - w - pad_x)
+  elseif target == 'top' then
+    y = math.min(pad_top, 1 - h)
+  elseif target == 'bottom' then
+    y = math.max(0, 1 - h - pad_bottom)
+  elseif target == 'center' then
+    x = (1 - w) / 2
+    y = (1 - h) / 2
+  end
+
+  return { x, y, w, h }
 end
 
 return M

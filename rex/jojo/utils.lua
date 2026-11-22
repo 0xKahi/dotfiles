@@ -28,6 +28,27 @@ function M.split_lines(s)
   return lines
 end
 
+--- Like pairs(), but iterates in reverse of the order pairs() yields.
+--- Rex lists the most recently bound key first, so binding with rpairs keeps a key table in source order.
+--- pairs() order isn't guaranteed by Lua; this relies on it matching insertion order for small tables.
+---@generic K, V
+---@param t table<K, V>
+---@return fun(): K, V
+function M.rpairs(t)
+  local keys = {}
+  for k in pairs(t) do
+    keys[#keys + 1] = k
+  end
+  local i = #keys + 1
+  return function()
+    i = i - 1
+    local k = keys[i]
+    if k ~= nil then
+      return k, t[k]
+    end
+  end
+end
+
 --- Call a terminal block method, returning its result table or nil on error
 ---@param method string
 ---@param block_id? string
@@ -35,6 +56,17 @@ end
 local function terminal_call(method, block_id)
   local ok, res = pcall(rex.block.call, 'com.superlogical.terminal', method, { block_id = block_id })
   return ok and type(res) == 'table' and res or nil
+end
+
+--- Terminal grid and cell pixel dimensions of a terminal block.
+---@param block_id? string defaults to the current block
+---@return { columns: number, rows: number, cell_width_px: number, cell_height_px: number }?
+function M.get_terminal_size(block_id)
+  local size = terminal_call('size', block_id)
+  if size and size.columns and size.rows and size.columns > 0 and size.rows > 0 then
+    return size
+  end
+  return nil
 end
 
 --- Working directory of a terminal block, as a plain path.
