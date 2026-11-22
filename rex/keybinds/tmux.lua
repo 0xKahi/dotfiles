@@ -74,3 +74,12 @@ rex.bind(prefix('q'), function(ctx)
 
   return false
 end)
+
+-- rex.bind(prefix('i'), function(ctx)
+--   JoJo.float.create_log('error', {
+--     title = 'workmux add failed',
+--     message = { 'fatal: not a git repository' },
+--     block_id = ctx.block_id,
+--   })
+--   return true
+-- end)

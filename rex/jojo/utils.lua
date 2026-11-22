@@ -10,14 +10,30 @@ function M.url_decode(s)
   end))
 end
 
-local terminal = 'com.superlogical.terminal'
+--- trims whitespace
+---@param s string
+---@return string
+function M.trim(s)
+  return (s:match('^%s*(.-)%s*$'))
+end
+
+--- Split text into its non-empty lines, e.g. 'a\n\nb\n' -> { 'a', 'b' }
+---@param s string
+---@return string[]
+function M.split_lines(s)
+  local lines = {}
+  for line in s:gmatch('[^\r\n]+') do
+    lines[#lines + 1] = line
+  end
+  return lines
+end
 
 --- Call a terminal block method, returning its result table or nil on error
 ---@param method string
 ---@param block_id? string
 ---@return table?
 local function terminal_call(method, block_id)
-  local ok, res = pcall(rex.block.call, terminal, method, { block_id = block_id })
+  local ok, res = pcall(rex.block.call, 'com.superlogical.terminal', method, { block_id = block_id })
   return ok and type(res) == 'table' and res or nil
 end
 

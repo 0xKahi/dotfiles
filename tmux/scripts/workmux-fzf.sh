@@ -4,6 +4,20 @@ set -o pipefail
 
 started_at_ms=$(perl -MTime::HiRes=time -e 'printf "%.0f", time() * 1000')
 
+# Works in tmux (fzf and the command open in tmux popups) and outside it, e.g. in a
+# Rex floating pane, where fzf and the command run in the current pane instead.
+in_tmux() { [ -n "${TMUX:-}" ]; }
+
+fail() {
+  echo "workmux-fzf: $*" >&2
+  # outside tmux we own the pane, so keep the message on screen until a key is pressed
+  if ! in_tmux; then
+    printf '\nPress any key to close.'
+    read -rsn1
+  fi
+  exit 1
+}
+
 cmd=''
 filter_spec=''
 multi_select=false
@@ -12,7 +26,7 @@ workmux_args=()
 while [ "$#" -gt 0 ]; do
   case "$1" in
     --filter)
-      [ "$#" -lt 2 ] && { echo 'workmux-fzf: --filter requires a value' >&2; exit 1; }
+      [ "$#" -lt 2 ] && fail '--filter requires a value'
       filter_spec="$2"
       shift 2
       ;;
@@ -35,7 +49,7 @@ while [ "$#" -gt 0 ]; do
   esac
 done
 
-[ -z "$cmd" ] && { echo 'usage: workmux-fzf.sh COMMAND [ARGS...] [--filter key=value,...] [--multi]' >&2; exit 1; }
+[ -z "$cmd" ] && fail 'usage: workmux-fzf.sh COMMAND [ARGS...] [--filter key=value,...] [--multi]'
 
 filters='{}'
 if [ -n "$filter_spec" ]; then
@@ -56,8 +70,7 @@ if [ -n "$filter_spec" ]; then
           end)
     | from_entries
   ' 2>/dev/null); then
-    echo "workmux-fzf: invalid filter: $filter_spec" >&2
-    exit 1
+    fail "invalid filter: $filter_spec"
   fi
 fi
 
@@ -95,18 +108,18 @@ if ! choices=$(workmux list --json | jq -r --argjson filters "$filters" '
     ]
   | @tsv
 '); then
-  echo 'workmux-fzf: failed to list worktrees' >&2
-  exit 1
+  fail 'failed to list worktrees'
 fi
 
 [ -z "$choices" ] && exit 0
 
-target_pane=$(tmux display-message -p '#{pane_id}')
 ready_at_ms=$(perl -MTime::HiRes=time -e 'printf "%.0f", time() * 1000')
 elapsed_ms=$((ready_at_ms - started_at_ms))
 fzf_args=(--popup 70%,25% --delimiter=$'\t' --with-nth=2 \
   --header="loaded in ${elapsed_ms}ms" --prompt='worktree> ')
 $multi_select && fzf_args+=(--multi)
+# --popup is ignored outside tmux, so fill our own pane instead of FZF_DEFAULT_OPTS' --height
+in_tmux || fzf_args+=(--height=100%)
 selection=$(printf '%s\n' "$choices" | fzf "${fzf_args[@]}")
 [ -z "$selection" ] && exit 0
 
@@ -121,4 +134,9 @@ popup_command="workmux$quoted_args"
 printf -v error_message 'workmux %s failed. Press any key to close.' "${args[*]}"
 printf -v popup_command '%s || { echo; echo %q; read -n 1 -s; }' "$popup_command" "$error_message"
 
-tmux popup -d "$PWD" -e "TMUX_PANE=$target_pane" -w 70% -h 25% -E "$popup_command"
+if in_tmux; then
+  target_pane=$(tmux display-message -p '#{pane_id}')
+  tmux popup -d "$PWD" -e "TMUX_PANE=$target_pane" -w 70% -h 25% -E "$popup_command"
+else
+  exec bash -c "$popup_command"
+fi
