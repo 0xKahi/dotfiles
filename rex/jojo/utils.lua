@@ -58,8 +58,20 @@ local function terminal_call(method, block_id)
   return ok and type(res) == 'table' and res or nil
 end
 
+local shells = { zsh = true, bash = true, fish = true, sh = true, nu = true, dash = true, ksh = true }
+
+--- Program name as invoked (`argv0`, e.g. `pi` rather than `node`), without path or login-shell `-`.
+---@param p? table process record from the terminal `process` method
+---@return string?
+local function process_name(p)
+  local name = p and (p.argv0 ~= '' and p.argv0 or p.name)
+  name = name and name:gsub('^%-', ''):match('([^/]+)$')
+  return name ~= '' and name or nil
+end
+
 --- Display title for a block: uses `block.label` when explicitly renamed (not `'shell'`),
---- otherwise falls back to the foreground process name, terminal OSC title, or `'float'`.
+--- otherwise a generated title like Rex's: `program · dir` while a program runs, `dir` at an idle
+--- shell. Falls back to the terminal OSC title, then `'float'`.
 ---@param block { block_id: string, label?: string }
 ---@return string
 function M.get_title(block)
@@ -69,8 +81,20 @@ function M.get_title(block)
 
   local proc = terminal_call('process', block.block_id)
   local fg = proc and proc.foreground
-  if fg and fg.name and fg.name ~= '' then
-    return fg.name
+  local parent = proc and proc.ancestors and proc.ancestors[1]
+  local cwd = M.get_cwd(block.block_id)
+  local dir = cwd and (cwd == (proc and proc.home) and '~' or cwd:match('([^/]+)/?$') or cwd)
+
+  local program = process_name(fg)
+  -- At a prompt the shell itself is foreground, directly under the terminal's root process (login or itself)
+  local root_pid = proc and proc.child and proc.child.pid
+  local at_root = not parent or parent.pid == root_pid or (fg and fg.pid == root_pid)
+  local is_idle_shell = at_root and program and shells[program]
+  if program and not is_idle_shell then
+    return dir and (program .. ' · ' .. dir) or program
+  end
+  if dir then
+    return dir
   end
 
   local title = terminal_call('title', block.block_id)
