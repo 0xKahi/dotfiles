@@ -74,3 +74,5 @@ rex.bind(prefix('q'), function(ctx)
 
   return false
 end)
+
+rex.bind(prefix('i'), 'client.tab_style.toggle')

@@ -190,6 +190,13 @@ end
 
 -- prefix + @
 rex.bind(JoJo.key.prefix('shift+2'), 'pane.float')
+rex.bind(JoJo.key.prefix('o'), function(ctx)
+  JoJo.float.create({
+    command = { 'pane-mux', 'switch-session' },
+    block_id = ctx.block_id,
+  })
+  return true
+end)
 
 local float_mode = 'panemux_float'
 JoJo.key.create_mode(float_mode, {

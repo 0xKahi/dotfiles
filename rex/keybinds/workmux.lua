@@ -19,6 +19,7 @@ local function run_workmux(ctx, args)
     command = command,
     block_id = ctx.block_id,
     bounds = JoJo.float.layout.log,
+    interactive = true,
   })
 end
 
