@@ -23,12 +23,13 @@ setmetatable(JoJo, {
   end,
 })
 
----@alias JoJoStoreKey "shell_path"
+---@alias JoJoStoreKey "shell_path" | "log"
 
 ---@class jojo.store
 JoJo.store = {
   _cache = {
     shell_path = nil,
+    log = nil,
   },
 
   ---@param prop JoJoStoreKey The state property name
