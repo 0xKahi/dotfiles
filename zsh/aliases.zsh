@@ -39,5 +39,13 @@ alias wm="workmux"
 
 # rex wipes scrollback on `clear` (E3 / ESC[3J); clear only the screen there
 if [[ "$TERM_PROGRAM" == "rex" ]]; then
-  alias clear="tput clear"
+  # `clear --all` falls through to the real clear (wipes scrollback too)
+  function clear {
+    if [[ "$1" == "--all" ]]; then
+      shift
+      command clear "$@"
+    else
+      tput clear
+    fi
+  }
 fi
