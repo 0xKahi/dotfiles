@@ -29,12 +29,12 @@ end
 ---@param argv string[] program and its arguments
 ---@return string? stdout
 local function exec(ctx, argv)
-  local cwd = JoJo.utils.get_cwd(ctx.block_id)
+  local cwd = JoJo.rex.get_cwd(ctx.block_id)
   local result, err = rex.exec(argv, {
     cwd = cwd,
     -- REX_SESSION etc. let workmux see this Rex session, e.g. for agent statuses
     env = {
-      PATH = JoJo.utils.get_shell_path(),
+      PATH = JoJo.rex.get_shell_path(),
       REX_SESSION = ctx.session_id,
       REX_BLOCK = ctx.block_id,
       TERM_PROGRAM = 'rex',
@@ -96,7 +96,7 @@ JoJo.key.create_mode('workmux', {
         if args.action == workmux_keys.s then
           local result, err = rex.exec({ 'workmux', 'sidebar' }, {
             env = {
-              PATH = JoJo.utils.get_shell_path(),
+              PATH = JoJo.rex.get_shell_path(),
               REX_SESSION = ctx.session_id,
               REX_BLOCK = ctx.block_id,
               TERM_PROGRAM = 'rex',

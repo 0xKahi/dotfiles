@@ -33,7 +33,7 @@ function M.create(opts)
       flavor = 'com.superlogical.terminal.shell',
       options = {
         command = opts.command,
-        cwd = opts.cwd or JoJo.utils.get_cwd(opts.block_id),
+        cwd = opts.cwd or JoJo.rex.get_cwd(opts.block_id),
         interactive = opts.interactive,
       },
     }),
@@ -145,7 +145,7 @@ function M.get_padding(bounds, opts)
   local bottom = padding.bottom or M.padding.bottom
   local w, h = bounds[3], bounds[4]
 
-  local size = JoJo.utils.get_terminal_size(opts.block_id)
+  local size = JoJo.rex.get_terminal_size(opts.block_id)
   local pad_x = size and (cols * w / size.columns) or fallback_padding.x
   local pad_top = size and (top * h / size.rows) or fallback_padding.top
   local pad_bottom = size and (bottom * h / size.rows) or fallback_padding.bottom

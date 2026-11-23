@@ -18,7 +18,7 @@ end
 ---@param block_id? string
 ---@return string?
 local function short_cwd(block_id)
-  local cwd = block_id and JoJo.utils.get_cwd(block_id)
+  local cwd = block_id and JoJo.rex.get_cwd(block_id)
   if cwd and home ~= '' and cwd:sub(1, #home) == home then
     cwd = '~' .. cwd:sub(#home + 1)
   end
@@ -31,7 +31,7 @@ end
 local function layer_to_pick_item(layer, is_current)
   local titles = {}
   for _, block in ipairs(layer.blocks or {}) do
-    titles[#titles + 1] = JoJo.utils.get_title(block)
+    titles[#titles + 1] = JoJo.rex.get_title(block)
   end
 
   local first_block = layer.blocks and layer.blocks[1]
@@ -92,7 +92,7 @@ local function toggle_float(ctx)
     or { layer_id = target.layer_id, state = 'minimized' }
 
   if picked then
-    JoJo.utils.deferred_api_call(ctx.session_id, 'session.set_layer_state', payload)
+    JoJo.rex.deferred_api_call(ctx.session_id, 'session.set_layer_state', payload)
     return
   end
 
@@ -126,7 +126,7 @@ local function open_pane(ctx)
           }
           items[#items + 1] = {
             id = block.block_id,
-            title = JoJo.utils.get_title(block) .. (is_current and ' (current)' or ''),
+            title = JoJo.rex.get_title(block) .. (is_current and ' (current)' or ''),
             subtitle = short_cwd(block.block_id),
             icon = icon,
             detail = detail,
@@ -156,13 +156,13 @@ local function open_pane(ctx)
   end
 
   if chosen.is_minimized then
-    JoJo.utils.deferred_api_call(ctx.session_id, 'session.set_layer_state', {
+    JoJo.rex.deferred_api_call(ctx.session_id, 'session.set_layer_state', {
       layer_id = chosen.layer_id,
       state = 'normal',
       focus = true,
     })
   else
-    JoJo.utils.deferred_api_call(ctx.session_id, 'session.focus_block', {
+    JoJo.rex.deferred_api_call(ctx.session_id, 'session.focus_block', {
       block_id = chosen.block_id,
     })
   end

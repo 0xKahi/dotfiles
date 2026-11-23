@@ -1,18 +1,18 @@
 ---@meta _
 
----@class jojo.rex
+---@class jojo
 ---@field key jojo.key
----@field ui jojo.ui
 ---@field utils jojo.utils
 ---@field float jojo.float
+---@field rex jojo.rex
 ---@field store jojo.store
 
----@class JoJo: jojo.rex
+---@class JoJo: jojo
 JoJo = {
   key = require('jojo.key'),
-  ui = require('jojo.ui'),
   utils = require('jojo.utils'),
   float = require('jojo.float'),
+  rex = require('jojo.rex'),
 }
 
 -- lazily require any other jojo.* module on first access

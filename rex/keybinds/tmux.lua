@@ -31,7 +31,7 @@ rex.bind(prefix('s'), function(ctx)
     focus = true,
     layout = rex.layout.block({
       flavor = 'com.superlogical.terminal.shell',
-      options = { cwd = JoJo.utils.get_cwd(ctx.block_id) },
+      options = { cwd = JoJo.rex.get_cwd(ctx.block_id) },
     }),
   })
   return true
