@@ -10,7 +10,8 @@ while IFS= read -rsn1 key; do [[ $key == q ]] && break; done
 ---@param ctx table action context
 ---@param args string[] workmux arguments, e.g. { 'add', 'feature/foo' }
 local function run_workmux(ctx, args)
-  local command = { 'bash', '-c', hold_on_error, 'workmux', 'workmux' }
+  -- Rex no longer sets REX_SESSION in terminals (only REX_BLOCK), but workmux still requires it
+  local command = { 'env', 'REX_SESSION=' .. ctx.session_id, 'bash', '-c', hold_on_error, 'workmux', 'workmux' }
   for _, arg in ipairs(args) do
     command[#command + 1] = arg
   end
@@ -58,7 +59,7 @@ end
 ---@param args string[] workmux-fzf.sh arguments, e.g. { 'open' }
 local function run_workmux_fzf(ctx, args)
   local workmux_fzf = os.getenv('HOME') .. '/.config/tmux/scripts/workmux-fzf.sh'
-  local command = { workmux_fzf }
+  local command = { 'env', 'REX_SESSION=' .. ctx.session_id, workmux_fzf }
 
   for _, arg in ipairs(args) do
     command[#command + 1] = arg
