@@ -10,3 +10,6 @@ require('extensions.session-pin').setup({
   key = JoJo.key.prefix('p'),
   session_name = 'scratch',
 })
+require('extensions.rex-thumbs').setup({
+  key = JoJo.key.prefix('shift+f'),
+})
