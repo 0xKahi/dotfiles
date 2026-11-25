@@ -91,12 +91,15 @@ local function toggle_float(ctx)
   local payload = target.state == 'minimized' and { layer_id = target.layer_id, state = 'normal', focus = true }
     or { layer_id = target.layer_id, state = 'minimized' }
 
+  local is_minimizing_current = target.state ~= 'minimized' and layer_has_block(target, ctx.block_id)
+
   if picked then
-    JoJo.rex.deferred_api_call(ctx.session_id, 'session.set_layer_state', payload)
+    local delay = is_minimizing_current and 0.30 or nil
+    JoJo.rex.deferred_api_call(ctx.session_id, 'session.set_layer_state', payload, delay)
     return
   end
 
-  if target.state ~= 'minimized' and layer_has_block(target, ctx.block_id) then
+  if is_minimizing_current then
     rex.client.queue('pane.minimize_floating')
   else
     rex.session.set_layer_state(payload)
