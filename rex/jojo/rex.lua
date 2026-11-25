@@ -13,23 +13,32 @@ end
 
 local shells = { zsh = true, bash = true, fish = true, sh = true, nu = true, dash = true, ksh = true }
 
---- Program name as invoked (`argv0`, e.g. `pi` rather than `node`), without path or login-shell `-`.
+--- Program name per Rex's process schema: first non-empty of `script`, `argv0`, `name`,
+--- stripped to its basename without a leading login-shell `-`.
 ---@param p? table process record from the terminal `process` method
 ---@return string?
 local function process_name(p)
-  local name = p and (p.argv0 ~= '' and p.argv0 or p.name)
+  if not p then
+    return nil
+  end
+  local name = (p.script and p.script ~= '' and p.script) or (p.argv0 and p.argv0 ~= '' and p.argv0) or p.name
   name = name and name:gsub('^%-', ''):match('([^/]+)$')
   return name ~= '' and name or nil
 end
 
 --- Display title for a block: uses `block.label` when explicitly renamed (not `'shell'`),
---- otherwise a generated title like Rex's: `program · dir` while a program runs, `dir` at an idle
---- shell. Falls back to the terminal OSC title, then `'float'`.
+--- otherwise the terminal OSC title when set, falling back to a generated title (`program · dir`
+--- while a program runs, `dir` at an idle shell), then `'float'`.
 ---@param block { block_id: string, label?: string }
 ---@return string
 function M.get_title(block)
   if block.label and block.label ~= '' and block.label ~= 'shell' then
     return block.label
+  end
+
+  local title = terminal_call('title', block.block_id)
+  if title and title.title and title.title ~= '' then
+    return title.title
   end
 
   local proc = terminal_call('process', block.block_id)
@@ -48,11 +57,6 @@ function M.get_title(block)
   end
   if dir then
     return dir
-  end
-
-  local title = terminal_call('title', block.block_id)
-  if title and title.title and title.title ~= '' then
-    return title.title
   end
 
   return (block.label and block.label ~= '' and block.label) or 'float'
