@@ -212,7 +212,7 @@ JoJo.key.create_mode(float_mode, {
       l = 'right',
       t = 'top',
       b = 'bottom',
-      ['='] = 'equalize',
+      c = 'equalize',
       f = 'focus',
       v = 'tile vsplit',
       s = 'tile stacked',
@@ -257,7 +257,7 @@ JoJo.key.create_mode(float_mode, {
           bounds = JoJo.float.snap_bounds({ pad_x, y, full_w, 0.4 }, 'top', snap_opts)
         elseif args.action == action_keys.b then
           bounds = JoJo.float.snap_bounds({ pad_x, y, full_w, 0.4 }, 'bottom', snap_opts)
-        elseif args.action == action_keys['='] then
+        elseif args.action == action_keys.c then
           bounds = { math.min(x, 0.6), math.min(y, 0.5), 0.4, 0.5 }
         elseif args.action == action_keys.f then
           bounds = JoJo.float.snap_bounds({ x, y, 0.8, full_h }, 'center', snap_opts)

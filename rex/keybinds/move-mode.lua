@@ -22,7 +22,7 @@ JoJo.key.create_mode('move_mode', {
       ['shift+j'] = 'bottom',
       ['shift+k'] = 'top',
       ['shift+l'] = 'right',
-      ['shift+c'] = 'center',
+      ['c'] = 'center',
     }
 
     local snap_action = name .. '_snap'
