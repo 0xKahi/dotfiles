@@ -616,7 +616,10 @@
 		<string>commandPalette</string>
 	</array>
 	<key>Workspace.hiddenPaneButtons</key>
-	<array/>
+	<array>
+		<string>splitDown</string>
+		<string>splitRight</string>
+	</array>
 	<key>Workspace.inactivePaneFadeMode</key>
 	<string>styling</string>
 	<key>Workspace.interfaceStyle</key>
@@ -626,7 +629,7 @@
 	<key>Workspace.notificationPosition</key>
 	<string>top-center</string>
 	<key>Workspace.paneDensity</key>
-	<string>compact</string>
+	<string>comfortable</string>
 	<key>Workspace.paneHeaderVisibility</key>
 	<string>onHover</string>
 	<key>Workspace.programActivityStatusPreferences</key>
