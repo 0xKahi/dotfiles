@@ -49,3 +49,10 @@ if [[ "$TERM_PROGRAM" == "rex" ]]; then
     fi
   }
 fi
+
+# rex only adds its CLI to PATH inside its own terminals
+if [[ "$TERM_PROGRAM" != "rex" ]]; then
+  _rex_bin="$HOME/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS/rex"
+  [[ -x "$_rex_bin" ]] && alias rex="${(q)_rex_bin}"
+  unset _rex_bin
+fi
