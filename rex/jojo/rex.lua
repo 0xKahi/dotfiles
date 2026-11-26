@@ -141,22 +141,23 @@ end
 --- Workaround for Rex macOS bug (#1573463677779181669): closing the rex.ui.pick palette
 --- restores focus to the pre-palette pane after the action returns, undoing focus changes
 --- and reopening a just-minimized focused float.
----@param session_id string
+--- `rex.exec` always runs on the home Mac, so for a remote session (`ctx.server` set) the call needs
+--- `-S <host>` or the home server rejects the remote session ID.
+---@param ctx table action context (uses `session_id` and `server`)
 ---@param method string server API method name, e.g. 'session.focus_block'
 ---@param payload table JSON-serializable arguments table
 ---@param delay? number seconds to wait before calling, defaults to 0.15
-function M.deferred_api_call(session_id, method, payload, delay)
-  rex.exec.start({
-    '/bin/sh',
-    '-c',
-    'sleep "$1" && "$2" api call -s "$3" "$4" "$5"',
-    'jojo-deferred-api',
-    tostring(delay or 0.15),
-    M.rex_bin_dir .. '/rex',
-    session_id,
-    method,
-    rex.json.encode(payload),
-  }, { detach = true })
+function M.deferred_api_call(ctx, method, payload, delay)
+  local argv = { '/bin/sh', '-c', 'sleep "$1" && shift && exec "$@"', 'jojo-deferred-api', tostring(delay or 0.15) }
+  argv[#argv + 1] = M.rex_bin_dir .. '/rex'
+  if ctx.server then
+    argv[#argv + 1] = '-S'
+    argv[#argv + 1] = ctx.server
+  end
+  for _, arg in ipairs({ 'api', 'call', '-s', ctx.session_id, method, rex.json.encode(payload) }) do
+    argv[#argv + 1] = arg
+  end
+  rex.exec.start(argv, { detach = true })
 end
 
 --- This Mac app's client label (Settings > General > Client Info).

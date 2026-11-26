@@ -95,7 +95,7 @@ local function toggle_float(ctx)
 
   if picked then
     local delay = is_minimizing_current and 0.30 or nil
-    JoJo.rex.deferred_api_call(ctx.session_id, 'session.set_layer_state', payload, delay)
+    JoJo.rex.deferred_api_call(ctx, 'session.set_layer_state', payload, delay)
     return
   end
 
@@ -159,13 +159,13 @@ local function open_pane(ctx)
   end
 
   if chosen.is_minimized then
-    JoJo.rex.deferred_api_call(ctx.session_id, 'session.set_layer_state', {
+    JoJo.rex.deferred_api_call(ctx, 'session.set_layer_state', {
       layer_id = chosen.layer_id,
       state = 'normal',
       focus = true,
     })
   else
-    JoJo.rex.deferred_api_call(ctx.session_id, 'session.focus_block', {
+    JoJo.rex.deferred_api_call(ctx, 'session.focus_block', {
       block_id = chosen.block_id,
     })
   end
