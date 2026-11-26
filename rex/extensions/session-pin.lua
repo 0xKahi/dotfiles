@@ -18,9 +18,16 @@ local M = {}
 ---@type table<string, session_pin.opts> per session_name
 local configs = {}
 
---- Session we came from, per toggled session_name. Lost on config reload.
+--- Session we came from, per server and toggled session_name. Lost on config reload.
 ---@type table<string, string>
 local previous = {}
+
+---@param ctx table action context
+---@param name string
+---@return string
+local function previous_key(ctx, name)
+  return (ctx.server or '') .. '\0' .. name
+end
 
 local registered = false
 
@@ -66,6 +73,14 @@ local function create_session(opts)
   return res.session_id
 end
 
+--- Switch the app to a session on the host the action targets (local or remote).
+--- Needs Remote Control turned on in the app when on a remote host, see `JoJo.rex.client_do`.
+---@param ctx table action context
+---@param session_id string
+local function select_session(ctx, session_id)
+  JoJo.rex.client_do(ctx, 'session.select', { session_id = session_id })
+end
+
 ---@param ctx table action context
 ---@param args { session_name?: string }
 local function toggle(ctx, args)
@@ -95,15 +110,15 @@ local function toggle(ctx, args)
 
   -- in the toggle session: go back where we came from
   if target_id and ctx.session_id == target_id then
-    local prev_id = previous[name]
+    local prev_id = previous[previous_key(ctx, name)]
     local prev_alive = prev_id and find_session(sessions, function(s)
       return s.session_id == prev_id
     end)
     if prev_alive then
-      rex.client.queue('session.select', { session_id = prev_id })
+      select_session(ctx, prev_id)
     else
-      -- no remembered session (config reloaded, or it was closed): let the app pick the last one
-      rex.client.queue('session.back')
+      -- no remembered session (config reloaded, or it was closed): let the app pick the previous one
+      rex.client.queue('session.previous')
     end
     return
   end
@@ -114,9 +129,9 @@ local function toggle(ctx, args)
     return
   end
   if ctx.session_id then
-    previous[name] = ctx.session_id
+    previous[previous_key(ctx, name)] = ctx.session_id
   end
-  rex.client.queue('session.select', { session_id = target_id })
+  select_session(ctx, target_id)
 end
 
 --- Register the `session_pin` action and bind `opts.key` to it. Can be called once per session_name.

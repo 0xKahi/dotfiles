@@ -159,4 +159,68 @@ function M.deferred_api_call(session_id, method, payload, delay)
   }, { detach = true })
 end
 
+--- This Mac app's client label (Settings > General > Client Info).
+--- Read from the app's defaults, since actions run on the home server on the same Mac.
+---@return string? label
+function M.app_label()
+  local r = rex.exec({ 'defaults', 'read', 'com.superlogical.rex', 'rex.client.label' })
+  if r and r.ok then
+    local label = r.stdout:gsub('%s+$', '')
+    if label ~= '' then
+      return label
+    end
+  end
+end
+
+--- This app's client id on the remote server `ctx.server`. `ctx.client_id` is its id on the home server.
+--- `rex.call` goes to `ctx.server` inside an action for a remote session, so `client.list` lists the remote's clients.
+---@param ctx table action context
+---@return string? client_id
+---@return string? err
+function M.remote_client_id(ctx)
+  local label = M.app_label()
+  if not label then
+    return nil, 'set a client label in Settings > General > Client Info'
+  end
+  local res, err = rex.call('client.list')
+  if not res then
+    return nil, 'client.list failed: ' .. tostring(err)
+  end
+  for _, c in ipairs(res.clients or {}) do
+    if c.info and c.info.kind == 'app' and c.info.label == label then
+      return c.client_id
+    end
+  end
+  return nil, ('app %q is not connected to %s'):format(label, ctx.server)
+end
+
+--- `rex.client.queue` that also works when the action targets a remote host.
+--- Actions for a remote session run on the home server with `ctx.server` set, but queued client actions
+--- resolve session/window ids against the home server ("not found on this server"). On a remote host this asks
+--- the app's connection on that server via `client.perform` instead, which runs immediately rather than after
+--- `run` returns. The remote path needs Remote Control turned on in the app.
+--- Only needed for client actions whose args carry server-side ids, e.g. `session.select`.
+---@param ctx table action context
+---@param action string client action, e.g. 'session.select'
+---@param args? table
+function M.client_do(ctx, action, args)
+  if not ctx.server then
+    rex.client.queue(action, args)
+    return
+  end
+  local client_id, err = M.remote_client_id(ctx)
+  if not client_id then
+    error('jojo: ' .. err, 0)
+  end
+  local _, perr = rex.call('client.perform', {
+    client_id = client_id,
+    action = action,
+    args = args,
+    timeout_ms = 5000,
+  })
+  if perr then
+    error(('jojo: %s on %s failed: %s'):format(action, ctx.server, tostring(perr)), 0)
+  end
+end
+
 return M
