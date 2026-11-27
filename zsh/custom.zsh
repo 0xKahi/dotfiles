@@ -11,7 +11,8 @@ if [[ -n ~/.zcompdump(#qN.mh-1) ]]; then
   # compinit -i # skips compdump only 
   # compinit # skips none use this when you want to regenerate .zcompdump
 else
-  compinit
+  # Workbrew-managed Homebrew (work Macs) is owned by `workbrew`, which compaudit flags and prompts about; -u trusts it
+  if [[ ! -e /opt/homebrew || -O /opt/homebrew ]]; then compinit; else compinit -u; fi
   # printf "\e[105;30mDEBUG\e[0m .zcompdump regenerated \e[33m[%s]\e[0m\n" "$(date '+%H:%M:%S')"
 fi
 
