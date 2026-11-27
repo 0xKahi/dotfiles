@@ -24,44 +24,28 @@ local function run_workmux(ctx, args)
   })
 end
 
---- Run a command on the server from the focused block's directory, with your shell's PATH.
---- On failure, shows the error in a log float and returns nil.
+--- Toggle the workmux sidebar in a hidden block on the session's host. `rex.exec` would always run it on the
+--- home Mac, which breaks for a remote session (`ctx.server` set).
 ---@param ctx table action context
----@param argv string[] program and its arguments
----@return string? stdout
-local function exec(ctx, argv)
-  local cwd = JoJo.rex.get_cwd(ctx.block_id)
-  local result, err = rex.exec(argv, {
-    cwd = cwd,
-    -- REX_SESSION etc. let workmux see this Rex session, e.g. for agent statuses
-    env = {
-      PATH = JoJo.rex.get_shell_path(),
-      REX_SESSION = ctx.session_id,
-      REX_BLOCK = ctx.block_id,
-      TERM_PROGRAM = 'rex',
-    },
-  })
-  if result and result.ok then
-    return result.stdout
-  end
-
-  local message = result and JoJo.utils.split_lines(result.stderr) or { tostring(err) }
-  message[#message + 1] = ''
-  message[#message + 1] = 'cwd: ' .. tostring(cwd)
-  JoJo.float.create_log('error', {
-    title = table.concat(argv, ' ') .. ' failed',
-    message = message,
-    block_id = ctx.block_id,
-  })
+local function toggle_sidebar(ctx)
+  -- REX_SESSION/REX_BLOCK point workmux at the focused pane, not the hidden block it runs in
+  JoJo.rex.run_hidden(ctx, {
+    'env',
+    'REX_SESSION=' .. ctx.session_id,
+    'REX_BLOCK=' .. ctx.block_id,
+    'workmux',
+    'sidebar',
+  }, { label = 'hidden-workmux-sidebar' })
 end
 
+--- Run a ~/.config/tmux/scripts fzf script in a popup float, on whichever host the session is on.
 ---@param ctx table action context
----@param args string[] workmux-fzf.sh arguments, e.g. { 'open' }
-local function run_workmux_fzf(ctx, args)
-  local workmux_fzf = os.getenv('HOME') .. '/.config/tmux/scripts/workmux-fzf.sh'
-  local command = { 'env', 'REX_SESSION=' .. ctx.session_id, workmux_fzf }
+---@param script string script file name, e.g. 'workmux-fzf.sh'
+---@param args? string[] script arguments, e.g. { 'open' }
+local function run_fzf_script(ctx, script, args)
+  local command = { 'env', 'REX_SESSION=' .. ctx.session_id, os.getenv('HOME') .. '/.config/tmux/scripts/' .. script }
 
-  for _, arg in ipairs(args) do
+  for _, arg in ipairs(args or {}) do
     command[#command + 1] = arg
   end
 
@@ -95,19 +79,7 @@ JoJo.key.create_mode('workmux', {
       args = { action = 'string' },
       run = function(ctx, args)
         if args.action == workmux_keys.s then
-          local result, err = rex.exec({ 'workmux', 'sidebar' }, {
-            env = {
-              PATH = JoJo.rex.get_shell_path(),
-              REX_SESSION = ctx.session_id,
-              REX_BLOCK = ctx.block_id,
-              TERM_PROGRAM = 'rex',
-            },
-          })
-          if not result then
-            rex.log('error', 'workmux sidebar failed to start: ' .. tostring(err))
-          elseif not result.ok then
-            rex.log('error', 'workmux sidebar exited ' .. result.code .. ': ' .. result.stderr)
-          end
+          toggle_sidebar(ctx)
           return
         end
 
@@ -135,30 +107,7 @@ JoJo.key.create_mode('workmux', {
         end
 
         if args.action == workmux_keys.b then
-          local stdout = exec(ctx, { 'git', 'branch', '--format=%(refname:short)' })
-          if not stdout then
-            return
-          end
-
-          local items = {}
-          for _, name in ipairs(JoJo.utils.split_lines(stdout)) do
-            items[#items + 1] = { id = name, icon = 'branch' }
-          end
-          if #items == 0 then
-            return
-          end
-
-          local branch = rex.ui.pick({
-            title = 'add worktree from branch',
-            placeholder = 'branch',
-            confirm = 'workmux add',
-            items = items,
-          })
-          if not branch then
-            return
-          end
-
-          run_workmux(ctx, { 'add', branch })
+          run_fzf_script(ctx, 'workmux-add-from-branch.sh')
           return
         end
 
@@ -168,7 +117,7 @@ JoJo.key.create_mode('workmux', {
           close = { 'close', '--filter', 'is_main=false,is_open=true' },
         }
         if fzf_actions[args.action] then
-          run_workmux_fzf(ctx, fzf_actions[args.action])
+          run_fzf_script(ctx, 'workmux-fzf.sh', fzf_actions[args.action])
           return
         end
       end,

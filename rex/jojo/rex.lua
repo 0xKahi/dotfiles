@@ -224,4 +224,92 @@ function M.client_do(ctx, action, args)
   end
 end
 
+-- Runs "$@". Rex closes a block whose program fails, unless it fails quickly, so on failure keep the block
+-- open and report the exit status in its title (OSC 2) for `run_hidden` to read.
+local hidden_wrapper = [=[
+"$@"
+rc=$?
+[ "$rc" -eq 0 ] && exit 0
+printf '\033]2;jojo-exit:%s\007' "$rc"
+read -r _
+]=]
+
+---@class jojo.rex.run_hidden_opts
+---@field label? string block label, defaults to 'jojo-hidden'
+---@field cwd? string working directory, defaults to the current block's cwd
+---@field timeout? number seconds to wait before stopping the command, defaults to 5
+
+--- Run a command without showing it, in a terminal block that isn't placed in any window.
+--- Unlike `rex.exec`, which always runs on the home Mac, this runs on the session's host, so it also works
+--- for a remote session (`ctx.server`). It runs through a non-interactive login zsh, which reads .zprofile
+--- (Homebrew PATH) but not .zshrc: a hidden block can't answer prompts such as compinit's insecure-directories one.
+--- Waits up to `timeout` seconds. On failure or timeout, closes the block and shows its output in a log float.
+---@param ctx table action context
+---@param argv string[] program and its arguments
+---@param opts? jojo.rex.run_hidden_opts
+---@return boolean ok
+function M.run_hidden(ctx, argv, opts)
+  opts = opts or {}
+  local title = table.concat(argv, ' ')
+  local timeout = opts.timeout or 5
+
+  local command = { '/bin/zsh', '-lc', hidden_wrapper, 'jojo-hidden' }
+  for _, arg in ipairs(argv) do
+    command[#command + 1] = arg
+  end
+
+  local res, err = rex.session.new_block({
+    flavor = 'com.superlogical.terminal.shell',
+    label = opts.label or 'jojo-hidden',
+    options = { command = command, cwd = opts.cwd or M.get_cwd(ctx.block_id) },
+  })
+  local block_id = res and res.block_id
+  if not block_id then
+    JoJo.float.create_log('error', { title = title .. ' failed', message = { tostring(err) }, block_id = ctx.block_id })
+    return false
+  end
+
+  ---@param status string last line of the log, e.g. the exit status
+  local function fail(status)
+    local ok, out = pcall(rex.block.call, 'com.superlogical.terminal', 'format', {
+      block_id = block_id,
+      trim = true,
+      unwrap = true,
+      max_bytes = 16384,
+    })
+    rex.call('block.close', { session_id = ctx.session_id, block_id = block_id })
+    local content = ok and type(out) == 'table' and out.content or ''
+    local message = JoJo.utils.split_lines((content:gsub('%s+$', '')))
+    message[#message + 1] = ''
+    message[#message + 1] = status
+    JoJo.float.create_log('error', { title = title .. ' failed', message = message, block_id = ctx.block_id })
+    return false
+  end
+
+  local interval = 0.1
+  for _ = 1, math.ceil(timeout / interval) do
+    -- config actions have no rex.sleep; this only waits, so running it on the home Mac is fine
+    rex.exec({ '/bin/sleep', tostring(interval) })
+    local proc = terminal_call('process', block_id)
+    if not proc then
+      return true -- the block closed itself after a clean exit (the wrapper keeps it open on failure)
+    end
+    local exit = proc.last_exit
+    if exit then
+      if exit.exit_code == 0 then
+        rex.call('block.close', { session_id = ctx.session_id, block_id = block_id })
+        return true
+      end
+      return fail('exit: ' .. tostring(exit.error or exit.exit_code))
+    end
+    local term_title = terminal_call('title', block_id)
+    local code = term_title and term_title.title and term_title.title:match('^jojo%-exit:(%d+)')
+    if code then
+      return fail('exit: ' .. code)
+    end
+  end
+
+  return fail(('timed out after %ss, stopped it'):format(timeout))
+end
+
 return M
