@@ -173,8 +173,10 @@ end
 
 -- Copy with pbcopy when the server has it. Else the picker pane sends
 -- OSC 52 as it closes, and the Rex app puts the text on its clipboard.
+-- With osc52 set (a remote session, see open_remote), skip pbcopy: it would
+-- copy to the clipboard of the host that runs the pane, not the app's.
 local function copy(st, text)
-  local r = rex.exec({ 'pbcopy' }, { stdin = text, timeout = 5 })
+  local r = not st.osc52 and rex.exec({ 'pbcopy' }, { stdin = text, timeout = 5 })
   if not (r and r.ok) then
     write_file(st.frame .. '.end', '\27]52;c;' .. base64(text) .. '\7')
   end
@@ -211,7 +213,27 @@ end
 -- Start the picker in a background tab, then swap it into the place of the
 -- pane, as tmux-thumbs does with swap-pane. The picker pane then has the
 -- size of the pane, so the hints sit on the text.
-local function open(ctx)
+-- A session on another host: this action runs on the app's home server, but
+-- the picker pane runs on ctx.server. The frame file, the pickers table, and
+-- the picker's `rex do thumbs_key` calls must all be on the picker's server,
+-- so run the whole thumbs action there. client.action goes to ctx.server.
+local function open_remote(ctx)
+  local res, err = rex.call('client.action', {
+    action = 'thumbs',
+    session_id = ctx.session_id,
+    block_id = ctx.block_id,
+    args = { osc52 = true },
+  })
+  if not res then
+    error(('rex-thumbs: thumbs on %s failed: %s'):format(ctx.server, tostring(err)), 0)
+  end
+  return res
+end
+
+local function open(ctx, args)
+  if ctx.server then
+    return open_remote(ctx)
+  end
   local pane = ctx.block_id
   if not pane then
     error('no pane has focus', 0)
@@ -238,6 +260,7 @@ local function open(ctx)
     spans = matcher.spans(groups, marks),
     typed = '',
     frame = os.tmpname(),
+    osc52 = args and args.osc52 or false,
   }
   write_file(st.frame, render(st))
   local w, err = rex.session.new_window({
@@ -328,6 +351,7 @@ function M.setup(opts)
     description = 'Puts a hint on each URL, path, and hash on the screen. Type a hint to copy its text, or Shift and the hint to also type it into the pane.',
     category = 'Pane',
     keywords = 'thumbs hints tmux-thumbs fingers url path hash copy paste',
+    args = { osc52 = 'boolean?' },
     run = open,
   })
   rex.action({
