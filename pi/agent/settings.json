@@ -1,9 +1,9 @@
 {
   "defaultProvider": "anthropic",
   "defaultModel": "claude-opus-5-5",
-  "defaultThinkingLevel": "medium",
+  "defaultThinkingLevel": "high",
   "theme": "cyberpunk-theme",
-  "lastChangelogVersion": "1.6.1",
+  "lastChangelogVersion": "1.7.0",
   "hideThinkingBlock": false,
   "showHardwareCursor": true,
   "enableSkillCommands": true,
