@@ -15,14 +15,15 @@ return {
   },
   opts = {
     browsers = { 'default', 'dia', 'arc' },
+    rex = {
+      action = 'lazy_url_open', -- the action below; routing is off unless this is set
+    },
     custom = {
       {
         pattern = 'discord%.com', -- Lua pattern: matches any URL containing "discord.com"
         handler = function(url)
-          return {
-            cmd = 'open',
-            args = { (url:gsub('https://', 'discord://')) },
-          }
+          -- `{ url }` (not `{ cmd }`) so lazy-url can send it to the Rex app's machine
+          return { url = (url:gsub('https://', 'discord://')) }
         end,
       },
       {
@@ -31,7 +32,7 @@ return {
           -- https://app.slack.com/client/<TEAM>/<CHANNEL> -> slack://channel?team=<TEAM>&id=<CHANNEL>
           local team, channel = url:match('app%.slack%.com/client/(T%w+)/([CDG]%w+)')
           if team and channel then
-            return { cmd = 'open', args = { ('slack://channel?team=%s&id=%s'):format(team, channel) } }
+            return { url = ('slack://channel?team=%s&id=%s'):format(team, channel) }
           end
           -- https://<workspace>.slack.com/archives/<CHANNEL>/p<TS> -> slack://channel?team=..&id=..&message=<TS>
           local slack_teams = { shuffleorg = 'T03GF46KJHE' } -- workspace subdomain -> team id
@@ -46,10 +47,10 @@ return {
                 deep_link = deep_link .. '&thread_ts=' .. thread_ts
               end
             end
-            return { cmd = 'open', args = { deep_link } }
+            return { url = deep_link }
           end
           -- unknown workspace: let the desktop app resolve it
-          return { cmd = 'open', args = { '-a', 'Slack', url } }
+          return { url = url, app = 'Slack' }
         end,
       },
     },
