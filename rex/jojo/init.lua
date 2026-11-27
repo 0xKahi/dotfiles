@@ -5,6 +5,7 @@
 ---@field utils jojo.utils
 ---@field float jojo.float
 ---@field rex jojo.rex
+---@field secrets jojo.secrets
 ---@field store jojo.store
 
 ---@class JoJo: jojo
@@ -13,6 +14,7 @@ JoJo = {
   utils = require('jojo.utils'),
   float = require('jojo.float'),
   rex = require('jojo.rex'),
+  secrets = require('jojo.secrets'),
 }
 
 -- lazily require any other jojo.* module on first access
