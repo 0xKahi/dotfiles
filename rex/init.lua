@@ -13,3 +13,4 @@ require('extensions.session-pin').setup({
 require('extensions.rex-thumbs').setup({
   key = JoJo.key.prefix('shift+f'),
 })
+require('extensions.nvim-lazy-url-open')
