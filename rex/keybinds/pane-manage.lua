@@ -286,6 +286,7 @@ JoJo.key.create_mode('panemux', {
   exit = { 'q' },
   setup = function(mode_key, name)
     local panemux_keys = {
+      p = 'paste',
       a = 'action',
       o = 'open',
       t = 'toggle float',
@@ -302,6 +303,11 @@ JoJo.key.create_mode('panemux', {
           if ctx.block_id and JoJo.float.find_layer(ctx.block_id) then
             rex.client.queue('client.mode.enter', { name = float_mode, once = true })
           end
+          return
+        end
+
+        if args.action == panemux_keys.p then
+          rex.client.queue('pane.paste')
           return
         end
 
