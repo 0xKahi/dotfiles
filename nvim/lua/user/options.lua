@@ -51,6 +51,20 @@ vim.o.winblend = 0
 
 vim.opt.clipboard:append('unnamedplus')
 
+-- No pbcopy means a remote host (Rex Server over Tailscale, or SSH): copy to the local clipboard via OSC 52.
+-- Paste from the unnamed register since Rex doesn't answer OSC 52 read requests (nvim would hang).
+if vim.fn.executable('pbcopy') == 0 then
+  local osc52 = require('vim.ui.clipboard.osc52')
+  local function paste()
+    return { vim.fn.split(vim.fn.getreg(''), '\n'), vim.fn.getregtype('') }
+  end
+  vim.g.clipboard = {
+    name = 'OSC 52 (copy only)',
+    copy = { ['+'] = osc52.copy('+'), ['*'] = osc52.copy('*') },
+    paste = { ['+'] = paste, ['*'] = paste },
+  }
+end
+
 vim.opt.conceallevel = 0
 
 vim.opt.diffopt = 'internal,indent-heuristic,filler,closeoff,linematch:60,iwhite,context:4,vertical,inline:char'
