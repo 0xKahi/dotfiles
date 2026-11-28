@@ -136,7 +136,8 @@
     },
     "display": {
       "agentName": true, 
-      "cache": false
+      "cache": false,
+      "animatedIcon": "random"
     }
   },
   "context_view": {
